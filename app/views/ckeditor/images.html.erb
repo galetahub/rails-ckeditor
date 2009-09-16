@@ -1,0 +1,116 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<link href="/javascripts/ckeditor/css/fck_editor.css" type="text/css" rel="stylesheet">
+	<link href="/javascripts/ckeditor/css/fck_dialog.css" type="text/css" rel="stylesheet">
+	<link href="/javascripts/ckeditor/css/ckfinder.css" type="text/css" rel="stylesheet">
+	<link href="/javascripts/ckeditor/css/swfupload.css" type="text/css" rel="stylesheet">
+	
+	<script src="/javascripts/ckeditor/swfupload/mootools-1.2.3-core-yc.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/swfupload.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/swfupload.swfobject.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/swfupload.queue.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/fileprogress.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/handlers.js" type="text/javascript"></script>
+	<script src="/javascripts/ckeditor/swfupload/querystring.js" type="text/javascript"></script>
+	
+	<script type="text/javascript">	  
+	  var params = new Querystring();
+	  var CKEditorFuncNum = params.get("CKEditorFuncNum");
+	  var CKEditorName = params.get("CKEditor");
+	  var CKEDITOR = window.opener.CKEDITOR;
+	  var editor = CKEDITOR.instances[CKEditorName];
+	  var upload_path = "<%= new_attachment_path_with_session_information(:image) %>";
+	  
+	  function setUrl(url) 
+	  {  
+      CKEDITOR.tools.callFunction(CKEditorFuncNum, url);
+      window.close();
+    }
+    
+    function uploadButton(button)
+    {
+      var element = $('fj');
+      
+      if (element.style.display == '')
+      {
+        element.style.display = 'none';
+      }
+      else
+      {
+        element.style.display = '';
+      }
+    }
+    
+    window.onload = function()
+    {
+      init_swfupload();
+      var f = new FileThumb('qu');
+      var t = new ToolBar('nv');
+      
+      var b1 = new Button('Upload New File', 'Upload', 'add.gif');
+      var b2 = new Button('Refresh', 'Refresh', 'refresh.gif');
+      
+      b1.callback = uploadButton;
+      b2.callback = function(){ window.location.reload(); }
+      
+      t.buttons.push(b1);
+      t.buttons.push(b2);
+      
+      t.init();
+    }
+	</script>
+</head>
+<body style="margin: 0px; padding: 0px;">
+	<table width="100%" cellspacing="0" cellpadding="0">
+		<tbody>
+		<tr>
+			<td class="TB_ToolbarSet" id="nv"></td>
+		</tr>
+
+		<tr id="fj" style='display:none;'>
+			<td style="white-space: normal;" class="FCKUploadArea">
+				<div class="PopupTitle">
+					<span>Upload New File</span>
+				</div>
+				<div style="padding: 15px; text-align: center;" id="cY">
+					<table cellspacing="0" cellpadding="0" style="margin-left: auto; margin-right: auto;">
+						<tbody>
+						<tr>
+							<td>
+                <span id='spanButtonPlaceholder'></span>
+                <div id="divFileProgressContainer" style="clear:both;"></div>
+                
+								<%= render :partial=>"swfupload" %>
+							</td>
+						</tr>
+					  </tbody>
+				  </table>
+				  <div class="PopupButtons">
+					  <div style="width: 100%;">
+						  <table width="100%" cellspacing="0" cellpadding="0">
+							  <tbody><tr>
+								  <td width="100%"></td>
+								  <td nowrap="nowrap">
+									  <button onclick="uploadButton()" class="Button"><span ckf:lang="CancelBtn">Cancel</span></button>
+								  </td>
+							  </tr>
+						  </tbody></table>
+					  </div>
+				  </div>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="height: 100%;" id="qu">
+			  <div style="overflow:auto; height:550px;">
+  			 <%= render :partial=>"image", :collection=>@images %>
+			  </div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</body>

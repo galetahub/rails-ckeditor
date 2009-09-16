@@ -1,4 +1,4 @@
-h1. Rails CKEditor Rails plugin
+h1. Rails CKEditor integration plugin with SWFUpload support
 
 CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to 
 the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.
@@ -7,6 +7,7 @@ Because CKEditor is licensed under flexible Open Source and commercial licenses,
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
 http://ckeditor.com/
+http://swfupload.org/
 
 h2. Install
 
@@ -42,7 +43,7 @@ Then instead of the normal textarea helper from Rails use this one
   <%= ckeditor_textarea("object", "field", :width => '100%', :height => '200px') %>
 </code></pre>
 
-OR
+FormBuilder helper for more usefully 
 
 <pre><code>  
   <% form_for :page, :url => pages_path do |form| -%>

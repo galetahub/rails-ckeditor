@@ -1,16 +1,27 @@
-Rails CKEditor Rails plugin
-===========================
+h1. Rails CKEditor Rails plugin
 
-Install
-=======
+CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, 
+which means that the text being edited on it looks as similar as possible to 
+the results users have when publishing it. It brings to the web common editing 
+features found on desktop editing applications like Microsoft Word and OpenOffice.
 
-./script/plugin install git://github.com/galetahub/rails-ckeditor.git
+Because CKEditor is licensed under flexible Open Source and commercial licenses, 
+you'll be able to integrate and use it inside any kind of application. 
+This is the ideal editor for developers, created to provide easy 
+and powerful solutions to their users.
 
-rake ckeditor:install
+http://ckeditor.com/
 
-rake ckeditor:config
+h2. Install
+
+@./script/plugin install git://github.com/galetahub/rails-ckeditor.git@
+
+@rake ckeditor:install@
+
+@rake ckeditor:config@
 
 Last rake generated file config/ckeditor.yml:
+<pre><code>
 development: 
   file_manager_uri: "/ckeditor/files"
   file_manager_upload_uri: "/ckeditor/create?kind=file"
@@ -22,59 +33,62 @@ development:
   public_uri: "/uploads"
   public_path: "#{RAILS_ROOT}/public/uploads"
   
+</code></pre>
 
-Usage
-=====
+h2 Usage
 
 Basically include this in the page you wish to use the editor in
-
+<pre><code>
   <%= javascript_include_tag :ckeditor %>
+</code></pre>
 
 Then instead of the normal textarea helper from Rails use this one
-
+<pre><code>
   <%= ckeditor_textarea("object", "field", :width => '100%', :height => '200px') %>
-  
-  OR
-  
+</code></pre>
+
+OR
+
+<pre><code>  
   <% form_for :page, :url => pages_path do |form| -%>
     ...
     <%= form.cktext_area :content, :toolbar=>'Full', :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id} %>
     ...
   <% end -%>
+</code></pre>
   
-  Support options:
-    :cols - Textarea cols
-    :rows - Textarea rows
-    :width - Editor width
-    :height - Editor height
-    :class - Textarea css class name
-    :toolbar - Toolbar name
-    :skin - Editor skin
-    :language - Editor language
-    :swf_params - SWFUpload additional params
+h3. Support options:
+-- :cols - Textarea cols
+-- :rows - Textarea rows
+-- :width - Editor width
+-- :height - Editor height
+-- :class - Textarea css class name
+-- :toolbar - Toolbar name
+-- :skin - Editor skin
+-- :language - Editor language
+-- :swf_params - SWFUpload additional params
 
 Check "public/javascripts/ckcustom.js" for default options
 
-AJAX
-====
+h3. AJAX
 
 To use a remote form you need to do something like this
-
+<pre><code>
   <%= form_remote_tag :url => @options.merge(:controller => @scaffold_controller),
                     :before => Ckeditor_before_js('note', 'text') %>
 
     <%= ckeditor_textarea( "note", "text", :ajax => true ) %>
 
   <%= end_form_tag %>
+</code></pre>
 
 If you forget to put in the :before it won't work, you can also use the Ckeditor_form_remote_tag described below
 
-Multiple Editors in a form
-==========================
+h3. Multiple Editors in a form
 
 To create a form using multiple editors use the Ckeditor_form_remote_tag helper and pass the :editors option. This takes an hash of model symbol keys with each having
 an array as its value. The array should contain the list of fields that will have editors attached to them.
-
+<pre><code>
   <%= ckeditor_form_remote_tag :url => @options.merge(:controller => @scaffold_controller),
                               :editors => { :multinote => ['text1', 'text2'] } %>
 
@@ -82,3 +96,4 @@ an array as its value. The array should contain the list of fields that will hav
     <%= ckeditor_textarea( "multinote", "text2", :ajax => true ) %>
 
   <%= end_form_tag %>
+</code></pre>

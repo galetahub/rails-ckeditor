@@ -1,14 +1,10 @@
 h1. Rails CKEditor Rails plugin
 
-CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, 
-which means that the text being edited on it looks as similar as possible to 
-the results users have when publishing it. It brings to the web common editing 
-features found on desktop editing applications like Microsoft Word and OpenOffice.
+CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to 
+the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.
 
-Because CKEditor is licensed under flexible Open Source and commercial licenses, 
-you'll be able to integrate and use it inside any kind of application. 
-This is the ideal editor for developers, created to provide easy 
-and powerful solutions to their users.
+Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
+This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
 http://ckeditor.com/
 
@@ -32,10 +28,9 @@ development:
   
   public_uri: "/uploads"
   public_path: "#{RAILS_ROOT}/public/uploads"
-  
 </code></pre>
 
-h2 Usage
+h2. Usage
 
 Basically include this in the page you wish to use the editor in
 <pre><code>
@@ -57,16 +52,18 @@ OR
   <% end -%>
 </code></pre>
   
-h3. Support options:
--- :cols - Textarea cols
--- :rows - Textarea rows
--- :width - Editor width
--- :height - Editor height
--- :class - Textarea css class name
--- :toolbar - Toolbar name
--- :skin - Editor skin
--- :language - Editor language
--- :swf_params - SWFUpload additional params
+h3. Support options
+<pre><code> 
+  :cols    # Textarea cols
+  :rows    # Textarea rows
+  :width   # Editor width
+  :height  # Editor height
+  :class   # Textarea css class name
+  :toolbar # Toolbar name
+  :skin    # Editor skin
+  :language # Editor language
+  :swf_params # SWFUpload additional params
+</code></pre>
 
 Check "public/javascripts/ckcustom.js" for default options
 

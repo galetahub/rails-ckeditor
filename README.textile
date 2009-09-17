@@ -77,7 +77,8 @@ h3. Support options
   :swf_params # SWFUpload additional params
 </code></pre>
 
-Check "public/javascripts/ckcustom.js" for default options
+Check "public/javascripts/ckcustom.js" for config options.
+Modify "public/javascripts/ckcustom/contents.css" - this stylesheet use editor
 
 h3. AJAX
 
@@ -106,3 +107,8 @@ an array as its value. The array should contain the list of fields that will hav
 
   <%= end_form_tag %>
 </code></pre>
+
+h2. TODOs
+
+1. Add support for choose filemanager storage
+2. More integration upload system

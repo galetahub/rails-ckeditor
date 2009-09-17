@@ -22,8 +22,9 @@ class ActionController::Routing::RouteSet
       alias draw_without_ckeditor draw
       def draw_with_ckeditor
         draw_without_ckeditor do |map|
-          map.connect 'ckeditor/command', :controller => 'ckeditor', :action => 'command'
-          map.connect 'ckeditor/upload', :controller => 'ckeditor', :action => 'upload'
+          map.connect 'ckeditor/images', :controller => 'ckeditor', :action => 'images'
+          map.connect 'ckeditor/files',  :controller => 'ckeditor', :action => 'files'
+          map.connect 'ckeditor/create', :controller => 'ckeditor', :action => 'create'
           yield map
         end
       end

@@ -42,17 +42,22 @@ module CkeditorFileUtils
     # need to copy over the code if it doesn't already exist
     config_file = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/public/javascripts/ckcustom.js')
     dest = File.join(RAILS_ROOT, '/public/javascripts/ckcustom.js')
+    
     backup_config = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.bak')
     config_symlink = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.js')
+    
     FileUtils.cp(config_file, dest) unless File.exist?(dest)
-    if File.exist?(config_symlink)
-      unless File.symlink?(config_symlink)
-        FileUtils.rm(backup_config) if File.exist?(backup_config)
-        FileUtils.mv(config_symlink,backup_config)
+    
+    unless RUBY_PLATFORM =~ /mswin32/
+      if File.exist?(config_symlink)
+        unless File.symlink?(config_symlink)
+          FileUtils.rm(backup_config) if File.exist?(backup_config)
+          FileUtils.mv(config_symlink, backup_config)
+          FileUtils.ln_s(dest, config_symlink)
+        end
+      else
         FileUtils.ln_s(dest, config_symlink)
       end
-    else
-      FileUtils.ln_s(dest, config_symlink)
     end
   end
 

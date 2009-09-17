@@ -6,7 +6,7 @@ function uploadStart(file) {
 		we can do is say we are uploading.
 		 */
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Загрузка...");
+		progress.setStatus("Loading...");
 		progress.setProgress(0);
 		//progress.toggleCancel(true, this);
 	}
@@ -18,7 +18,7 @@ function uploadStart(file) {
 function fileQueued(file) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
-		progress.setStatus("Подготовка...");
+		progress.setStatus("Preparing...");
 		progress.setProgress(0);
 		progress.toggleCancel(true, this);
 		
@@ -85,10 +85,10 @@ function uploadProgress(file, bytesLoaded) {
 		var progress = new FileProgress(file,  this.customSettings.upload_target);
 		progress.setProgress(percent);
 		if (percent === 100) {
-			progress.setStatus("Создание thumbnail...");
+			progress.setStatus("Create thumbnail...");
 			progress.toggleCancel(false, this);
 		} else {
-			progress.setStatus("Загрузка...");
+			progress.setStatus("Loading...");
 			progress.toggleCancel(true, this);
 		}
 	} catch (ex) {
@@ -100,7 +100,7 @@ function uploadSuccess(file, serverData) {
 	try {
 		var progress = new FileProgress(file, this.customSettings.progressTarget);
 		progress.setComplete();
-		progress.setStatus("Завершено.");
+		progress.setStatus("Completed.");
 		progress.toggleCancel(false);
 
 		//progress.setThumbnail(serverData);
@@ -118,7 +118,7 @@ function uploadComplete(file) {
 		} else {
 			var progress = new FileProgress(file,  this.customSettings.upload_target);
 			progress.setComplete();
-			progress.setStatus("Все картинки успешно обработано.");
+			progress.setStatus("All pictures are successfully processed.");
 			progress.toggleCancel(false);
 		}
 	} catch (ex) {
@@ -134,7 +134,7 @@ function uploadError(file, errorCode, message) {
 			try {
 				progress = new FileProgress(file,  this.customSettings.upload_target);
 				progress.setCancelled();
-				progress.setStatus("Отменено");
+				progress.setStatus("Canceled");
 				progress.toggleCancel(false);
 			}
 			catch (ex1) {
@@ -145,7 +145,7 @@ function uploadError(file, errorCode, message) {
 			try {
 				progress = new FileProgress(file,  this.customSettings.upload_target);
 				progress.setCancelled();
-				progress.setStatus("Остановлено");
+				progress.setStatus("Stoped");
 				progress.toggleCancel(true);
 			}
 			catch (ex2) {

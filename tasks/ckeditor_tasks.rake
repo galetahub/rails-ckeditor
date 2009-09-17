@@ -3,7 +3,7 @@ namespace :ckeditor do
     require "config/environment"
     require 'fileutils'
 
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/easy-ckeditor/')
+    directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
     require "#{directory}lib/ckeditor"
     require "#{directory}lib/ckeditor_version"
     require "#{directory}lib/ckeditor_file_utils"
@@ -25,14 +25,14 @@ namespace :ckeditor do
     puts "** Uninstalling CKEditor Plugin version #{CkeditorVersion.current}..."
     CkeditorFileUtils.destroy
 
-    puts "** Uninstalling Easy CKEditor Plugin Files..."
+    puts "** Uninstalling Rails CKEditor Plugin Files..."
     CkeditorFileUtils.rm_plugin
     puts "** Successfully Uninstalled CKEditor Plugin version #{CkeditorVersion.current}"
   end
   
   desc "Generate configuration"
   task :config do
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/easy-ckeditor/')
+    directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
     require "#{directory}lib/ckeditor_config"
     Ckeditor::Config.create_yml
   end

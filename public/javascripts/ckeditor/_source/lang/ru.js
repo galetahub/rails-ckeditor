@@ -670,5 +670,12 @@ CKEDITOR.lang['ru'] =
 		unknown : 'Unknown Object' // MISSING
 	},
 
-	resize : 'Drag to resize' // MISSING
+	resize : 'Drag to resize', // MISSING
+	
+	embed :
+	{
+	  title : "Вставить embed",
+	  button : "Вставить embed",
+	  pasteMsg : "Пожалуйста, вставьте embed-код с Youtube, Myspace, Flickr и других ресурсов в прямоугольник, используя сочетание клавиш (Ctrl+V), и нажмите OK."
+	}
 };

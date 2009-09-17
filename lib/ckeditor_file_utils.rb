@@ -2,7 +2,7 @@ require 'fileutils'
 
 module CkeditorFileUtils
   CKEDITOR_INSTALL_DIRECTORY = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/')
-  PLUGIN_INSTALL_DIRECTORY =  File.join(RAILS_ROOT, '/vendor/plugins/easy-ckeditor/')
+  PLUGIN_INSTALL_DIRECTORY =  File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
 
   def CkeditorFileUtils.recursive_copy(options)
     source = options[:source]
@@ -40,7 +40,7 @@ module CkeditorFileUtils
 
   def CkeditorFileUtils.copy_configuration
     # need to copy over the code if it doesn't already exist
-    config_file = File.join(RAILS_ROOT, '/vendor/plugins/easy-ckeditor/public/javascripts/ckcustom.js')
+    config_file = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/public/javascripts/ckcustom.js')
     dest = File.join(RAILS_ROOT, '/public/javascripts/ckcustom.js')
     backup_config = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.bak')
     config_symlink = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.js')
@@ -62,7 +62,7 @@ module CkeditorFileUtils
   end
 
   def CkeditorFileUtils.install(log)
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/easy-ckeditor/')
+    directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
     source = File.join(directory,'/public/javascripts/ckeditor/')
     FileUtils.mkdir(CKEDITOR_INSTALL_DIRECTORY)
     # recursively copy all our files over

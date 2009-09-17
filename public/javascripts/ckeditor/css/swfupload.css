@@ -82,7 +82,7 @@ a.progressCancel {
 	display: block;
 	height: 14px;
 	width: 14px;
-	background-image: url(/images/cancelbutton.gif);
+	background-image: url(/javascripts/ckeditor/images/cancelbutton.gif);
 	background-repeat: no-repeat;
 	background-position: -14px 0px;
 	float: right;

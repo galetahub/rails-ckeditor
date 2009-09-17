@@ -22,4 +22,15 @@ module CkeditorHelper
     
     url_for(options)
   end
+  
+  def file_image_tag(filename, path)
+    extname = File.extname(filename)
+    
+    image = case extname.to_s
+      when '.swf' then '/javascripts/ckeditor/images/swf.gif'
+      when '.pdf' then '/javascripts/ckeditor/images/pdf.gif'
+    end
+    
+    image_tag(image, :alt=>path, :title=>filename, :onerror=>"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class=>'image')
+  end
 end

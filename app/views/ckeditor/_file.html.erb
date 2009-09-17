@@ -1,47 +1,15 @@
-<div class="FCKThumb" onmouseover="OnMouseOver(this);" onmouseout="OnMouseOut(this);">
-			    <table border="0" cellpadding="0" cellspacing="0" height="100" width="100">
-			      <tbody>
-			        <tr>
-			          <td align="center" valign="middle">
-			            <img src="/javascripts/ckeditor/images/connector1.jpeg" onerror="this.src='images/ckfnothumb.gif'">
-			           </td>
-			         </tr>
-			       </tbody>
-			     </table>
-			     
-			     <div class="FCKFileName" nowrap="">Golf Ball.jpg</div>
-			     <div class="FCKFileDate" nowrap="">9/15/2009 2:18 AM</div>
-			     <div class="FCKFileSize" nowrap="">14 KB</div>
-			  </div>
-			  
-			  <div _ckffileid="1" class="FCKThumb FCKSelectedBox" onmouseover="OnMouseOver(this);" onmouseout="OnMouseOut(this);">
-			    <table border="0" cellpadding="0" cellspacing="0" height="100" width="100">
-			      <tbody>
-			      <tr>
-			        <td align="center" valign="middle">
-			          <img src="/javascripts/ckeditor/images/connector2.jpeg" onerror="this.src='images/ckfnothumb.gif'">
-			        </td>
-			      </tr>
-			     </tbody>
-			   </table>
-			   
-			   <div class="FCKFileName" nowrap="">Mouse.jpg</div>
-			   <div class="FCKFileDate" nowrap="">9/15/2009 2:18 AM</div>
-			   <div class="FCKFileSize" nowrap="">20 KB</div>
-			  </div>
-			  
-			  <div _ckffileid="1" class="FCKThumb PopupSelectionBox" onmouseover="OnMouseOver(this);" onmouseout="OnMouseOut(this);">
-			    <table border="0" cellpadding="0" cellspacing="0" height="100" width="100">
-			      <tbody>
-			      <tr>
-			        <td align="center" valign="middle">
-			          <img src="/javascripts/ckeditor/images/connector2.jpeg" onerror="this.src='images/ckfnothumb.gif'">
-			        </td>
-			      </tr>
-			     </tbody>
-			   </table>
-			   
-			   <div class="FCKFileName" nowrap="">Mouse.jpg</div>
-			   <div class="FCKFileDate" nowrap="">9/15/2009 2:18 AM</div>
-			   <div class="FCKFileSize" nowrap="">20 KB</div>
-			  </div>
+<div class="FCKThumb">
+  <table border="0" cellpadding="0" cellspacing="0" height="100" width="100">
+    <tbody>
+      <tr>
+        <td align="center" valign="middle">
+          <%= file_image_tag(file.filename, file.url) %>
+        </td>
+       </tr>
+     </tbody>
+   </table>
+   
+   <div class="FCKFileName"><%= file.filename %></div>
+   <div class="FCKFileDate"><%= I18n.l(file.created_at, :format=>"%d.%m.%Y %H:%M") %></div>
+   <div class="FCKFileSize"><%= number_to_human_size(file.size, :precision => 2) %></div>
+</div>

@@ -11,10 +11,10 @@
 				file_post_name: <%= @swf_file_post_name.inspect %>,
 
 				// Flash file settings
-				file_size_limit : "10 MB",
-				file_types : "*.jpg;*.jpeg;*.png;*.gif",			// or you could use something like: "*.doc;*.wpd;*.pdf",
-				file_types_description : "All Images",
-				file_upload_limit : 10,
+				file_size_limit : <%= @file_size_limit.inspect %>,
+				file_types : <%= @file_types.inspect %>,
+				file_types_description : <%= @file_types_description.inspect %>,
+				file_upload_limit : <%= @file_upload_limit %>,
 				file_queue_limit : 0,
 
 				// The event handler functions are defined in handlers.js
@@ -30,9 +30,9 @@
 				queue_complete_handler : queueComplete,	// Queue plugin event
 
 				// Button Settings
-				button_image_url : "/javascripts/ckeditor/images/button_add_photo.png",
+				button_image_url : "/javascripts/ckeditor/images/select_files.png",
 				button_placeholder_id : "spanButtonPlaceholder",
-				button_width: 156,
+				button_width: 117,
 				button_height: 29,
 				button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
 				button_cursor: SWFUpload.CURSOR.HAND,

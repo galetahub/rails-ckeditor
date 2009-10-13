@@ -42,6 +42,10 @@ development:
   file_manager_image_uri: "/ckeditor/images"
 </code></pre>
 
+Check the file "rails-ckeditor/app/controllers/ckeditor_controller.rb", it used objects "Picture" and "AttachmentFile" 
+to preserve images and files, respectively. So, in folder "rails-ckeditor/examples" are examples of these objects for the paperclip and attachment_fu.
+You can correct this controller for your needs, or copy the necessary files in yours project folder "app/models", and do not forget about migration.
+
 h2. Usage
 
 Basically include this in the page you wish to use the editor in

@@ -70,10 +70,12 @@ module CkeditorFileUtils
     directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
     source = File.join(directory,'/public/javascripts/ckeditor/')
     FileUtils.mkdir(CKEDITOR_INSTALL_DIRECTORY)
+    
     # recursively copy all our files over
     recursive_copy(:source => source, :dest => CKEDITOR_INSTALL_DIRECTORY, :logging => log)
+    
     # create the upload directories
-    create_uploads_directory
+    #create_uploads_directory
   end
 
   ##################################################################

@@ -42,9 +42,7 @@ development:
   file_manager_image_uri: "/ckeditor/images"
 </code></pre>
 
-Check the file "rails-ckeditor/app/controllers/ckeditor_controller.rb", it used objects "Picture" and "AttachmentFile" 
-to preserve images and files, respectively. So, in folder "rails-ckeditor/examples" are examples of these objects for the paperclip and attachment_fu.
-You can correct this controller for your needs, or copy the necessary files in yours project folder "app/models", and do not forget about migration.
+For attachment_fu:  @swf_file_post_name: "uploaded_data"@
 
 h2. Usage
 
@@ -63,7 +61,9 @@ FormBuilder helper for more usefully
 <pre><code>  
   <% form_for :page, :url => pages_path do |form| -%>
     ...
-    <%= form.cktext_area :content, :toolbar=>'Full', :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id} %>
+    <%= form.cktext_area :notes, :toolbar=>'Full', :width=>'400px', :heigth=>'200px' %>
+    ...
+    <%= form.cktext_area :content, :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id} %>
     ...
   <% end -%>
 </code></pre>
@@ -81,8 +81,8 @@ h3. Support options
   :swf_params # SWFUpload additional params
 </code></pre>
 
-Check "public/javascripts/ckcustom.js" for config options.
-Modify "public/javascripts/ckcustom/contents.css" - this stylesheet use editor
+Check @public/javascripts/ckcustom.js@ for config options.
+Modify @public/javascripts/ckcustom/contents.css@ - this stylesheet use editor
 
 h3. AJAX
 
@@ -111,6 +111,99 @@ an array as its value. The array should contain the list of fields that will hav
 
   <%= end_form_tag %>
 </code></pre>
+
+h3. File uploads
+
+We recommend using a paperclip plugin for file storage and processing images.
+Controller @../rails-ckeditor/app/controllers/ckeditor_controller.rb@ has actions 
+for displaying and uploading files. It uses classes Picture and AttachmentFile, 
+who are descendants of the Asset class. So, your project must have these classes.
+
+@http://github.com/thoughtbot/paperclip@
+
+For paperclip:
+<pre><code>
+class Asset < ActiveRecord::Base
+
+  # === List of columns ===
+  #   id                : integer 
+  #   data_file_name    : string 
+  #   data_content_type : string 
+  #   data_file_size    : integer 
+  #   assetable_id      : integer 
+  #   assetable_type    : string 
+  #   type              : string 
+  #   locale            : integer 
+  #   user_id           : integer 
+  #   created_at        : datetime 
+  #   updated_at        : datetime 
+  # =======================
+
+  belongs_to :user
+  belongs_to :assetable, :polymorphic => true
+  
+  def url(*args)
+    data.url(*args)
+  end
+  alias :public_filename :url
+  
+  def filename
+    data_file_name
+  end
+  
+  def content_type
+    data_content_type
+  end
+  
+  def size
+    data_file_size
+  end
+  
+  def path
+    data.path
+  end
+  
+  def styles
+    data.styles
+  end
+  
+  def to_xml(options = {})
+    xml = options[:builder] ||= Builder::XmlMarkup.new(:indent => options[:indent])
+
+    xml.tag!(self.type.to_s.downcase) do
+      xml.filename{ xml.cdata!(self.filename) }
+      xml.size self.size
+      xml.path{ xml.cdata!(self.url) }
+      
+      xml.styles do
+        self.styles.each do |style|
+          xml.tag!(style.first, self.url(style.first))
+        end
+      end unless self.styles.empty?
+    end
+  end
+end
+
+class AttachmentFile < Asset
+  has_attached_file :data,
+                    :url => "/assets/attachments/:id/:filename",
+                    :path => ":rails_root/public/assets/attachments/:id/:filename"
+  
+  validates_attachment_size :data, :less_than=>10.megabytes
+end
+
+class Picture < Asset
+  has_attached_file :data,
+                    :url  => "/assets/pictures/:id/:style_:basename.:extension",
+                    :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
+	                  :styles => { :content => '575>', :thumb => '100x100' }
+	
+	validates_attachment_size :data, :less_than=>2.megabytes
+end
+</code></pre>
+
+More info in @../rails-ckeditor/examples/models@. 
+Do not forget about migration @../rails-ckeditor/examples/migrations@.
 
 h2. TODOs
 

@@ -45,19 +45,14 @@ class CkeditorController < ActionController::Base
     
     @record.attributes = options
     
-    respond_to do |format|
-      if @record.valid? && @record.save
-        
-        @text = params[:CKEditor].blank? ? @record.to_json : %Q"<script type='text/javascript'>
-	        window.parent.CKEDITOR.tools.callFunction(#{params[:CKEditorFuncNum]}, '#{escape_single_quotes(@record.url(:content))}');
-	      </script>"
-        
-        format.html { render :text=>@text }
-        format.xml { head :ok }
-      else
-        format.html { render :nothing => true }
-        format.xml { render :xml => @record.errors, :status => :unprocessable_entity }
-      end
+    if @record.valid? && @record.save
+      @text = params[:CKEditor].blank? ? @record.to_json : %Q"<script type='text/javascript'>
+        window.parent.CKEDITOR.tools.callFunction(#{params[:CKEditorFuncNum]}, '#{escape_single_quotes(@record.url(:content))}');
+      </script>"
+      
+      render :text=>@text
+    else
+      render :nothing => true
     end
   end
 

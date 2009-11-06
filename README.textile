@@ -42,7 +42,7 @@ development:
   file_manager_image_uri: "/ckeditor/images"
 </code></pre>
 
-For attachment_fu:  @swf_file_post_name: "uploaded_data"@
+For attachment_fu: @swf_file_post_name: "uploaded_data"@
 
 h2. Usage
 
@@ -114,31 +114,14 @@ an array as its value. The array should contain the list of fields that will hav
 
 h3. File uploads
 
-We recommend using a paperclip plugin for file storage and processing images.
-Controller @../rails-ckeditor/app/controllers/ckeditor_controller.rb@ has actions 
-for displaying and uploading files. It uses classes Picture and AttachmentFile, 
-who are descendants of the Asset class. So, your project must have these classes.
+We recommend using a paperclip plugin for file storage and processing images. Controller @../rails-ckeditor/app/controllers/ckeditor_controller.rb@ has actions 
+for displaying and uploading files. It uses classes Picture and AttachmentFile, who are descendants of the Asset class. So, your project must have these classes.
 
 @http://github.com/thoughtbot/paperclip@
 
 For paperclip:
 <pre><code>
 class Asset < ActiveRecord::Base
-
-  # === List of columns ===
-  #   id                : integer 
-  #   data_file_name    : string 
-  #   data_content_type : string 
-  #   data_file_size    : integer 
-  #   assetable_id      : integer 
-  #   assetable_type    : string 
-  #   type              : string 
-  #   locale            : integer 
-  #   user_id           : integer 
-  #   created_at        : datetime 
-  #   updated_at        : datetime 
-  # =======================
-
   belongs_to :user
   belongs_to :assetable, :polymorphic => true
   
@@ -198,7 +181,7 @@ class Picture < Asset
                     :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
 	                  :styles => { :content => '575>', :thumb => '100x100' }
 	
-	validates_attachment_size :data, :less_than=>2.megabytes
+  validates_attachment_size :data, :less_than=>2.megabytes
 end
 </code></pre>
 

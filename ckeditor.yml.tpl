@@ -1,5 +1,5 @@
 --- 
-development: 
+options: &options
   swf_file_post_name: "data"
   
   swf_image_file_types_description: "Images"
@@ -20,3 +20,9 @@ development:
   
   file_manager_image_upload_uri: "/ckeditor/create?kind=image"
   file_manager_image_uri: "/ckeditor/images"
+  
+development:
+  <<: *options
+  
+production:
+  <<: *options

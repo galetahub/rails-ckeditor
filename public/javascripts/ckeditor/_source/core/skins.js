@@ -135,6 +135,7 @@ CKEDITOR.skins = (function()
 			skinDefinition.skinPath = paths[ skinName ]
 				|| ( paths[ skinName ] =
 						CKEDITOR.getUrl(
+							'_source/' +	// @Packager.RemoveLine
 							'skins/' + skinName + '/' ) );
 		},
 

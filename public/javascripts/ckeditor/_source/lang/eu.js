@@ -259,7 +259,8 @@ CKEDITOR.lang['eu'] =
 			invalidWidth	: 'Gelaxkaren zabalera zenbaki bat izan behar da.',
 			invalidHeight	: 'Gelaxkaren altuera zenbaki bat izan behar da.',
 			invalidRowSpan	: 'Lerroen hedapena zenbaki osoa izan behar da.',
-			invalidColSpan	: 'Zutabeen hedapena zenbaki osoa izan behar da.'
+			invalidColSpan	: 'Zutabeen hedapena zenbaki osoa izan behar da.',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['eu'] =
 		alertUrl	: 'Mesedez Irudiaren URLa idatzi',
 		linkTab	: 'Esteka',
 		button2Img	: 'Aukeratutako irudi botoia, irudi normal batean eraldatu nahi duzu?',
-		img2Button	: 'Aukeratutako irudia, irudi botoi batean eraldatu nahi duzu?'
+		img2Button	: 'Aukeratutako irudia, irudi botoi batean eraldatu nahi duzu?',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['eu'] =
 	},
 
 	maximize : 'Maximizatu',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['eu'] =
 		unknown : 'Objektu ezezaguna'
 	},
 
-	resize : 'Arrastatu tamaina aldatzeko'
+	resize : 'Arrastatu tamaina aldatzeko',
+
+	colordialog :
+	{
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
+	}
 };

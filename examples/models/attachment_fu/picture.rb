@@ -28,4 +28,19 @@ class Picture < Asset
 	validates_as_attachment
 	
   named_scope :masters, :conditions=>"parent_id IS NULL", :order=>'filename'
+  
+  def url_content
+	  public_filename(:content)
+	end
+	
+	def url_thumb
+	  public_filename(:thumb)
+	end
+	
+	def to_json(options = {})
+	  options[:methods] ||= []
+	  options[:methods] << :url_content
+	  options[:methods] << :url_thumb
+	  super options
+  end
 end

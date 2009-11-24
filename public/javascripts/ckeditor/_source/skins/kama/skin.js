@@ -25,15 +25,9 @@ CKEDITOR.skins.add( 'kama', (function()
 			if ( editor.config.width && !isNaN( editor.config.width ) )
 				editor.config.width -= 12;
 
-			var menuHead;
-			function menuSetUiColor( color )
-			{
-				if ( !menuHead )
-					return null;
-
-				var uiStyle = menuHead.append('style');
-
-				var cssSrc = "/* UI Color Support */\
+			var uiColorMenus = [];
+			var uiColorRegex = /\$color/g;
+			var uiColorMenuCss = "/* UI Color Support */\
 .cke_skin_kama .cke_menuitem .cke_icon_wrapper\
 {\
 	background-color: $color !important;\
@@ -87,39 +81,58 @@ CKEDITOR.skins.add( 'kama', (function()
 {\
 	background-color: $color !important;\
 }";
-
-				uiStyle.setAttribute( "type", "text/css" );
-				var regex = /\$color/g;
-
-				// We have to split CSS declarations for webkit.
-				if ( CKEDITOR.env.webkit )
-				{
-					cssSrc = cssSrc.split( '}' ).slice( 0, -1 );
-					for ( var i in cssSrc )
-							cssSrc[ i ] = cssSrc[ i ].split( '{' );
-				}
-
-				return ( menuSetUiColor =
-					function( color )
-					{
-						if ( CKEDITOR.env.webkit )
-						{
-							for ( var i in cssSrc )
-								uiStyle.$.sheet.addRule(
-									cssSrc[ i ][ 0 ], cssSrc[ i ][ 1 ].replace( regex, color )
-								);
-						}
-						else
-						{
-							var css = cssSrc.replace( regex, color );
-
-							if ( CKEDITOR.env.ie )
-								uiStyle.$.styleSheet.cssText = css;
-							else
-								uiStyle.setHtml( css );
-						}
-					})( color );
+			// We have to split CSS declarations for webkit.
+			if ( CKEDITOR.env.webkit )
+			{
+				uiColorMenuCss = uiColorMenuCss.split( '}' ).slice( 0, -1 );
+				for ( var i = 0 ; i < uiColorMenuCss.length ; i++ )
+					uiColorMenuCss[ i ] = uiColorMenuCss[ i ].split( '{' );
 			}
+
+			function addStylesheet( document )
+			{
+				var node = document.getHead().append( 'style' );
+				node.setAttribute( "id", "cke_ui_color" );
+				node.setAttribute( "type", "text/css" );
+
+				return node;
+			}
+
+			function updateStylesheets( styleNodes, styleContent, replace )
+			{
+				var r, i, content;
+				for ( var id  = 0 ; id < styleNodes.length ; id++ )
+				{
+					if ( CKEDITOR.env.webkit )
+					{
+						// Truncate manually.
+						for ( i = 0 ; i < styleNodes[ id ].$.sheet.rules.length ; i++ )
+							styleNodes[ id ].$.sheet.removeRule( i );
+
+						for ( i = 0 ; i < styleContent.length ; i++ )
+						{
+							content = styleContent[ i ][ 1 ];
+							for ( r  = 0 ; r < replace.length ; r++ )
+								content = content.replace( replace[ r ][ 0 ], replace[ r ][ 1 ] );
+
+							styleNodes[ id ].$.sheet.addRule( styleContent[ i ][ 0 ], content );
+						}
+					}
+					else
+					{
+						content = styleContent;
+						for ( r  = 0 ; r < replace.length ; r++ )
+							content = content.replace( replace[ r ][ 0 ], replace[ r ][ 1 ] );
+
+						if ( CKEDITOR.env.ie )
+							styleNodes[ id ].$.styleSheet.cssText = content;
+						else
+							styleNodes[ id ].setHtml( content );
+					}
+				}
+			}
+
+			var uiColorRegexp = /\$color/g;
 
 			CKEDITOR.tools.extend( editor,
 			{
@@ -132,7 +145,8 @@ CKEDITOR.skins.add( 'kama', (function()
 
 				setUiColor : function( color )
 				{
-					var uiStyle = CKEDITOR.document.getHead().append('style'),
+					var cssContent,
+						uiStyle = addStylesheet( CKEDITOR.document ),
 						cssId = '#cke_' + editor.name.replace('.', '\\.');
 
 					var cssSelectors =
@@ -144,76 +158,47 @@ CKEDITOR.skins.add( 'kama', (function()
 						].join( ',' );
 					var cssProperties = "background-color: $color !important;";
 
-					uiStyle.setAttribute("type", "text/css");
+					if ( CKEDITOR.env.webkit )
+						cssContent = [ [ cssSelectors, cssProperties ] ];
+					else
+						cssContent = cssSelectors + '{' + cssProperties + '}';
 
 					return ( this.setUiColor =
 						function( color )
 						{
-							var css = cssProperties.replace( '$color', color );
+							var replace = [ [ uiColorRegexp, color ] ];
 							editor.uiColor = color;
 
-							if ( CKEDITOR.env.ie )
-								uiStyle.$.styleSheet.cssText = cssSelectors + '{' + css + '}';
-							else if ( CKEDITOR.env.webkit )
-								uiStyle.$.sheet.addRule( cssSelectors, css );
-							else
-								uiStyle.setHtml( cssSelectors + '{' + css + '}' );
+							// Update general style.
+							updateStylesheets( [ uiStyle ], cssContent, replace );
 
-							menuSetUiColor( color );
+							// Update menu styles.
+							updateStylesheets( uiColorMenus, uiColorMenuCss, replace );
 						})( color );
 				}
 			});
 
-			// If the "menu" plugin is loaded, register the listeners.
-			if ( CKEDITOR.menu )
+			editor.on( 'menuShow', function( event )
 			{
-				var old = CKEDITOR.menu.prototype.show;
+				var panel = event.data[ 0 ];
+				var iframe = panel.element.getElementsByTag( 'iframe' ).getItem( 0 ).getFrameDocument();
 
-				CKEDITOR.menu.prototype.show = function()
+				// Add stylesheet if missing.
+				if ( !iframe.getById( 'cke_ui_color' ) )
 				{
-					old.apply( this, arguments );
+					var node = addStylesheet( iframe );
+					uiColorMenus.push( node );
 
-					if ( !menuHead && editor == this.editor )
-					{
-						// Save reference.
-						menuHead = this._.element.getDocument().getHead();
-						menuSetUiColor( editor.getUiColor() );
-					}
-				};
-			}
+					var color = editor.getUiColor();
+					// Set uiColor for new menu.
+					if ( color )
+						updateStylesheets( [ node ], uiColorMenuCss, [ [ uiColorRegexp, color ] ] );
+				}
+			});
 
 			// Apply UI color if specified in config.
 			if ( editor.config.uiColor )
 				editor.setUiColor( editor.config.uiColor );
-
-			// Fix editor's width. HPadding and 100% width iframe issue.
-//			if ( CKEDITOR.env.ie && CKEDITOR.env.quirks )
-//			{
-//				editor.on( 'mode', function( event )
-//				{
-//					var container = editor.getResizable();
-//					editor.resize( container.$.offsetWidth-10, container.$.offsetHeight );
-//					event.removeListener();
-//				});
-//			}
-
-//			if ( CKEDITOR.env.ie && ( CKEDITOR.env.quirks || CKEDITOR.env.version < 7 ) )
-//			{
-//				editor.on( 'themeLoaded', function( event )
-//				{
-//					var toolbars = editor.container.getChild( [0, 0, 0, 0, 0, 0, 0] ).getChildren();
-//					for ( var i = 0 ; i < toolbars.count() ; i++ )
-//					{
-//						var toolbar = toolbars.getItem( i );
-
-//						var last = toolbar.getLast();
-//						if ( !last || !last.getPrevious().hasClass( 'cke_rcombo' ) )
-//							continue;
-//
-//						last.addClass( 'cke_toolbar_end_last' );
-//					}
-//				});
-//			}
 		}
 	};
 })() );

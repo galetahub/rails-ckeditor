@@ -259,7 +259,8 @@ CKEDITOR.lang['it'] =
 			invalidWidth	: 'La larghezza della cella dev\'essere un numero.',
 			invalidHeight	: 'L\'altezza della cella dev\'essere un numero.',
 			invalidRowSpan	: 'Il numero di righe dev\'essere un numero intero.',
-			invalidColSpan	: 'Il numero di colonne dev\'essere un numero intero.'
+			invalidColSpan	: 'Il numero di colonne dev\'essere un numero intero.',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['it'] =
 		alertUrl	: 'Devi inserire l\'URL per l\'immagine',
 		linkTab	: 'Collegamento',
 		button2Img	: 'Vuoi trasformare il bottone immagine selezionato in un\'immagine semplice?',
-		img2Button	: 'Vuoi trasferomare l\'immagine selezionata in un bottone immagine?'
+		img2Button	: 'Vuoi trasferomare l\'immagine selezionata in un bottone immagine?',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['it'] =
 	},
 
 	maximize : 'Massimizza',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['it'] =
 		unknown : 'Oggetto sconosciuto'
 	},
 
-	resize : 'Trascina per ridimensionare'
+	resize : 'Trascina per ridimensionare',
+
+	colordialog :
+	{
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
+	}
 };

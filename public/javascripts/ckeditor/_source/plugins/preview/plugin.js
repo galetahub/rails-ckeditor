@@ -16,7 +16,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		exec : function( editor )
 		{
 			var sHTML,
-				isCustomDomain = CKEDITOR.env.ie && document.domain != window.location.hostname;
+				isCustomDomain = CKEDITOR.env.isCustomDomain();
 			if ( editor.config.fullPage )
 				sHTML = editor.getData();
 			else
@@ -37,7 +37,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					'<head>' +
 					baseTag +
 					'<title>' + editor.lang.preview + '</title>' +
-					'<link href="' + editor.config.contentsCss + '" type="text/css" rel="stylesheet" _cktemp="true"/>' +
+					'<link type="text/css" rel="stylesheet" href="' +
+					[].concat( editor.config.contentsCss ).join( '"><link type="text/css" rel="stylesheet" href="' ) +
+					'">' +
 					'</head>' + bodyHtml +
 					editor.getData() +
 					'</body></html>';

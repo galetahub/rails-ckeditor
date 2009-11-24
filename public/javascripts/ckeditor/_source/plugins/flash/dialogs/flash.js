@@ -24,7 +24,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	var attributesMap =
 	{
-		id : [ { type : ATTRTYPE_OBJECT, name : CKEDITOR.env.ie ? '_cke_saved_id' : 'id' } ],
+		id : [ { type : ATTRTYPE_OBJECT, name :  'id' } ],
 		classid : [ { type : ATTRTYPE_OBJECT, name : 'classid' } ],
 		codebase : [ { type : ATTRTYPE_OBJECT, name : 'codebase'} ],
 		pluginspage : [ { type : ATTRTYPE_EMBED, name : 'pluginspage' } ],

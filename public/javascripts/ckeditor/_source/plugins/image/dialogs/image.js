@@ -258,6 +258,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// Refresh LockRatio button
 					switchLockRatio ( this, true );
 				}
+
+				// Dont show preview if no URL given.
+				if ( !CKEDITOR.tools.trim( this.getValueOf( 'info', 'txtUrl' ) ) )
+				{
+					this.preview.removeAttribute( 'src' );
+					this.preview.setStyle( 'display', 'none' );
+				}
 			},
 			onOk : function()
 			{
@@ -403,6 +410,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													dialog = this.getDialog();
 													var original = dialog.originalElement;
 
+													dialog.preview.removeStyle( 'display' );
+
 													original.setCustomData( 'isReady', 'false' );
 													// Show loader
 													var loader = CKEDITOR.document.getById( 'ImagePreviewLoader' );
@@ -416,6 +425,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													dialog.preview.setAttribute( 'src', newUrl );
 
 													updatePreview( dialog );
+												}
+												// Dont show preview if no URL given.
+												else if ( dialog.preview )
+												{
+													dialog.preview.removeAttribute( 'src' );
+													dialog.preview.setStyle( 'display', 'none' );
 												}
 											},
 											setup : function( type, element )
@@ -432,6 +447,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													setTimeout( function()
 														{
 															field.setValue( url );		// And call this.onChange()
+															// Manually set the initial value.(#4191)
+															field.setInitValue();
 															field.focus();
 														}, 0 );
 												}
@@ -448,7 +465,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													element.setAttribute( 'src', '' );	// If removeAttribute doesn't work.
 													element.removeAttribute( 'src' );
 												}
-											}
+											},
+											validate : CKEDITOR.dialog.validate.notEmpty( editor.lang.image.urlMissing )
 										},
 										{
 											type : 'button',

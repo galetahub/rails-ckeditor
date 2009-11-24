@@ -15,6 +15,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @example
  */
 CKEDITOR.plugins = new CKEDITOR.resourceManager(
+	'_source/' +	// @Packager.RemoveLine
 	'plugins/', 'plugin' );
 
 // PACKAGER_RENAME( CKEDITOR.plugins )

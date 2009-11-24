@@ -259,7 +259,8 @@ CKEDITOR.lang['es'] =
 			invalidWidth	: 'La anchura de celda debe ser un número.',
 			invalidHeight	: 'La altura de celda debe ser un número.',
 			invalidRowSpan	: 'La expansión de filas debe ser un número entero.',
-			invalidColSpan	: 'La expansión de columnas debe ser un número entero.'
+			invalidColSpan	: 'La expansión de columnas debe ser un número entero.',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['es'] =
 		alertUrl	: 'Por favor escriba la URL de la imagen',
 		linkTab	: 'Vínculo',
 		button2Img	: '¿Desea convertir el botón de imagen en una simple imagen?',
-		img2Button	: '¿Desea convertir la imagen en un botón de imagen?'
+		img2Button	: '¿Desea convertir la imagen en un botón de imagen?',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['es'] =
 	},
 
 	maximize : 'Maximizar',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['es'] =
 		unknown : 'Objeto desconocido'
 	},
 
-	resize : 'Arrastre para redimensionar'
+	resize : 'Arrastre para redimensionar',
+
+	colordialog :
+	{
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
+	}
 };

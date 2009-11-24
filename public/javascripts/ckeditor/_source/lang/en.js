@@ -259,7 +259,8 @@ CKEDITOR.lang['en'] =
 			invalidWidth	: 'Cell width must be a number.',
 			invalidHeight	: 'Cell height must be a number.',
 			invalidRowSpan	: 'Rows span must be a whole number.',
-			invalidColSpan	: 'Columns span must be a whole number.'
+			invalidColSpan	: 'Columns span must be a whole number.',
+			chooseColor : 'Choose'
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['en'] =
 		alertUrl	: 'Please type the image URL',
 		linkTab	: 'Link',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?',
-		img2Button	: 'Do you want to transform the selected image on a image button?'
+		img2Button	: 'Do you want to transform the selected image on a image button?',
+		urlMissing : 'Image source URL is missing.'
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['en'] =
 	},
 
 	maximize : 'Maximize',
+	minimize : 'Minimize',
 
 	fakeobjects :
 	{
@@ -671,11 +674,12 @@ CKEDITOR.lang['en'] =
 	},
 
 	resize : 'Drag to resize',
-	
-	embed :
+
+	colordialog :
 	{
-	  title : "Paste embed",
-	  button : "Paste embed",
-	  pasteMsg : "Please, paste embed-code from Youtube, Myspace, Flickr and others sources into rectangle, using the keyboard (Ctrl + V), and click OK."
+		title : 'Select color',
+		highlight : 'Highlight',
+		selected : 'Selected',
+		clear : 'Clear'
 	}
 };

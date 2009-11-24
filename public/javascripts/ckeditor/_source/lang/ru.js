@@ -259,7 +259,8 @@ CKEDITOR.lang['ru'] =
 			invalidWidth	: 'Cell width must be a number.', // MISSING
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
-			invalidColSpan	: 'Columns span must be a whole number.' // MISSING
+			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['ru'] =
 		alertUrl	: 'Пожалуйста, введите URL изображения',
 		linkTab	: 'Ссылка',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
-		img2Button	: 'Do you want to transform the selected image on a image button?' // MISSING
+		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['ru'] =
 	},
 
 	maximize : 'Maximize', // MISSING
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -671,11 +674,12 @@ CKEDITOR.lang['ru'] =
 	},
 
 	resize : 'Drag to resize', // MISSING
-	
-	embed :
+
+	colordialog :
 	{
-	  title : "Вставить embed",
-	  button : "Вставить embed",
-	  pasteMsg : "Пожалуйста, вставьте embed-код с Youtube, Myspace, Flickr и других ресурсов в прямоугольник, используя сочетание клавиш (Ctrl+V), и нажмите OK."
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
 	}
 };

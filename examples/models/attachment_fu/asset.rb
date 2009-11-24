@@ -19,6 +19,14 @@ class Asset < ActiveRecord::Base
 
   belongs_to :assetable, :polymorphic => true
   
+  def url(*args)
+    public_filename(*args)
+  end
+  
+  def format_created_at
+    I18n.l(self.created_at, :format=>"%d.%m.%Y %H:%M")
+  end
+  
   def to_xml(options = {})
     xml = options[:builder] ||= Builder::XmlMarkup.new(:indent => options[:indent])
 

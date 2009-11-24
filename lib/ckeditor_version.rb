@@ -1,6 +1,6 @@
 module CkeditorVersion
-  MAJOR = 0
-  MINOR = 9
+  MAJOR = 1
+  MINOR = 1
   RELEASE = 0
 
   def self.current

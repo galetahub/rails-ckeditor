@@ -197,18 +197,27 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 * alert( CKEDITOR.tools.cssStyleToDomStyle( 'background-color' ) );  // "backgroundColor"
 		 * alert( CKEDITOR.tools.cssStyleToDomStyle( 'float' ) );             // "cssFloat"
 		 */
-		cssStyleToDomStyle : function( cssName )
+		cssStyleToDomStyle : ( function()
 		{
-			if ( cssName == 'float' )
-				return 'cssFloat';
-			else
+			var test = document.createElement( 'div' ).style;
+
+			var cssFloat = ( typeof test.cssFloat != 'undefined' ) ? 'cssFloat'
+				: ( typeof test.styleFloat != 'undefined' ) ? 'styleFloat'
+				: 'float';
+
+			return function( cssName )
 			{
-				return cssName.replace( /-./g, function( match )
-					{
-						return match.substr( 1 ).toUpperCase();
-					});
-			}
-		},
+				if ( cssName == 'float' )
+					return cssFloat;
+				else
+				{
+					return cssName.replace( /-./g, function( match )
+						{
+							return match.substr( 1 ).toUpperCase();
+						});
+				}
+			};
+		} )(),
 
 		/**
 		 * Replace special HTML characters in a string with their relative HTML

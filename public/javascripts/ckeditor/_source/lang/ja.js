@@ -259,7 +259,8 @@ CKEDITOR.lang['ja'] =
 			invalidWidth	: 'セル幅は数値で入力してください。',
 			invalidHeight	: 'セル高さは数値で入力してください。',
 			invalidRowSpan	: '縦幅(行数)は数値で入力してください。',
-			invalidColSpan	: '横幅(列数)は数値で入力してください。'
+			invalidColSpan	: '横幅(列数)は数値で入力してください。',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['ja'] =
 		alertUrl	: 'イメージのURLを入力してください。',
 		linkTab	: 'リンク',
 		button2Img	: '選択したボタンを画像に置き換えますか？',
-		img2Button	: '選択した画像をボタンに置き換えますか？'
+		img2Button	: '選択した画像をボタンに置き換えますか？',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['ja'] =
 	},
 
 	maximize : '最大化',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['ja'] =
 		unknown : 'Unknown Object'
 	},
 
-	resize : 'ドラックしてリサイズ'
+	resize : 'ドラックしてリサイズ',
+
+	colordialog :
+	{
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
+	}
 };

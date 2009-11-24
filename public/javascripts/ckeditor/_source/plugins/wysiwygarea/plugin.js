@@ -81,14 +81,24 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				// If we're inserting a block at dtd-violated position, split
 				// the parent blocks until we reach blockLimit.
-				var parent, dtd;
-				if ( this.config.enterMode != CKEDITOR.ENTER_BR && isBlock )
+				var current, dtd;
+				if ( isBlock )
 				{
-					while( ( parent = range.getCommonAncestor( false, true ) )
-							&& ( dtd = CKEDITOR.dtd[ parent.getName() ] )
+					while( ( current = range.getCommonAncestor( false, true ) )
+							&& ( dtd = CKEDITOR.dtd[ current.getName() ] )
 							&& !( dtd && dtd [ elementName ] ) )
 					{
-						range.splitBlock();
+						// If we're in an empty block which indicate a new paragraph,
+						// simply replace it with the inserting block.(#3664)
+						if ( range.checkStartOfBlock()
+							 && range.checkEndOfBlock() )
+						{
+							range.setStartBefore( current );
+							range.collapse( true );
+							current.remove();
+						}
+						else
+							range.splitBlock();
 					}
 				}
 
@@ -122,6 +132,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		}
 	}
 
+	// DOM modification here should not bother dirty flag.(#4385)
+	function restoreDirty( editor )
+	{
+		if( !editor.checkDirty() )
+			setTimeout( function(){ editor.resetDirty(); } );
+	}
+
 	/**
 	 *  Auto-fixing block-less content by wrapping paragraph (#3190), prevent
 	 *  non-exitable-block by padding extra br.(#3189)
@@ -143,6 +160,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 && blockLimit.getName() == 'body'
 			 && !path.block )
 		{
+			restoreDirty( editor );
 			var bms = selection.createBookmarks(),
 				fixedBlock = range.fixBlock( true,
 					editor.config.enterMode == CKEDITOR.ENTER_DIV ? 'div' : 'p'  );
@@ -193,6 +211,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var lastNode = body.getLast( CKEDITOR.dom.walker.whitespaces( true ) );
 		if ( lastNode && lastNode.getName && ( lastNode.getName() in nonExitableElementNames ) )
 		{
+			restoreDirty( editor );
 			var paddingBlock = editor.document.createElement(
 					( CKEDITOR.env.ie && enterMode != CKEDITOR.ENTER_BR ) ?
 						'<br _cke_bogus="true" />' : 'br' );
@@ -363,26 +382,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						domWindow	= editor.window		= new CKEDITOR.dom.window( domWindow );
 						domDocument	= editor.document	= new CKEDITOR.dom.document( domDocument );
 
-						// Gecko need a key event to 'wake up' the editing
-						// ability when document is empty.(#3864)
-						var firstNode = domDocument.getBody().getFirst();
-						if ( CKEDITOR.env.gecko
-							&& firstNode && firstNode.is
-							&& firstNode.is( 'br' ) && firstNode.hasAttribute( '_moz_editor_bogus_node' ) )
-						{
-							var keyEventSimulate = domDocument.$.createEvent( "KeyEvents" );
-							keyEventSimulate.initKeyEvent( 'keypress', true, true, domWindow.$, false,
-								false, false, false, 0, 32 );
-							domDocument.$.dispatchEvent( keyEventSimulate );
-							var bogusText = domDocument.getBody().getFirst() ;
-							// Compensate the line maintaining <br> if enterMode is not block.
-							if ( editor.config.enterMode == CKEDITOR.ENTER_BR )
-								domDocument.createElement( 'br', { attributes: { '_moz_dirty' : "" } } )
-									.replace( bogusText );
-							else
-								bogusText.remove();
-						}
-
 						// Gecko/Webkit need some help when selecting control type elements. (#3448)
 						if ( !( CKEDITOR.env.ie || CKEDITOR.env.opera) )
 						{
@@ -412,7 +411,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							} );
 						}
 
-						var focusTarget = ( CKEDITOR.env.ie || CKEDITOR.env.safari ) ?
+						var focusTarget = ( CKEDITOR.env.ie || CKEDITOR.env.webkit ) ?
 								domWindow : domDocument;
 
 						focusTarget.on( 'blur', function()
@@ -422,12 +421,58 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 						focusTarget.on( 'focus', function()
 							{
+								// Gecko need a key event to 'wake up' the editing
+								// ability when document is empty.(#3864)
+								if ( CKEDITOR.env.gecko )
+								{
+									var first = body;
+									while( first.firstChild )
+										first = first.firstChild;
+
+									if( !first.nextSibling
+										&& ( 'BR' == first.tagName )
+										&& first.hasAttribute( '_moz_editor_bogus_node' ) )
+									{
+										var keyEventSimulate = domDocument.$.createEvent( "KeyEvents" );
+										keyEventSimulate.initKeyEvent( 'keypress', true, true, domWindow.$, false,
+											false, false, false, 0, 32 );
+										domDocument.$.dispatchEvent( keyEventSimulate );
+										var bogusText = domDocument.getBody().getFirst() ;
+										// Compensate the line maintaining <br> if enterMode is not block.
+										if ( editor.config.enterMode == CKEDITOR.ENTER_BR )
+											domDocument.createElement( 'br', { attributes: { '_moz_dirty' : "" } } )
+												.replace( bogusText );
+										else
+											bogusText.remove();
+									}
+								}
+
 								editor.focusManager.focus();
 							});
 
 						var keystrokeHandler = editor.keystrokeHandler;
 						if ( keystrokeHandler )
 							keystrokeHandler.attach( domDocument );
+
+						// Cancel default action for backspace in IE on control types. (#4047)
+						if ( CKEDITOR.env.ie )
+						{
+							editor.on( 'key', function( event )
+							{
+								// Backspace.
+								var control = event.data.keyCode == 8
+											  && editor.getSelection().getSelectedElement();
+								if ( control )
+								{
+									// Make undo snapshot.
+									editor.fire( 'saveSnapshot' );
+									// Remove manually.
+									control.remove();
+									editor.fire( 'saveSnapshot' );
+									event.cancel();
+								}
+							} );
+						}
 
 						// Adds the document body as a context menu target.
 						if ( editor.contextMenu )
@@ -451,6 +496,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									editor.focus();
 									isPendingFocus = false;
 								}
+								setTimeout( function()
+								{
+									editor.fire( 'dataReady' );
+								}, 0 );
 
 								/*
 								 * IE BUG: IE might have rendered the iframe with invisible contents.
@@ -511,7 +560,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									editor.config.docType +
 									'<html dir="' + editor.config.contentsLangDirection + '">' +
 									'<head>' +
-										'<link href="' + editor.config.contentsCss + '" type="text/css" rel="stylesheet" _fcktemp="true"/>' +
+										'<link type="text/css" rel="stylesheet" href="' +
+										[].concat( editor.config.contentsCss ).join( '"><link type="text/css" rel="stylesheet" href="' ) +
+										'">' +
 										'<style type="text/css" _fcktemp="true">' +
 											editor._.styles.join( '\n' ) +
 										'</style>'+

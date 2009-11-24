@@ -63,13 +63,14 @@ CKEDITOR.config =
 	baseHref : '',
 
 	/**
-	 * The CSS file to be used to apply style to the contents. It should
+	 * The CSS file(s) to be used to apply style to the contents. It should
 	 * reflect the CSS used in the final pages where the contents are to be
 	 * used.
-	 * @type String
+	 * @type String|Array
 	 * @default '&lt;CKEditor folder&gt;/contents.css'
 	 * @example
 	 * config.contentsCss = '/css/mysitestyles.css';
+	 * config.contentsCss = ['/css/mysitestyles.css', '/css/anotherfile.css'];
 	 */
 	contentsCss : CKEDITOR.basePath + 'contents.css',
 
@@ -178,13 +179,14 @@ CKEDITOR.config =
 	fullPage : false,
 
 	/**
-	 * The editor height, in CSS size format or pixel integer.
+	 * The height of editing area( content ), in relative or absolute, e.g. 30px, 5em.
+	 * Note: Percentage unit is not supported yet. e.g. 30%.
 	 * @type Number|String
 	 * @default '200'
 	 * @example
 	 * config.height = 500;
-	 * @example
 	 * config.height = '25em';
+	 * config.height = '300px';
 	 */
 	height : 200,
 
@@ -196,7 +198,7 @@ CKEDITOR.config =
 	 * @type String
 	 * @example
 	 */
-	plugins : 'about,basicstyles,blockquote,button,clipboard,colorbutton,contextmenu,elementspath,enterkey,entities,filebrowser,find,flash,font,format,forms,horizontalrule,htmldataprocessor,image,indent,justify,keystrokes,link,list,maximize,newpage,pagebreak,pastefromword,pastetext,popup,preview,print,removeformat,resize,save,scayt,smiley,showblocks,sourcearea,stylescombo,table,tabletools,specialchar,tab,templates,toolbar,undo,wysiwygarea,wsc',
+	plugins : 'about,basicstyles,blockquote,button,clipboard,colorbutton,colordialog,contextmenu,elementspath,enterkey,entities,filebrowser,find,flash,font,format,forms,horizontalrule,htmldataprocessor,image,indent,justify,keystrokes,link,list,maximize,newpage,pagebreak,pastefromword,pastetext,popup,preview,print,removeformat,resize,save,scayt,smiley,showblocks,sourcearea,stylescombo,table,tabletools,specialchar,tab,templates,toolbar,undo,wysiwygarea,wsc',
 
 	/**
 	 * List of additional plugins to be loaded. This is a tool setting which

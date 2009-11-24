@@ -425,7 +425,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var finder = {
 			searchRange : null,
 			matchRange : null,
-			find : function( pattern, matchCase, matchWord, matchCyclic, highlightMatched )
+			find : function( pattern, matchCase, matchWord, matchCyclic, highlightMatched, cyclicRerun )
 			{
 				if( !this.matchRange )
 					this.matchRange =
@@ -480,10 +480,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				this.matchRange.removeHighlight();
 				// Clear current session and restart with the default search
 				// range.
-				if ( matchCyclic )
+				// Re-run the finding once for cyclic.(#3517)
+				if ( matchCyclic && !cyclicRerun )
 				{
 					this.searchRange = getSearchRange( true );
 					this.matchRange = null;
+					return arguments.callee.apply( this,
+						Array.prototype.slice.call( arguments ).concat( [ true ] ) );
 				}
 
 				return false;

@@ -22,6 +22,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	// Register the plugin.
 	CKEDITOR.plugins.add( 'embed',
 	{
+	  lang : [ 'en', 'ru', 'uk' ],
+	  requires : [ 'dialog' ],
+	  
 		init : function( editor )
 		{ 
 			var commandName = 'embed';
@@ -35,7 +38,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				});      
 			CKEDITOR.dialog.add( commandName, CKEDITOR.getUrl( this.path + 'dialogs/embed.js' ) );
 		}
-		//requires : [ 'dialog' ]
 	});
 	
 })();

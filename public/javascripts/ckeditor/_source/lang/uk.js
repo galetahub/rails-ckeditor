@@ -259,7 +259,8 @@ CKEDITOR.lang['uk'] =
 			invalidWidth	: 'Ширина комірки повинна бути числом.',
 			invalidHeight	: 'Висота комірки повинна бути числом.',
 			invalidRowSpan	: 'Кількість обєднуваних рядків повинна бути цілим числом.',
-			invalidColSpan	: 'Кількість обєднуваних стовпчиків повинна бути цілим числом.'
+			invalidColSpan	: 'Кількість обєднуваних стовпчиків повинна бути цілим числом.',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['uk'] =
 		alertUrl	: 'Будь ласка, введіть URL зображення',
 		linkTab	: 'Посилання',
 		button2Img	: 'Ви хочете перетворити обрану кнопку-зображення на просте зображення?',
-		img2Button	: 'Ви хочете перетворити обране зображення на кнопку-зображення?'
+		img2Button	: 'Ви хочете перетворити обране зображення на кнопку-зображення?',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['uk'] =
 	},
 
 	maximize : 'Максимізувати',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -671,11 +674,12 @@ CKEDITOR.lang['uk'] =
 	},
 
 	resize : 'Пересувайте для зміни розміру',
-	
-	embed :
+
+	colordialog :
 	{
-	  title : "Вставити embed",
-	  button : "Вставити embed",
-	  pasteMsg : "Будь ласка, вставте embed-код з Youtube, Myspace, Flickr та інших ресурсів в прямокутник, використовуючи (Ctrl+V), та нажміть OK."
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
 	}
 };

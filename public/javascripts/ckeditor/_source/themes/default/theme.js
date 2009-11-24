@@ -86,6 +86,9 @@ CKEDITOR.themes.add( 'default', (function()
 			 */
 			editor.container = container;
 
+			// Disable browser context menu for editor's chrome.
+			container.disableContextMenu();
+
 			editor.fireOnce( 'themeLoaded' );
 			editor.fireOnce( 'uiReady' );
 		},
@@ -152,7 +155,8 @@ CKEDITOR.themes.add( 'default', (function()
 
 		destroy : function( editor )
 		{
-			var container = editor.container;
+			var container = editor.container,
+				panels = editor.panels;
 
 			/*
 			 * IE BUG: Removing the editor DOM elements while the selection is inside
@@ -178,6 +182,9 @@ CKEDITOR.themes.add( 'default', (function()
 
 			if ( container )
 				container.remove();
+
+			for( var i = 0 ; panels && i < panels.length ; i++ )
+					panels[ i ].remove();
 
 			if ( editor.elementMode == CKEDITOR.ELEMENT_MODE_REPLACE )
 			{

@@ -232,6 +232,8 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 					this.parent._.panel.showAsChild( panel, this.id, offsetParent, corner, offsetX, offsetY );
 				else
 					panel.showBlock( this.id, offsetParent, corner, offsetX, offsetY );
+
+				editor.fire( 'menuShow', [ panel ] );
 			},
 
 			hide : function()
@@ -328,7 +330,7 @@ CKEDITOR.menuItem = CKEDITOR.tools.createClass(
 					' onclick="CKEDITOR.tools.callFunction(', menu._.itemClickFn, ',', index, '); return false;"' +
 					'>' +
 						'<span class="cke_icon_wrapper"><span class="cke_icon"' +
-							( this.icon ? ' style="background-image:url(' + CKEDITOR.getUrl( this.icon ) + ');background-position:0 ' + offset + 'px;"></span>'
+							( this.icon ? ' style="background-image:url(' + CKEDITOR.getUrl( this.icon ) + ');background-position:0 ' + offset + 'px;"'
 							: '' ) +
 							'></span></span>' +
 						'<span class="cke_label">' );

@@ -113,6 +113,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var skin = editor.config.skin.split( ',' ),
 			skinName = skin[ 0 ],
 			skinPath = CKEDITOR.getUrl( skin[ 1 ] || (
+				'_source/' +	// @Packager.RemoveLine
 				'skins/' + skinName + '/' ) );
 
 		editor.skinName = skinName;
@@ -435,6 +436,13 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 			return this._.commands[ commandName ] = new CKEDITOR.command( this, commandDefinition );
 		},
 
+		/**
+		 * Add a trunk of css text to the editor which will be applied to the wysiwyg editing document.
+		 * Note: This function should be called before editor is loaded to take effect.
+		 * @param css {String} CSS text.
+		 * @example
+		 * editorInstance.addCss( 'body { background-color: grey; }' );
+		 */
 		addCss : function( css )
 		{
 			this._.styles.push( css );
@@ -566,11 +574,24 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 		/**
 		 * Sets the editor data. The data must be provided in raw format.
 		 * @param {String} data HTML code to replace the curent content in the editor.
+		 * @param {Function} callback Function to be called after the setData is completed.
 		 * @example
 		 * CKEDITOR.instances.editor1.<b>setData( '&lt;p&gt;This is the editor data.&lt;/p&gt;' )</b>;
+		 * CKEDITOR.instances.editor1.setData( '&lt;p&gt;Some other editor data.&lt;/p&gt;', function()
+		 * {
+		 * 		CKEDITOR.instances.editor1.checkDirty(); 	// true
+		 * } );
 		 */
-		setData : function( data )
+		setData : function( data , callback )
 		{
+			if( callback )
+			{
+				this.on( 'dataReady', function( evt )
+				{
+					evt.removeListener();
+					callback.call( evt.editor );
+				} );
+			}
 			// Fire "setData" so data manipulation may happen.
 			var eventData = { dataValue : data };
 			this.fire( 'setData', eventData );

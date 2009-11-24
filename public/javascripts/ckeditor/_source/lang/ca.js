@@ -259,7 +259,8 @@ CKEDITOR.lang['ca'] =
 			invalidWidth	: 'L\'amplada de cel·la ha de ser un nombre.',
 			invalidHeight	: 'L\'alçada de cel·la ha de ser un nombre.',
 			invalidRowSpan	: 'L\'expansió de files ha de ser un nombre enter.',
-			invalidColSpan	: 'L\'expansió de columnes ha de ser un nombre enter.'
+			invalidColSpan	: 'L\'expansió de columnes ha de ser un nombre enter.',
+			chooseColor : 'Choose' // MISSING
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['ca'] =
 		alertUrl	: 'Si us plau, escriviu la URL de la imatge',
 		linkTab	: 'Enllaç',
 		button2Img	: 'Voleu transformar el botó d\'imatge seleccionat en una simple imatge?',
-		img2Button	: 'Voleu transformar la imatge seleccionada en un botó d\'imatge?'
+		img2Button	: 'Voleu transformar la imatge seleccionada en un botó d\'imatge?',
+		urlMissing : 'Image source URL is missing.' // MISSING
 	},
 
 	// Flash Dialog
@@ -661,6 +663,7 @@ CKEDITOR.lang['ca'] =
 	},
 
 	maximize : 'Maximiza',
+	minimize : 'Minimize', // MISSING
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['ca'] =
 		unknown : 'Objecte desconegut'
 	},
 
-	resize : 'Arrossegueu per redimensionar'
+	resize : 'Arrossegueu per redimensionar',
+
+	colordialog :
+	{
+		title : 'Select color', // MISSING
+		highlight : 'Highlight', // MISSING
+		selected : 'Selected', // MISSING
+		clear : 'Clear' // MISSING
+	}
 };

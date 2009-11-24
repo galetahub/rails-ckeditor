@@ -45,7 +45,8 @@ CKEDITOR.htmlParser.fragment = function()
 	// parser fixing.
 	var nonBreakingBlocks = CKEDITOR.tools.extend(
 			{table:1,ul:1,ol:1,dl:1},
-			CKEDITOR.dtd.table, CKEDITOR.dtd.ul, CKEDITOR.dtd.ol, CKEDITOR.dtd.dl );
+			CKEDITOR.dtd.table, CKEDITOR.dtd.ul, CKEDITOR.dtd.ol, CKEDITOR.dtd.dl ),
+		listBlocks = CKEDITOR.dtd.$list, listItems = CKEDITOR.dtd.$listItem;
 
 	/**
 	 * Creates a {@link CKEDITOR.htmlParser.fragment} from an HTML string.
@@ -189,13 +190,27 @@ CKEDITOR.htmlParser.fragment = function()
 				if ( !currentName )
 					return;
 
-				var reApply = false;
+				var reApply = false,
+					addPoint;   // New position to start adding nodes.
 
+				// Fixing malformed nested lists(#3828).
+				if( tagName in listBlocks
+					&& currentName in listBlocks )
+				{
+					var children = currentNode.children,
+						lastChild = children[ children.length - 1 ];
+					// Move inner list into to previous list item if any.
+					if( lastChild && lastChild.name in listItems )
+						returnPoint = currentNode, addPoint = lastChild;
+					// Move inner list outside in the worst case.
+					else
+						addElement( currentNode, currentNode.parent );
+				}
 				// If the element name is the same as the current element name,
 				// then just close the current one and append the new one to the
 				// parent. This situation usually happens with <p>, <li>, <dt> and
 				// <dd>, specially in IE. Do not enter in this if block in this case.
-				if ( tagName == currentName )
+				else if ( tagName == currentName )
 				{
 					addElement( currentNode, currentNode.parent );
 				}
@@ -222,9 +237,11 @@ CKEDITOR.htmlParser.fragment = function()
 					reApply = true;
 				}
 
-				// In any of the above cases, we'll be adding, or trying to
-				// add it to the parent.
-				currentNode = currentNode.returnPoint || currentNode.parent;
+				if( addPoint )
+					currentNode = addPoint;
+				// Try adding it to the return point, or the parent element.
+				else
+					currentNode = currentNode.returnPoint || currentNode.parent;
 
 				if ( reApply )
 				{

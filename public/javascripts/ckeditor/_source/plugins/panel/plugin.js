@@ -253,6 +253,9 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 		this.keys = {};
 
 		this._.focusIndex = -1;
+
+		// Disable context menu for panels.
+		this.element.disableContextMenu();
 	},
 
 	_ : {},

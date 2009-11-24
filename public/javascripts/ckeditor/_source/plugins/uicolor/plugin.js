@@ -24,11 +24,13 @@ CKEDITOR.plugins.add( 'uicolor',
 
 		// Load YUI js files.
 		CKEDITOR.scriptLoader.load( CKEDITOR.getUrl(
+			'_source/' + // @Packager.RemoveLine
 			'plugins/uicolor/yui/yui.js'
 		));
 
 		// Load YUI css files.
 		editor.element.getDocument().appendStyleSheet( CKEDITOR.getUrl(
+				'_source/' + // @Packager.RemoveLine
 				'plugins/uicolor/yui/assets/yui.css'
 		));
 	}

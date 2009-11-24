@@ -37,6 +37,7 @@ CKEDITOR.dialog.add( 'uicolor', function( editor )
 		onLoad : function( event )
 		{
 			var url = CKEDITOR.getUrl(
+					'_source/' + // @Packager.RemoveLine
 					'plugins/uicolor/yui/'
 				);
 

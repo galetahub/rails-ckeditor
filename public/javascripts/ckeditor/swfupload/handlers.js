@@ -103,7 +103,7 @@ function uploadSuccess(file, serverData) {
 		progress.setStatus("Completed.");
 		progress.toggleCancel(false);
 
-		//progress.setThumbnail(serverData);
+		progress.createThumbnail(serverData);
 				
 	} catch (ex) {
 		this.debug(ex);

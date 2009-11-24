@@ -91,8 +91,8 @@ CKEDITOR.lang['pl'] =
 		generalTab		: 'Ogólne',
 		advancedTab		: 'Zaawansowane',
 		validateNumberFailed	: 'Ta wartość nie jest liczbą.',
-		confirmNewPage	: 'Wszystkie niezapisane zmiany zostaną utracone. Czy na pewno wczytać nową stronę ?',
-		confirmCancel	: 'Pewne opcje zostały zmienione. Czy na pewno zamknąć okno dialogowe ?',
+		confirmNewPage	: 'Wszystkie niezapisane zmiany zostaną utracone. Czy na pewno wczytać nową stronę?',
+		confirmCancel	: 'Pewne opcje zostały zmienione. Czy na pewno zamknąć okno dialogowe?',
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, niedostępne</span>'
@@ -259,7 +259,8 @@ CKEDITOR.lang['pl'] =
 			invalidWidth	: 'Szerokość komórki musi być liczbą.',
 			invalidHeight	: 'Wysokość komórki musi być liczbą.',
 			invalidRowSpan	: 'Scalenie wierszy musi być liczbą całkowitą.',
-			invalidColSpan	: 'Scalenie komórek musi być liczbą całkowitą.'
+			invalidColSpan	: 'Scalenie komórek musi być liczbą całkowitą.',
+			chooseColor : 'Wybierz'
 		},
 
 		row :
@@ -396,7 +397,8 @@ CKEDITOR.lang['pl'] =
 		alertUrl	: 'Podaj adres obrazka.',
 		linkTab	: 'Hiperłącze',
 		button2Img	: 'Czy chcesz przekonwertować zaznaczony przycisk graficzny do zwykłego obrazka?',
-		img2Button	: 'Czy chcesz przekonwertować zaznaczony obrazek do przycisku graficznego?'
+		img2Button	: 'Czy chcesz przekonwertować zaznaczony obrazek do przycisku graficznego?',
+		urlMissing : 'Podaj adres URL obrazka.'
 	},
 
 	// Flash Dialog
@@ -405,7 +407,7 @@ CKEDITOR.lang['pl'] =
 		properties		: 'Właściwości elementu Flash',
 		propertiesTab	: 'Właściwości',
 		title		: 'Właściwości elementu Flash',
-		chkPlay		: 'Auto Odtwarzanie',
+		chkPlay		: 'Autoodtwarzanie',
 		chkLoop		: 'Pętla',
 		chkMenu		: 'Włącz menu',
 		chkFull		: 'Dopuść pełny ekran',
@@ -438,7 +440,7 @@ CKEDITOR.lang['pl'] =
 		windowModeOpaque	 : 'Nieprzeźroczyste',
 		windowModeTransparent	 : 'Przeźroczyste',
 		windowMode	: 'Tryb okna',
-		flashvars	: 'Zmienne dla Flash\'a',
+		flashvars	: 'Zmienne dla Flasha',
 		bgcolor	: 'Kolor tła',
 		width	: 'Szerokość',
 		height	: 'Wysokość',
@@ -466,7 +468,7 @@ CKEDITOR.lang['pl'] =
 		btnReplaceAll	: 'Zmień wszystkie',
 		btnUndo			: 'Cofnij',
 		noSuggestions	: '- Brak sugestii -',
-		progress		: 'Trwa sprawdzanie ...',
+		progress		: 'Trwa sprawdzanie...',
 		noMispell		: 'Sprawdzanie zakończone: nie znaleziono błędów',
 		noChanges		: 'Sprawdzanie zakończone: nie zmieniono żadnego słowa',
 		oneChange		: 'Sprawdzanie zakończone: zmieniono jedno słowo',
@@ -526,7 +528,7 @@ CKEDITOR.lang['pl'] =
 
 	templates :
 	{
-		button : 'Sablony',
+		button : 'Szablony',
 		title : 'Szablony zawartości',
 		insertOption: 'Zastąp aktualną zawartość',
 		selectPromptMsg: 'Wybierz szablon do otwarcia w edytorze<br>(obecna zawartość okna edytora zostanie utracona):',
@@ -538,7 +540,7 @@ CKEDITOR.lang['pl'] =
 	stylesCombo :
 	{
 		label : 'Styl',
-		voiceLabel : 'Style',
+		voiceLabel : 'Styl',
 		panelVoiceLabel : 'Wybierz styl',
 		panelTitle1 : 'Style blokowe',
 		panelTitle2 : 'Style liniowe',
@@ -569,7 +571,7 @@ CKEDITOR.lang['pl'] =
 		label : 'Czcionka',
 		voiceLabel : 'Czcionka',
 		panelTitle : 'Czcionka',
-		panelVoiceLabel : 'Select a font'
+		panelVoiceLabel : 'Wybierz czcionkę'
 	},
 
 	fontSize :
@@ -577,7 +579,7 @@ CKEDITOR.lang['pl'] =
 		label : 'Rozmiar',
 		voiceLabel : 'Rozmiar czcionki',
 		panelTitle : 'Rozmiar',
-		panelVoiceLabel : 'Select a font size'
+		panelVoiceLabel : 'Wybierz rozmiar czcionki'
 	},
 
 	colorButton :
@@ -634,11 +636,11 @@ CKEDITOR.lang['pl'] =
 
 	scayt :
 	{
-		title : 'Sprawdź pisowanie podczas pisania (SCAYT)',
+		title : 'Sprawdź pisownię podczas pisania (SCAYT)',
 		enable : 'Włącz SCAYT',
 		disable : 'Wyłącz SCAYT',
 		about : 'Na temat SCAYT',
-		toggle : 'Toggle SCAYT',
+		toggle : 'Przełącz SCAYT',
 		options : 'Opcje',
 		langs : 'Języki',
 		moreSuggestions : 'Więcej sugestii',
@@ -661,6 +663,7 @@ CKEDITOR.lang['pl'] =
 	},
 
 	maximize : 'Maksymalizuj',
+	minimize : 'Minimalizuj',
 
 	fakeobjects :
 	{
@@ -670,5 +673,13 @@ CKEDITOR.lang['pl'] =
 		unknown : 'Nieznany obiekt'
 	},
 
-	resize : 'Przeciągnij, aby zmienić rozmiar'
+	resize : 'Przeciągnij, aby zmienić rozmiar',
+
+	colordialog :
+	{
+		title : 'Wybierz kolor',
+		highlight : 'Zaznacz',
+		selected : 'Wybrany',
+		clear : 'Wyczyść'
+	}
 };

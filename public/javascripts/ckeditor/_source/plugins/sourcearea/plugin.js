@@ -36,6 +36,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 									tabIndex : -1
 								});
 							textarea.addClass( 'cke_source' );
+							textarea.addClass( 'cke_enable_context_menu' );
 
 							var styles =
 							{
@@ -63,6 +64,11 @@ CKEDITOR.plugins.add( 'sourcearea',
 											textarea.show();
 										};
 									editor.on( 'resize', onResize );
+									editor.on( 'afterCommandExec', function( event )
+									{
+										if ( event.data.name == 'toolbarCollapse' )
+											onResize();
+									});
 									styles.height = holderElement.$.clientHeight + 'px';
 								}
 							}
@@ -74,9 +80,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 								// inside of it (non IE).
 								textarea.on( 'mousedown', function( evt )
 									{
-										evt = evt.data.$;
-										if ( evt.stopPropagation )
-											evt.stopPropagation();
+										evt.data.stopPropagation();
 									} );
 							}
 
@@ -85,6 +89,16 @@ CKEDITOR.plugins.add( 'sourcearea',
 							holderElement.setHtml( '' );
 							holderElement.append( textarea );
 							textarea.setStyles( styles );
+
+							textarea.on( 'blur', function()
+								{
+									editor.focusManager.blur();
+								});
+
+							textarea.on( 'focus', function()
+								{
+									editor.focusManager.focus();
+								});
 
 							// The editor data "may be dirty" after this point.
 							editor.mayBeDirty = true;
@@ -107,6 +121,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 						loadData : function( data )
 						{
 							textarea.setValue( data );
+							editor.fire( 'dataReady' );
 						},
 
 						getData : function()

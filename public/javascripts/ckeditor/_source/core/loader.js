@@ -106,7 +106,7 @@ if ( !CKEDITOR.loader )
 			return path;
 		})();
 
-		var timestamp = '97KD';
+		var timestamp = '99GE';
 
 		var getUrl = function( resource )
 		{

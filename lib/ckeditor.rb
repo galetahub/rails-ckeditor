@@ -29,8 +29,12 @@ module Ckeditor
         value = value.nil? ? "" : value
       else
         value = ""
-        klass = "#{object}".camelcase.constantize
-        instance_variable_set("@#{object}", eval("#{klass}.new()"))
+        
+        begin
+          klass = "#{object}".camelcase.constantize
+          @template.instance_variable_set("@#{object}", eval("#{klass}.new()"))
+        rescue NameError
+        end
       end
       id = ckeditor_element_id(object, field)
 

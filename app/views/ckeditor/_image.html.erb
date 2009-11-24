@@ -10,6 +10,6 @@
    </table>
    
    <div class="FCKFileName"><%= image.filename %></div>
-   <div class="FCKFileDate"><%= I18n.l(image.created_at, :format=>"%d.%m.%Y %H:%M") %></div>
+   <div class="FCKFileDate"><%= image.format_created_at %></div>
    <div class="FCKFileSize"><%= number_to_human_size(image.size, :precision => 2) %></div>
 </div>

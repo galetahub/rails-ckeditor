@@ -37,14 +37,16 @@ module Ckeditor
         end
       end
       id = ckeditor_element_id(object, field)
-
-      cols = options[:cols].nil? ? "cols='70'" : "cols='"+options[:cols]+"'"
-      rows = options[:rows].nil? ? "rows='20'" : "rows='"+options[:rows]+"'"
+      
+      textarea_options = { :id => id }
+      
+      textarea_options[:cols] = options[:cols].nil? ? 70 : options[:cols].to_i
+      textarea_options[:rows] = options[:rows].nil? ? 20 : options[:rows].to_i
 
       width = options[:width].nil? ? '100%' : options[:width]
       height = options[:height].nil? ? '100%' : options[:height]
-
-      classy = options[:class].nil? ? '' : "class='#{options[:class]}'"
+      
+      textarea_options[:class] = options[:class] unless options[:class].nil?
       
       ckeditor_options = {}
       
@@ -61,17 +63,25 @@ module Ckeditor
       
       ckeditor_options[:filebrowserImageBrowseUrl] = PLUGIN_FILE_MANAGER_IMAGE_URI
       ckeditor_options[:filebrowserImageUploadUrl] = PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI
-
+      
+      @output_buffer ||= ActionView::SafeBuffer.new
+      
       if options[:ajax]
-        inputs = "<input type='hidden' id='#{id}_hidden' name='#{object}[#{field}]'>\n" <<
-                 "<textarea id='#{id}' #{cols} #{rows} name='#{id}'>#{value}</textarea>\n"
+        textarea_options.update(:name => id)
+        
+        @output_buffer << tag(:input, { "type" => "hidden", "name" => "#{object}[#{field}]", "id" => "#{id}_hidden"})
+        @output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
       else
-        inputs = "<textarea id='#{id}' style='width:#{width};height:#{height}' #{cols} #{rows} #{classy} name='#{object}[#{field}]'>#{h value}</textarea>\n"
+        textarea_options.update(:style => "width:#{width};height:#{height}")
+        
+        @output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
       end
       
-      return inputs << javascript_tag("CKEDITOR.replace('#{object}[#{field}]', { 
+      @output_buffer << javascript_tag("CKEDITOR.replace('#{object}[#{field}]', { 
           #{ckeditor_applay_options(ckeditor_options)}
         });\n")
+        
+      @output_buffer
     end
 
     def ckeditor_form_remote_tag(options = {})

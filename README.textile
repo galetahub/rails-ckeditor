@@ -12,6 +12,9 @@ SWFUpload version: 2.2.0
 http://ckeditor.com/
 http://swfupload.org/
 
+Demo appication:
+http://github.com/galetahub/rails-ckeditor-demo-app
+
 h2. Install
 
 @./script/plugin install git://github.com/galetahub/rails-ckeditor.git@

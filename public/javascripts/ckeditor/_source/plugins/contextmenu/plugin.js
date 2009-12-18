@@ -119,17 +119,75 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 				}
 			}
 
-			menu.show( offsetParent, corner || ( editor.lang.dir == 'rtl' ? 2 : 1 ), offsetX, offsetY );
+			// Don't show context menu with zero items.
+			menu.items.length && menu.show( offsetParent, corner || ( editor.lang.dir == 'rtl' ? 2 : 1 ), offsetX, offsetY );
 		}
 	},
 
 	proto :
 	{
-		addTarget : function( element )
+		addTarget : function( element, nativeContextMenuOnCtrl )
 		{
+			// Opera doesn't support 'contextmenu' event, we have duo approaches employed here:
+			// 1. Inherit the 'button override' hack we introduced in v2 (#4530), while this require the Opera browser
+			//  option 'Allow script to detect context menu/right click events' to be always turned on.
+			// 2. Considering the fact that ctrl/meta key is not been occupied
+			//  for multiple range selecting (like Gecko), we use this key
+			//  combination as a fallback for triggering context-menu. (#4530)
+			if ( CKEDITOR.env.opera )
+			{
+				var contextMenuOverrideButton;
+				element.on( 'mousedown', function( evt )
+				{
+					evt = evt.data;
+					if( evt.$.button != 2 )
+					{
+						if ( evt.getKeystroke() == CKEDITOR.CTRL + 1 )
+							element.fire( 'contextmenu', evt );
+						return;
+					}
+
+					if ( nativeContextMenuOnCtrl
+						 && ( evt.$.ctrlKey || evt.$.metaKey ) )
+						return;
+
+					var target = evt.getTarget();
+
+					if( !contextMenuOverrideButton )
+					{
+						var ownerDoc =  target.getDocument();
+						contextMenuOverrideButton = ownerDoc.createElement( 'input' ) ;
+						contextMenuOverrideButton.$.type = 'button' ;
+						ownerDoc.getBody().append( contextMenuOverrideButton ) ;
+					}
+
+					contextMenuOverrideButton.setAttribute( 'style', 'position:absolute;top:' + ( evt.$.clientY - 2 ) +
+						'px;left:' + ( evt.$.clientX - 2 ) +
+						'px;width:5px;height:5px;opacity:0.01' );
+
+				} );
+
+				element.on( 'mouseup', function ( evt )
+				{
+					if ( contextMenuOverrideButton )
+					{
+						contextMenuOverrideButton.remove();
+						contextMenuOverrideButton = undefined;
+						// Simulate 'contextmenu' event.
+						element.fire( 'contextmenu', evt.data );
+					}
+				} );
+			}
+
 			element.on( 'contextmenu', function( event )
 				{
 					var domEvent = event.data;
+
+					if ( nativeContextMenuOnCtrl &&
+					     // Safari on Windows always show 'ctrlKey' as true in 'contextmenu' event,
+						// which make this property unreliable. (#4826)
+					     ( CKEDITOR.env.webkit ? holdCtrlKey : domEvent.$.ctrlKey || domEvent.$.metaKey ) )
+						return;
 
 					// Cancel the browser context menu.
 					domEvent.preventDefault();
@@ -145,6 +203,23 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 						0, this );
 				},
 				this );
+
+			if( CKEDITOR.env.webkit )
+			{
+				var holdCtrlKey,
+					onKeyDown = function( event )
+					{
+						holdCtrlKey = event.data.$.ctrlKey || event.data.$.metaKey;
+					},
+					resetOnKeyUp = function()
+					{
+						holdCtrlKey = 0;
+					};
+
+				element.on( 'keydown', onKeyDown );
+				element.on( 'keyup', resetOnKeyUp );
+				element.on( 'contextmenu', resetOnKeyUp );
+			}
 		},
 
 		addListener : function( listenerFn )
@@ -160,19 +235,13 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 	}
 });
 
-// Fix the "contextmenu" event for DOM elements.
-// We may do this if we identify browsers that don't support the context meny
-// event on element directly. Leaving here for reference.
-//if ( <specific browsers> )
-//{
-//	CKEDITOR.dom.element.prototype.on = CKEDITOR.tools.override( CKEDITOR.dom.element.prototype.on, function( originalOn )
-//		{
-//			return function( eventName )
-//				{
-//					if ( eventName != 'contextmenu' )
-//						return originalOn.apply( this, arguments );
-//
-//					// TODO : Implement the fix.
-//				};
-//		});
-//}
+/**
+ * Whether to show the browser native context menu when the CTRL or the
+ * META (Mac) key is pressed while opening the context menu.
+ * @name CKEDITOR.config.browserContextMenuOnCtrl
+ * @since 3.0.2
+ * @type Boolean
+ * @default true
+ * @example
+ * config.browserContextMenuOnCtrl = false;
+ */

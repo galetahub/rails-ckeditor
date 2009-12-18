@@ -6,7 +6,7 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.0.1
+CKEditor version: 3.0.2
 SWFUpload version: 2.2.0
 
 http://ckeditor.com/

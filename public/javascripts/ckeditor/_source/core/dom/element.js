@@ -425,8 +425,16 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 							break;
 
 						case 'checked':
-							return this.$.checked;
-							break;
+						{
+							var attr = this.$.attributes.getNamedItem( name ),
+								attrValue = attr.specified ? attr.nodeValue     // For value given by parser.
+															 : this.$.checked;  // For value created via DOM interface.
+
+							return attrValue ? 'checked' : null;
+						}
+
+						case 'hspace':
+							return this.$.hspace;
 
 						case 'style':
 							// IE does not return inline styles via getAttribute(). See #2947.
@@ -627,6 +635,7 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 
 		/**
 		 * Gets the first child node of this element.
+		 * @param {Function} evaluator Filtering the result node.
 		 * @returns {CKEDITOR.dom.node} The first child node or null if not
 		 *		available.
 		 * @example
@@ -634,10 +643,14 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 		 * var first = <b>element.getFirst()</b>;
 		 * alert( first.getName() );  // "b"
 		 */
-		getFirst : function()
+		getFirst : function( evaluator )
 		{
-			var $ = this.$.firstChild;
-			return $ ? new CKEDITOR.dom.node( $ ) : null;
+			var first = this.$.firstChild,
+				retval = first && new CKEDITOR.dom.node( first );
+			if ( retval && evaluator && !evaluator( retval ) )
+				retval = retval.getNext( evaluator );
+
+			return retval;
 		},
 
 		/**
@@ -722,8 +735,8 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 				for ( i = 0 ; i < otherLength ; i++ )
 				{
 					attribute = otherAttribs[ i ];
-
-					if ( ( !CKEDITOR.env.ie || ( attribute.specified && attribute.nodeName != '_cke_expando' ) ) && attribute.nodeValue != thisAttribs.getAttribute( attribute.nodeName ) )
+					if ( attribute.specified && attribute.nodeName != '_cke_expando'
+							&& attribute.nodeValue != this.getAttribute( attribute.nodeName ) )
 						return false;
 				}
 			}
@@ -739,7 +752,24 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 		 */
 		isVisible : function()
 		{
-			return this.$.offsetWidth && ( this.$.style.visibility != 'hidden' );
+			var isVisible = !!this.$.offsetHeight && this.getComputedStyle( 'visibility' ) != 'hidden',
+				elementWindow,
+				elementWindowFrame;
+
+			// Webkit and Opera report non-zero offsetHeight despite that
+			// element is inside an invisible iframe. (#4542)
+			if ( isVisible && ( CKEDITOR.env.webkit || CKEDITOR.env.opera ) )
+			{
+				elementWindow = this.getWindow();
+
+				if ( !elementWindow.equals( CKEDITOR.document.getWindow() )
+						&& ( elementWindowFrame = elementWindow.$.frameElement ) )
+				{
+					isVisible = new CKEDITOR.dom.element( elementWindowFrame ).isVisible();
+				}
+			}
+
+			return isVisible;
 		},
 
 		/**
@@ -971,10 +1001,9 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 		 */
 		removeStyle : function( name )
 		{
+			this.setStyle( name, '' );
 			if ( this.$.style.removeAttribute )
 				this.$.style.removeAttribute( CKEDITOR.tools.cssStyleToDomStyle( name ) );
-			else
-				this.setStyle( name, '' );
 
 			if ( !this.$.style.cssText )
 				this.removeAttribute( 'style' );
@@ -1306,16 +1335,22 @@ CKEDITOR.tools.extend( CKEDITOR.dom.element.prototype,
 			{
 				var attribute = attributes[n];
 
-				// IE BUG: value attribute is never specified even if it exists.
-				if ( attribute.specified ||
-				  ( CKEDITOR.env.ie && attribute.nodeValue && attribute.nodeName.toLowerCase() == 'value' ) )
-				{
-					var attrName = attribute.nodeName;
-					// We can set the type only once, so do it with the proper value, not copying it.
-					if ( attrName in skipAttributes )
-						continue;
+				// Lowercase attribute name hard rule is broken for
+				// some attribute on IE, e.g. CHECKED.
+				var attrName = attribute.nodeName.toLowerCase(),
+					attrValue;
 
-					var attrValue = this.getAttribute( attrName );
+				// We can set the type only once, so do it with the proper value, not copying it.
+				if ( attrName in skipAttributes )
+					continue;
+
+				if( attrName == 'checked' && ( attrValue = this.getAttribute( attrName ) ) )
+					dest.setAttribute( attrName, attrValue );
+				// IE BUG: value attribute is never specified even if it exists.
+				else if ( attribute.specified ||
+				  ( CKEDITOR.env.ie && attribute.nodeValue && attrName == 'value' ) )
+				{
+					attrValue = this.getAttribute( attrName );
 					if ( attrValue === null )
 						attrValue = attribute.nodeValue;
 

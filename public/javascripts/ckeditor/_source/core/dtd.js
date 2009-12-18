@@ -66,6 +66,8 @@ CKEDITOR.dtd = (function()
 		 */
 		$block : block,
 
+		$inline : L,	// Just like span.
+
 		$body : X({script:1}, block),
 
 		$cdata : {script:1,style:1},
@@ -97,7 +99,7 @@ CKEDITOR.dtd = (function()
 		 * @type Object
 		 * @example
 		 */
-		$nonEditable : {applet:1,button:1,embed:1,iframe:1,map:1,object:1,option:1,script:1,textarea:1},
+		$nonEditable : {applet:1,button:1,embed:1,iframe:1,map:1,object:1,option:1,script:1,textarea:1,param:1},
 
 		/**
 		 * List of elements that can be ignored if empty, like "b" or "span".
@@ -144,7 +146,7 @@ CKEDITOR.dtd = (function()
         form : X(A,D,E,I),
         select : {optgroup:1,option:1},
         font : L,
-        ins : P,
+        ins : L,
         menu : Q,
         abbr : L,
         label : L,
@@ -179,7 +181,7 @@ CKEDITOR.dtd = (function()
         map : X({area:1,form:1,p:1},A,F,E),
         applet : O,
         dl : {dt:1,dd:1},
-        del : P,
+        del : L,
         isindex : {},
         fieldset : X({legend:1},K),
         thead : M,

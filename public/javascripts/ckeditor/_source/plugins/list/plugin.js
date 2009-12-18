@@ -356,7 +356,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		compensateBrs( true );
 		compensateBrs();
 
-		var rootParent = groupObj.root.getParent();
 		docFragment.replace( groupObj.root );
 	}
 
@@ -445,16 +444,18 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				while ( ( block = iterator.getNextParagraph() ) )
 				{
 					var path = new CKEDITOR.dom.elementPath( block ),
+						pathElements = path.elements,
+						pathElementsCount = pathElements.length,
 						listNode = null,
 						processedFlag = false,
 						blockLimit = path.blockLimit,
 						element;
 
 					// First, try to group by a list ancestor.
-					for ( var i = 0 ; i < path.elements.length &&
-						  ( element = path.elements[ i ] ) && !element.equals( blockLimit ); i++ )
+					for ( var i = pathElementsCount - 1; i >= 0 && ( element = pathElements[ i ] ); i-- )
 					{
-						if ( listNodeNames[ element.getName() ] )
+						if ( listNodeNames[ element.getName() ]
+							 && blockLimit.contains( element ) )     // Don't leak outside block limit (#3940).
 						{
 							// If we've encountered a list inside a block limit
 							// The last group object of the block limit element should
@@ -538,6 +539,68 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		}
 	};
 
+	var dtd = CKEDITOR.dtd;
+	var tailNbspRegex = /[\t\r\n ]*(?:&nbsp;|\xa0)$/;
+
+	function indexOfFirstChildElement( element, tagNameList )
+	{
+		var child,
+			children = element.children,
+			length = children.length;
+
+		for ( var i = 0 ; i < length ; i++ )
+		{
+			child = children[ i ];
+			if ( child.name && ( child.name in tagNameList ) )
+				return i;
+		}
+
+		return length;
+	}
+
+	function getExtendNestedListFilter( isHtmlFilter )
+	{
+		// An element filter function that corrects nested list start in an empty
+		// list item for better displaying/outputting. (#3165)
+		return function( listItem )
+		{
+			var children = listItem.children,
+				firstNestedListIndex = indexOfFirstChildElement( listItem, dtd.$list ),
+				firstNestedList = children[ firstNestedListIndex ],
+				nodeBefore = firstNestedList && firstNestedList.previous,
+				tailNbspmatch;
+
+			if( nodeBefore
+				&& ( nodeBefore.name && nodeBefore.name == 'br'
+					|| nodeBefore.value && ( tailNbspmatch = nodeBefore.value.match( tailNbspRegex ) ) ) )
+			{
+				var fillerNode = nodeBefore;
+
+				// Always use 'nbsp' as filler node if we found a nested list appear
+				// in front of a list item.
+				if ( !( tailNbspmatch && tailNbspmatch.index ) && fillerNode == children[ 0 ] )
+					children[ 0 ] = ( isHtmlFilter || CKEDITOR.env.ie ) ?
+					                 new CKEDITOR.htmlParser.text( '\xa0' ) :
+									 new CKEDITOR.htmlParser.element( 'br', {} );
+
+				// Otherwise the filler is not needed anymore.
+				else if ( fillerNode.name == 'br' )
+					children.splice( firstNestedListIndex - 1, 1 );
+				else
+					fillerNode.value = fillerNode.value.replace( tailNbspRegex, '' );
+			}
+
+		};
+	}
+
+	var defaultListDataFilterRules = { elements : {} };
+	for( var i in dtd.$listItem )
+		defaultListDataFilterRules.elements[ i ] = getExtendNestedListFilter();
+
+	var defaultListHtmlFilterRules = { elements : {} };
+	for( i in dtd.$listItem )
+		defaultListHtmlFilterRules.elements[ i ] = getExtendNestedListFilter( true );
+
 	CKEDITOR.plugins.add( 'list',
 	{
 		init : function( editor )
@@ -563,6 +626,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Register the state changing handlers.
 			editor.on( 'selectionChange', CKEDITOR.tools.bind( onSelectionChange, numberedListCommand ) );
 			editor.on( 'selectionChange', CKEDITOR.tools.bind( onSelectionChange, bulletedListCommand ) );
+		},
+
+		afterInit : function ( editor )
+		{
+			var dataProcessor = editor.dataProcessor;
+			if( dataProcessor )
+			{
+				dataProcessor.dataFilter.addRules( defaultListDataFilterRules );
+				dataProcessor.htmlFilter.addRules( defaultListHtmlFilterRules );
+			}
 		},
 
 		requires : [ 'domiterator' ]

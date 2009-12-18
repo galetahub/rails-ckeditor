@@ -55,10 +55,6 @@ CKEDITOR.plugins.add( 'floatpanel',
 
 			this.element = element;
 
-			// Register panels to editor for easy destroying ( #4241 ).
-			editor.panels ? editor.panels.push( element ) : editor.panels = [ element ];
-
-
 			this._ =
 			{
 				// The panel that will be floating.
@@ -135,7 +131,6 @@ CKEDITOR.plugins.add( 'floatpanel',
 					{
 						top : top + 'px',
 						left : '-3000px',
-						visibility : 'hidden',
 						opacity : '0',	// FF3 is ignoring "visibility"
 						display	: ''
 					});
@@ -153,7 +148,7 @@ CKEDITOR.plugins.add( 'floatpanel',
 
 					focused.on( 'blur', function( ev )
 						{
-							if ( CKEDITOR.env.ie && !this.allowBlur() )
+							if ( !this.allowBlur() )
 								return;
 
 							// As we are using capture to register the listener,
@@ -195,16 +190,9 @@ CKEDITOR.plugins.add( 'floatpanel',
 						if ( rtl )
 							left -= element.$.offsetWidth;
 
-						element.setStyles(
-							{
-								left : left + 'px',
-								visibility	: '',
-								opacity : '1'	// FF3 is ignoring "visibility"
-							});
-
-						if ( block.autoSize )
+						var panelLoad = CKEDITOR.tools.bind( function ()
 						{
-							function setHeight()
+							if ( block.autoSize )
 							{
 								var target = element.getFirst();
 								var height = block.element.$.scrollHeight;
@@ -220,16 +208,40 @@ CKEDITOR.plugins.add( 'floatpanel',
 								// Fix IE < 8 visibility.
 								panel._.currentBlock.element.setStyle( 'display', 'none' ).removeStyle( 'display' );
 							}
-
-							if ( panel.isLoaded )
-								setHeight();
 							else
-								panel.onLoad = setHeight;
-						}
-						else
-							element.getFirst().removeStyle( 'height' );
+								element.getFirst().removeStyle( 'height' );
 
-						// Set the IFrame focus, so the blur event gets fired.
+							var panelElement = panel.element,
+								panelWindow = panelElement.getWindow(),
+								windowScroll = panelWindow.getScrollPosition(),
+								viewportSize = panelWindow.getViewPaneSize(),
+								panelSize =
+								{
+									'height' : panelElement.$.offsetHeight,
+									'width' : panelElement.$.offsetWidth
+								};
+
+							// If the menu is horizontal off, shift it toward
+							// the opposite language direction.
+							if ( rtl ? left < 0 : left + panelSize.width > viewportSize.width + windowScroll.x )
+								left += ( panelSize.width * ( rtl ? 1 : -1 ) );
+
+							// Vertical off screen is simpler.
+							if( top + panelSize.height > viewportSize.height + windowScroll.y )
+								top -= panelSize.height;
+
+							element.setStyles(
+								{
+									top : top + 'px',
+									left : left + 'px',
+									opacity : '1'
+								} );
+
+						} , this );
+
+						panel.isLoaded ? panelLoad() : panel.onLoad = panelLoad;
+
+						// Set the panel frame focus, so the blur event gets fired.
 						CKEDITOR.tools.setTimeout( function()
 							{
 								if ( definition.voiceLabel )
@@ -243,14 +255,11 @@ CKEDITOR.plugins.add( 'floatpanel',
 										iframe.setAttribute( 'title', ' ' );
 									}
 								}
-								if ( CKEDITOR.env.ie && CKEDITOR.env.quirks )
-									iframe.focus();
-								else
-									iframe.$.contentWindow.focus();
 
+								iframe.$.contentWindow.focus();
 								// We need this get fired manually because of unfired focus() function.
-								if ( CKEDITOR.env.ie && !CKEDITOR.env.quirks )
-									this.allowBlur( true );
+								this.allowBlur( true );
+
 							}, 0, this);
 					}, 0, this);
 				this.visible = 1;
@@ -329,4 +338,23 @@ CKEDITOR.plugins.add( 'floatpanel',
 			}
 		}
 	});
+
+	CKEDITOR.on( 'instanceDestroyed', function()
+	{
+		var isLastInstance = CKEDITOR.tools.isEmpty( CKEDITOR.instances );
+
+		for( var i in panels )
+		{
+			var panel = panels[ i ];
+			// Safe to destroy it since there're no more instances.(#4241)
+			if( isLastInstance )
+				panel.destroy();
+			// Panel might be used by other instances, just hide them.(#4552)
+			else
+				panel.element.hide();
+		}
+		// Remove the registration.
+		isLastInstance && ( panels = {} );
+
+	} );
 })();

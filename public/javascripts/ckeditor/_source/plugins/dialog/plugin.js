@@ -89,11 +89,6 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 	{
 		// Load the dialog definition.
 		var definition = CKEDITOR.dialog._.dialogDefinitions[ dialogName ];
-		if ( !definition )
-		{
-			console.log( 'Error: The dialog "' + dialogName + '" is not defined.' );
-			return;
-		}
 
 		// Completes the definition with the default values.
 		definition = CKEDITOR.tools.extend( definition( editor ), defaultDialogDefinition );
@@ -264,11 +259,12 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			if ( focusList.length < 1 )
 				return;
 
-			var currentIndex = ( me._.currentFocusIndex + offset + focusList.length ) % focusList.length;
+			var startIndex = ( me._.currentFocusIndex + offset + focusList.length ) % focusList.length,
+				currentIndex = startIndex;
 			while ( !focusList[ currentIndex ].isFocusable() )
 			{
 				currentIndex = ( currentIndex + offset + focusList.length ) % focusList.length;
-				if ( currentIndex == me._.currentFocusIndex )
+				if ( currentIndex == startIndex )
 					break;
 			}
 			focusList[ currentIndex ].focus();
@@ -278,14 +274,17 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 				focusList[ currentIndex ].select();
 		}
 
+		var processed;
+
 		function focusKeydownHandler( evt )
 		{
 			// If I'm not the top dialog, ignore.
 			if ( me != CKEDITOR.dialog._.currentTop )
 				return;
 
-			var keystroke = evt.data.getKeystroke(),
-				processed = false;
+			var keystroke = evt.data.getKeystroke();
+
+			processed = 0;
 			if ( keystroke == 9 || keystroke == CKEDITOR.SHIFT + 9 )
 			{
 				var shiftPressed = ( keystroke == CKEDITOR.SHIFT + 9 );
@@ -304,14 +303,14 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 					changeFocus( !shiftPressed );
 				}
 
-				processed = true;
+				processed = 1;
 			}
 			else if ( keystroke == CKEDITOR.ALT + 121 && !me._.tabBarMode )
 			{
 				// Alt-F10 puts focus into the current tab item in the tab bar.
 				me._.tabBarMode = true;
 				me._.tabs[ me._.currentTabId ][ 0 ].focus();
-				processed = true;
+				processed = 1;
 			}
 			else if ( ( keystroke == 37 || keystroke == 39 ) && me._.tabBarMode )
 			{
@@ -319,7 +318,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 				nextId = ( keystroke == 37 ? getPreviousVisibleTab.call( me ) : getNextVisibleTab.call( me ) );
 				me.selectPage( nextId );
 				me._.tabs[ nextId ][ 0 ].focus();
-				processed = true;
+				processed = 1;
 			}
 
 			if ( processed )
@@ -329,10 +328,19 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			}
 		}
 
+		function focusKeyPressHandler( evt )
+		{
+			processed && evt.data.preventDefault();
+		}
+
 		// Add the dialog keyboard handlers.
 		this.on( 'show', function()
 			{
 				CKEDITOR.document.on( 'keydown', focusKeydownHandler, this, null, 0 );
+				// Some browsers instead, don't cancel key events in the keydown, but in the
+				// keypress. So we must do a longer trip in those cases. (#4531)
+				if ( CKEDITOR.env.opera || ( CKEDITOR.env.gecko && CKEDITOR.env.mac ) )
+					CKEDITOR.document.on( 'keypress', focusKeyPressHandler, this );
 
 				if ( CKEDITOR.env.ie6Compat )
 				{
@@ -343,6 +351,8 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		this.on( 'hide', function()
 			{
 				CKEDITOR.document.removeListener( 'keydown', focusKeydownHandler );
+				if ( CKEDITOR.env.opera || ( CKEDITOR.env.gecko && CKEDITOR.env.mac ) )
+					CKEDITOR.document.removeListener( 'keypress', focusKeyPressHandler );
 			} );
 		this.on( 'iframeAdded', function( evt )
 			{
@@ -447,12 +457,13 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 	};
 
 	// Focusable interface. Use it via dialog.addFocusable.
-	function Focusable( dialog, element, index ) {
+	function Focusable( dialog, element, index )
+	{
 		this.element = element;
 		this.focusIndex = index;
 		this.isFocusable = function()
 		{
-			return true;
+			return !element.getAttribute( 'disabled' ) && element.isVisible();
 		};
 		this.focus = function()
 		{
@@ -580,8 +591,12 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		 */
 		show : function()
 		{
-			if ( this._.editor.mode == 'wysiwyg' && CKEDITOR.env.ie )
-				this._.editor.getSelection().lock();
+			var editor = this._.editor;
+			if ( editor.mode == 'wysiwyg' && CKEDITOR.env.ie )
+			{
+				var selection = editor.getSelection();
+				selection && selection.lock();
+			}
 
 			// Insert the dialog's element to the root document.
 			var element = this._.element;
@@ -625,12 +640,12 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 				this._.parentDialog = null;
 				addCover( this._.editor );
 
-				CKEDITOR.document.on( 'keydown', accessKeyDownHandler );
-				CKEDITOR.document.on( 'keyup', accessKeyUpHandler );
+				element.on( 'keydown', accessKeyDownHandler );
+				element.on( CKEDITOR.env.opera ? 'keypress' : 'keyup', accessKeyUpHandler );
 
 				// Prevent some keys from bubbling up. (#4269)
 				for ( var event in { keyup :1, keydown :1, keypress :1 } )
-					CKEDITOR.document.on( event, preventKeyBubbling );
+					element.on( event, preventKeyBubbling );
 			}
 			else
 			{
@@ -755,19 +770,21 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 				CKEDITOR.dialog._.currentZIndex = null;
 
 				// Remove access key handlers.
-				CKEDITOR.document.removeListener( 'keydown', accessKeyDownHandler );
-				CKEDITOR.document.removeListener( 'keyup', accessKeyUpHandler );
-				CKEDITOR.document.removeListener( 'keypress', accessKeyUpHandler );
+				element.removeListener( 'keydown', accessKeyDownHandler );
+				element.removeListener( CKEDITOR.env.opera ? 'keypress' : 'keyup', accessKeyUpHandler );
 
 				// Remove bubbling-prevention handler. (#4269)
 				for ( var event in { keyup :1, keydown :1, keypress :1 } )
-					CKEDITOR.document.removeListener( event, preventKeyBubbling );
+					element.removeListener( event, preventKeyBubbling );
 
 				var editor = this._.editor;
 				editor.focus();
 
 				if ( editor.mode == 'wysiwyg' && CKEDITOR.env.ie )
-					editor.getSelection().unlock( true );
+				{
+					var selection = editor.getSelection();
+					selection && selection.unlock( true );
+				}
 			}
 			else
 				CKEDITOR.dialog._.currentZIndex -= 10;
@@ -794,7 +811,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 							children : contents.elements,
 							expand : !!contents.expand,
 							padding : contents.padding,
-							style : contents.style || 'width: 100%; height: 100%;'
+							style : contents.style || 'width: 100%;'
 						}, pageHtml );
 
 			// Create the HTML for the tab and the content block.
@@ -1661,11 +1678,13 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 
 		if ( !coverElement )
 		{
+			var backgroundColorStyle = editor.config.dialog_backgroundCoverColor || 'white';
+
 			var html = [
 					'<div style="position: ', ( CKEDITOR.env.ie6Compat ? 'absolute' : 'fixed' ),
 					'; z-index: ', editor.config.baseFloatZIndex,
 					'; top: 0px; left: 0px; ',
-					'background-color: ', editor.config.dialog_backgroundCoverColor || 'white',
+					( !CKEDITOR.env.ie6Compat ? 'background-color: ' + backgroundColorStyle : '' ),
 					'" id="cke_dialog_background_cover">'
 				];
 
@@ -1673,7 +1692,8 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			if ( CKEDITOR.env.ie6Compat )
 			{
 				// Support for custom document.domain in IE.
-				var isCustomDomain = CKEDITOR.env.isCustomDomain();
+				var isCustomDomain = CKEDITOR.env.isCustomDomain(),
+					iframeHtml = '<html><body style=\\\'background-color:' + backgroundColorStyle + ';\\\'></body></html>';
 
 				html.push(
 					'<iframe' +
@@ -1682,15 +1702,12 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 						' id="cke_dialog_background_iframe"' +
 						' src="javascript:' );
 
-				html.push(
-						isCustomDomain ?
-							'void((function(){' +
+				html.push( 'void((function(){' +
 								'document.open();' +
-								'document.domain=\'' + document.domain + '\';' +
+								( isCustomDomain ? 'document.domain=\'' + document.domain + '\';' : '' ) +
+								'document.write( \'' + iframeHtml + '\' );' +
 								'document.close();' +
-							'})())'
-						:
-							'\'\'' );
+							'})())' );
 
 				html.push(
 						'"' +
@@ -1814,8 +1831,11 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			return;
 
 		keyProcessor = keyProcessor[keyProcessor.length - 1];
-		keyProcessor.keyup && keyProcessor.keyup.call( keyProcessor.uiElement, keyProcessor.dialog, keyProcessor.key );
-		evt.data.preventDefault();
+		if ( keyProcessor.keyup )
+		{
+			keyProcessor.keyup.call( keyProcessor.uiElement, keyProcessor.dialog, keyProcessor.key );
+			evt.data.preventDefault();
+		}
 	};
 
 	var registerAccessKey = function( uiElement, dialog, key, downFunc, upFunc )
@@ -2448,7 +2468,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		 */
 		isVisible : function()
 		{
-			return !!this.getInputElement().$.offsetHeight;
+			return this.getInputElement().isVisible();
 		},
 
 		/**

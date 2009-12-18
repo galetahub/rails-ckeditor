@@ -222,7 +222,10 @@ CKEDITOR.plugins.add( 'dialogui' );
 							{
 								if ( evt.data.getKeystroke() == 13 && keyPressedOnMe )
 								{
-									dialog.getButton( 'ok' ) && dialog.getButton( 'ok' ).click();
+									dialog.getButton( 'ok' ) && setTimeout( function ()
+									{
+										dialog.getButton( 'ok' ).click();
+									}, 0 );
 									keyPressedOnMe = false;
 								}
 							}, null, null, 1000 );
@@ -838,7 +841,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 
 				isVisible : function()
 				{
-					return !!this.getElement().$.firstChild.offsetHeight;
+					return this.getElement().getFirst().isVisible();
 				},
 
 				isEnabled : function()

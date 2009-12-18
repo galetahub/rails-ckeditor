@@ -64,24 +64,24 @@ module Ckeditor
       ckeditor_options[:filebrowserImageBrowseUrl] = PLUGIN_FILE_MANAGER_IMAGE_URI
       ckeditor_options[:filebrowserImageUploadUrl] = PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI
       
-      @output_buffer ||= ActionView::SafeBuffer.new
+      output_buffer = ActionView::SafeBuffer.new
       
       if options[:ajax]
         textarea_options.update(:name => id)
         
-        @output_buffer << tag(:input, { "type" => "hidden", "name" => "#{object}[#{field}]", "id" => "#{id}_hidden"})
-        @output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
+        output_buffer << tag(:input, { "type" => "hidden", "name" => "#{object}[#{field}]", "id" => "#{id}_hidden"})
+        output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
       else
         textarea_options.update(:style => "width:#{width};height:#{height}")
         
-        @output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
+        output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
       end
       
-      @output_buffer << javascript_tag("CKEDITOR.replace('#{object}[#{field}]', { 
+      output_buffer << javascript_tag("CKEDITOR.replace('#{object}[#{field}]', { 
           #{ckeditor_applay_options(ckeditor_options)}
         });\n")
         
-      @output_buffer
+      output_buffer
     end
 
     def ckeditor_form_remote_tag(options = {})

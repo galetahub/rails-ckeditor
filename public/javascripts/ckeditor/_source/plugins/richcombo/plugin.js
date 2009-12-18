@@ -283,7 +283,7 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 
 			var textElement = this.document.getById( 'cke_' + this.id + '_text' );
 
-			if ( !value )
+			if ( !( value || text ) )
 			{
 				text = this.label;
 				textElement.addClass( 'cke_inline_label' );

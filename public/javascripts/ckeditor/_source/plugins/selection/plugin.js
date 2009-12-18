@@ -92,7 +92,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			editor.on( 'contentDom', function()
 				{
-					var doc = editor.document;
+					var doc = editor.document,
+						body = doc.getBody();
 
 					if ( CKEDITOR.env.ie )
 					{
@@ -107,7 +108,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						// "onfocusin" is fired before "onfocus". It makes it
 						// possible to restore the selection before click
 						// events get executed.
-						doc.on( 'focusin', function()
+						body.on( 'focusin', function()
 							{
 								// If we have saved a range, restore it at this
 								// point.
@@ -133,27 +134,25 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								saveSelection();
 							});
 
-						// Check document selection before 'blur' fired, this
-						// will prevent us from breaking text selection somewhere
-						// else on the host page.(#3909)
-						editor.document.on( 'beforedeactivate', function()
+						body.on( 'beforedeactivate', function()
 							{
 								// Disable selections from being saved.
 								saveEnabled = false;
-
-								// IE may leave the selection still inside the
-								// document. Let's force it to be removed.
-								// TODO: The following has effect for
-								// collapsed selections.
-								editor.document.$.execCommand( 'Unselect' );
 							});
 
 						// IE fires the "selectionchange" event when clicking
 						// inside a selection. We don't want to capture that.
-						doc.on( 'mousedown', disableSave );
-						doc.on( 'mouseup',
-							function()
+						body.on( 'mousedown', disableSave );
+						body.on( 'mouseup',
+							function( evt )
 							{
+								// IE context-menu event in table cells collapse
+								// whatever selection is, avoiding saving this
+								// 'wrong' snapshot.(#3001)
+								evt = evt.data;
+								if ( evt.$.button == 2 && evt.getTarget().hasAscendant( 'table' ) )
+									return;
+
 								saveEnabled = true;
 								setTimeout( function()
 									{
@@ -162,8 +161,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									0 );
 							});
 
-						doc.on( 'keydown', disableSave );
-						doc.on( 'keyup',
+						body.on( 'keydown', disableSave );
+						body.on( 'keyup',
 							function()
 							{
 								saveEnabled = true;
@@ -333,7 +332,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	var styleObjectElements =
 	{
-		img:1,hr:1,li:1,table:1,tr:1,td:1,embed:1,object:1,ol:1,ul:1,
+		img:1,hr:1,li:1,table:1,tr:1,td:1,th:1,embed:1,object:1,ol:1,ul:1,
 		a:1, input:1, form:1, select:1, textarea:1, button:1, fieldset:1, th:1, thead:1, tfoot:1
 	};
 
@@ -640,8 +639,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							{
 								var startContainer = range.startContainer,
 									startOffset = range.startOffset;
+								// Limit the fix only to non-block elements.(#3950)
 								if ( startOffset == ( startContainer.getChildCount ?
-									startContainer.getChildCount() : startContainer.getLength() ) )
+									 startContainer.getChildCount() : startContainer.getLength() )
+									 && !startContainer.isBlockBoundary() )
 									range.setStartAfter( startContainer );
 								else break;
 							}
@@ -939,9 +940,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 			this.selectRanges( ranges );
 			return this;
+		},
+
+		// Moving scroll bar to the current selection's start position.
+		scrollIntoView : function()
+		{
+			// If we have split the block, adds a temporary span at the
+			// range position and scroll relatively to it.
+			var start = this.getStartElement();
+			start.scrollIntoView();
 		}
 	};
 })();
+( function()
+{
+var notWhitespaces = CKEDITOR.dom.walker.whitespaces( true );
+var fillerTextRegex = /\ufeff|\u00a0/;
 
 CKEDITOR.dom.range.prototype.select =
 	CKEDITOR.env.ie ?
@@ -986,7 +1000,9 @@ CKEDITOR.dom.range.prototype.select =
 				// will expand and that the cursor will be blinking on the right place.
 				// Actually, we are using this flag just to avoid using this hack in all
 				// situations, but just on those needed.
-				isStartMarkerAlone = forceExpand || !startNode.hasPrevious() || ( startNode.getPrevious().is && startNode.getPrevious().is( 'br' ) );
+				var next = startNode.getNext( notWhitespaces );
+				isStartMarkerAlone = ( !( next && next.getText && next.getText().match( fillerTextRegex ) )     // already a filler there?
+									  && ( forceExpand || !startNode.hasPrevious() || ( startNode.getPrevious().is && startNode.getPrevious().is( 'br' ) ) ) );
 
 				// Append a temporary <span>&#65279;</span> before the selection.
 				// This is needed to avoid IE destroying selections inside empty
@@ -1070,3 +1086,4 @@ CKEDITOR.dom.range.prototype.select =
 			selection.removeAllRanges();
 			selection.addRange( nativeRange );
 		};
+} )();

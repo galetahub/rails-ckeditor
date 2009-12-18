@@ -160,7 +160,18 @@ CKEDITOR.dialog.add( 'select', function( editor )
 			this.commitContent( element );
 
 			if ( isInsertMode )
-				editor.insertElement( element );
+			{
+				editor.insertElement(element);
+				if( CKEDITOR.env.ie )
+				{
+					var sel = editor.getSelection(),
+						bms = sel.createBookmarks();
+					setTimeout(function ()
+					{
+						sel.selectBookmarks( bms );
+					}, 0 );
+				}
+			}
 		},
 		contents : [
 			{

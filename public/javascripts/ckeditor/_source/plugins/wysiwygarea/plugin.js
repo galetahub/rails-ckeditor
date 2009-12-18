@@ -15,7 +15,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	 */
 	var nonExitableElementNames = { table:1,pre:1 };
 	// Matching an empty paragraph at the end of document.
-	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center)[^>]*>\s*(?:<br[^>]*>|&nbsp;|&#160;)\s*(:?<\/\1>)?\s*$/gi;
+	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\1>)?\s*$/gi;
 
 	function onInsertHtml( evt )
 	{
@@ -88,9 +88,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							&& ( dtd = CKEDITOR.dtd[ current.getName() ] )
 							&& !( dtd && dtd [ elementName ] ) )
 					{
+						// Split up inline elements.
+						if ( current.getName() in CKEDITOR.dtd.span )
+							range.splitElement( current );
 						// If we're in an empty block which indicate a new paragraph,
 						// simply replace it with the inserting block.(#3664)
-						if ( range.checkStartOfBlock()
+						else if ( range.checkStartOfBlock()
 							 && range.checkEndOfBlock() )
 						{
 							range.setStartBefore( current );
@@ -139,6 +142,20 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			setTimeout( function(){ editor.resetDirty(); } );
 	}
 
+	var isNotWhitespace = CKEDITOR.dom.walker.whitespaces( true ),
+		isNotBookmark = CKEDITOR.dom.walker.bookmark( false, true );
+
+	function isNotEmpty( node )
+	{
+		return isNotWhitespace( node ) && isNotBookmark( node );
+	}
+
+	function isNbsp( node )
+	{
+		return node.type == CKEDITOR.NODE_TEXT
+			   && CKEDITOR.tools.trim( node.getText() ).match( /^(?:&nbsp;|\xa0)$/ );
+	}
+
 	/**
 	 *  Auto-fixing block-less content by wrapping paragraph (#3190), prevent
 	 *  non-exitable-block by padding extra br.(#3189)
@@ -161,61 +178,52 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			 && !path.block )
 		{
 			restoreDirty( editor );
-			var bms = selection.createBookmarks(),
-				fixedBlock = range.fixBlock( true,
+			var fixedBlock = range.fixBlock( true,
 					editor.config.enterMode == CKEDITOR.ENTER_DIV ? 'div' : 'p'  );
 
-			// For IE, we'll be removing any bogus br ( introduce by fixing body )
-			// right now to prevent it introducing visual line break.
+			// For IE, we should remove any filler node which was introduced before.
 			if ( CKEDITOR.env.ie )
 			{
-				var brNodeList = fixedBlock.getElementsByTag( 'br' ), brNode;
-				for ( var i = 0 ; i < brNodeList.count() ; i++ )
+				var first = fixedBlock.getFirst( isNotEmpty );
+				first && isNbsp( first ) && first.remove();
+			}
+
+			// If the fixed block is blank and already followed by a exitable
+			// block, we should revert the fix. (#3684)
+			if( fixedBlock.getOuterHtml().match( emptyParagraphRegexp ) )
+			{
+				var previousElement = fixedBlock.getPrevious( isNotWhitespace ),
+					nextElement = fixedBlock.getNext( isNotWhitespace );
+
+
+				if ( previousElement && previousElement.getName
+					 && !( previousElement.getName() in nonExitableElementNames )
+					 && range.moveToElementEditStart( previousElement )
+					 || nextElement && nextElement.getName
+					   && !( nextElement.getName() in nonExitableElementNames )
+					   && range.moveToElementEditStart( nextElement ) )
 				{
-					if( ( brNode = brNodeList.getItem( i ) ) && brNode.hasAttribute( '_cke_bogus' ) )
-						brNode.remove();
+					fixedBlock.remove();
 				}
 			}
 
-			selection.selectBookmarks( bms );
-
-			// If the fixed block is blank and is already followed by a exitable
-			// block, we should drop it and move to the exist block(#3684).
-			var children = fixedBlock.getChildren(),
-				count = children.count(),
-				firstChild,
-				whitespaceGuard = CKEDITOR.dom.walker.whitespaces( true ),
-				previousElement = fixedBlock.getPrevious( whitespaceGuard ),
-				nextElement = fixedBlock.getNext( whitespaceGuard ),
-				enterBlock;
-			if ( previousElement && previousElement.getName
-				 && !( previousElement.getName() in nonExitableElementNames ) )
-				enterBlock = previousElement;
-			else if ( nextElement && nextElement.getName
-					  && !( nextElement.getName() in nonExitableElementNames ) )
-				enterBlock = nextElement;
-
-			// Not all blocks are editable, e.g. <hr />, further checking it.(#3994)
-			if( ( !count
-				  || ( firstChild = children.getItem( 0 ) ) && firstChild.is && firstChild.is( 'br' ) )
-				&& enterBlock
-				&& range.moveToElementEditStart( enterBlock ) )
-			{
-				fixedBlock.remove();
-				range.select();
-			}
+			range.select();
+			// Notify non-IE that selection has changed.
+			if( !CKEDITOR.env.ie )
+				editor.selectionChange();
 		}
 
-		// Inserting the padding-br before body if it's preceded by an
-		// unexitable block.
+		// All browsers are incapable to moving cursor out of certain non-exitable
+		// blocks (e.g. table, list, pre) at the end of document, make this happen by
+		// place a bogus node there, which would be later removed by dataprocessor.
 		var lastNode = body.getLast( CKEDITOR.dom.walker.whitespaces( true ) );
 		if ( lastNode && lastNode.getName && ( lastNode.getName() in nonExitableElementNames ) )
 		{
 			restoreDirty( editor );
-			var paddingBlock = editor.document.createElement(
-					( CKEDITOR.env.ie && enterMode != CKEDITOR.ENTER_BR ) ?
-						'<br _cke_bogus="true" />' : 'br' );
-			body.append( paddingBlock );
+			if( !CKEDITOR.env.ie )
+				body.appendBogus();
+			else
+				body.append( editor.document.createText( '\xa0' ) );
 		}
 	}
 
@@ -329,16 +337,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							mainElement.append( iframe );
 					};
 
-					// The script that is appended to the data being loaded. It
-					// enables editing, and makes some
+					// The script that launches the bootstrap logic on 'domReady', so the document
+					// is fully editable even before the editing iframe is fully loaded (#4455).
 					var activationScript =
 						'<script id="cke_actscrpt" type="text/javascript">' +
-							'window.onload = function()' +
-							'{' +
-								// Call the temporary function for the editing
-								// boostrap.
-								'window.parent.CKEDITOR._["contentDomReady' + editor.name + '"]( window );' +
-							'}' +
+							'window.parent.CKEDITOR._["contentDomReady' + editor.name + '"]( window );' +
 						'</script>';
 
 					// Editing area bootstrap code.
@@ -411,6 +414,22 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							} );
 						}
 
+						// IE standard compliant in editing frame doesn't focus the editor when
+						// clicking outside actual content, manually apply the focus. (#1659)
+						if( CKEDITOR.env.ie
+							&& domDocument.$.compatMode == 'CSS1Compat' )
+						{
+							var htmlElement = domDocument.getDocumentElement();
+							htmlElement.on( 'mousedown', function( evt )
+							{
+								// Setting focus directly on editor doesn't work, we
+								// have to use here a temporary element to 'redirect'
+								// the focus.
+								if ( evt.data.getTarget().equals( htmlElement ) )
+									ieFocusGrabber.focus();
+							} );
+						}
+
 						var focusTarget = ( CKEDITOR.env.ie || CKEDITOR.env.webkit ) ?
 								domWindow : domDocument;
 
@@ -454,13 +473,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						if ( keystrokeHandler )
 							keystrokeHandler.attach( domDocument );
 
-						// Cancel default action for backspace in IE on control types. (#4047)
 						if ( CKEDITOR.env.ie )
 						{
-							editor.on( 'key', function( event )
+							// Cancel default action for backspace in IE on control types. (#4047)
+							domDocument.on( 'keydown', function( evt )
 							{
 								// Backspace.
-								var control = event.data.keyCode == 8
+								var control = evt.data.getKeystroke() == 8
 											  && editor.getSelection().getSelectedElement();
 								if ( control )
 								{
@@ -469,14 +488,31 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									// Remove manually.
 									control.remove();
 									editor.fire( 'saveSnapshot' );
-									event.cancel();
+									evt.cancel();
 								}
 							} );
+
+							// PageUp/PageDown scrolling is broken in document
+							// with standard doctype, manually fix it. (#4736)
+							if( domDocument.$.compatMode == 'CSS1Compat' )
+							{
+								var pageUpDownKeys = { 33 : 1, 34 : 1 };
+								domDocument.on( 'keydown', function( evt )
+								{
+									if( evt.data.getKeystroke() in pageUpDownKeys )
+									{
+										setTimeout( function ()
+										{
+											editor.getSelection().scrollIntoView();
+										}, 0 );
+									}
+								} );
+							}
 						}
 
 						// Adds the document body as a context menu target.
 						if ( editor.contextMenu )
-							editor.contextMenu.addTarget( domDocument );
+							editor.contextMenu.addTarget( domDocument, editor.config.browserContextMenuOnCtrl !== false );
 
 						setTimeout( function()
 							{
@@ -625,6 +661,25 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								else if ( editor.window )
 								{
 									editor.window.focus();
+
+									// Force the selection to happen, in this way
+									// we guarantee the focus will be there. (#4848)
+									if ( CKEDITOR.env.ie )
+									{
+										try
+										{
+											var sel = editor.getSelection();
+											sel = sel && sel.getNative();
+											var range = sel && sel.type && sel.createRange();
+											if ( range )
+											{
+													sel.empty();
+													range.select();
+											}
+										}
+										catch (e) {}
+									}
+
 									editor.selectionChange();
 								}
 							}
@@ -635,8 +690,60 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// Auto fixing on some document structure weakness to enhance usabilities. (#3190 and #3189)
 					editor.on( 'selectionChange', onSelectionChangeFixBody, null, null, 1 );
 				});
+
+			// Create an invisible element to grab focus.
+			if( CKEDITOR.env.ie )
+			{
+				var ieFocusGrabber;
+				editor.on( 'uiReady', function()
+				{
+					ieFocusGrabber = editor.container.append( CKEDITOR.dom.element.createFromHtml(
+					'<input tabindex="-1" style="position:absolute; left:-10000">' ) );
+
+					ieFocusGrabber.on( 'focus', function()
+						{
+							editor.focus();
+						} );
+				} );
+			}
 		}
 	});
+
+	// Fixing Firefox 'Back-Forward Cache' break design mode. (#4514)
+	if( CKEDITOR.env.gecko )
+	{
+		var topWin = window.top;
+
+		( function ()
+		{
+			var topBody = topWin.document.body;
+
+			if( !topBody )
+				topWin.addEventListener( 'load', arguments.callee, false );
+			else
+			{
+				topBody.setAttribute( 'onpageshow', topBody.getAttribute( 'onpageshow' )
+						+ ';event.persisted && CKEDITOR.tools.callFunction(' +
+						CKEDITOR.tools.addFunction( function()
+						{
+							var allInstances = CKEDITOR.instances,
+								editor,
+								doc;
+							for( var i in allInstances )
+							{
+								editor = allInstances[ i ];
+								doc = editor.document;
+								if( doc )
+								{
+									doc.$.designMode = 'off';
+									doc.$.designMode = 'on';
+								}
+							}
+						} ) + ')' );
+			}
+		} )();
+
+	}
 })();
 
 /**

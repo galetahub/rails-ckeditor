@@ -189,7 +189,7 @@ CKEDITOR.lang['ja'] =
 		matchWord			: '単語単位で一致',
 		matchCyclic			: '大文字/小文字区別一致',
 		replaceAll			: 'すべて置換え',
-		replaceSuccessMsg	: '%1 に置換しました。'
+		replaceSuccessMsg	: '%1 個置換しました。'
 	},
 
 	// Table Dialog
@@ -202,19 +202,19 @@ CKEDITOR.lang['ja'] =
 		rows		: '行',
 		columns		: '列',
 		border		: 'ボーダーサイズ',
-		align		: 'キャプションの整列',
+		align		: 'テーブルの整列',
 		alignNotSet	: '<なし>',
 		alignLeft	: '左',
 		alignCenter	: '中央',
 		alignRight	: '右',
-		width		: 'テーブル幅',
+		width		: '幅',
 		widthPx		: 'ピクセル',
 		widthPc		: 'パーセント',
-		height		: 'テーブル高さ',
+		height		: '高さ',
 		cellSpace	: 'セル内余白',
 		cellPad		: 'セル内間隔',
-		caption		: 'ｷｬﾌﾟｼｮﾝ',
-		summary		: 'テーブル目的/構造',
+		caption		: 'キャプション',
+		summary		: 'テーブルの概要',
 		headers		: 'テーブルヘッダ(th)',
 		headersNone		: 'なし',
 		headersColumn	: '初めの列のみ',
@@ -223,8 +223,8 @@ CKEDITOR.lang['ja'] =
 		invalidRows		: '行は0より大きな数値で入力してください。',
 		invalidCols		: '列は0より大きな数値で入力してください。',
 		invalidBorder	: 'ボーダーサイズは数値で入力してください。',
-		invalidWidth	: 'テーブル幅は数値で入力してください。',
-		invalidHeight	: 'テーブル高さは数値で入力してください。',
+		invalidWidth	: '幅は数値で入力してください。',
+		invalidHeight	: '高さは数値で入力してください。',
 		invalidCellSpacing	: 'セル内余白は数値で入力してください。',
 		invalidCellPadding	: 'セル内間隔は数値で入力してください。',
 
@@ -260,14 +260,14 @@ CKEDITOR.lang['ja'] =
 			invalidHeight	: 'セル高さは数値で入力してください。',
 			invalidRowSpan	: '縦幅(行数)は数値で入力してください。',
 			invalidColSpan	: '横幅(列数)は数値で入力してください。',
-			chooseColor : 'Choose' // MISSING
+			chooseColor : '色の選択'
 		},
 
 		row :
 		{
 			menu			: '行',
-			insertBefore	: '列の前に挿入',
-			insertAfter		: '列の後に挿入',
+			insertBefore	: '行の前に挿入',
+			insertAfter		: '行の後に挿入',
 			deleteRow		: '行削除'
 		},
 
@@ -385,20 +385,13 @@ CKEDITOR.lang['ja'] =
 		vSpace	: '縦間隔',
 		align		: '行揃え',
 		alignLeft	: '左',
-		alignAbsBottom: '下部(絶対的)',
-		alignAbsMiddle: '中央(絶対的)',
-		alignBaseline	: 'ベースライン',
-		alignBottom	: '下',
-		alignMiddle	: '中央',
 		alignRight	: '右',
-		alignTextTop	: 'テキスト上部',
-		alignTop	: '上',
 		preview	: 'プレビュー',
 		alertUrl	: 'イメージのURLを入力してください。',
 		linkTab	: 'リンク',
 		button2Img	: '選択したボタンを画像に置き換えますか？',
 		img2Button	: '選択した画像をボタンに置き換えますか？',
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing : 'イメージのURLを入力してください。'
 	},
 
 	// Flash Dialog
@@ -592,46 +585,46 @@ CKEDITOR.lang['ja'] =
 
 	colors :
 	{
-		'000' : 'Black',
-		'800000' : 'Maroon',
-		'8B4513' : 'Saddle Brown',
-		'2F4F4F' : 'Dark Slate Gray',
-		'008080' : 'Teal',
-		'000080' : 'Navy',
-		'4B0082' : 'Indigo',
-		'696969' : 'Dim Gray',
-		'B22222' : 'Fire Brick',
-		'A52A2A' : 'Brown',
-		'DAA520' : 'Golden Rod',
-		'006400' : 'Dark Green',
-		'40E0D0' : 'Turquoise',
-		'0000CD' : 'Medium Blue',
-		'800080' : 'Purple',
-		'808080' : 'Gray',
-		'F00' : 'Red',
-		'FF8C00' : 'Dark Orange',
-		'FFD700' : 'Gold',
-		'008000' : 'Green',
-		'0FF' : 'Cyan',
-		'00F' : 'Blue',
-		'EE82EE' : 'Violet',
-		'A9A9A9' : 'Dark Gray',
-		'FFA07A' : 'Light Salmon',
-		'FFA500' : 'Orange',
-		'FFFF00' : 'Yellow',
-		'00FF00' : 'Lime',
-		'AFEEEE' : 'Pale Turquoise',
-		'ADD8E6' : 'Light Blue',
-		'DDA0DD' : 'Plum',
-		'D3D3D3' : 'Light Grey',
-		'FFF0F5' : 'Lavender Blush',
-		'FAEBD7' : 'Antique White',
-		'FFFFE0' : 'Light Yellow',
-		'F0FFF0' : 'Honeydew',
-		'F0FFFF' : 'Azure',
-		'F0F8FF' : 'Alice Blue',
-		'E6E6FA' : 'Lavender',
-		'FFF' : 'White'
+		'000' : 'Black', // MISSING
+		'800000' : 'Maroon', // MISSING
+		'8B4513' : 'Saddle Brown', // MISSING
+		'2F4F4F' : 'Dark Slate Gray', // MISSING
+		'008080' : 'Teal', // MISSING
+		'000080' : 'Navy', // MISSING
+		'4B0082' : 'Indigo', // MISSING
+		'696969' : 'Dim Gray', // MISSING
+		'B22222' : 'Fire Brick', // MISSING
+		'A52A2A' : 'Brown', // MISSING
+		'DAA520' : 'Golden Rod', // MISSING
+		'006400' : 'Dark Green', // MISSING
+		'40E0D0' : 'Turquoise', // MISSING
+		'0000CD' : 'Medium Blue', // MISSING
+		'800080' : 'Purple', // MISSING
+		'808080' : 'Gray', // MISSING
+		'F00' : 'Red', // MISSING
+		'FF8C00' : 'Dark Orange', // MISSING
+		'FFD700' : 'Gold', // MISSING
+		'008000' : 'Green', // MISSING
+		'0FF' : 'Cyan', // MISSING
+		'00F' : 'Blue', // MISSING
+		'EE82EE' : 'Violet', // MISSING
+		'A9A9A9' : 'Dark Gray', // MISSING
+		'FFA07A' : 'Light Salmon', // MISSING
+		'FFA500' : 'Orange', // MISSING
+		'FFFF00' : 'Yellow', // MISSING
+		'00FF00' : 'Lime', // MISSING
+		'AFEEEE' : 'Pale Turquoise', // MISSING
+		'ADD8E6' : 'Light Blue', // MISSING
+		'DDA0DD' : 'Plum', // MISSING
+		'D3D3D3' : 'Light Grey', // MISSING
+		'FFF0F5' : 'Lavender Blush', // MISSING
+		'FAEBD7' : 'Antique White', // MISSING
+		'FFFFE0' : 'Light Yellow', // MISSING
+		'F0FFF0' : 'Honeydew', // MISSING
+		'F0FFFF' : 'Azure', // MISSING
+		'F0F8FF' : 'Alice Blue', // MISSING
+		'E6E6FA' : 'Lavender', // MISSING
+		'FFF' : 'White' // MISSING
 	},
 
 	scayt :
@@ -643,7 +636,7 @@ CKEDITOR.lang['ja'] =
 		toggle : 'SCAYT切替',
 		options : 'オプション',
 		langs : '言語',
-		moreSuggestions : 'More suggestions', // MISSING
+		moreSuggestions : '他の候補',
 		ignore : '無視',
 		ignoreAll : 'すべて無視',
 		addWord : '語句追加',
@@ -663,7 +656,7 @@ CKEDITOR.lang['ja'] =
 	},
 
 	maximize : '最大化',
-	minimize : 'Minimize', // MISSING
+	minimize : '最小化',
 
 	fakeobjects :
 	{
@@ -673,13 +666,16 @@ CKEDITOR.lang['ja'] =
 		unknown : 'Unknown Object'
 	},
 
-	resize : 'ドラックしてリサイズ',
+	resize : 'ドラッグしてリサイズ',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
-	}
+		title : '色選択',
+		highlight : 'ハイライト',
+		selected : '選択された色',
+		clear : 'クリア'
+	},
+
+	toolbarCollapse : 'ツールバーを閉じる',
+	toolbarExpand : 'ツールバーを開く'
 };

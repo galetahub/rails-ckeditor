@@ -467,6 +467,7 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 			this.theme.destroy( this );
 			this.fire( 'destroy' );
 			CKEDITOR.remove( this );
+			CKEDITOR.fire( 'instanceDestroyed', null, this );
 		},
 
 		/**

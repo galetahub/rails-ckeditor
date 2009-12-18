@@ -5,7 +5,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 CKEDITOR.skins.add( 'kama', (function()
 {
-	var preload = [];
+	var preload = [],
+		uiColorStylesheetId = 'cke_ui_color';
 
 	if ( CKEDITOR.env.ie && CKEDITOR.env.version < 7 )
 	{
@@ -89,12 +90,15 @@ CKEDITOR.skins.add( 'kama', (function()
 					uiColorMenuCss[ i ] = uiColorMenuCss[ i ].split( '{' );
 			}
 
-			function addStylesheet( document )
+			function getStylesheet( document )
 			{
-				var node = document.getHead().append( 'style' );
-				node.setAttribute( "id", "cke_ui_color" );
-				node.setAttribute( "type", "text/css" );
-
+				var node = document.getById( uiColorStylesheetId );
+				if( !node )
+				{
+					node = document.getHead().append( 'style' );
+					node.setAttribute( "id", uiColorStylesheetId );
+					node.setAttribute( "type", "text/css" );
+				}
 				return node;
 			}
 
@@ -105,10 +109,6 @@ CKEDITOR.skins.add( 'kama', (function()
 				{
 					if ( CKEDITOR.env.webkit )
 					{
-						// Truncate manually.
-						for ( i = 0 ; i < styleNodes[ id ].$.sheet.rules.length ; i++ )
-							styleNodes[ id ].$.sheet.removeRule( i );
-
 						for ( i = 0 ; i < styleContent.length ; i++ )
 						{
 							content = styleContent[ i ][ 1 ];
@@ -125,9 +125,9 @@ CKEDITOR.skins.add( 'kama', (function()
 							content = content.replace( replace[ r ][ 0 ], replace[ r ][ 1 ] );
 
 						if ( CKEDITOR.env.ie )
-							styleNodes[ id ].$.styleSheet.cssText = content;
+							styleNodes[ id ].$.styleSheet.cssText += content;
 						else
-							styleNodes[ id ].setHtml( content );
+							styleNodes[ id ].$.innerHTML += content;
 					}
 				}
 			}
@@ -146,8 +146,8 @@ CKEDITOR.skins.add( 'kama', (function()
 				setUiColor : function( color )
 				{
 					var cssContent,
-						uiStyle = addStylesheet( CKEDITOR.document ),
-						cssId = '#cke_' + editor.name.replace('.', '\\.');
+						uiStyle = getStylesheet( CKEDITOR.document ),
+						cssId = '#cke_' + CKEDITOR.tools.escapeCssSelector( editor.name );
 
 					var cssSelectors =
 						[
@@ -186,7 +186,7 @@ CKEDITOR.skins.add( 'kama', (function()
 				// Add stylesheet if missing.
 				if ( !iframe.getById( 'cke_ui_color' ) )
 				{
-					var node = addStylesheet( iframe );
+					var node = getStylesheet( iframe );
 					uiColorMenus.push( node );
 
 					var color = editor.getUiColor();
@@ -211,35 +211,22 @@ if ( CKEDITOR.dialog )
 				width = data.width,
 				height = data.height,
 				dialog = data.dialog,
-				contents = dialog.parts.contents,
-				standardsMode = !CKEDITOR.env.quirks;
+				contents = dialog.parts.contents;
 
 			if ( data.skin != 'kama' )
 				return;
 
 			contents.setStyles(
-				( CKEDITOR.env.ie || ( CKEDITOR.env.gecko && CKEDITOR.env.version < 10900 ) ) ?		// IE && FF2
-					{
-						width : width + 'px',
-						height : height + 'px'
-					}
-				:
-					{
-						// To avoid having scrollbars in the dialogs, we're
-						// (for now) using the "min-xxx" properties, for
-						// browsers which well support it (#3878).
-						'min-width' : width + 'px',
-						'min-height' : height + 'px'
-					});
-
-			if ( !CKEDITOR.env.ie )
-				return;
+				{
+					width : width + 'px',
+					height : height + 'px'
+				});
 
 			// Fix the size of the elements which have flexible lengths.
 			setTimeout( function()
 				{
-					var body = contents.getParent(),
-						innerDialog = body.getParent();
+					var innerDialog = dialog.parts.dialog.getChild( [ 0, 0, 0 ] ),
+						body = innerDialog.getChild( 0 );
 
 					// tc
 					var el = innerDialog.getChild( 2 );

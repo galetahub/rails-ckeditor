@@ -385,14 +385,7 @@ CKEDITOR.lang['en'] =
 		vSpace	: 'VSpace',
 		align		: 'Align',
 		alignLeft	: 'Left',
-		alignAbsBottom: 'Abs Bottom',
-		alignAbsMiddle: 'Abs Middle',
-		alignBaseline	: 'Baseline',
-		alignBottom	: 'Bottom',
-		alignMiddle	: 'Middle',
 		alignRight	: 'Right',
-		alignTextTop	: 'Text Top',
-		alignTop	: 'Top',
 		preview	: 'Preview',
 		alertUrl	: 'Please type the image URL',
 		linkTab	: 'Link',
@@ -681,5 +674,8 @@ CKEDITOR.lang['en'] =
 		highlight : 'Highlight',
 		selected : 'Selected',
 		clear : 'Clear'
-	}
+	},
+
+	toolbarCollapse : 'Collapse Toolbar',
+	toolbarExpand : 'Expand Toolbar'
 };

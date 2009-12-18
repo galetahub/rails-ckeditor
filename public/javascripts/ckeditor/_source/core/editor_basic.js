@@ -131,16 +131,17 @@ if ( !CKEDITOR.editor )
 	 */
 	CKEDITOR.editor.appendTo = function( elementOrId, config )
 	{
-		if ( typeof elementOrId != 'object' )
+		var element = elementOrId;
+		if ( typeof element != 'object' )
 		{
-			elementOrId = document.getElementById( elementOrId );
+			element = document.getElementById( elementOrId );
 
-			if ( !elementOrId )
+			if( !element )
 				throw '[CKEDITOR.editor.appendTo] The element with id "' + elementOrId + '" was not found.';
 		}
 
 		// Create the editor instance.
-		return new CKEDITOR.editor( config, elementOrId, CKEDITOR.ELEMENT_MODE_APPENDTO );
+		return new CKEDITOR.editor( config, element, CKEDITOR.ELEMENT_MODE_APPENDTO );
 	};
 
 	CKEDITOR.editor.prototype =

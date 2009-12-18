@@ -31,7 +31,7 @@ CKEDITOR.lang['fi'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle		: 'Tekstieditori, %1',
 
 	// Toolbar buttons without dialogs.
 	source			: 'Koodi',
@@ -88,14 +88,14 @@ CKEDITOR.lang['fi'] =
 		cssStyle		: 'Tyyli',
 		ok				: 'OK',
 		cancel			: 'Peruuta',
-		generalTab		: 'General', // MISSING
+		generalTab		: 'Yleinen',
 		advancedTab		: 'Lisäominaisuudet',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
-		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
-		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		validateNumberFailed	: 'Arvon pitää olla numero.',
+		confirmNewPage	: 'Kaikki tallentamattomat muutokset tähän sisältöön menetetään. Oletko varma, että haluat ladata uuden sivun?',
+		confirmCancel	: 'Jotkut asetuksista on muuttuneet. Oletko varma, että haluat sulkea valintaikkunan?',
 
 		// Put the voice-only part of the label in the span.
-		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
+		unavailable		: '%1<span class="cke_accessibility">, ei saatavissa</span>'
 	},
 
 	// Special char dialog.
@@ -129,7 +129,7 @@ CKEDITOR.lang['fi'] =
 		targetFrameName	: 'Kohdekehyksen nimi',
 		targetPopupName	: 'Popup ikkunan nimi',
 		popupFeatures	: 'Popup ikkunan ominaisuudet',
-		popupResizable	: 'Resizable', // MISSING
+		popupResizable	: 'Venytettävä',
 		popupStatusBar	: 'Tilarivi',
 		popupLocationBar	: 'Osoiterivi',
 		popupToolbar	: 'Vakiopainikkeet',
@@ -141,7 +141,7 @@ CKEDITOR.lang['fi'] =
 		popupLeft		: 'Vasemmalta (px)',
 		popupHeight		: 'Korkeus',
 		popupTop		: 'Ylhäältä (px)',
-		id				: 'Id', // MISSING
+		id				: 'Tunniste',
 		langDir			: 'Kielen suunta',
 		langDirNotSet	: '<ei asetettu>',
 		langDirLTR		: 'Vasemmalta oikealle (LTR)',
@@ -187,9 +187,9 @@ CKEDITOR.lang['fi'] =
 		notFoundMsg			: 'Etsittyä tekstiä ei löytynyt.',
 		matchCase			: 'Sama kirjainkoko',
 		matchWord			: 'Koko sana',
-		matchCyclic			: 'Match cyclic', // MISSING
+		matchCyclic			: 'Kierrä ympäri',
 		replaceAll			: 'Korvaa kaikki',
-		replaceSuccessMsg	: '%1 occurrence(s) replaced.' // MISSING
+		replaceSuccessMsg	: '%1 esiintymä(ä) korvattu.'
 	},
 
 	// Table Dialog
@@ -215,18 +215,18 @@ CKEDITOR.lang['fi'] =
 		cellPad		: 'Solujen sisennys',
 		caption		: 'Otsikko',
 		summary		: 'Yhteenveto',
-		headers		: 'Headers', // MISSING
-		headersNone		: 'None', // MISSING
-		headersColumn	: 'First column', // MISSING
-		headersRow		: 'First Row', // MISSING
-		headersBoth		: 'Both', // MISSING
-		invalidRows		: 'Number of rows must be a number greater than 0.', // MISSING
-		invalidCols		: 'Number of columns must be a number greater than 0.', // MISSING
-		invalidBorder	: 'Border size must be a number.', // MISSING
-		invalidWidth	: 'Table width must be a number.', // MISSING
-		invalidHeight	: 'Table height must be a number.', // MISSING
-		invalidCellSpacing	: 'Cell spacing must be a number.', // MISSING
-		invalidCellPadding	: 'Cell padding must be a number.', // MISSING
+		headers		: 'Ylätunnisteet',
+		headersNone		: 'Ei',
+		headersColumn	: 'Ensimmäinen sarake',
+		headersRow		: 'Ensimmäinen rivi',
+		headersBoth		: 'Molemmat',
+		invalidRows		: 'Rivien määrän täytyy olla suurempi kuin 0.',
+		invalidCols		: 'Sarakkeiden määrän täytyy olla suurempi kuin 0.',
+		invalidBorder	: 'Reunan koon täytyy olla numero.',
+		invalidWidth	: 'Taulun leveyden täytyy olla numero.',
+		invalidHeight	: 'Taulun korkeuden täytyy olla numero.',
+		invalidCellSpacing	: 'Solujen välin täytyy olla numero.',
+		invalidCellPadding	: 'Solujen sisennyksen täytyy olla numero.',
 
 		cell :
 		{
@@ -239,28 +239,28 @@ CKEDITOR.lang['fi'] =
 			mergeDown		: 'Yhdistä alla olevan kanssa',
 			splitHorizontal	: 'Jaa solu vaakasuunnassa',
 			splitVertical	: 'Jaa solu pystysuunnassa',
-			title			: 'Cell Properties', // MISSING
-			cellType		: 'Cell Type', // MISSING
-			rowSpan			: 'Rows Span', // MISSING
-			colSpan			: 'Columns Span', // MISSING
-			wordWrap		: 'Word Wrap', // MISSING
-			hAlign			: 'Horizontal Alignment', // MISSING
-			vAlign			: 'Vertical Alignment', // MISSING
-			alignTop		: 'Top', // MISSING
-			alignMiddle		: 'Middle', // MISSING
-			alignBottom		: 'Bottom', // MISSING
-			alignBaseline	: 'Baseline', // MISSING
-			bgColor			: 'Background Color', // MISSING
-			borderColor		: 'Border Color', // MISSING
-			data			: 'Data', // MISSING
-			header			: 'Header', // MISSING
-			yes				: 'Yes', // MISSING
-			no				: 'No', // MISSING
-			invalidWidth	: 'Cell width must be a number.', // MISSING
-			invalidHeight	: 'Cell height must be a number.', // MISSING
-			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
-			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			title			: 'Solun ominaisuudet',
+			cellType		: 'Solun tyyppi',
+			rowSpan			: 'Rivin jatkuvuus',
+			colSpan			: 'Solun jatkuvuus',
+			wordWrap		: 'Rivitys',
+			hAlign			: 'Horisontaali kohdistus',
+			vAlign			: 'Vertikaali kohdistus',
+			alignTop		: 'Ylös',
+			alignMiddle		: 'Keskelle',
+			alignBottom		: 'Alas',
+			alignBaseline	: 'Alas (teksti)',
+			bgColor			: 'Taustan väri',
+			borderColor		: 'Reunan väri',
+			data			: 'Data',
+			header			: 'Ylätunniste',
+			yes				: 'Kyllä',
+			no				: 'Ei',
+			invalidWidth	: 'Solun leveyden täytyy olla numero.',
+			invalidHeight	: 'Solun korkeuden täytyy olla numero.',
+			invalidRowSpan	: 'Rivin jatkuvuuden täytyy olla kokonaisluku.',
+			invalidColSpan	: 'Solun jatkuvuuden täytyy olla kokonaisluku.',
+			chooseColor : 'Valitse'
 		},
 
 		row :
@@ -307,7 +307,7 @@ CKEDITOR.lang['fi'] =
 		menu		: 'Lomakkeen ominaisuudet',
 		action		: 'Toiminto',
 		method		: 'Tapa',
-		encoding	: 'Encoding', // MISSING
+		encoding	: 'Enkoodaus',
 		target		: 'Kohde',
 		targetNotSet	: '<ei asetettu>',
 		targetNew	: 'Uusi ikkuna (_blank)',
@@ -385,40 +385,33 @@ CKEDITOR.lang['fi'] =
 		vSpace	: 'Pystytila',
 		align		: 'Kohdistus',
 		alignLeft	: 'Vasemmalle',
-		alignAbsBottom: 'Aivan alas',
-		alignAbsMiddle: 'Aivan keskelle',
-		alignBaseline	: 'Alas (teksti)',
-		alignBottom	: 'Alas',
-		alignMiddle	: 'Keskelle',
 		alignRight	: 'Oikealle',
-		alignTextTop	: 'Ylös (teksti)',
-		alignTop	: 'Ylös',
 		preview	: 'Esikatselu',
 		alertUrl	: 'Kirjoita kuvan osoite (URL)',
 		linkTab	: 'Linkki',
-		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
-		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		button2Img	: 'Haluatko muuntaa valitun kuvanäppäimen kuvaksi?',
+		img2Button	: 'Haluatko muuntaa valitun kuvan kuvanäppäimeksi?',
+		urlMissing : 'Kuvan lähdeosoite puuttuu.'
 	},
 
 	// Flash Dialog
 	flash :
 	{
 		properties		: 'Flash ominaisuudet',
-		propertiesTab	: 'Properties', // MISSING
+		propertiesTab	: 'Ominaisuudet',
 		title		: 'Flash ominaisuudet',
 		chkPlay		: 'Automaattinen käynnistys',
 		chkLoop		: 'Toisto',
 		chkMenu		: 'Näytä Flash-valikko',
-		chkFull		: 'Allow Fullscreen', // MISSING
+		chkFull		: 'Salli kokoruututila',
  		scale		: 'Levitä',
 		scaleAll		: 'Näytä kaikki',
 		scaleNoBorder	: 'Ei rajaa',
 		scaleFit		: 'Tarkka koko',
-		access			: 'Script Access', // MISSING
-		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
+		access			: 'Skriptien pääsy',
+		accessAlways	: 'Aina',
+		accessSameDomain	: 'Sama verkkotunnus',
+		accessNever	: 'Ei koskaan',
 		align		: 'Kohdistus',
 		alignLeft	: 'Vasemmalle',
 		alignAbsBottom: 'Aivan alas',
@@ -429,37 +422,37 @@ CKEDITOR.lang['fi'] =
 		alignRight	: 'Oikealle',
 		alignTextTop	: 'Ylös (teksti)',
 		alignTop	: 'Ylös',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
+		quality		: 'Laatu',
+		qualityBest		 : 'Paras',
+		qualityHigh		 : 'Korkea',
+		qualityAutoHigh	 : 'Automaattinen korkea',
+		qualityMedium	 : 'Keskitaso',
+		qualityAutoLow	 : 'Automaattinen matala',
+		qualityLow		 : 'Matala',
+		windowModeWindow	 : 'Ikkuna',
+		windowModeOpaque	 : 'Läpinäkyvyys',
+		windowModeTransparent	 : 'Läpinäkyvä',
+		windowMode	: 'Ikkuna tila',
+		flashvars	: 'Muuttujat Flash:lle',
 		bgcolor	: 'Taustaväri',
 		width	: 'Leveys',
 		height	: 'Korkeus',
 		hSpace	: 'Vaakatila',
 		vSpace	: 'Pystytila',
 		validateSrc : 'Linkille on kirjoitettava URL',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		validateWidth : 'Leveyden täytyy olla numero.',
+		validateHeight : 'Korkeuden täytyy olla numero.',
+		validateHSpace : 'Vaakatilan täytyy olla numero.',
+		validateVSpace : 'Pystytilan täytyy olla numero.'
 	},
 
 	// Speller Pages Dialog
 	spellCheck :
 	{
 		toolbar			: 'Tarkista oikeinkirjoitus',
-		title			: 'Spell Check', // MISSING
-		notAvailable	: 'Sorry, but service is unavailable now.', // MISSING
-		errorLoading	: 'Error loading application service host: %s.', // MISSING
+		title			: 'Oikoluku',
+		notAvailable	: 'Valitettavasti oikoluku ei ole käytössä tällä hetkellä.',
+		errorLoading	: 'Virhe ladattaessa oikolukupalvelua isännältä: %s.',
 		notInDic		: 'Ei sanakirjassa',
 		changeTo		: 'Vaihda',
 		btnIgnore		: 'Jätä huomioimatta',
@@ -484,7 +477,7 @@ CKEDITOR.lang['fi'] =
 
 	elementsPath :
 	{
-		eleTitle : '%1 element' // MISSING
+		eleTitle : '%1 elementti'
 	},
 
 	numberedlist : 'Numerointi',
@@ -540,19 +533,19 @@ CKEDITOR.lang['fi'] =
 	stylesCombo :
 	{
 		label : 'Tyyli',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		voiceLabel : 'Tyylit',
+		panelVoiceLabel : 'Valitse tyyli',
+		panelTitle1 : 'Lohkojen tyylit',
+		panelTitle2 : 'Rivinsisäiset tyylit',
+		panelTitle3 : 'Objektien tyylit'
 	},
 
 	format :
 	{
 		label : 'Muotoilu',
-		voiceLabel : 'Format', // MISSING
+		voiceLabel : 'Muotoilu',
 		panelTitle : 'Muotoilu',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		panelVoiceLabel : 'Valitse kappaleen muotoilu',
 
 		tag_p : 'Normaali',
 		tag_pre : 'Muotoiltu',
@@ -563,23 +556,23 @@ CKEDITOR.lang['fi'] =
 		tag_h4 : 'Otsikko 4',
 		tag_h5 : 'Otsikko 5',
 		tag_h6 : 'Otsikko 6',
-		tag_div : 'Normal (DIV)' // MISSING
+		tag_div : 'Normaali (DIV)'
 	},
 
 	font :
 	{
-		label : 'Fontti',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Fontti',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label : 'Kirjaisinlaji',
+		voiceLabel : 'Kirjaisinlaji',
+		panelTitle : 'Kirjaisinlaji',
+		panelVoiceLabel : 'Valitse kirjaisinlaji'
 	},
 
 	fontSize :
 	{
 		label : 'Koko',
-		voiceLabel : 'Font Size', // MISSING
+		voiceLabel : 'Kirjaisimen koko',
 		panelTitle : 'Koko',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		panelVoiceLabel : 'Valitse kirjaisimen koko'
 	},
 
 	colorButton :
@@ -592,94 +585,97 @@ CKEDITOR.lang['fi'] =
 
 	colors :
 	{
-		'000' : 'Black',
-		'800000' : 'Maroon',
-		'8B4513' : 'Saddle Brown',
-		'2F4F4F' : 'Dark Slate Gray',
-		'008080' : 'Teal',
-		'000080' : 'Navy',
-		'4B0082' : 'Indigo',
-		'696969' : 'Dim Gray',
-		'B22222' : 'Fire Brick',
-		'A52A2A' : 'Brown',
-		'DAA520' : 'Golden Rod',
-		'006400' : 'Dark Green',
-		'40E0D0' : 'Turquoise',
-		'0000CD' : 'Medium Blue',
-		'800080' : 'Purple',
-		'808080' : 'Gray',
-		'F00' : 'Red',
-		'FF8C00' : 'Dark Orange',
-		'FFD700' : 'Gold',
-		'008000' : 'Green',
-		'0FF' : 'Cyan',
-		'00F' : 'Blue',
-		'EE82EE' : 'Violet',
-		'A9A9A9' : 'Dark Gray',
-		'FFA07A' : 'Light Salmon',
-		'FFA500' : 'Orange',
-		'FFFF00' : 'Yellow',
-		'00FF00' : 'Lime',
-		'AFEEEE' : 'Pale Turquoise',
-		'ADD8E6' : 'Light Blue',
-		'DDA0DD' : 'Plum',
-		'D3D3D3' : 'Light Grey',
-		'FFF0F5' : 'Lavender Blush',
-		'FAEBD7' : 'Antique White',
-		'FFFFE0' : 'Light Yellow',
-		'F0FFF0' : 'Honeydew',
-		'F0FFFF' : 'Azure',
-		'F0F8FF' : 'Alice Blue',
-		'E6E6FA' : 'Lavender',
-		'FFF' : 'White'
+		'000' : 'Black', // MISSING
+		'800000' : 'Maroon', // MISSING
+		'8B4513' : 'Saddle Brown', // MISSING
+		'2F4F4F' : 'Dark Slate Gray', // MISSING
+		'008080' : 'Teal', // MISSING
+		'000080' : 'Navy', // MISSING
+		'4B0082' : 'Indigo', // MISSING
+		'696969' : 'Dim Gray', // MISSING
+		'B22222' : 'Fire Brick', // MISSING
+		'A52A2A' : 'Brown', // MISSING
+		'DAA520' : 'Golden Rod', // MISSING
+		'006400' : 'Dark Green', // MISSING
+		'40E0D0' : 'Turquoise', // MISSING
+		'0000CD' : 'Medium Blue', // MISSING
+		'800080' : 'Purple', // MISSING
+		'808080' : 'Gray', // MISSING
+		'F00' : 'Red', // MISSING
+		'FF8C00' : 'Dark Orange', // MISSING
+		'FFD700' : 'Gold', // MISSING
+		'008000' : 'Green', // MISSING
+		'0FF' : 'Cyan', // MISSING
+		'00F' : 'Blue', // MISSING
+		'EE82EE' : 'Violet', // MISSING
+		'A9A9A9' : 'Dark Gray', // MISSING
+		'FFA07A' : 'Light Salmon', // MISSING
+		'FFA500' : 'Orange', // MISSING
+		'FFFF00' : 'Yellow', // MISSING
+		'00FF00' : 'Lime', // MISSING
+		'AFEEEE' : 'Pale Turquoise', // MISSING
+		'ADD8E6' : 'Light Blue', // MISSING
+		'DDA0DD' : 'Plum', // MISSING
+		'D3D3D3' : 'Light Grey', // MISSING
+		'FFF0F5' : 'Lavender Blush', // MISSING
+		'FAEBD7' : 'Antique White', // MISSING
+		'FFFFE0' : 'Light Yellow', // MISSING
+		'F0FFF0' : 'Honeydew', // MISSING
+		'F0FFFF' : 'Azure', // MISSING
+		'F0F8FF' : 'Alice Blue', // MISSING
+		'E6E6FA' : 'Lavender', // MISSING
+		'FFF' : 'White' // MISSING
 	},
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title : 'Oikolue kirjoitettaessa',
+		enable : 'Ota käyttöön oikoluku kirjoitettaessa',
+		disable : 'Poista käytöstä oikoluku kirjoitetaessa',
+		about : 'Tietoja oikoluvusta kirjoitetaessa',
+		toggle : 'Vaihda oikoluku kirjoittaessa tilaa',
+		options : 'Asetukset',
+		langs : 'Kielet',
+		moreSuggestions : 'Lisää ehdotuksia',
+		ignore : 'Ohita',
+		ignoreAll : 'Ohita kaikki',
+		addWord : 'Lisää sana',
+		emptyDic : 'Sanakirjan nimi on annettava.',
+		optionsTab : 'Asetukset',
+		languagesTab : 'Kielet',
+		dictionariesTab : 'Sanakirjat',
+		aboutTab : 'Tietoa'
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title : 'Tietoa CKEditorista',
+		dlgTitle : 'Tietoa CKEditorista',
+		moreInfo : 'Lisenssitiedot löytyvät kotisivuiltamme:',
+		copy : 'Copyright &copy; $1. Kaikki oikeuden pidätetään.'
 	},
 
-	maximize : 'Maximize', // MISSING
-	minimize : 'Minimize', // MISSING
+	maximize : 'Suurenna',
+	minimize : 'Pienennä',
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor : 'Ankkuri',
+		flash : 'Flash animaatio',
+		div : 'Sivun vaihto',
+		unknown : 'Tuntematon objekti'
 	},
 
-	resize : 'Drag to resize', // MISSING
+	resize : 'Raahaa muuttaaksesi kokoa',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
-	}
+		title : 'Valitse väri',
+		highlight : 'Korostus',
+		selected : 'Valittu',
+		clear : 'Poista'
+	},
+
+	toolbarCollapse : 'Collapse Toolbar', // MISSING
+	toolbarExpand : 'Expand Toolbar' // MISSING
 };

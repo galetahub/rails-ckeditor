@@ -127,6 +127,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	function addItemsToList( list, items, priority )
 	{
+		if( typeof items == 'function' )
+			items = [ items ];
+
 		var i, j,
 			listLength = list.length,
 			itemsLength = items && items.length;

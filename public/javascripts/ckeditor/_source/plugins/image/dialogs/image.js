@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -195,6 +195,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	var imageDialog = function( editor, dialogType )
 	{
+		var previewPreloader;
+
 		var onImgLoadEvent = function()
 		{
 			// Image is ready.
@@ -212,7 +214,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				resetSize( this );
 
 			if ( this.firstLoad )
-				switchLockRatio( this, 'check' );
+				CKEDITOR.tools.setTimeout( function(){ switchLockRatio( this, 'check' ); }, 0, this );
+
 			this.firstLoad = false;
 			this.dontResetSize = false;
 		};
@@ -253,15 +256,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				this.firstLoad = true;
 				this.addLink = false;
 
-				//Hide loader.
-				CKEDITOR.document.getById( 'ImagePreviewLoader' ).setStyle( 'display', 'none' );
-				// Preview
-				this.preview = CKEDITOR.document.getById( 'previewImage' );
-
 				var editor = this.getParentEditor(),
 					sel = this.getParentEditor().getSelection(),
 					element = sel.getSelectedElement(),
 					link = element && element.getAscendant( 'a' );
+
+				//Hide loader.
+				CKEDITOR.document.getById( 'ImagePreviewLoader' ).setStyle( 'display', 'none' );
+				// Create the preview before setup the dialog contents.
+				previewPreloader = new CKEDITOR.dom.element( 'img', editor.document );
+				this.preview = CKEDITOR.document.getById( 'previewImage' );
 
 				// Copy of the image
 				this.originalElement = editor.document.createElement( 'img' );
@@ -492,8 +496,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													original.on( 'error', onImgLoadErrorEvent, dialog );
 													original.on( 'abort', onImgLoadErrorEvent, dialog );
 													original.setAttribute( 'src', newUrl );
-													dialog.preview.setAttribute( 'src', newUrl );
 
+													// Query the preloader to figure out the url impacted by based href.
+													previewPreloader.setAttribute( 'src', newUrl );
+													dialog.preview.setAttribute( 'src', previewPreloader.$.src );
 													updatePreview( dialog );
 												}
 												// Dont show preview if no URL given.
@@ -1053,7 +1059,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 											'<div id="ImagePreviewLoader" style="display:none"><div class="loading">&nbsp;</div></div>'+
 											'<div id="ImagePreviewBox">'+
 											'<a href="javascript:void(0)" target="_blank" onclick="return false;" id="previewLink">'+
-											'<img id="previewImage" src="" alt="" /></a>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '+
+											'<img id="previewImage" alt="" /></a>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. '+
 											'Maecenas feugiat consequat diam. Maecenas metus. Vivamus diam purus, cursus a, commodo non, facilisis vitae, '+
 											'nulla. Aenean dictum lacinia tortor. Nunc iaculis, nibh non iaculis aliquam, orci felis euismod neque, sed ornare massa mauris sed velit. Nulla pretium mi et risus. Fusce mi pede, tempor id, cursus ac, ullamcorper nec, enim. Sed tortor. Curabitur molestie. Duis velit augue, condimentum at, ultrices a, luctus ut, orci. Donec pellentesque egestas eros. Integer cursus, augue in cursus faucibus, eros pede bibendum sem, in tempus tellus justo quis ligula. Etiam eget tortor. Vestibulum rutrum, est ut placerat elementum, lectus nisl aliquam velit, tempor aliquam eros nunc nonummy metus. In eros metus, gravida a, gravida sed, lobortis id, turpis. Ut ultrices, ipsum at venenatis fringilla, sem nulla lacinia tellus, eget aliquet turpis mauris non enim. Nam turpis. Suspendisse lacinia. Curabitur ac tortor ut ipsum egestas elementum. Nunc imperdiet gravida mauris.' +
 											'</div>'+'</div>'

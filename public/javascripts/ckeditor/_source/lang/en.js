@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -506,11 +506,10 @@ CKEDITOR.lang['en'] =
 
 	pastefromword :
 	{
+		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?',
 		toolbar : 'Paste from Word',
 		title : 'Paste from Word',
-		advice : 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit <strong>OK</strong>.',
-		ignoreFontFace : 'Ignore Font Face definitions',
-		removeStyle : 'Remove Styles definitions'
+		error : 'It was not possible to clean up the pasted data due to an internal error'
 	},
 
 	pasteText :
@@ -558,6 +557,23 @@ CKEDITOR.lang['en'] =
 		tag_h6 : 'Heading 6',
 		tag_div : 'Normal (DIV)'
 	},
+
+	div :
+	{
+		title				: 'Create Div Container',
+		toolbar				: 'Create Div Container',
+		cssClassInputLabel	: 'Stylesheet Classes',
+		styleSelectLabel	: 'Style',
+		IdInputLabel		: 'Id',
+		languageCodeInputLabel	: ' Language Code',
+		inlineStyleInputLabel	: 'Inline Style',
+		advisoryTitleInputLabel	: 'Advisory Title',
+		langDirLabel		: 'Language Direction',
+		langDirLTRLabel		: 'Left to Right (LTR)',
+		langDirRTLLabel		: 'Right to Left (RTL)',
+		edit				: 'Edit Div',
+		remove				: 'Remove Div'
+  	},
 
 	font :
 	{

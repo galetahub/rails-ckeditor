@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -86,7 +86,8 @@ CKEDITOR.resourceManager.prototype =
 		if ( this.registered[ name ] )
 			throw '[CKEDITOR.resourceManager.add] The resource name "' + name + '" is already registered.';
 
-		this.registered[ name ] = definition || {};
+		CKEDITOR.fire( name + CKEDITOR.tools.capitalize( this.fileName ) + 'Ready',
+				this.registered[ name ] = definition || {} );
 	},
 
 	/**

@@ -1,18 +1,11 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
 // This file is not required by CKEditor and may be safely ignored.
 // It is just a helper file that displays a red message about browser compatibility
 // at the top of the samples (if incompatible browser is detected).
-
-// Firebug has been presented some bugs with console. It must be "initialized"
-// before the page load to work.
-// FIXME: Remove the following in the future, if Firebug gets fixed.
-if ( typeof console != 'undefined' )
-	console.log();
-
 
 if ( window.CKEDITOR )
 {
@@ -51,7 +44,8 @@ if ( window.CKEDITOR )
 
 			html += '</p><p>With non compatible browsers, you should still be able to see and edit the contents (HTML) in a plain text field.</p>';
 
-			document.getElementById( 'alerts' ).innerHTML = html;
+			var alertsEl = document.getElementById( 'alerts' );
+			alertsEl && ( alertsEl.innerHTML = html );
 		};
 
 		var onload = function()

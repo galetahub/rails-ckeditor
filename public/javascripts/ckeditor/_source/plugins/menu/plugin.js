@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -137,7 +137,7 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 				{
 					panel = this._.panel = new CKEDITOR.ui.floatPanel( this.editor, CKEDITOR.document.getBody(),
 						{
-							css : [ CKEDITOR.getUrl( editor.skinPath + 'editor.css' ) ],
+							css : editor.skin.editor.css,
 							level : this._.level - 1,
 							className : editor.skinClass + ' cke_contextmenu'
 						},
@@ -381,4 +381,4 @@ CKEDITOR.config.menu_groups =
 	'form,' +
 	'tablecell,tablecellproperties,tablerow,tablecolumn,table,'+
 	'anchor,link,image,flash,' +
-	'checkbox,radio,textfield,hiddenfield,imagebutton,button,select,textarea';
+	'checkbox,radio,textfield,hiddenfield,imagebutton,button,select,textarea,div';

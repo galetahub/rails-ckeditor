@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -43,6 +43,8 @@ body .cke_dialog
 
 	/* IE6 does not support full color transparent PNG. */
 	_background-image: url(images/sprites_ie6.png);
+	/* Dialog corner parts require a negative z-index to avoid covering dialog body. (#4954) */
+	_z-index: -1;
 }
 
 .cke_skin_v2 .cke_dialog_tl

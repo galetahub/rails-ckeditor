@@ -3,8 +3,6 @@ Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
-//CKEDITOR.plugins.load( 'embed' );
-
 CKEDITOR.editorConfig = function( config )
 {
   config.PreserveSessionOnFileBrowser = true;
@@ -23,7 +21,8 @@ CKEDITOR.editorConfig = function( config )
   
   //config.startupFocus = true;
   
-  config.extraPlugins = "embed"; // works only with en, ru, ua languages
+  // works only with en, ru, uk languages
+  config.extraPlugins = "embed,attachment";
   
   config.toolbar = 'Easy';
   
@@ -38,6 +37,6 @@ CKEDITOR.editorConfig = function( config )
         ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
         ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
         ['Link','Unlink','Anchor'],
-        ['Image','Embed','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
+        ['Image','Embed','Flash','Attachment','Table','HorizontalRule','Smiley','SpecialChar','PageBreak']
     ];
 };

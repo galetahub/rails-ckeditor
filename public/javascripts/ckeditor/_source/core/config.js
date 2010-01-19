@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -40,7 +40,7 @@ CKEDITOR.config =
 	 * // Do not load any custom configuration file.
 	 * CKEDITOR.replace( 'myfiled', { customConfig : '' } );
 	 */
-	customConfig : CKEDITOR.getUrl( 'config.js' ),
+	customConfig : 'config.js',
 
 	/**
 	 * Whether the replaced element (usually a textarea) is to be updated
@@ -167,6 +167,20 @@ CKEDITOR.config =
 	docType : '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
 
 	/**
+	 * Sets the 'id' attribute to be used on body if it doesn't have one.
+	 * @type String
+	 * @default ''
+	 */
+	bodyId : '',
+
+	/**
+	 * Sets the 'class' attribute to be used on body if it doesn't have one.
+	 * @type String
+	 * @default ''
+	 */
+	bodyClass : '',
+
+	/**
 	 * Indicates whether the contents to be edited are being inputted as a full
 	 * HTML page. A full page includes the &lt;html&gt;, &lt;head&gt; and
 	 * &lt;body&gt; tags. The final output will also reflect this setting,
@@ -198,7 +212,7 @@ CKEDITOR.config =
 	 * @type String
 	 * @example
 	 */
-	plugins : 'about,basicstyles,blockquote,button,clipboard,colorbutton,colordialog,contextmenu,elementspath,enterkey,entities,filebrowser,find,flash,font,format,forms,horizontalrule,htmldataprocessor,image,indent,justify,keystrokes,link,list,maximize,newpage,pagebreak,pastefromword,pastetext,popup,preview,print,removeformat,resize,save,scayt,smiley,showblocks,sourcearea,stylescombo,table,tabletools,specialchar,tab,templates,toolbar,undo,wysiwygarea,wsc',
+	plugins : 'about,basicstyles,blockquote,button,clipboard,colorbutton,colordialog,contextmenu,div,elementspath,enterkey,entities,filebrowser,find,flash,font,format,forms,horizontalrule,htmldataprocessor,image,indent,justify,keystrokes,link,list,maximize,newpage,pagebreak,pastefromword,pastetext,popup,preview,print,removeformat,resize,save,scayt,smiley,showblocks,showborders,sourcearea,stylescombo,table,tabletools,specialchar,tab,templates,toolbar,undo,wysiwygarea,wsc',
 
 	/**
 	 * List of additional plugins to be loaded. This is a tool setting which
@@ -283,7 +297,6 @@ CKEDITOR.config =
 	 * config.baseFloatZIndex = 2000
 	 */
 	baseFloatZIndex : 10000
-
 };
 
 // PACKAGER_RENAME( CKEDITOR.config )

@@ -6,14 +6,15 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.0.2
+CKEditor version: 3.1
 SWFUpload version: 2.2.0
+Rails version: 2.3.x
 
-http://ckeditor.com/
-http://swfupload.org/
+"ckeditor.com":http://ckeditor.com/
+"swfupload.org":http://swfupload.org/
 
 Demo appication:
-http://github.com/galetahub/rails-ckeditor-demo-app
+"rails-ckeditor-demo-app":http://github.com/galetahub/rails-ckeditor-demo-app
 
 h2. Install
 

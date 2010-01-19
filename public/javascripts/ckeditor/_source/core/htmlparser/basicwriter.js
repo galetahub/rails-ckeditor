@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -117,6 +117,7 @@ CKEDITOR.htmlParser.basicWriter = CKEDITOR.tools.createClass(
 		reset : function()
 		{
 			this._.output = [];
+			this._.indent = false;
 		},
 
 		/**

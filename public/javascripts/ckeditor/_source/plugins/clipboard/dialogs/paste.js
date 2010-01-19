@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -118,7 +118,7 @@ CKEDITOR.dialog.add( 'paste', function( editor )
 				html = iframe.$.contentWindow.document.body.innerHTML;
 
 			setTimeout( function(){
-				editor.insertHtml( html );
+				editor.fire( 'paste', { 'html' : html } );
 			}, 0 );
 
 		},

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -34,6 +34,52 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	<h1>
 		CKEditor Changelog
 	</h1>
+	<h3>
+		CKEditor 3.1</h3>
+	<p>
+		New features:</p>
+	<ul>
+		<li><a href="http://dev.fckeditor.net/ticket/4067">#4067</a> : Introduced the full page editing support (from &lt;html&gt; to &lt;/html&gt;).</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4228">#4228</a> : Introduced the Shared Spaces feature.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4379">#4379</a> : Introduced the new powerful pasting system and word cleanup procedure, including enhancements to the paste as plain text feature.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/2872">#2872</a> : Introduced the new native PHP API, the first standardized server side support.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4210">#4210</a> : Added CKEditor plugin for jQuery.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/2885">#2885</a> : Added 'div' dialog and corresponding context menu options.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4574">#4574</a> : Added the table merging tools and corresponding context menu options.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4340">#4340</a> : Added the email protection option for link dialog.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4463">#4463</a> : Added inline CSS support in all places where custom stylesheet could apply.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3881">#3881</a> : Added color dialog for 'more color' option in color buttons.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4341">#4341</a> : Added the 'showborder' plugin.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4549">#4549</a> : Make the anti-cache query string configurable.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4708">#4708</a> : Added the 'htmlEncodeOutput' config option.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4342">#4342</a> : Introduced the bodyId and bodyClass settings to specify the id and class. to be used in the editing area at runtime.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3401">#3401</a> : Introduced the baseHref setting so it's possible to set the URL to be used to resolve absolute and relative URLs in the contents.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4729">#4729</a> : Added support to fake elements for comments.</li>
+	</ul>
+	<p>
+		Fixed issues:</p>
+	<ul>
+		<li><a href="http://dev.fckeditor.net/ticket/4707">#4707</a> : Fixed invalid link is requested in image preview.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4461">#4461</a> : Fixed toolbar separator line along side combo enlarging the toolbar height.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4596">#4596</a> : Fixed image re-size lock buttons aren't accessible in high-contrast mode.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4676">#4676</a> : Fixed editing tables using table properties dialog overwrites original style values.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4714">#4714</a> : Fixed IE6 JavaScript error when editing flash by commit 'Flash' dialog.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3905">#3905</a> : Fixed 'wysiwyg' mode causes unauthenticated content warnings over SSL in FF 3.5.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4768">#4768</a> : Fixed open context menu in IE throws js error when focus is not inside document.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4822">#4822</a> : Fixed applying 'Headers' to existing table does not work in IE.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4855">#4855</a> : Fixed toolbar doesn't wrap well for 'v2' skin in all browsers.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4882">#4882</a> : Fixed auto detect paste from MS-Word is not working for Safari.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4882">#4882</a> : Fixed unexpected margin style left behind on content cleaning up from MS-Word.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4896">#4896</a> : Fixed paste nested list from MS-Word with measurement units set to cm is broken.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4899">#4899</a> : Fixed unable to undo pre-formatted style.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4900">#4900</a> : Fixed ratio-lock inconsistent between browsers.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4901">#4901</a> : Fixed unable to edit any link with popup window's features in Firefox.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4904">#4904</a> : Fixed when paste happen from dialog, it always throw JavaScript error.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4905">#4905</a> : Fixed paste plain text result incorrect when content from dialog.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4889">#4889</a> : Fixed unable to undo 'New Page' command after typing inside editor.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4892">#4892</a> : Fixed table alignment style is not properly represented by the wrapping div.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4918">#4918</a> : Fixed switching mode when maximized is showing background page contents.</li>
+	</ul>
 	<h3>
 		CKEditor 3.0.2</h3>
 	<p>
@@ -387,7 +433,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			CKEditor - The text editor for Internet - <a href="http://ckeditor.com/">http://ckeditor.com</a>
 		</p>
 		<p id="copy">
-			Copyright &copy; 2003-2009, <a href="http://cksource.com/">CKSource</a> - Frederico
+			Copyright &copy; 2003-2010, <a href="http://cksource.com/">CKSource</a> - Frederico
 			Knabben. All rights reserved.
 		</p>
 	</div>

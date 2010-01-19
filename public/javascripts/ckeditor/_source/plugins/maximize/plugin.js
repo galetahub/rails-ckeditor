@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -114,7 +114,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					editorFocus : false,
 					exec : function()
 					{
-						var container = editor.container.getChild( [ 0, 0 ] );
+						var container = editor.container.getChild( 0 );
 						var contents = editor.getThemeSpace( 'contents' );
 
 						// Save current selection and scroll position in editing area.
@@ -165,8 +165,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									} );
 							}
 
-							// Scroll to the top left.
-							mainWindow.$.scrollTo( 0, 0 );
+							// Scroll to the top left (IE needs some time for it - #4923).
+							CKEDITOR.env.ie ?
+								setTimeout( function() { mainWindow.$.scrollTo( 0, 0 ); }, 0 ) :
+								mainWindow.$.scrollTo( 0, 0 );
 
 							// Resize and move to top left.
 							var viewPaneSize = mainWindow.getViewPaneSize();
@@ -212,7 +214,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							}
 
 							// Restore the window scroll position.
-							mainWindow.$.scrollTo( outerScroll.x, outerScroll.y );
+							CKEDITOR.env.ie ?
+								setTimeout( function() { mainWindow.$.scrollTo( outerScroll.x, outerScroll.y ); }, 0 ) :
+								mainWindow.$.scrollTo( outerScroll.x, outerScroll.y );
 
 							// Remove cke_maximized class.
 							container.removeClass( 'cke_maximized' );

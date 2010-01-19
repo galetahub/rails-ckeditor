@@ -29,6 +29,11 @@ module CkeditorHelper
     image = case extname.to_s
       when '.swf' then '/javascripts/ckeditor/images/swf.gif'
       when '.pdf' then '/javascripts/ckeditor/images/pdf.gif'
+      when '.doc', '.txt' then '/javascripts/ckeditor/images/doc.gif'
+      when '.mp3' then '/javascripts/ckeditor/images/mp3.gif'
+      when '.rar', '.zip', '.tg' then '/javascripts/ckeditor/images/rar.gif'
+      when '.xls' then '/javascripts/ckeditor/images/xls.gif'
+      else '/javascripts/ckeditor/images/ckfnothumb.gif'
     end
     
     image_tag(image, :alt=>path, :title=>filename, :onerror=>"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class=>'image')

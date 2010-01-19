@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -49,6 +49,21 @@ CKEDITOR.tools.extend( CKEDITOR.dom.document.prototype,
 					});
 
 				this.getHead().append( link );
+			}
+		},
+
+		appendStyleText : function( cssStyleText )
+		{
+			if ( this.$.createStyleSheet )
+			{
+				var styleSheet = this.$.createStyleSheet( "" );
+				styleSheet.cssText = cssStyleText ;
+			}
+			else
+			{
+				var style = new CKEDITOR.dom.element( 'style', this );
+				style.append( new CKEDITOR.dom.text( cssStyleText, this ) );
+				this.getHead().append( style );
 			}
 		},
 

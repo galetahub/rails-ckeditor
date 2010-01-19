@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -33,6 +33,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		if ( !customConfig )
 			return false;
 
+		customConfig = CKEDITOR.getUrl( customConfig );
+
 		var loadedConfig = loadConfigLoaded[ customConfig ] || ( loadConfigLoaded[ customConfig ] = {} );
 
 		// If the custom config has already been downloaded, reuse it.
@@ -44,7 +46,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			// If there is no other customConfig in the chain, fire the
 			// "configLoaded" event.
-			if ( editor.config.customConfig == customConfig || !loadConfig( editor ) )
+			if ( CKEDITOR.getUrl( editor.config.customConfig ) == customConfig || !loadConfig( editor ) )
 				editor.fireOnce( 'customConfigLoaded' );
 		}
 		else
@@ -124,7 +126,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		editor.fireOnce( 'configLoaded' );
 
 		// Load language file.
-		loadLang( editor );
+		loadSkin( editor );
 	};
 
 	var loadLang = function( editor )
@@ -246,7 +248,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 						// Load the editor skin.
 						editor.fire( 'pluginsLoaded' );
-						loadSkin( editor );
+						loadTheme( editor );
 					});
 			});
 	};
@@ -255,7 +257,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	{
 		CKEDITOR.skins.load( editor, 'editor', function()
 			{
-				loadTheme( editor );
+				loadLang( editor );
 			});
 	};
 
@@ -573,7 +575,11 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 		},
 
 		/**
-		 * Sets the editor data. The data must be provided in raw format.
+		 * Sets the editor data. The data must be provided in raw format (HTML).
+		 * <b>Note:</b> This's an asynchronous method, the {@param callback}
+		 * function should be relied on if you want to interact with the editor
+		 * after data is fully loaded.
+		 *
 		 * @param {String} data HTML code to replace the curent content in the editor.
 		 * @param {Function} callback Function to be called after the setData is completed.
 		 * @example
@@ -650,10 +656,15 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 			var element = this.element;
 			if ( element && this.elementMode == CKEDITOR.ELEMENT_MODE_REPLACE )
 			{
+				var data = this.getData();
+
+				if( this.config.htmlEncodeOutput )
+					data = CKEDITOR.tools.htmlEncode( data );
+
 				if ( element.is( 'textarea' ) )
-					element.setValue( this.getData() );
+					element.setValue( data );
 				else
-					element.setHtml( this.getData() );
+					element.setHtml( data );
 			}
 		}
 	});
@@ -670,3 +681,12 @@ CKEDITOR.on( 'loaded', function()
 				pending[ i ]._init();
 		}
 	});
+
+/**
+ * Whether escape HTML when editor update original input element.
+ * @name CKEDITOR.config.htmlEncodeOutput
+ * @type {Boolean}
+ * @default false
+ * @example
+ * config.htmlEncodeOutput = true;
+ */

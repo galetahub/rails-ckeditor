@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>Sample - CKEditor</title>
-	<meta content="text/html; charset=utf-8" http-equiv="content-type"/>
+	<title>Ajax - CKEditor Sample</title>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type" />
 	<script type="text/javascript" src="../ckeditor.js"></script>
 	<script src="sample.js" type="text/javascript"></script>
-	<link href="sample.css" rel="stylesheet" type="text/css"/>
-	<script id="headscript" type="text/javascript">
+	<link href="sample.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
 	//<![CDATA[
 
 var editor;
@@ -29,12 +29,12 @@ function createEditor()
 	// This sample may break here if the ckeditor_basic.js is used. In such case, the following code should be used instead:
 	/*
 	if ( editor.setData )
-		editor.setData( html );
+	editor.setData( html );
 	else
-		CKEDITOR.on( 'loaded', function()
-			{
-				editor.setData( html );
-			});
+	CKEDITOR.on( 'loaded', function()
+	{
+	editor.setData( html );
+	});
 	*/
 }
 
@@ -70,25 +70,28 @@ function removeEditor()
 			</p>
 		</noscript>
 	</div>
-	<!-- This <fieldset> holds the HTML that you will usually find in your
-	     pages. -->
 	<p>
-			<input onclick="createEditor();" type="button" value="Create Editor"/>
-			<input onclick="removeEditor();" type="button" value="Remove Editor"/>
-		</p>
-		<div id="editor">
-		</div>
-		<div id="contents" style="display: none">
-			<p>Edited Contents:</p>
-			<div id="editorcontents"/>
-		</div>
-	<div id="footer">
-		<hr/>
+		<input onclick="createEditor();" type="button" value="Create Editor" />
+		<input onclick="removeEditor();" type="button" value="Remove Editor" />
+	</p>
+	<!-- This div will hold the editor. -->
+	<div id="editor">
+	</div>
+	<div id="contents" style="display: none">
 		<p>
-			CKEditor - The text editor for Internet - <a href="http://ckeditor.com/" shape="rect">http://ckeditor.com</a>
+			Edited Contents:</p>
+		<!-- This div will be used to display the editor contents. -->
+		<div id="editorcontents">
+		</div>
+	</div>
+	<div id="footer">
+		<hr />
+		<p>
+			CKEditor - The text editor for Internet - <a href="http://ckeditor.com/">http://ckeditor.com</a>
 		</p>
 		<p id="copy">
-			Copyright © 2003-2009, <a href="http://cksource.com/" shape="rect">CKSource</a> - Frederico Knabben. All rights reserved.
+			Copyright &copy; 2003-2010, <a href="http://cksource.com/">CKSource</a> - Frederico
+			Knabben. All rights reserved.
 		</p>
 	</div>
 </body>

@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -144,15 +144,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						// inside a selection. We don't want to capture that.
 						body.on( 'mousedown', disableSave );
 						body.on( 'mouseup',
-							function( evt )
+							function()
 							{
-								// IE context-menu event in table cells collapse
-								// whatever selection is, avoiding saving this
-								// 'wrong' snapshot.(#3001)
-								evt = evt.data;
-								if ( evt.$.button == 2 && evt.getTarget().hasAscendant( 'table' ) )
-									return;
-
 								saveEnabled = true;
 								setTimeout( function()
 									{
@@ -940,6 +933,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 			this.selectRanges( ranges );
 			return this;
+		},
+
+		getCommonAncestor : function()
+		{
+			var ranges = this.getRanges(),
+				startNode = ranges[ 0 ].startContainer,
+				endNode = ranges[ ranges.length - 1 ].endContainer;
+			return startNode.getCommonAncestor( endNode );
 		},
 
 		// Moving scroll bar to the current selection's start position.

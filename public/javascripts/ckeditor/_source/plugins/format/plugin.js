@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -33,7 +33,7 @@ CKEDITOR.plugins.add( 'format',
 
 				panel :
 				{
-					css : [ CKEDITOR.getUrl( editor.skinPath + 'editor.css' ) ].concat( config.contentsCss ),
+					css : editor.skin.editor.css.concat( config.contentsCss ),
 					voiceLabel : lang.panelVoiceLabel
 				},
 
@@ -57,7 +57,11 @@ CKEDITOR.plugins.add( 'format',
 
 					styles[ value ].apply( editor.document );
 
-					editor.fire( 'saveSnapshot' );
+					// Save the undo snapshot after all changes are affected. (#4899)
+					setTimeout( function()
+					{
+						editor.fire( 'saveSnapshot' );
+					}, 0 );
 				},
 
 				onRender : function()

@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -160,7 +160,7 @@ CKEDITOR.ui.panel.prototype =
 						// It looks strange, but for FF2, the styles must go
 						// after <body>, so it (body) becames immediatelly
 						// available. (#3031)
-						'<link type="text/css" rel=stylesheet href="' + this.css.join( '"><link type="text/css" rel="stylesheet" href="' ) + '">' +
+						CKEDITOR.tools.buildStyleHtml( this.css ) +
 					'<\/html>' );
 				doc.$.close();
 

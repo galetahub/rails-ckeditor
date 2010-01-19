@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -147,7 +147,7 @@ CKEDITOR.skins.add( 'kama', (function()
 				{
 					var cssContent,
 						uiStyle = getStylesheet( CKEDITOR.document ),
-						cssId = '#cke_' + CKEDITOR.tools.escapeCssSelector( editor.name );
+						cssId = '.cke_editor_' + CKEDITOR.tools.escapeCssSelector( editor.name );
 
 					var cssSelectors =
 						[
@@ -203,50 +203,55 @@ CKEDITOR.skins.add( 'kama', (function()
 	};
 })() );
 
-if ( CKEDITOR.dialog )
+(function()
 {
-	CKEDITOR.dialog.on( 'resize', function( evt )
-		{
-			var data = evt.data,
-				width = data.width,
-				height = data.height,
-				dialog = data.dialog,
-				contents = dialog.parts.contents;
+	CKEDITOR.dialog ? dialogSetup() : CKEDITOR.on( 'dialogPluginReady', dialogSetup );
 
-			if ( data.skin != 'kama' )
-				return;
+	function dialogSetup()
+	{
+		CKEDITOR.dialog.on( 'resize', function( evt )
+			{
+				var data = evt.data,
+					width = data.width,
+					height = data.height,
+					dialog = data.dialog,
+					contents = dialog.parts.contents;
 
-			contents.setStyles(
-				{
-					width : width + 'px',
-					height : height + 'px'
-				});
+				if ( data.skin != 'kama' )
+					return;
 
-			// Fix the size of the elements which have flexible lengths.
-			setTimeout( function()
-				{
-					var innerDialog = dialog.parts.dialog.getChild( [ 0, 0, 0 ] ),
-						body = innerDialog.getChild( 0 );
+				contents.setStyles(
+					{
+						width : width + 'px',
+						height : height + 'px'
+					});
 
-					// tc
-					var el = innerDialog.getChild( 2 );
-					el.setStyle( 'width', ( body.$.offsetWidth ) + 'px' );
+				// Fix the size of the elements which have flexible lengths.
+				setTimeout( function()
+					{
+						var innerDialog = dialog.parts.dialog.getChild( [ 0, 0, 0 ] ),
+							body = innerDialog.getChild( 0 );
 
-					// bc
-					el = innerDialog.getChild( 7 );
-					el.setStyle( 'width', ( body.$.offsetWidth - 28 ) + 'px' );
+						// tc
+						var el = innerDialog.getChild( 2 );
+						el.setStyle( 'width', ( body.$.offsetWidth ) + 'px' );
 
-					// ml
-					el = innerDialog.getChild( 4 );
-					el.setStyle( 'height', ( body.$.offsetHeight - 31 - 14 ) + 'px' );
+						// bc
+						el = innerDialog.getChild( 7 );
+						el.setStyle( 'width', ( body.$.offsetWidth - 28 ) + 'px' );
 
-					// mr
-					el = innerDialog.getChild( 5 );
-					el.setStyle( 'height', ( body.$.offsetHeight - 31 - 14 ) + 'px' );
-				},
-				100 );
-		});
-}
+						// ml
+						el = innerDialog.getChild( 4 );
+						el.setStyle( 'height', ( body.$.offsetHeight - 31 - 14 ) + 'px' );
+
+						// mr
+						el = innerDialog.getChild( 5 );
+						el.setStyle( 'height', ( body.$.offsetHeight - 31 - 14 ) + 'px' );
+					},
+					100 );
+			});
+	}
+})();
 
 /**
  * The base user interface color to be used by the editor. Not all skins are

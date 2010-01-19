@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -17,6 +17,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	display: block;
 }
 
+.cke_skin_v2 span.cke_browser_webkit,
+.cke_skin_v2 span.cke_browser_gecko18
+{
+	display: block;
+}
+
 .cke_skin_v2 .cke_wrapper
 {
 	display: block;
@@ -27,7 +33,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	display: table;
 }
 
-.cke_skin_v2 .cke_top, .cke_skin_v2 .cke_bottom
+.cke_skin_v2 .cke_top,
+.cke_skin_v2 .cke_bottom,
+ .cke_shared .cke_skin_v2
 {
 	background-color: #efefde;
 }
@@ -56,6 +64,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 .cke_skin_v2 .cke_contents
 {
 	border: solid 1px #696969;
+	/* Prevent background content from penetrate through when switching between editing modes. (#4918) */
+	background-color: white;
 }
 
 .cke_skin_v2 .cke_focus

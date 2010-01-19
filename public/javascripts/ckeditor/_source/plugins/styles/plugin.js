@@ -1,5 +1,5 @@
 ﻿/*
-Copyright (c) 2003-2009, CKSource - Frederico Knabben. All rights reserved.
+Copyright (c) 2003-2010, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
@@ -198,8 +198,8 @@ CKEDITOR.STYLE_OBJECT = 3;
 						if ( attName == '_length' )
 							continue;
 
-						var elementAttr = element.getAttribute( attName );
-						if ( attribs[attName] ==
+						var elementAttr = element.getAttribute( attName ) || '';
+						if ( attribs[ attName ] ==
 							 ( attName == 'style' ?
 							   normalizeCssText( elementAttr, false ) : elementAttr  ) )
 						{

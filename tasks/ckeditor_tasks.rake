@@ -33,7 +33,7 @@ namespace :ckeditor do
   desc "Generate configuration"
   task :config do
     directory = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/')
-    require "#{directory}lib/ckeditor_config"
+    require "#{directory}lib/ckeditor/config"
     Ckeditor::Config.create_yml
   end
 

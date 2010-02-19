@@ -9,23 +9,18 @@ module Ckeditor
       logging = options[:logging].nil? ? true : options[:logging]
 
       Dir.foreach(source) do |entry|
-        next if entry =~ /^(\.|_).+/
+        next if entry =~ /^(\.|_)/
         
         if File.directory?(File.join(source, entry))
           unless File.exist?(File.join(dest, entry))
-            if logging
-              puts "Creating directory #{entry}..."
-            end
-            FileUtils.mkdir File.join(dest, entry)#, :noop => true#, :verbose => true
+            puts "Creating directory #{entry}..." if logging
+            FileUtils.mkdir File.join(dest, entry)
           end
           recursive_copy(:source => File.join(source, entry),
                          :dest => File.join(dest, entry),
                          :logging => logging)
         else
-          if logging
-            puts "  Installing file #{entry}..."
-          end
-          FileUtils.cp File.join(source, entry), File.join(dest, entry)#, :noop => true#, :verbose => true
+          FileUtils.cp File.join(source, entry), File.join(dest, entry)
         end
       end
     end

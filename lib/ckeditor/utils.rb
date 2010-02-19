@@ -9,7 +9,8 @@ module Ckeditor
       logging = options[:logging].nil? ? true : options[:logging]
 
       Dir.foreach(source) do |entry|
-        next if entry =~ /^\./
+        next if entry =~ /^(\.|_).+/
+        
         if File.directory?(File.join(source, entry))
           unless File.exist?(File.join(dest, entry))
             if logging
@@ -37,29 +38,6 @@ module Ckeditor
       FileUtils.mv source, dest
     end
 
-    def self.copy_configuration
-      # need to copy over the code if it doesn't already exist
-      config_file = File.join(RAILS_ROOT, '/vendor/plugins/rails-ckeditor/public/javascripts/ckcustom.js')
-      dest = File.join(RAILS_ROOT, '/public/javascripts/ckcustom.js')
-      
-      backup_config = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.bak')
-      config_symlink = File.join(RAILS_ROOT, '/public/javascripts/ckeditor/config.js')
-      
-      FileUtils.cp(config_file, dest) unless File.exist?(dest)
-      
-      unless RUBY_PLATFORM =~ /mswin32/
-        if File.exist?(config_symlink)
-          unless File.symlink?(config_symlink)
-            FileUtils.rm(backup_config) if File.exist?(backup_config)
-            FileUtils.mv(config_symlink, backup_config)
-            FileUtils.ln_s(dest, config_symlink)
-          end
-        else
-          FileUtils.ln_s(dest, config_symlink)
-        end
-      end
-    end
-
     def self.create_uploads_directory
       uploads = File.join(RAILS_ROOT, '/public/uploads')
       FileUtils.mkdir(uploads) unless File.exist?(uploads)
@@ -72,9 +50,6 @@ module Ckeditor
       
       # recursively copy all our files over
       recursive_copy(:source => source, :dest => CKEDITOR_INSTALL_DIRECTORY, :logging => log)
-      
-      # create the upload directories
-      #create_uploads_directory
     end
 
     ##################################################################
@@ -99,8 +74,6 @@ module Ckeditor
       destroy
       # now install fresh
       install(true)
-      # copy over the config file (unless it exists)
-      copy_configuration
     end
 
     def self.check_and_install
@@ -108,8 +81,6 @@ module Ckeditor
       unless File.exist?(CKEDITOR_INSTALL_DIRECTORY)
         install(false)
       end
-      # copy over the config file (unless it exists)
-      copy_configuration
     end
   end
 end

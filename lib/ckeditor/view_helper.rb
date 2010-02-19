@@ -33,37 +33,27 @@ module Ckeditor
       var = options.delete(:object) if options.key?(:object)
       var ||= @template.instance_variable_get("@#{object}")
       
-      if var
-        value = var.send(field.to_sym)
-        value = value.nil? ? "" : value
-      else
-        value = ""
-        
-        begin
-          klass = "#{object}".camelcase.constantize
-          @template.instance_variable_set("@#{object}", eval("#{klass}.new()"))
-        rescue NameError
-        end
-      end
+      value = var.send(field.to_sym) if var
+      value ||= options[:value] || ""
+      
       id = ckeditor_element_id(object, field)
       
       textarea_options = { :id => id }
       
       textarea_options[:cols] = options[:cols].nil? ? 70 : options[:cols].to_i
       textarea_options[:rows] = options[:rows].nil? ? 20 : options[:rows].to_i
+      textarea_options[:class] = options[:class] unless options[:class].nil?
 
       width = options[:width].nil? ? '100%' : options[:width]
       height = options[:height].nil? ? '100%' : options[:height]
       
-      textarea_options[:class] = options[:class] unless options[:class].nil?
-      
       ckeditor_options = {}
       
-      ckeditor_options[:toolbar] = options[:toolbar] unless options[:toolbar].nil?
-      ckeditor_options[:skin] = options[:skin] unless options[:skin].nil?
-      ckeditor_options[:language] = options[:language] unless options[:language].nil?
-      ckeditor_options[:width] = options[:width] unless options[:width].nil?
-      ckeditor_options[:height] = options[:height] unless options[:height].nil?
+      ckeditor_options[:language] = options[:language] || I18n.locale.to_s
+      ckeditor_options[:toolbar]  = options[:toolbar] unless options[:toolbar].nil?
+      ckeditor_options[:skin]     = options[:skin]    unless options[:skin].nil?
+      ckeditor_options[:width]    = options[:width]   unless options[:width].nil?
+      ckeditor_options[:height]   = options[:height]  unless options[:height].nil?
       
       ckeditor_options[:swf_params] = options[:swf_params] unless options[:swf_params].nil?
       
@@ -130,9 +120,9 @@ module Ckeditor
     def ckeditor_applay_options(options={})
       str = []
       options.each do |k, v|
-        value = case v.class.to_s
-          when 'String' then "'#{v}'"
-          when 'Hash' then "{ #{ckeditor_applay_options(v)} }"
+        value = case v.class.to_s.downcase
+          when 'string' then "'#{v}'"
+          when 'hash' then "{ #{ckeditor_applay_options(v)} }"
           else v
         end
         str << "#{k}: #{value}"

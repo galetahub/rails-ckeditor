@@ -114,7 +114,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					editorFocus : false,
 					exec : function()
 					{
-						var container = editor.container.getChild( 0 );
+						var container = editor.container.getChild( 1 );
 						var contents = editor.getThemeSpace( 'contents' );
 
 						// Save current selection and scroll position in editing area.

@@ -78,11 +78,13 @@ CKEDITOR.ui.panel.prototype =
 		output.push(
 			'<div class="', editor.skinClass ,'"' +
 				' lang="', editor.langCode, '"' +
+				' role="presentation"' +
 				// iframe loading need sometime, keep the panel hidden(#4186).
 				' style="display:none;z-index:' + ( editor.config.baseFloatZIndex + 1 ) + '">' +
 				'<div' +
 					' id=', id,
 					' dir=', editor.lang.dir,
+					' role="presentation"' +
 					' class="cke_panel cke_', editor.lang.dir );
 
 		if ( this.className )
@@ -96,7 +98,7 @@ CKEDITOR.ui.panel.prototype =
 			output.push(
 						'<iframe id="', id, '_frame"' +
 							' frameborder="0"' +
-							' src="javascript:void(' );
+							' role="application" src="javascript:void(' );
 
 			output.push(
 							// Support for custom document.domain in IE.
@@ -155,8 +157,7 @@ CKEDITOR.ui.panel.prototype =
 							'<style>.' + className + '_container{visibility:hidden}</style>' +
 						'</head>' +
 						'<body class="cke_' + dir + ' cke_panel_frame ' + CKEDITOR.env.cssClass + '" style="margin:0;padding:0"' +
-						' onload="( window.CKEDITOR || window.parent.CKEDITOR ).tools.callFunction(' + onLoad + ');">' +
-						'</body>' +
+						' onload="( window.CKEDITOR || window.parent.CKEDITOR ).tools.callFunction(' + onLoad + ');"></body>' +
 						// It looks strange, but for FF2, the styles must go
 						// after <body>, so it (body) becames immediatelly
 						// available. (#3031)
@@ -171,7 +172,8 @@ CKEDITOR.ui.panel.prototype =
 
 				doc.on( 'keydown', function( evt )
 					{
-						var keystroke = evt.data.getKeystroke();
+						var keystroke = evt.data.getKeystroke(),
+							dir = this.document.getById( 'cke_' + this.id ).getAttribute( 'dir' );
 
 						// Delegate key processing to block.
 						if ( this._.onKeyDown && this._.onKeyDown( keystroke ) === false )
@@ -180,8 +182,12 @@ CKEDITOR.ui.panel.prototype =
 							return;
 						}
 
-						if ( keystroke == 27 )		// ESC
-							this.onEscape && this.onEscape();
+						// ESC/ARROW-LEFT(ltr) OR ARROW-RIGHT(rtl)
+						if ( keystroke == 27 || keystroke == ( dir == 'rtl' ? 39 : 37 ) )
+						{
+							if ( this.onEscape && this.onEscape( keystroke ) === false )
+								evt.data.preventDefault( );
+						}
 					},
 					this );
 
@@ -198,7 +204,8 @@ CKEDITOR.ui.panel.prototype =
 
 	addBlock : function( name, block )
 	{
-		block = this._.blocks[ name ] = block || new CKEDITOR.ui.panel.block( this.getHolderElement() );
+		block = this._.blocks[ name ] = block instanceof CKEDITOR.ui.panel.block ?  block
+				: new CKEDITOR.ui.panel.block( this.getHolderElement(), block );
 
 		if ( !this._.currentBlock )
 			this.showBlock( name );
@@ -215,12 +222,22 @@ CKEDITOR.ui.panel.prototype =
 	{
 		var blocks = this._.blocks,
 			block = blocks[ name ],
-			current = this._.currentBlock;
+			current = this._.currentBlock,
+			holder = this.forceIFrame ?
+				this.document.getById( 'cke_' + this.id + '_frame' )
+				: this._.holder;
 
 		if ( current )
+		{
+			// Clean up the current block's effects on holder.
+			holder.removeAttributes( current.attributes );
 			current.hide();
+		}
 
 		this._.currentBlock = block;
+
+		holder.setAttributes( block.attributes );
+		CKEDITOR.fire( 'ariaWidget', holder );
 
 		// Reset the focus index, so it will always go into the first one.
 		block._.focusIndex = -1;
@@ -240,20 +257,26 @@ CKEDITOR.ui.panel.prototype =
 
 CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 {
-	$ : function( blockHolder )
+	$ : function( blockHolder, blockDefinition )
 	{
 		this.element = blockHolder.append(
 			blockHolder.getDocument().createElement( 'div',
 				{
 					attributes :
 					{
-						'class' : 'cke_panel_block'
+						'tabIndex' : -1,
+						'class' : 'cke_panel_block',
+						'role' : 'presentation'
 					},
 					styles :
 					{
 						display : 'none'
 					}
 				}) );
+
+		// Copy all definition properties to this object.
+		if ( blockDefinition )
+			CKEDITOR.tools.extend( this, blockDefinition );
 
 		this.keys = {};
 
@@ -263,7 +286,25 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 		this.element.disableContextMenu();
 	},
 
-	_ : {},
+	_ : {
+
+		/**
+		 * Mark the item specified by the index as current activated.
+		 */
+		markItem: function( index )
+		{
+			if ( index == -1 )
+				return;
+			var links = this.element.getElementsByTag( 'a' );
+			var item = links.getItem( this._.focusIndex = index );
+
+			// Safari need focus on the iframe window first(#3389), but we need
+			// lock the blur to avoid hiding the panel.
+			if ( CKEDITOR.env.webkit )
+				item.getDocument().getWindow().focus();
+			item.focus();
+		}
+	},
 
 	proto :
 	{

@@ -31,7 +31,11 @@ CKEDITOR.lang['it'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Codice Sorgente',
@@ -68,12 +72,12 @@ CKEDITOR.lang['it'] =
 		flash			: 'Oggetto Flash',
 		form			: 'Modulo',
 		checkbox		: 'Checkbox',
-		radio		: 'Radio Button',
+		radio			: 'Radio Button',
 		textField		: 'Campo di testo',
 		textarea		: 'Area di testo',
 		hiddenField		: 'Campo nascosto',
 		button			: 'Bottone',
-		select	: 'Menu di selezione',
+		select			: 'Menu di selezione',
 		imageButton		: 'Bottone immagine',
 		notSet			: '<non impostato>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['it'] =
 		cssStyle		: 'Stile',
 		ok				: 'OK',
 		cancel			: 'Annulla',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'Generale',
 		advancedTab		: 'Avanzate',
-		validateNumberFailed	: 'Il valore inserito non è un numero.',
+		validateNumberFailed : 'Il valore inserito non è un numero.',
 		confirmNewPage	: 'Ogni modifica non salvata sarà persa. Sei sicuro di voler caricare una nuova pagina?',
 		confirmCancel	: 'Alcune delle opzioni sono state cambiate. Sei sicuro di voler chiudere la finestra di dialogo?',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, non disponibile</span>'
@@ -116,22 +128,17 @@ CKEDITOR.lang['it'] =
 		upload		: 'Carica',
 		advanced	: 'Avanzate',
 		type		: 'Tipo di Collegamento',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Ancora nella pagina',
 		toEmail		: 'E-Mail',
-		target		: 'Destinazione',
-		targetNotSet	: '<non impostato>',
-		targetFrame	: '<riquadro>',
-		targetPopup	: '<finestra popup>',
-		targetNew	: 'Nuova finestra (_blank)',
-		targetTop	: 'Finestra superiore (_top)',
-		targetSelf	: 'Stessa finestra (_self)',
-		targetParent	: 'Finestra padre (_parent)',
+		targetFrame		: '<riquadro>',
+		targetPopup		: '<finestra popup>',
 		targetFrameName	: 'Nome del riquadro di destinazione',
 		targetPopupName	: 'Nome finestra popup',
 		popupFeatures	: 'Caratteristiche finestra popup',
 		popupResizable	: 'Ridimensionabile',
 		popupStatusBar	: 'Barra di stato',
-		popupLocationBar	: 'Barra degli indirizzi',
+		popupLocationBar: 'Barra degli indirizzi',
 		popupToolbar	: 'Barra degli strumenti',
 		popupMenuBar	: 'Barra del menu',
 		popupFullScreen	: 'A tutto schermo (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['it'] =
 		popupTop		: 'Posizione dall\'alto',
 		id				: 'Id',
 		langDir			: 'Direzione scrittura',
-		langDirNotSet	: '<non impostato>',
 		langDirLTR		: 'Da Sinistra a Destra (LTR)',
 		langDirRTL		: 'Da Destra a Sinistra (RTL)',
 		acccessKey		: 'Scorciatoia<br />da tastiera',
@@ -203,13 +209,13 @@ CKEDITOR.lang['it'] =
 		columns		: 'Colonne',
 		border		: 'Dimensione bordo',
 		align		: 'Allineamento',
-		alignNotSet	: '<non impostato>',
 		alignLeft	: 'Sinistra',
 		alignCenter	: 'Centrato',
 		alignRight	: 'Destra',
 		width		: 'Larghezza',
 		widthPx		: 'pixel',
 		widthPc		: 'percento',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Altezza',
 		cellSpace	: 'Spaziatura celle',
 		cellPad		: 'Padding celle',
@@ -260,7 +266,7 @@ CKEDITOR.lang['it'] =
 			invalidHeight	: 'L\'altezza della cella dev\'essere un numero.',
 			invalidRowSpan	: 'Il numero di righe dev\'essere un numero intero.',
 			invalidColSpan	: 'Il numero di colonne dev\'essere un numero intero.',
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['it'] =
 		menu		: 'Proprietà modulo',
 		action		: 'Azione',
 		method		: 'Metodo',
-		encoding	: 'Codifica',
-		target		: 'Destinazione',
-		targetNotSet	: '<non impostato>',
-		targetNew	: 'Nuova finestra (_blank)',
-		targetTop	: 'Finestra superiore (_top)',
-		targetSelf	: 'Stessa finestra (_self)',
-		targetParent	: 'Finestra padre (_parent)'
+		encoding	: 'Codifica'
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['it'] =
 		title		: 'Proprietà immagine',
 		titleButton	: 'Proprietà bottone immagine',
 		menu		: 'Proprietà immagine',
-		infoTab	: 'Informazioni immagine',
+		infoTab		: 'Informazioni immagine',
 		btnUpload	: 'Invia al server',
-		url		: 'URL',
-		upload	: 'Carica',
-		alt		: 'Testo alternativo',
+		upload		: 'Carica',
+		alt			: 'Testo alternativo',
 		width		: 'Larghezza',
-		height	: 'Altezza',
+		height		: 'Altezza',
 		lockRatio	: 'Blocca rapporto',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Reimposta dimensione',
-		border	: 'Bordo',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
+		border		: 'Bordo',
+		hSpace		: 'HSpace',
+		vSpace		: 'VSpace',
 		align		: 'Allineamento',
 		alignLeft	: 'Sinistra',
 		alignRight	: 'Destra',
-		preview	: 'Anteprima',
 		alertUrl	: 'Devi inserire l\'URL per l\'immagine',
-		linkTab	: 'Collegamento',
+		linkTab		: 'Collegamento',
 		button2Img	: 'Vuoi trasformare il bottone immagine selezionato in un\'immagine semplice?',
 		img2Button	: 'Vuoi trasferomare l\'immagine selezionata in un bottone immagine?',
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['it'] =
 	{
 		properties		: 'Proprietà Oggetto Flash',
 		propertiesTab	: 'Proprietà',
-		title		: 'Proprietà Oggetto Flash',
-		chkPlay		: 'Avvio Automatico',
-		chkLoop		: 'Riavvio automatico',
-		chkMenu		: 'Abilita Menu di Flash',
-		chkFull		: 'Permetti la modalità tutto schermo',
- 		scale		: 'Ridimensiona',
+		title			: 'Proprietà Oggetto Flash',
+		chkPlay			: 'Avvio Automatico',
+		chkLoop			: 'Riavvio automatico',
+		chkMenu			: 'Abilita Menu di Flash',
+		chkFull			: 'Permetti la modalità tutto schermo',
+ 		scale			: 'Ridimensiona',
 		scaleAll		: 'Mostra Tutto',
 		scaleNoBorder	: 'Senza Bordo',
 		scaleFit		: 'Dimensione Esatta',
 		access			: 'Accesso Script',
 		accessAlways	: 'Sempre',
-		accessSameDomain	: 'Solo stesso dominio',
-		accessNever	: 'Mai',
-		align		: 'Allineamento',
-		alignLeft	: 'Sinistra',
-		alignAbsBottom: 'In basso assoluto',
-		alignAbsMiddle: 'Centrato assoluto',
+		accessSameDomain: 'Solo stesso dominio',
+		accessNever		: 'Mai',
+		align			: 'Allineamento',
+		alignLeft		: 'Sinistra',
+		alignAbsBottom	: 'In basso assoluto',
+		alignAbsMiddle	: 'Centrato assoluto',
 		alignBaseline	: 'Linea base',
-		alignBottom	: 'In Basso',
-		alignMiddle	: 'Centrato',
-		alignRight	: 'Destra',
+		alignBottom		: 'In Basso',
+		alignMiddle		: 'Centrato',
+		alignRight		: 'Destra',
 		alignTextTop	: 'In alto al testo',
-		alignTop	: 'In Alto',
-		quality		: 'Qualità',
-		qualityBest		 : 'Massima',
-		qualityHigh		 : 'Alta',
-		qualityAutoHigh	 : 'Alta Automatica',
-		qualityMedium	 : 'Intermedia',
-		qualityAutoLow	 : 'Bassa Automatica',
-		qualityLow		 : 'Bassa',
-		windowModeWindow	 : 'Finestra',
-		windowModeOpaque	 : 'Opaca',
-		windowModeTransparent	 : 'Trasparente',
-		windowMode	: 'Modalità finestra',
-		flashvars	: 'Variabili per Flash',
-		bgcolor	: 'Colore sfondo',
-		width	: 'Larghezza',
-		height	: 'Altezza',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
-		validateSrc : 'Devi inserire l\'URL del collegamento',
-		validateWidth : 'La Larghezza dev\'essere un numero',
-		validateHeight : 'L\'altezza dev\'essere un numero',
-		validateHSpace : 'L\'HSpace dev\'essere un numero.',
-		validateVSpace : 'Il VSpace dev\'essere un numero.'
+		alignTop		: 'In Alto',
+		quality			: 'Qualità',
+		qualityBest		: 'Massima',
+		qualityHigh		: 'Alta',
+		qualityAutoHigh	: 'Alta Automatica',
+		qualityMedium	: 'Intermedia',
+		qualityAutoLow	: 'Bassa Automatica',
+		qualityLow		: 'Bassa',
+		windowModeWindow: 'Finestra',
+		windowModeOpaque: 'Opaca',
+		windowModeTransparent : 'Trasparente',
+		windowMode		: 'Modalità finestra',
+		flashvars		: 'Variabili per Flash',
+		bgcolor			: 'Colore sfondo',
+		width			: 'Larghezza',
+		height			: 'Altezza',
+		hSpace			: 'HSpace',
+		vSpace			: 'VSpace',
+		validateSrc		: 'Devi inserire l\'URL del collegamento',
+		validateWidth	: 'La Larghezza dev\'essere un numero',
+		validateHeight	: 'L\'altezza dev\'essere un numero',
+		validateHSpace	: 'L\'HSpace dev\'essere un numero.',
+		validateVSpace	: 'Il VSpace dev\'essere un numero.'
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['it'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 elemento'
 	},
 
-	numberedlist : 'Elenco numerato',
-	bulletedlist : 'Elenco puntato',
-	indent : 'Aumenta rientro',
-	outdent : 'Riduci rientro',
+	numberedlist	: 'Elenco numerato',
+	bulletedlist	: 'Elenco puntato',
+	indent			: 'Aumenta rientro',
+	outdent			: 'Riduci rientro',
 
 	justify :
 	{
-		left : 'Allinea a sinistra',
-		center : 'Centra',
-		right : 'Allinea a destra',
-		block : 'Giustifica'
+		left	: 'Allinea a sinistra',
+		center	: 'Centra',
+		right	: 'Allinea a destra',
+		block	: 'Giustifica'
 	},
 
 	blockquote : 'Citazione',
@@ -501,61 +506,59 @@ CKEDITOR.lang['it'] =
 		cutError	: 'Le impostazioni di sicurezza del browser non permettono di tagliare automaticamente il testo. Usa la tastiera (Ctrl+X).',
 		copyError	: 'Le impostazioni di sicurezza del browser non permettono di copiare automaticamente il testo. Usa la tastiera (Ctrl+C).',
 		pasteMsg	: 'Incolla il testo all\'interno dell\'area sottostante usando la scorciatoia di tastiere (<STRONG>Ctrl+V</STRONG>) e premi <STRONG>OK</STRONG>.',
-		securityMsg	: 'A causa delle impostazioni di sicurezza del browser,l\'editor non è in grado di accedere direttamente agli appunti. E\' pertanto necessario incollarli di nuovo in questa finestra.'
+		securityMsg	: 'A causa delle impostazioni di sicurezza del browser,l\'editor non è in grado di accedere direttamente agli appunti. E\' pertanto necessario incollarli di nuovo in questa finestra.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'Il testo da incollare sembra provenire da Word. Desideri pulirlo prima di incollare?',
-		toolbar : 'Incolla da Word',
-		title : 'Incolla da Word',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'Il testo da incollare sembra provenire da Word. Desideri pulirlo prima di incollare?',
+		toolbar			: 'Incolla da Word',
+		title			: 'Incolla da Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Incolla come testo semplice',
-		title : 'Incolla come testo semplice'
+		button	: 'Incolla come testo semplice',
+		title	: 'Incolla come testo semplice'
 	},
 
 	templates :
 	{
-		button : 'Modelli',
-		title : 'Contenuto dei modelli',
-		insertOption: 'Cancella il contenuto corrente',
-		selectPromptMsg: 'Seleziona il modello da aprire nell\'editor<br />(il contenuto attuale verrà eliminato):',
-		emptyListMsg : '(Nessun modello definito)'
+		button			: 'Modelli',
+		title			: 'Contenuto dei modelli',
+		insertOption	: 'Cancella il contenuto corrente',
+		selectPromptMsg	: 'Seleziona il modello da aprire nell\'editor<br />(il contenuto attuale verrà eliminato):',
+		emptyListMsg	: '(Nessun modello definito)'
 	},
 
 	showBlocks : 'Visualizza Blocchi',
 
 	stylesCombo :
 	{
-		label : 'Stile',
-		voiceLabel : 'Stili',
-		panelVoiceLabel : 'Seleziona uno stile',
-		panelTitle1 : 'Stili per blocchi',
-		panelTitle2 : 'Stili in linea',
-		panelTitle3 : 'Stili per oggetti'
+		label		: 'Stile',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Stili per blocchi',
+		panelTitle2	: 'Stili in linea',
+		panelTitle3	: 'Stili per oggetti'
 	},
 
 	format :
 	{
-		label : 'Formato',
-		voiceLabel : 'Formato',
-		panelTitle : 'Formato',
-		panelVoiceLabel : 'Seleziona il formato per paragrafo',
+		label		: 'Formato',
+		panelTitle	: 'Formato',
 
-		tag_p : 'Normale',
-		tag_pre : 'Formattato',
-		tag_address : 'Indirizzo',
-		tag_h1 : 'Titolo 1',
-		tag_h2 : 'Titolo 2',
-		tag_h3 : 'Titolo 3',
-		tag_h4 : 'Titolo 4',
-		tag_h5 : 'Titolo 5',
-		tag_h6 : 'Titolo 6',
-		tag_div : 'Paragrafo (DIV)'
+		tag_p		: 'Normale',
+		tag_pre		: 'Formattato',
+		tag_address	: 'Indirizzo',
+		tag_h1		: 'Titolo 1',
+		tag_h2		: 'Titolo 2',
+		tag_h3		: 'Titolo 3',
+		tag_h4		: 'Titolo 4',
+		tag_h5		: 'Titolo 5',
+		tag_h6		: 'Titolo 6',
+		tag_div		: 'Paragrafo (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['it'] =
 
 	font :
 	{
-		label : 'Font',
-		voiceLabel : 'Font',
-		panelTitle : 'Font',
-		panelVoiceLabel : 'Seleziona un font'
+		label		: 'Font',
+		voiceLabel	: 'Font',
+		panelTitle	: 'Font'
 	},
 
 	fontSize :
 	{
-		label : 'Dimensione',
-		voiceLabel : 'Dimensione Font',
-		panelTitle : 'Dimensione',
-		panelVoiceLabel : 'Seleziona una dimensione font'
+		label		: 'Dimensione',
+		voiceLabel	: 'Dimensione Font',
+		panelTitle	: 'Dimensione'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Colore testo',
-		bgColorTitle : 'Colore sfondo',
-		auto : 'Automatico',
-		more : 'Altri colori...'
+		textColorTitle	: 'Colore testo',
+		bgColorTitle	: 'Colore sfondo',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automatico',
+		more			: 'Altri colori...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['it'] =
 
 	scayt :
 	{
-		title : 'Controllo Ortografico Mentre Scrivi',
-		enable : 'Abilita COMS',
-		disable : 'Disabilita COMS',
-		about : 'About COMS',
-		toggle : 'Inverti abilitazione SCOMS',
-		options : 'Opzioni',
-		langs : 'Lingue',
-		moreSuggestions : 'Altri suggerimenti',
-		ignore : 'Ignora',
-		ignoreAll : 'Ignora tutti',
-		addWord : 'Aggiungi Parola',
-		emptyDic : 'Il nome del dizionario non può essere vuoto.',
-		optionsTab : 'Opzioni',
-		languagesTab : 'Lingue',
-		dictionariesTab : 'Dizionari',
-		aboutTab : 'About'
+		title			: 'Controllo Ortografico Mentre Scrivi',
+		enable			: 'Abilita COMS',
+		disable			: 'Disabilita COMS',
+		about			: 'About COMS',
+		toggle			: 'Inverti abilitazione SCOMS',
+		options			: 'Opzioni',
+		langs			: 'Lingue',
+		moreSuggestions	: 'Altri suggerimenti',
+		ignore			: 'Ignora',
+		ignoreAll		: 'Ignora tutti',
+		addWord			: 'Aggiungi Parola',
+		emptyDic		: 'Il nome del dizionario non può essere vuoto.',
+		optionsTab		: 'Opzioni',
+		languagesTab	: 'Lingue',
+		dictionariesTab	: 'Dizionari',
+		aboutTab		: 'About'
 	},
 
 	about :
 	{
-		title : 'About CKEditor',
-		dlgTitle : 'About CKEditor',
-		moreInfo : 'Per le informazioni sulla licenza si prega di visitare il nostro sito:',
-		copy : 'Copyright &copy; $1. Tutti i diritti riservati.'
+		title		: 'About CKEditor',
+		dlgTitle	: 'About CKEditor',
+		moreInfo	: 'Per le informazioni sulla licenza si prega di visitare il nostro sito:',
+		copy		: 'Copyright &copy; $1. Tutti i diritti riservati.'
 	},
 
 	maximize : 'Massimizza',
@@ -676,22 +678,22 @@ CKEDITOR.lang['it'] =
 
 	fakeobjects :
 	{
-		anchor : 'Ancora',
-		flash : 'Animazione Flash',
-		div : 'Interruzione di Pagina',
-		unknown : 'Oggetto sconosciuto'
+		anchor	: 'Ancora',
+		flash	: 'Animazione Flash',
+		div		: 'Interruzione di Pagina',
+		unknown	: 'Oggetto sconosciuto'
 	},
 
 	resize : 'Trascina per ridimensionare',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

@@ -35,6 +35,18 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 				editor.execCommand( commandName );
 			},
 			this);
+
+		this._.definiton =
+		{
+			panel:
+			{
+				className : editor.skinClass + ' cke_contextmenu',
+				attributes :
+				{
+					'aria-label' : editor.lang.common.options
+				}
+			}
+		};
 	},
 
 	_ :
@@ -51,29 +63,38 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 			}
 			else
 			{
-				menu = this._.menu = new CKEDITOR.menu( editor );
+				menu = this._.menu = new CKEDITOR.menu( editor, this._.definiton );
 				menu.onClick = CKEDITOR.tools.bind( function( item )
 				{
-					var noUnlock = true;
 					menu.hide();
-
-					if ( CKEDITOR.env.ie )
-						menu.onEscape();
 
 					if ( item.onClick )
 						item.onClick();
 					else if ( item.command )
 						editor.execCommand( item.command );
 
-					noUnlock = false;
 				}, this );
 
-				menu.onEscape = function()
+				menu.onEscape = function( keystroke )
 				{
-					editor.focus();
-
-					if ( CKEDITOR.env.ie )
-						editor.getSelection().unlock( true );
+					var parent = this.parent;
+					// 1. If it's sub-menu, restore the last focused item
+					// of upper level menu.
+					// 2. In case of a top-menu, close it.
+					if ( parent )
+					{
+						parent._.panel.hideChild();
+						// Restore parent block item focus.
+						var parentBlock = parent._.panel._.panel._.currentBlock,
+							parentFocusIndex =  parentBlock._.focusIndex;
+						parentBlock._.markItem( parentFocusIndex );
+					}
+					else if ( keystroke == 27 )
+					{
+						this.hide();
+						editor.focus();
+					}
+					return false;
 				};
 			}
 
@@ -138,7 +159,7 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 				element.on( 'mousedown', function( evt )
 				{
 					evt = evt.data;
-					if( evt.$.button != 2 )
+					if ( evt.$.button != 2 )
 					{
 						if ( evt.getKeystroke() == CKEDITOR.CTRL + 1 )
 							element.fire( 'contextmenu', evt );
@@ -151,7 +172,7 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 
 					var target = evt.getTarget();
 
-					if( !contextMenuOverrideButton )
+					if ( !contextMenuOverrideButton )
 					{
 						var ownerDoc =  target.getDocument();
 						contextMenuOverrideButton = ownerDoc.createElement( 'input' ) ;
@@ -204,13 +225,13 @@ CKEDITOR.plugins.contextMenu = CKEDITOR.tools.createClass(
 
 					CKEDITOR.tools.setTimeout( function()
 						{
-							this._.onMenu( offsetParent, null, offsetX, offsetY );
+							this.show( offsetParent, null, offsetX, offsetY );
 						},
 						0, this );
 				},
 				this );
 
-			if( CKEDITOR.env.webkit )
+			if ( CKEDITOR.env.webkit )
 			{
 				var holdCtrlKey,
 					onKeyDown = function( event )

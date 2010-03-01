@@ -31,7 +31,11 @@ CKEDITOR.lang['hi'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'सोर्स',
@@ -68,12 +72,12 @@ CKEDITOR.lang['hi'] =
 		flash			: 'फ़्लैश',
 		form			: 'फ़ॉर्म',
 		checkbox		: 'चॅक बॉक्स',
-		radio		: 'रेडिओ बटन',
+		radio			: 'रेडिओ बटन',
 		textField		: 'टेक्स्ट फ़ील्ड',
 		textarea		: 'टेक्स्ट एरिया',
 		hiddenField		: 'गुप्त फ़ील्ड',
 		button			: 'बटन',
-		select	: 'चुनाव फ़ील्ड',
+		select			: 'चुनाव फ़ील्ड',
 		imageButton		: 'तस्वीर बटन',
 		notSet			: '<सॅट नहीं>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['hi'] =
 		cssStyle		: 'स्टाइल',
 		ok				: 'ठीक है',
 		cancel			: 'रद्द करें',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'सामान्य',
 		advancedTab		: 'ऍड्वान्स्ड',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['hi'] =
 		upload		: 'अपलोड',
 		advanced	: 'ऍड्वान्स्ड',
 		type		: 'लिंक प्रकार',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'इस पेज का ऐंकर',
 		toEmail		: 'ई-मेल',
-		target		: 'टार्गेट',
-		targetNotSet	: '<सॅट नहीं>',
-		targetFrame	: '<फ़्रेम>',
-		targetPopup	: '<पॉप-अप विन्डो>',
-		targetNew	: 'नया विन्डो (_blank)',
-		targetTop	: 'शीर्ष विन्डो (_top)',
-		targetSelf	: 'इसी विन्डो (_self)',
-		targetParent	: 'मूल विन्डो (_parent)',
+		targetFrame		: '<फ़्रेम>',
+		targetPopup		: '<पॉप-अप विन्डो>',
 		targetFrameName	: 'टार्गेट फ़्रेम का नाम',
 		targetPopupName	: 'पॉप-अप विन्डो का नाम',
 		popupFeatures	: 'पॉप-अप विन्डो फ़ीचर्स',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'स्टेटस बार',
-		popupLocationBar	: 'लोकेशन बार',
+		popupLocationBar: 'लोकेशन बार',
 		popupToolbar	: 'टूल बार',
 		popupMenuBar	: 'मॅन्यू बार',
 		popupFullScreen	: 'फ़ुल स्क्रीन (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['hi'] =
 		popupTop		: 'दायीं तरफ',
 		id				: 'Id', // MISSING
 		langDir			: 'भाषा लिखने की दिशा',
-		langDirNotSet	: '<सॅट नहीं>',
 		langDirLTR		: 'बायें से दायें (LTR)',
 		langDirRTL		: 'दायें से बायें (RTL)',
 		acccessKey		: 'ऍक्सॅस की',
@@ -203,13 +209,13 @@ CKEDITOR.lang['hi'] =
 		columns		: 'कालम',
 		border		: 'बॉर्डर साइज़',
 		align		: 'ऍलाइन्मॅन्ट',
-		alignNotSet	: '<सॅट नहीं>',
 		alignLeft	: 'दायें',
 		alignCenter	: 'बीच में',
 		alignRight	: 'बायें',
 		width		: 'चौड़ाई',
 		widthPx		: 'पिक्सैल',
 		widthPc		: 'प्रतिशत',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'ऊँचाई',
 		cellSpace	: 'सैल अंतर',
 		cellPad		: 'सैल पैडिंग',
@@ -260,7 +266,7 @@ CKEDITOR.lang['hi'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['hi'] =
 		menu		: 'फ़ॉर्म प्रॉपर्टीज़',
 		action		: 'क्रिया',
 		method		: 'तरीका',
-		encoding	: 'Encoding', // MISSING
-		target		: 'टार्गेट',
-		targetNotSet	: '<सॅट नहीं>',
-		targetNew	: 'नया विन्डो (_blank)',
-		targetTop	: 'शीर्ष विन्डो (_top)',
-		targetSelf	: 'इसी विन्डो (_self)',
-		targetParent	: 'मूल विन्डो (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['hi'] =
 		title		: 'तस्वीर प्रॉपर्टीज़',
 		titleButton	: 'तस्वीर बटन प्रॉपर्टीज़',
 		menu		: 'तस्वीर प्रॉपर्टीज़',
-		infoTab	: 'तस्वीर की जानकारी',
+		infoTab		: 'तस्वीर की जानकारी',
 		btnUpload	: 'इसे सर्वर को भेजें',
-		url		: 'URL',
-		upload	: 'अपलोड',
-		alt		: 'वैकल्पिक टेक्स्ट',
+		upload		: 'अपलोड',
+		alt			: 'वैकल्पिक टेक्स्ट',
 		width		: 'चौड़ाई',
-		height	: 'ऊँचाई',
+		height		: 'ऊँचाई',
 		lockRatio	: 'लॉक अनुपात',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'रीसॅट साइज़',
-		border	: 'बॉर्डर',
-		hSpace	: 'हॉरिज़ॉन्टल स्पेस',
-		vSpace	: 'वर्टिकल स्पेस',
+		border		: 'बॉर्डर',
+		hSpace		: 'हॉरिज़ॉन्टल स्पेस',
+		vSpace		: 'वर्टिकल स्पेस',
 		align		: 'ऍलाइन',
 		alignLeft	: 'दायें',
 		alignRight	: 'दायें',
-		preview	: 'प्रीव्यू',
 		alertUrl	: 'तस्वीर का URL टाइप करें ',
-		linkTab	: 'लिंक',
+		linkTab		: 'लिंक',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['hi'] =
 	{
 		properties		: 'फ़्लैश प्रॉपर्टीज़',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'फ़्लैश प्रॉपर्टीज़',
-		chkPlay		: 'ऑटो प्ले',
-		chkLoop		: 'लूप',
-		chkMenu		: 'फ़्लैश मॅन्यू का प्रयोग करें',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'स्केल',
+		title			: 'फ़्लैश प्रॉपर्टीज़',
+		chkPlay			: 'ऑटो प्ले',
+		chkLoop			: 'लूप',
+		chkMenu			: 'फ़्लैश मॅन्यू का प्रयोग करें',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'स्केल',
 		scaleAll		: 'सभी दिखायें',
 		scaleNoBorder	: 'कोई बॉर्डर नहीं',
 		scaleFit		: 'बिल्कुल फ़िट',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'ऍलाइन',
-		alignLeft	: 'दायें',
-		alignAbsBottom: 'Abs नीचे',
-		alignAbsMiddle: 'Abs ऊपर',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'ऍलाइन',
+		alignLeft		: 'दायें',
+		alignAbsBottom	: 'Abs नीचे',
+		alignAbsMiddle	: 'Abs ऊपर',
 		alignBaseline	: 'मूल रेखा',
-		alignBottom	: 'नीचे',
-		alignMiddle	: 'मध्य',
-		alignRight	: 'दायें',
+		alignBottom		: 'नीचे',
+		alignMiddle		: 'मध्य',
+		alignRight		: 'दायें',
 		alignTextTop	: 'टेक्स्ट ऊपर',
-		alignTop	: 'ऊपर',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'बैक्ग्राउन्ड रंग',
-		width	: 'चौड़ाई',
-		height	: 'ऊँचाई',
-		hSpace	: 'हॉरिज़ॉन्टल स्पेस',
-		vSpace	: 'वर्टिकल स्पेस',
-		validateSrc : 'लिंक URL टाइप करें',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'ऊपर',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'बैक्ग्राउन्ड रंग',
+		width			: 'चौड़ाई',
+		height			: 'ऊँचाई',
+		hSpace			: 'हॉरिज़ॉन्टल स्पेस',
+		vSpace			: 'वर्टिकल स्पेस',
+		validateSrc		: 'लिंक URL टाइप करें',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['hi'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'अंकीय सूची',
-	bulletedlist : 'बुलॅट सूची',
-	indent : 'इन्डॅन्ट बढ़ायें',
-	outdent : 'इन्डॅन्ट कम करें',
+	numberedlist	: 'अंकीय सूची',
+	bulletedlist	: 'बुलॅट सूची',
+	indent			: 'इन्डॅन्ट बढ़ायें',
+	outdent			: 'इन्डॅन्ट कम करें',
 
 	justify :
 	{
-		left : 'बायीं तरफ',
-		center : 'बीच में',
-		right : 'दायीं तरफ',
-		block : 'ब्लॉक जस्टीफ़ाई'
+		left	: 'बायीं तरफ',
+		center	: 'बीच में',
+		right	: 'दायीं तरफ',
+		block	: 'ब्लॉक जस्टीफ़ाई'
 	},
 
 	blockquote : 'ब्लॉक-कोट',
@@ -501,61 +506,59 @@ CKEDITOR.lang['hi'] =
 		cutError	: 'आपके ब्राउज़र की सुरक्षा सॅटिन्ग्स ने कट करने की अनुमति नहीं प्रदान की है। (Ctrl+X) का प्रयोग करें।',
 		copyError	: 'आपके ब्राआउज़र की सुरक्षा सॅटिन्ग्स ने कॉपी करने की अनुमति नहीं प्रदान की है। (Ctrl+C) का प्रयोग करें।',
 		pasteMsg	: 'Ctrl+V का प्रयोग करके पेस्ट करें और ठीक है करें.',
-		securityMsg	: 'आपके ब्राउज़र की सुरक्षा आपके ब्राउज़र की सुरKश सैटिंग के कारण, एडिटर आपके क्लिपबोर्ड डेटा को नहीं पा सकता है. आपको उसे इस विन्डो में दोबारा पेस्ट करना होगा.'
+		securityMsg	: 'आपके ब्राउज़र की सुरक्षा आपके ब्राउज़र की सुरKश सैटिंग के कारण, एडिटर आपके क्लिपबोर्ड डेटा को नहीं पा सकता है. आपको उसे इस विन्डो में दोबारा पेस्ट करना होगा.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'पेस्ट (वर्ड से)',
-		title : 'पेस्ट (वर्ड से)',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'पेस्ट (वर्ड से)',
+		title			: 'पेस्ट (वर्ड से)',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'पेस्ट (सादा टॅक्स्ट)',
-		title : 'पेस्ट (सादा टॅक्स्ट)'
+		button	: 'पेस्ट (सादा टॅक्स्ट)',
+		title	: 'पेस्ट (सादा टॅक्स्ट)'
 	},
 
 	templates :
 	{
-		button : 'टॅम्प्लेट',
-		title : 'कन्टेन्ट टॅम्प्लेट',
-		insertOption: 'मूल शब्दों को बदलें',
-		selectPromptMsg: 'ऍडिटर में ओपन करने हेतु टॅम्प्लेट चुनें(वर्तमान कन्टॅन्ट सेव नहीं होंगे):',
-		emptyListMsg : '(कोई टॅम्प्लेट डिफ़ाइन नहीं किया गया है)'
+		button			: 'टॅम्प्लेट',
+		title			: 'कन्टेन्ट टॅम्प्लेट',
+		insertOption	: 'मूल शब्दों को बदलें',
+		selectPromptMsg	: 'ऍडिटर में ओपन करने हेतु टॅम्प्लेट चुनें(वर्तमान कन्टॅन्ट सेव नहीं होंगे):',
+		emptyListMsg	: '(कोई टॅम्प्लेट डिफ़ाइन नहीं किया गया है)'
 	},
 
 	showBlocks : 'ब्लॉक दिखायें',
 
 	stylesCombo :
 	{
-		label : 'स्टाइल',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'स्टाइल',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'फ़ॉर्मैट',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'फ़ॉर्मैट',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'फ़ॉर्मैट',
+		panelTitle	: 'फ़ॉर्मैट',
 
-		tag_p : 'साधारण',
-		tag_pre : 'फ़ॉर्मैटॅड',
-		tag_address : 'पता',
-		tag_h1 : 'शीर्षक 1',
-		tag_h2 : 'शीर्षक 2',
-		tag_h3 : 'शीर्षक 3',
-		tag_h4 : 'शीर्षक 4',
-		tag_h5 : 'शीर्षक 5',
-		tag_h6 : 'शीर्षक 6',
-		tag_div : 'शीर्षक (DIV)'
+		tag_p		: 'साधारण',
+		tag_pre		: 'फ़ॉर्मैटॅड',
+		tag_address	: 'पता',
+		tag_h1		: 'शीर्षक 1',
+		tag_h2		: 'शीर्षक 2',
+		tag_h3		: 'शीर्षक 3',
+		tag_h4		: 'शीर्षक 4',
+		tag_h5		: 'शीर्षक 5',
+		tag_h6		: 'शीर्षक 6',
+		tag_div		: 'शीर्षक (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['hi'] =
 
 	font :
 	{
-		label : 'फ़ॉन्ट',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'फ़ॉन्ट',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'फ़ॉन्ट',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'फ़ॉन्ट'
 	},
 
 	fontSize :
 	{
-		label : 'साइज़',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'साइज़',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'साइज़',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'साइज़'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'टेक्स्ट रंग',
-		bgColorTitle : 'बैक्ग्राउन्ड रंग',
-		auto : 'स्वचालित',
-		more : 'और रंग...'
+		textColorTitle	: 'टेक्स्ट रंग',
+		bgColorTitle	: 'बैक्ग्राउन्ड रंग',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'स्वचालित',
+		more			: 'और रंग...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['hi'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['hi'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

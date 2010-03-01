@@ -31,7 +31,11 @@ CKEDITOR.lang['ru'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Источник',
@@ -68,12 +72,12 @@ CKEDITOR.lang['ru'] =
 		flash			: 'Flash',
 		form			: 'Форма',
 		checkbox		: 'Флаговая кнопка',
-		radio		: 'Кнопка выбора',
+		radio			: 'Кнопка выбора',
 		textField		: 'Текстовое поле',
 		textarea		: 'Текстовая область',
 		hiddenField		: 'Скрытое поле',
 		button			: 'Кнопка',
-		select	: 'Список',
+		select			: 'Список',
 		imageButton		: 'Кнопка с изображением',
 		notSet			: '<не определено>',
 		id				: 'Идентификатор',
@@ -88,14 +92,22 @@ CKEDITOR.lang['ru'] =
 		cssStyle		: 'Стиль CSS',
 		ok				: 'ОК',
 		cancel			: 'Отмена',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'Информация',
 		advancedTab		: 'Расширенный',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
-		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
-		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		validateNumberFailed : 'Это значение не является числом.',
+		confirmNewPage	: 'Все несохраненные изменения будут утеряны. Вы уверены, что хотите перейти на другую страницу?',
+		confirmCancel	: 'Некоторые опции были изменены. Вы уверены, что хотите закрыть диалог?',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
-		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
+		unavailable		: '%1<span class="cke_accessibility">, недоступно</span>'
 	},
 
 	// Special char dialog.
@@ -116,22 +128,17 @@ CKEDITOR.lang['ru'] =
 		upload		: 'Закачать',
 		advanced	: 'Расширенный',
 		type		: 'Тип ссылки',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Якорь на эту страницу',
 		toEmail		: 'Эл. почта',
-		target		: 'Цель',
-		targetNotSet	: '<не определено>',
-		targetFrame	: '<фрейм>',
-		targetPopup	: '<всплывающее окно>',
-		targetNew	: 'Новое окно (_blank)',
-		targetTop	: 'Самое верхнее окно (_top)',
-		targetSelf	: 'Тоже окно (_self)',
-		targetParent	: 'Родительское окно (_parent)',
+		targetFrame		: '<фрейм>',
+		targetPopup		: '<всплывающее окно>',
 		targetFrameName	: 'Имя целевого фрейма',
 		targetPopupName	: 'Имя всплывающего окна',
 		popupFeatures	: 'Свойства всплывающего окна',
-		popupResizable	: 'Resizable', // MISSING
+		popupResizable	: 'Изменяемый размер',
 		popupStatusBar	: 'Строка состояния',
-		popupLocationBar	: 'Панель локации',
+		popupLocationBar: 'Панель локации',
 		popupToolbar	: 'Панель инструментов',
 		popupMenuBar	: 'Панель меню',
 		popupFullScreen	: 'Полный экран (IE)',
@@ -141,14 +148,13 @@ CKEDITOR.lang['ru'] =
 		popupLeft		: 'Позиция слева',
 		popupHeight		: 'Высота',
 		popupTop		: 'Позиция сверху',
-		id				: 'Id', // MISSING
+		id				: 'Id',
 		langDir			: 'Направление языка',
-		langDirNotSet	: '<не определено>',
-		langDirLTR		: 'Слева на право (LTR)',
-		langDirRTL		: 'Справа на лево (RTL)',
+		langDirLTR		: 'Слева направо (LTR)',
+		langDirRTL		: 'Справа налево (RTL)',
 		acccessKey		: 'Горячая клавиша',
 		name			: 'Имя',
-		langCode		: 'Направление языка',
+		langCode		: 'Код языка',
 		tabIndex		: 'Последовательность перехода',
 		advisoryTitle	: 'Заголовок',
 		advisoryContentType	: 'Тип содержимого',
@@ -186,10 +192,10 @@ CKEDITOR.lang['ru'] =
 		replaceWith			: 'Заменить на:',
 		notFoundMsg			: 'Указанный текст не найден.',
 		matchCase			: 'Учитывать регистр',
-		matchWord			: 'Совпадение целых слов',
-		matchCyclic			: 'Match cyclic', // MISSING
+		matchWord			: 'Только слово целиком',
+		matchCyclic			: 'Начинать с начала после достижения конца',
 		replaceAll			: 'Заменить все',
-		replaceSuccessMsg	: '%1 occurrence(s) replaced.' // MISSING
+		replaceSuccessMsg	: '%1 совпадение(й) заменено.'
 	},
 
 	// Table Dialog
@@ -203,13 +209,13 @@ CKEDITOR.lang['ru'] =
 		columns		: 'Колонки',
 		border		: 'Размер бордюра',
 		align		: 'Выравнивание',
-		alignNotSet	: '<Не уст.>',
 		alignLeft	: 'Слева',
 		alignCenter	: 'По центру',
 		alignRight	: 'Справа',
 		width		: 'Ширина',
 		widthPx		: 'пикселей',
 		widthPc		: 'процентов',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Высота',
 		cellSpace	: 'Промежуток (spacing)',
 		cellPad		: 'Отступ (padding)',
@@ -220,13 +226,13 @@ CKEDITOR.lang['ru'] =
 		headersColumn	: 'Первый столбец',
 		headersRow		: 'Первая строка',
 		headersBoth		: 'Оба варианта',
-		invalidRows		: 'Number of rows must be a number greater than 0.', // MISSING
-		invalidCols		: 'Number of columns must be a number greater than 0.', // MISSING
-		invalidBorder	: 'Border size must be a number.', // MISSING
-		invalidWidth	: 'Table width must be a number.', // MISSING
-		invalidHeight	: 'Table height must be a number.', // MISSING
-		invalidCellSpacing	: 'Cell spacing must be a number.', // MISSING
-		invalidCellPadding	: 'Cell padding must be a number.', // MISSING
+		invalidRows		: 'Число строк должно быть больше 0.',
+		invalidCols		: 'Число столбцов должно быть больше 0.',
+		invalidBorder	: 'Ширина бордюра должна быть числом.',
+		invalidWidth	: 'Ширина таблицы должна быть числом.',
+		invalidHeight	: 'Высота таблицы должна быть числом.',
+		invalidCellSpacing	: 'Размер промежутков (cellspacing) между ячейками должны быть числом.',
+		invalidCellPadding	: 'Отступы внутри ячеек (cellpadding) должны быть числом.',
 
 		cell :
 		{
@@ -234,33 +240,33 @@ CKEDITOR.lang['ru'] =
 			insertBefore	: 'Вставить ячейку до',
 			insertAfter		: 'Вставить ячейку после',
 			deleteCell		: 'Удалить ячейки',
-			merge			: 'Соединить ячейки',
-			mergeRight		: 'Соединить вправо',
-			mergeDown		: 'Соединить вниз',
+			merge			: 'Объединить ячейки',
+			mergeRight		: 'Объединить с правой',
+			mergeDown		: 'Объединить с нижней',
 			splitHorizontal	: 'Разбить ячейку горизонтально',
 			splitVertical	: 'Разбить ячейку вертикально',
-			title			: 'Cell Properties', // MISSING
-			cellType		: 'Cell Type', // MISSING
-			rowSpan			: 'Rows Span', // MISSING
-			colSpan			: 'Columns Span', // MISSING
-			wordWrap		: 'Word Wrap', // MISSING
-			hAlign			: 'Horizontal Alignment', // MISSING
-			vAlign			: 'Vertical Alignment', // MISSING
-			alignTop		: 'Top', // MISSING
-			alignMiddle		: 'Middle', // MISSING
-			alignBottom		: 'Bottom', // MISSING
-			alignBaseline	: 'Baseline', // MISSING
-			bgColor			: 'Background Color', // MISSING
-			borderColor		: 'Border Color', // MISSING
-			data			: 'Data', // MISSING
-			header			: 'Header', // MISSING
-			yes				: 'Yes', // MISSING
-			no				: 'No', // MISSING
-			invalidWidth	: 'Cell width must be a number.', // MISSING
-			invalidHeight	: 'Cell height must be a number.', // MISSING
-			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
-			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			title			: 'Свойства ячейки',
+			cellType		: 'Тип ячейки',
+			rowSpan			: 'Rows Span',
+			colSpan			: 'Columns Span',
+			wordWrap		: 'Перенос по словам',
+			hAlign			: 'Выравнивание по горизонтали',
+			vAlign			: 'Выравнивание по вертикали',
+			alignTop		: 'По верху',
+			alignMiddle		: 'Посередине',
+			alignBottom		: 'По низу',
+			alignBaseline	: 'По базовой линии',
+			bgColor			: 'Цвет фона',
+			borderColor		: 'Цвет границы',
+			data			: 'Данные',
+			header			: 'Заголовок',
+			yes				: 'Да',
+			no				: 'Нет',
+			invalidWidth	: 'Ширина ячейки должна быть числом.',
+			invalidHeight	: 'Высота ячейки должна быть числом.',
+			invalidRowSpan	: 'Rows span must be a whole number.',
+			invalidColSpan	: 'Columns span must be a whole number.',
+			chooseColor		: 'Выберите'
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['ru'] =
 		menu		: 'Свойства формы',
 		action		: 'Действие',
 		method		: 'Метод',
-		encoding	: 'Encoding', // MISSING
-		target		: 'Цель',
-		targetNotSet	: '<не определено>',
-		targetNew	: 'Новое окно (_blank)',
-		targetTop	: 'Самое верхнее окно (_top)',
-		targetSelf	: 'Тоже окно (_self)',
-		targetParent	: 'Родительское окно (_parent)'
+		encoding	: 'Кодировка'
 	},
 
 	// Select Field Dialog.
@@ -371,88 +371,92 @@ CKEDITOR.lang['ru'] =
 		title		: 'Свойства изображения',
 		titleButton	: 'Свойства кнопки с изображением',
 		menu		: 'Свойства изображения',
-		infoTab	: 'Информация о изображении',
-		btnUpload	: 'Послать на сервер',
-		url		: 'URL',
-		upload	: 'Закачать',
-		alt		: 'Альтернативный текст',
+		infoTab		: 'Информация о изображении',
+		btnUpload	: 'Отправить на сервер',
+		upload		: 'Закачать',
+		alt			: 'Альтернативный текст',
 		width		: 'Ширина',
-		height	: 'Высота',
+		height		: 'Высота',
 		lockRatio	: 'Сохранять пропорции',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Сбросить размер',
-		border	: 'Бордюр',
-		hSpace	: 'Горизонтальный отступ',
-		vSpace	: 'Вертикальный отступ',
+		border		: 'Бордюр',
+		hSpace		: 'Горизонтальный отступ',
+		vSpace		: 'Вертикальный отступ',
 		align		: 'Выравнивание',
 		alignLeft	: 'По левому краю',
 		alignRight	: 'По правому краю',
-		preview	: 'Предварительный просмотр',
 		alertUrl	: 'Пожалуйста, введите URL изображения',
-		linkTab	: 'Ссылка',
-		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
-		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		linkTab		: 'Ссылка',
+		button2Img	: 'Do you want to transform the selected image button on a simple image?',
+		img2Button	: 'Do you want to transform the selected image on a image button?',
+		urlMissing	: 'Отсутствует URL картинки.',
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
 	flash :
 	{
 		properties		: 'Свойства Flash',
-		propertiesTab	: 'Properties', // MISSING
-		title		: 'Свойства Flash',
-		chkPlay		: 'Авто проигрывание',
-		chkLoop		: 'Повтор',
-		chkMenu		: 'Включить меню Flash',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Масштабировать',
+		propertiesTab	: 'Свойства',
+		title			: 'Свойства Flash',
+		chkPlay			: 'Авто проигрывание',
+		chkLoop			: 'Повтор',
+		chkMenu			: 'Включить меню Flash',
+		chkFull			: 'разрешить полноэкранный режим',
+ 		scale			: 'Масштабировать',
 		scaleAll		: 'Показывать все',
 		scaleNoBorder	: 'Без бордюра',
 		scaleFit		: 'Точное совпадение',
-		access			: 'Script Access', // MISSING
-		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Выравнивание',
-		alignLeft	: 'По левому краю',
-		alignAbsBottom: 'Абс понизу',
-		alignAbsMiddle: 'Абс посередине',
+		access			: 'Область доступа скрипта',
+		accessAlways	: 'Всегда',
+		accessSameDomain: 'Тот же домен',
+		accessNever		: 'Никогда',
+		align			: 'Выравнивание',
+		alignLeft		: 'По левому краю',
+		alignAbsBottom	: 'Абс понизу',
+		alignAbsMiddle	: 'Абс посередине',
 		alignBaseline	: 'По базовой линии',
-		alignBottom	: 'Понизу',
-		alignMiddle	: 'Посередине',
-		alignRight	: 'По правому краю',
+		alignBottom		: 'Понизу',
+		alignMiddle		: 'Посередине',
+		alignRight		: 'По правому краю',
 		alignTextTop	: 'Текст наверху',
-		alignTop	: 'По верху',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Цвет фона',
-		width	: 'Ширина',
-		height	: 'Высота',
-		hSpace	: 'Горизонтальный отступ',
-		vSpace	: 'Вертикальный отступ',
-		validateSrc : 'Пожалуйста, введите URL ссылки',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'По верху',
+		quality			: 'Качество',
+		qualityBest		: 'Лучшее',
+		qualityHigh		: 'Высокое',
+		qualityAutoHigh	: 'Высокое (авто)',
+		qualityMedium	: 'Среднее',
+		qualityAutoLow	: 'Низкое (авто)',
+		qualityLow		: 'Низкое',
+		windowModeWindow: 'Окно',
+		windowModeOpaque: 'Непрозрачный',
+		windowModeTransparent : 'Прозрачный',
+		windowMode		: 'Оконный режим',
+		flashvars		: 'Переменные для Flash',
+		bgcolor			: 'Цвет фона',
+		width			: 'Ширина',
+		height			: 'Высота',
+		hSpace			: 'Горизонтальный отступ',
+		vSpace			: 'Вертикальный отступ',
+		validateSrc		: 'Пожалуйста, введите URL ссылки',
+		validateWidth	: 'Ширина задается числом.',
+		validateHeight	: 'Высота задается числом.',
+		validateHSpace	: 'Горизонтальный отступ задается числом.',
+		validateVSpace	: 'Вертикальный отступ задается числом.'
 	},
 
 	// Speller Pages Dialog
 	spellCheck :
 	{
 		toolbar			: 'Проверить орфографию',
-		title			: 'Spell Check', // MISSING
-		notAvailable	: 'Sorry, but service is unavailable now.', // MISSING
-		errorLoading	: 'Error loading application service host: %s.', // MISSING
+		title			: 'Проверка правописания',
+		notAvailable	: 'Извините, сервис сейчас недоступен.',
+		errorLoading	: 'Ошибка при загрузке служебного хоста приложения: %s.',
 		notInDic		: 'Нет в словаре',
 		changeTo		: 'Заменить на',
 		btnIgnore		: 'Игнорировать',
@@ -465,7 +469,7 @@ CKEDITOR.lang['ru'] =
 		noMispell		: 'Проверка орфографии закончена: ошибок не найдено',
 		noChanges		: 'Проверка орфографии закончена: ни одного слова не изменено',
 		oneChange		: 'Проверка орфографии закончена: одно слово изменено',
-		manyChanges		: 'Проверка орфографии закончена: 1% слов изменен',
+		manyChanges		: 'Проверка орфографии закончена: 1% слов изменено',
 		ieSpellDownload	: 'Модуль проверки орфографии не установлен. Хотите скачать его сейчас?'
 	},
 
@@ -477,20 +481,21 @@ CKEDITOR.lang['ru'] =
 
 	elementsPath :
 	{
-		eleTitle : '%1 element' // MISSING
+		eleLabel : 'Elements path', // MISSING
+		eleTitle : '%1 элемент'
 	},
 
-	numberedlist : 'Нумерованный список',
-	bulletedlist : 'Маркированный список',
-	indent : 'Увеличить отступ',
-	outdent : 'Уменьшить отступ',
+	numberedlist	: 'Нумерованный список',
+	bulletedlist	: 'Маркированный список',
+	indent			: 'Увеличить отступ',
+	outdent			: 'Уменьшить отступ',
 
 	justify :
 	{
-		left : 'По левому краю',
-		center : 'По центру',
-		right : 'По правому краю',
-		block : 'По ширине'
+		left	: 'По левому краю',
+		center	: 'По центру',
+		right	: 'По правому краю',
+		block	: 'По ширине'
 	},
 
 	blockquote : 'Цитата',
@@ -501,197 +506,194 @@ CKEDITOR.lang['ru'] =
 		cutError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции вырезания. Пожалуйста, используйте клавиатуру для этого (Ctrl+X).',
 		copyError	: 'Настройки безопасности вашего браузера не позволяют редактору автоматически выполнять операции копирования. Пожалуйста, используйте клавиатуру для этого (Ctrl+C).',
 		pasteMsg	: 'Пожалуйста, вставьте текст в прямоугольник, используя сочетание клавиш (<STRONG>Ctrl+V</STRONG>), и нажмите <STRONG>OK</STRONG>.',
-		securityMsg	: 'По причине настроек безопасности браузера, редактор не имеет доступа к данным буфера обмена напрямую. Вам необходимо вставить текст снова в это окно.'
+		securityMsg	: 'По причине настроек безопасности браузера, редактор не имеет доступа к данным буфера обмена напрямую. Вам необходимо вставить текст снова в это окно.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Вставить из Word',
-		title : 'Вставить из Word',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'Текст, который вы хотите вставить, похож на копируемый из Word. Вы хотите очистить его перед вставкой?',
+		toolbar			: 'Вставить из Word',
+		title			: 'Вставить из Word',
+		error			: 'Невозможно очистить вставленные данные из-за внутренней ошибки'
 	},
 
 	pasteText :
 	{
-		button : 'Вставить только текст',
-		title : 'Вставить только текст'
+		button	: 'Вставить только текст',
+		title	: 'Вставить только текст'
 	},
 
 	templates :
 	{
-		button : 'Шаблоны',
-		title : 'Шаблоны содержимого',
-		insertOption: 'Заменить текущее содержание',
-		selectPromptMsg: 'Пожалуйста, выберете шаблон для открытия в редакторе<br>(текущее содержимое будет потеряно):',
-		emptyListMsg : '(Ни одного шаблона не определено)'
+		button			: 'Шаблоны',
+		title			: 'Шаблоны содержимого',
+		insertOption	: 'Заменить текущее содержание',
+		selectPromptMsg	: 'Пожалуйста, выберете шаблон для открытия в редакторе<br>(текущее содержимое будет потеряно):',
+		emptyListMsg	: '(Ни одного шаблона не определено)'
 	},
 
 	showBlocks : 'Показать блоки',
 
 	stylesCombo :
 	{
-		label : 'Стиль',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Стиль',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles',
+		panelTitle2	: 'Inline Styles',
+		panelTitle3	: 'Стили объекта'
 	},
 
 	format :
 	{
-		label : 'Форматирование',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Форматирование',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Форматирование',
+		panelTitle	: 'Форматирование',
 
-		tag_p : 'Нормальный',
-		tag_pre : 'Форматированный',
-		tag_address : 'Адрес',
-		tag_h1 : 'Заголовок 1',
-		tag_h2 : 'Заголовок 2',
-		tag_h3 : 'Заголовок 3',
-		tag_h4 : 'Заголовок 4',
-		tag_h5 : 'Заголовок 5',
-		tag_h6 : 'Заголовок 6',
-		tag_div : 'Нормальный (DIV)'
+		tag_p		: 'Нормальный',
+		tag_pre		: 'Форматированный',
+		tag_address	: 'Адрес',
+		tag_h1		: 'Заголовок 1',
+		tag_h2		: 'Заголовок 2',
+		tag_h3		: 'Заголовок 3',
+		tag_h4		: 'Заголовок 4',
+		tag_h5		: 'Заголовок 5',
+		tag_h6		: 'Заголовок 6',
+		tag_div		: 'Нормальный (DIV)'
 	},
 
 	div :
 	{
-		title				: 'Create Div Container', // MISSING
-		toolbar				: 'Create Div Container', // MISSING
-		cssClassInputLabel	: 'Stylesheet Classes', // MISSING
-		styleSelectLabel	: 'Style', // MISSING
-		IdInputLabel		: 'Id', // MISSING
-		languageCodeInputLabel	: ' Language Code', // MISSING
-		inlineStyleInputLabel	: 'Inline Style', // MISSING
-		advisoryTitleInputLabel	: 'Advisory Title', // MISSING
-		langDirLabel		: 'Language Direction', // MISSING
-		langDirLTRLabel		: 'Left to Right (LTR)', // MISSING
-		langDirRTLLabel		: 'Right to Left (RTL)', // MISSING
-		edit				: 'Edit Div', // MISSING
-		remove				: 'Remove Div' // MISSING
+		title				: 'Создать Div-контейнер',
+		toolbar				: 'Создать Div-контейнер',
+		cssClassInputLabel	: 'Классы таблицы стилей',
+		styleSelectLabel	: 'Стиль',
+		IdInputLabel		: 'Id',
+		languageCodeInputLabel	: 'Код языка',
+		inlineStyleInputLabel	: 'Локальный стиль',
+		advisoryTitleInputLabel	: 'Advisory Title',
+		langDirLabel		: 'Направление письма',
+		langDirLTRLabel		: 'Слева направо (LTR)',
+		langDirRTLLabel		: 'Справа налево (RTL)',
+		edit				: 'Редактировать Div',
+		remove				: 'Убрать Div'
   	},
 
 	font :
 	{
-		label : 'Шрифт',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Шрифт',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Шрифт',
+		voiceLabel	: 'Шрифт',
+		panelTitle	: 'Шрифт'
 	},
 
 	fontSize :
 	{
-		label : 'Размер',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Размер',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Размер',
+		voiceLabel	: 'Размер шрифта',
+		panelTitle	: 'Размер'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Цвет текста',
-		bgColorTitle : 'Цвет фона',
-		auto : 'Автоматический',
-		more : 'Цвета...'
+		textColorTitle	: 'Цвет текста',
+		bgColorTitle	: 'Цвет фона',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Автоматический',
+		more			: 'Цвета...'
 	},
 
 	colors :
 	{
-		'000' : 'Black', // MISSING
-		'800000' : 'Maroon', // MISSING
-		'8B4513' : 'Saddle Brown', // MISSING
-		'2F4F4F' : 'Dark Slate Gray', // MISSING
-		'008080' : 'Teal', // MISSING
-		'000080' : 'Navy', // MISSING
-		'4B0082' : 'Indigo', // MISSING
-		'696969' : 'Dim Gray', // MISSING
-		'B22222' : 'Fire Brick', // MISSING
-		'A52A2A' : 'Brown', // MISSING
-		'DAA520' : 'Golden Rod', // MISSING
-		'006400' : 'Dark Green', // MISSING
-		'40E0D0' : 'Turquoise', // MISSING
-		'0000CD' : 'Medium Blue', // MISSING
-		'800080' : 'Purple', // MISSING
-		'808080' : 'Gray', // MISSING
-		'F00' : 'Red', // MISSING
-		'FF8C00' : 'Dark Orange', // MISSING
-		'FFD700' : 'Gold', // MISSING
-		'008000' : 'Green', // MISSING
-		'0FF' : 'Cyan', // MISSING
-		'00F' : 'Blue', // MISSING
-		'EE82EE' : 'Violet', // MISSING
-		'A9A9A9' : 'Dark Gray', // MISSING
-		'FFA07A' : 'Light Salmon', // MISSING
-		'FFA500' : 'Orange', // MISSING
-		'FFFF00' : 'Yellow', // MISSING
-		'00FF00' : 'Lime', // MISSING
-		'AFEEEE' : 'Pale Turquoise', // MISSING
-		'ADD8E6' : 'Light Blue', // MISSING
-		'DDA0DD' : 'Plum', // MISSING
-		'D3D3D3' : 'Light Grey', // MISSING
-		'FFF0F5' : 'Lavender Blush', // MISSING
-		'FAEBD7' : 'Antique White', // MISSING
-		'FFFFE0' : 'Light Yellow', // MISSING
-		'F0FFF0' : 'Honeydew', // MISSING
-		'F0FFFF' : 'Azure', // MISSING
-		'F0F8FF' : 'Alice Blue', // MISSING
-		'E6E6FA' : 'Lavender', // MISSING
-		'FFF' : 'White' // MISSING
+		'000' : 'Черный',
+		'800000' : 'Бордовый',
+		'8B4513' : 'Старой кожи',
+		'2F4F4F' : 'Темный синевато-серый',
+		'008080' : 'Чайный',
+		'000080' : 'Темно-синиый',
+		'4B0082' : 'Индиго',
+		'696969' : 'Грязно-серый',
+		'B22222' : 'Огнеупорный кирпич',
+		'A52A2A' : 'Коричневый',
+		'DAA520' : 'Красное золото',
+		'006400' : 'Темно-зеленый',
+		'40E0D0' : 'Бирюзовый',
+		'0000CD' : 'Синий',
+		'800080' : 'Пурпурный',
+		'808080' : 'Серый',
+		'F00' : 'Красный',
+		'FF8C00' : 'Темно-оранжевый',
+		'FFD700' : 'Золотой',
+		'008000' : 'Зеленый',
+		'0FF' : 'Морской волны',
+		'00F' : 'Голубой',
+		'EE82EE' : 'Фиолетовый',
+		'A9A9A9' : 'Темно-серый',
+		'FFA07A' : 'Светлый оранжево-розовый',
+		'FFA500' : 'Оранжевый',
+		'FFFF00' : 'Желтый',
+		'00FF00' : 'Известковый',
+		'AFEEEE' : 'Бледно-бирюзовый',
+		'ADD8E6' : 'Свелто-синий',
+		'DDA0DD' : 'Сливовый',
+		'D3D3D3' : 'Светло-серый',
+		'FFF0F5' : 'Бледный розово-лиловый ',
+		'FAEBD7' : 'Античный белый',
+		'FFFFE0' : 'Светло-желтый',
+		'F0FFF0' : 'Свежего меда',
+		'F0FFFF' : 'Лазурь',
+		'F0F8FF' : 'Бледно-голубой',
+		'E6E6FA' : 'Бледно-лиловый',
+		'FFF' : 'Белый'
 	},
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Проверка Орфографии по Мере Ввода',
+		enable			: 'Включить ПОМВ',
+		disable			: 'Отключить ПОМВ',
+		about			: 'О ПОМВ',
+		toggle			: 'Переключить ПОМВ',
+		options			: 'Настройки',
+		langs			: 'Языки',
+		moreSuggestions	: 'Больше вариантов',
+		ignore			: 'Пропустить',
+		ignoreAll		: 'Пропустить всё',
+		addWord			: 'Добавить слово',
+		emptyDic		: 'Имя словаря должно быть не пустым.',
+		optionsTab		: 'Настройки',
+		languagesTab	: 'Языки',
+		dictionariesTab	: 'Словари',
+		aboutTab		: 'О словарях'
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'О программе CKEditor',
+		dlgTitle	: 'О программе CKEditor',
+		moreInfo	: 'По вопросам лицензирования обращайтесь на наш сайт:',
+		copy		: 'Copyright &copy; $1. Все права защищены.'
 	},
 
-	maximize : 'Maximize', // MISSING
-	minimize : 'Minimize', // MISSING
+	maximize : 'Максимизировать',
+	minimize : 'Минимизировать',
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Якорь',
+		flash	: 'Flash-анимация',
+		div		: 'Разрыв страницы',
+		unknown	: 'Неизвестный объект'
 	},
 
-	resize : 'Drag to resize', // MISSING
+	resize : 'Перетащите для изменения размера',
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Выберите цвет',
+		highlight	: 'Выделить',
+		selected	: 'Выбранное',
+		clear		: 'Очистить'
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Свернуть панель инструментов',
+	toolbarExpand	: 'Развернуть панель инструментов'
 };

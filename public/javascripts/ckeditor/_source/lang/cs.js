@@ -31,7 +31,11 @@ CKEDITOR.lang['cs'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Editor formátovaného textu, %1',
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Zdroj',
@@ -68,12 +72,12 @@ CKEDITOR.lang['cs'] =
 		flash			: 'Flash',
 		form			: 'Formulář',
 		checkbox		: 'Zaškrtávací políčko',
-		radio		: 'Přepínač',
+		radio			: 'Přepínač',
 		textField		: 'Textové pole',
 		textarea		: 'Textová oblast',
 		hiddenField		: 'Skryté pole',
 		button			: 'Tlačítko',
-		select	: 'Seznam',
+		select			: 'Seznam',
 		imageButton		: 'Obrázkové tlačítko',
 		notSet			: '<nenastaveno>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['cs'] =
 		cssStyle		: 'Styl',
 		ok				: 'OK',
 		cancel			: 'Storno',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'Obecné',
 		advancedTab		: 'Rozšířené',
-		validateNumberFailed	: 'Zadaná hodnota není číselná.',
+		validateNumberFailed : 'Zadaná hodnota není číselná.',
 		confirmNewPage	: 'Jakékoliv neuložené změny obsahu budou ztraceny. Skutečně chete otevrít novou stránku?',
 		confirmCancel	: 'Některá z nastavení byla změněna. Skutečně chete zavřít dialogové okno?',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, nedostupné</span>'
@@ -116,22 +128,17 @@ CKEDITOR.lang['cs'] =
 		upload		: 'Odeslat',
 		advanced	: 'Rozšířené',
 		type		: 'Typ odkazu',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Kotva v této stránce',
 		toEmail		: 'E-Mail',
-		target		: 'Cíl',
-		targetNotSet	: '<nenastaveno>',
-		targetFrame	: '<rámec>',
-		targetPopup	: '<vyskakovací okno>',
-		targetNew	: 'Nové okno (_blank)',
-		targetTop	: 'Hlavní okno (_top)',
-		targetSelf	: 'Stejné okno (_self)',
-		targetParent	: 'Rodičovské okno (_parent)',
+		targetFrame		: '<rámec>',
+		targetPopup		: '<vyskakovací okno>',
 		targetFrameName	: 'Název cílového rámu',
 		targetPopupName	: 'Název vyskakovacího okna',
 		popupFeatures	: 'Vlastnosti vyskakovacího okna',
 		popupResizable	: 'Umožňující měnit velikost',
 		popupStatusBar	: 'Stavový řádek',
-		popupLocationBar	: 'Panel umístění',
+		popupLocationBar: 'Panel umístění',
 		popupToolbar	: 'Panel nástrojů',
 		popupMenuBar	: 'Panel nabídky',
 		popupFullScreen	: 'Celá obrazovka (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['cs'] =
 		popupTop		: 'Horní okraj',
 		id				: 'Id',
 		langDir			: 'Orientace jazyka',
-		langDirNotSet	: '<nenastaveno>',
 		langDirLTR		: 'Zleva do prava (LTR)',
 		langDirRTL		: 'Zprava do leva (RTL)',
 		acccessKey		: 'Přístupový klíč',
@@ -203,13 +209,13 @@ CKEDITOR.lang['cs'] =
 		columns		: 'Sloupce',
 		border		: 'Ohraničení',
 		align		: 'Zarovnání',
-		alignNotSet	: '<nenastaveno>',
 		alignLeft	: 'Vlevo',
 		alignCenter	: 'Na střed',
 		alignRight	: 'Vpravo',
 		width		: 'Šířka',
 		widthPx		: 'bodů',
 		widthPc		: 'procent',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Výška',
 		cellSpace	: 'Vzdálenost buněk',
 		cellPad		: 'Odsazení obsahu v buňce',
@@ -260,7 +266,7 @@ CKEDITOR.lang['cs'] =
 			invalidHeight	: 'Zadaná výška buňky musí být číslená.',
 			invalidRowSpan	: 'Zadaný počet sloučených řádků musí být celé číslo.',
 			invalidColSpan	: 'Zadaný počet sloučených sloupců musí být celé číslo.',
-			chooseColor : 'Výběr'
+			chooseColor		: 'Výběr'
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['cs'] =
 		menu		: 'Vlastnosti formuláře',
 		action		: 'Akce',
 		method		: 'Metoda',
-		encoding	: 'Kódování',
-		target		: 'Cíl',
-		targetNotSet	: '<nenastaveno>',
-		targetNew	: 'Nové okno (_blank)',
-		targetTop	: 'Hlavní okno (_top)',
-		targetSelf	: 'Stejné okno (_self)',
-		targetParent	: 'Rodičovské okno (_parent)'
+		encoding	: 'Kódování'
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['cs'] =
 		title		: 'Vlastnosti obrázku',
 		titleButton	: 'Vlastností obrázkového tlačítka',
 		menu		: 'Vlastnosti obrázku',
-		infoTab	: 'Informace o obrázku',
+		infoTab		: 'Informace o obrázku',
 		btnUpload	: 'Odeslat na server',
-		url		: 'URL',
-		upload	: 'Odeslat',
-		alt		: 'Alternativní text',
+		upload		: 'Odeslat',
+		alt			: 'Alternativní text',
 		width		: 'Šířka',
-		height	: 'Výška',
+		height		: 'Výška',
 		lockRatio	: 'Zámek',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Původní velikost',
-		border	: 'Okraje',
-		hSpace	: 'H-mezera',
-		vSpace	: 'V-mezera',
+		border		: 'Okraje',
+		hSpace		: 'H-mezera',
+		vSpace		: 'V-mezera',
 		align		: 'Zarovnání',
 		alignLeft	: 'Vlevo',
 		alignRight	: 'Vpravo',
-		preview	: 'Náhled',
 		alertUrl	: 'Zadejte prosím URL obrázku',
-		linkTab	: 'Odkaz',
+		linkTab		: 'Odkaz',
 		button2Img	: 'Skutečně chcete převést zvolené obrázkové tlačítko na obyčejný obrázek?',
 		img2Button	: 'Skutečně chcete převést zvolený obrázek na obrázkové tlačítko?',
-		urlMissing : 'Zadané URL zdroje obrázku nebylo nalezeno.'
+		urlMissing	: 'Zadané URL zdroje obrázku nebylo nalezeno.',
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['cs'] =
 	{
 		properties		: 'Vlastnosti Flashe',
 		propertiesTab	: 'Vlastnosti',
-		title		: 'Vlastnosti Flashe',
-		chkPlay		: 'Automatické spuštění',
-		chkLoop		: 'Opakování',
-		chkMenu		: 'Nabídka Flash',
-		chkFull		: 'Povolit celoobrazovkový režim',
- 		scale		: 'Zobrazit',
+		title			: 'Vlastnosti Flashe',
+		chkPlay			: 'Automatické spuštění',
+		chkLoop			: 'Opakování',
+		chkMenu			: 'Nabídka Flash',
+		chkFull			: 'Povolit celoobrazovkový režim',
+ 		scale			: 'Zobrazit',
 		scaleAll		: 'Zobrazit vše',
 		scaleNoBorder	: 'Bez okraje',
 		scaleFit		: 'Přizpůsobit',
 		access			: 'Přístup ke skriptu',
 		accessAlways	: 'Vždy',
-		accessSameDomain	: 'Ve stejné doméně',
-		accessNever	: 'Nikdy',
-		align		: 'Zarovnání',
-		alignLeft	: 'Vlevo',
-		alignAbsBottom: 'Zcela dolů',
-		alignAbsMiddle: 'Doprostřed',
+		accessSameDomain: 'Ve stejné doméně',
+		accessNever		: 'Nikdy',
+		align			: 'Zarovnání',
+		alignLeft		: 'Vlevo',
+		alignAbsBottom	: 'Zcela dolů',
+		alignAbsMiddle	: 'Doprostřed',
 		alignBaseline	: 'Na účaří',
-		alignBottom	: 'Dolů',
-		alignMiddle	: 'Na střed',
-		alignRight	: 'Vpravo',
+		alignBottom		: 'Dolů',
+		alignMiddle		: 'Na střed',
+		alignRight		: 'Vpravo',
 		alignTextTop	: 'Na horní okraj textu',
-		alignTop	: 'Nahoru',
-		quality		: 'Kvalita',
-		qualityBest		 : 'Nejlepší',
-		qualityHigh		 : 'Vysoká',
-		qualityAutoHigh	 : 'Vysoká - auto',
-		qualityMedium	 : 'Střední',
-		qualityAutoLow	 : 'Nízká - auto',
-		qualityLow		 : 'Nejnižší',
-		windowModeWindow	 : 'Okno',
-		windowModeOpaque	 : 'Neprůhledné',
-		windowModeTransparent	 : 'Průhledné',
-		windowMode	: 'Režim okna',
-		flashvars	: 'Proměnné pro Flash',
-		bgcolor	: 'Barva pozadí',
-		width	: 'Šířka',
-		height	: 'Výška',
-		hSpace	: 'H-mezera',
-		vSpace	: 'V-mezera',
-		validateSrc : 'Zadejte prosím URL odkazu',
-		validateWidth : 'Zadaná šířka musí být číslo.',
-		validateHeight : 'Zadaná výška musí být číslo.',
-		validateHSpace : 'Zadaná H-mezera musí být číslo.',
-		validateVSpace : 'Zadaná V-mezera musí být číslo.'
+		alignTop		: 'Nahoru',
+		quality			: 'Kvalita',
+		qualityBest		: 'Nejlepší',
+		qualityHigh		: 'Vysoká',
+		qualityAutoHigh	: 'Vysoká - auto',
+		qualityMedium	: 'Střední',
+		qualityAutoLow	: 'Nízká - auto',
+		qualityLow		: 'Nejnižší',
+		windowModeWindow: 'Okno',
+		windowModeOpaque: 'Neprůhledné',
+		windowModeTransparent : 'Průhledné',
+		windowMode		: 'Režim okna',
+		flashvars		: 'Proměnné pro Flash',
+		bgcolor			: 'Barva pozadí',
+		width			: 'Šířka',
+		height			: 'Výška',
+		hSpace			: 'H-mezera',
+		vSpace			: 'V-mezera',
+		validateSrc		: 'Zadejte prosím URL odkazu',
+		validateWidth	: 'Zadaná šířka musí být číslo.',
+		validateHeight	: 'Zadaná výška musí být číslo.',
+		validateHSpace	: 'Zadaná H-mezera musí být číslo.',
+		validateVSpace	: 'Zadaná V-mezera musí být číslo.'
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['cs'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 objekt'
 	},
 
-	numberedlist : 'Číslování',
-	bulletedlist : 'Odrážky',
-	indent : 'Zvětšit odsazení',
-	outdent : 'Zmenšit odsazení',
+	numberedlist	: 'Číslování',
+	bulletedlist	: 'Odrážky',
+	indent			: 'Zvětšit odsazení',
+	outdent			: 'Zmenšit odsazení',
 
 	justify :
 	{
-		left : 'Zarovnat vlevo',
-		center : 'Zarovnat na střed',
-		right : 'Zarovnat vpravo',
-		block : 'Zarovnat do bloku'
+		left	: 'Zarovnat vlevo',
+		center	: 'Zarovnat na střed',
+		right	: 'Zarovnat vpravo',
+		block	: 'Zarovnat do bloku'
 	},
 
 	blockquote : 'Citace',
@@ -501,61 +506,59 @@ CKEDITOR.lang['cs'] =
 		cutError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro vyjmutí zvoleného textu do schránky. Prosím vyjměte zvolený text do schránky pomocí klávesnice (Ctrl+X).',
 		copyError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro kopírování zvoleného textu do schránky. Prosím zkopírujte zvolený text do schránky pomocí klávesnice (Ctrl+C).',
 		pasteMsg	: 'Do následujícího pole vložte požadovaný obsah pomocí klávesnice (<STRONG>Ctrl+V</STRONG>) a stiskněte <STRONG>OK</STRONG>.',
-		securityMsg	: 'Z důvodů nastavení bezpečnosti Vašeho prohlížeče nemůže editor přistupovat přímo do schránky. Obsah schránky prosím vložte znovu do tohoto okna.'
+		securityMsg	: 'Z důvodů nastavení bezpečnosti Vašeho prohlížeče nemůže editor přistupovat přímo do schránky. Obsah schránky prosím vložte znovu do tohoto okna.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'Jak je vidět, vkládaný text je kopírován z Wordu. Chcete jej před vložením vyčistit?',
-		toolbar : 'Vložit z Wordu',
-		title : 'Vložit z Wordu',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'Jak je vidět, vkládaný text je kopírován z Wordu. Chcete jej před vložením vyčistit?',
+		toolbar			: 'Vložit z Wordu',
+		title			: 'Vložit z Wordu',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Vložit jako čistý text',
-		title : 'Vložit jako čistý text'
+		button	: 'Vložit jako čistý text',
+		title	: 'Vložit jako čistý text'
 	},
 
 	templates :
 	{
-		button : 'Šablony',
-		title : 'Šablony obsahu',
-		insertOption: 'Nahradit aktuální obsah',
-		selectPromptMsg: 'Prosím zvolte šablonu pro otevření v editoru<br>(aktuální obsah editoru bude ztracen):',
-		emptyListMsg : '(Není definována žádná šablona)'
+		button			: 'Šablony',
+		title			: 'Šablony obsahu',
+		insertOption	: 'Nahradit aktuální obsah',
+		selectPromptMsg	: 'Prosím zvolte šablonu pro otevření v editoru<br>(aktuální obsah editoru bude ztracen):',
+		emptyListMsg	: '(Není definována žádná šablona)'
 	},
 
 	showBlocks : 'Ukázat bloky',
 
 	stylesCombo :
 	{
-		label : 'Styl',
-		voiceLabel : 'Styly',
-		panelVoiceLabel : 'Výběr stylu',
-		panelTitle1 : 'Blokové styly',
-		panelTitle2 : 'Řádkové styly',
-		panelTitle3 : 'Objektové styly'
+		label		: 'Styl',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Blokové styly',
+		panelTitle2	: 'Řádkové styly',
+		panelTitle3	: 'Objektové styly'
 	},
 
 	format :
 	{
-		label : 'Formát',
-		voiceLabel : 'Formátování',
-		panelTitle : 'Formát',
-		panelVoiceLabel : 'Volba formátu odstavce',
+		label		: 'Formát',
+		panelTitle	: 'Formát',
 
-		tag_p : 'Normální',
-		tag_pre : 'Naformátováno',
-		tag_address : 'Adresa',
-		tag_h1 : 'Nadpis 1',
-		tag_h2 : 'Nadpis 2',
-		tag_h3 : 'Nadpis 3',
-		tag_h4 : 'Nadpis 4',
-		tag_h5 : 'Nadpis 5',
-		tag_h6 : 'Nadpis 6',
-		tag_div : 'Normální (DIV)'
+		tag_p		: 'Normální',
+		tag_pre		: 'Naformátováno',
+		tag_address	: 'Adresa',
+		tag_h1		: 'Nadpis 1',
+		tag_h2		: 'Nadpis 2',
+		tag_h3		: 'Nadpis 3',
+		tag_h4		: 'Nadpis 4',
+		tag_h5		: 'Nadpis 5',
+		tag_h6		: 'Nadpis 6',
+		tag_div		: 'Normální (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['cs'] =
 
 	font :
 	{
-		label : 'Písmo',
-		voiceLabel : 'Písmo',
-		panelTitle : 'Písmo',
-		panelVoiceLabel : 'Volba písma'
+		label		: 'Písmo',
+		voiceLabel	: 'Písmo',
+		panelTitle	: 'Písmo'
 	},
 
 	fontSize :
 	{
-		label : 'Velikost',
-		voiceLabel : 'Velikost písma',
-		panelTitle : 'Velikost',
-		panelVoiceLabel : 'Volba velikosti písma'
+		label		: 'Velikost',
+		voiceLabel	: 'Velikost písma',
+		panelTitle	: 'Velikost'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Barva textu',
-		bgColorTitle : 'Barva pozadí',
-		auto : 'Automaticky',
-		more : 'Více barev...'
+		textColorTitle	: 'Barva textu',
+		bgColorTitle	: 'Barva pozadí',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automaticky',
+		more			: 'Více barev...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['cs'] =
 
 	scayt :
 	{
-		title : 'Kontrola pravopisu během psaní (SCAYT)',
-		enable : 'Zapnout SCAYT',
-		disable : 'Vypnout SCAYT',
-		about : 'O aplikaci SCAYT',
-		toggle : 'Vypínač SCAYT',
-		options : 'Nastavení',
-		langs : 'Jazyky',
-		moreSuggestions : 'Více návrhů',
-		ignore : 'Přeskočit',
-		ignoreAll : 'Přeskočit vše',
-		addWord : 'Přidat slovo',
-		emptyDic : 'Název slovníku nesmí být prázdný.',
-		optionsTab : 'Nastavení',
-		languagesTab : 'Jazyky',
-		dictionariesTab : 'Slovníky',
-		aboutTab : 'O aplikaci'
+		title			: 'Kontrola pravopisu během psaní (SCAYT)',
+		enable			: 'Zapnout SCAYT',
+		disable			: 'Vypnout SCAYT',
+		about			: 'O aplikaci SCAYT',
+		toggle			: 'Vypínač SCAYT',
+		options			: 'Nastavení',
+		langs			: 'Jazyky',
+		moreSuggestions	: 'Více návrhů',
+		ignore			: 'Přeskočit',
+		ignoreAll		: 'Přeskočit vše',
+		addWord			: 'Přidat slovo',
+		emptyDic		: 'Název slovníku nesmí být prázdný.',
+		optionsTab		: 'Nastavení',
+		languagesTab	: 'Jazyky',
+		dictionariesTab	: 'Slovníky',
+		aboutTab		: 'O aplikaci'
 	},
 
 	about :
 	{
-		title : 'O aplikaci CKEditor',
-		dlgTitle : 'O aplikaci CKEditor',
-		moreInfo : 'Pro informace o lincenci navštivte naši webovou stránku:',
-		copy : 'Copyright &copy; $1. All rights reserved.'
+		title		: 'O aplikaci CKEditor',
+		dlgTitle	: 'O aplikaci CKEditor',
+		moreInfo	: 'Pro informace o lincenci navštivte naši webovou stránku:',
+		copy		: 'Copyright &copy; $1. All rights reserved.'
 	},
 
 	maximize : 'Maximalizovat',
@@ -676,22 +678,22 @@ CKEDITOR.lang['cs'] =
 
 	fakeobjects :
 	{
-		anchor : 'Záložka',
-		flash : 'Flash animace',
-		div : 'Zalomení stránky',
-		unknown : 'Neznámý objekt'
+		anchor	: 'Záložka',
+		flash	: 'Flash animace',
+		div		: 'Zalomení stránky',
+		unknown	: 'Neznámý objekt'
 	},
 
 	resize : 'Uchopit pro změnu velikosti',
 
 	colordialog :
 	{
-		title : 'Výběr barvy',
-		highlight : 'Zvýraznit',
-		selected : 'Vybráno',
-		clear : 'Vyčistit'
+		title		: 'Výběr barvy',
+		highlight	: 'Zvýraznit',
+		selected	: 'Vybráno',
+		clear		: 'Vyčistit'
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

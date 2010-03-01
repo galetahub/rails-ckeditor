@@ -73,7 +73,7 @@ CKEDITOR.dialog.add( 'select', function( editor )
 	function removeAllOptions( combo )
 	{
 		combo = getSelect( combo );
-		while( combo.getChild( 0 ) && combo.getChild( 0 ).remove() )
+		while ( combo.getChild( 0 ) && combo.getChild( 0 ).remove() )
 		{ /*jsl:pass*/ }
 	}
 	// Moves the selected option by a number of steps (also negative).
@@ -162,7 +162,7 @@ CKEDITOR.dialog.add( 'select', function( editor )
 			if ( isInsertMode )
 			{
 				editor.insertElement(element);
-				if( CKEDITOR.env.ie )
+				if ( CKEDITOR.env.ie )
 				{
 					var sel = editor.getSelection(),
 						bms = sel.createBookmarks();

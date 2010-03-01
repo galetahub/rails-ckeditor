@@ -181,6 +181,9 @@ CKEDITOR.dom.domObject.prototype = (function()
 		return dataSlot && dataSlot[ key ];
 	};
 
+	/**
+	 * @name CKEDITOR.dom.domObject.prototype.removeCustomData
+	 */
 	domObjectProto.removeCustomData = function( key )
 	{
 		var expandoNumber = this.$._cke_expando,
@@ -193,6 +196,9 @@ CKEDITOR.dom.domObject.prototype = (function()
 		return retval || null;
 	};
 
+	/**
+	 * @name CKEDITOR.dom.domObject.prototype.getCustomData
+	 */
 	domObjectProto.getUniqueId = function()
 	{
 		return this.$._cke_expando || ( this.$._cke_expando = CKEDITOR.tools.getNextNumber() );

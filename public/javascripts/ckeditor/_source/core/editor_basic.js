@@ -136,7 +136,7 @@ if ( !CKEDITOR.editor )
 		{
 			element = document.getElementById( elementOrId );
 
-			if( !element )
+			if ( !element )
 				throw '[CKEDITOR.editor.appendTo] The element with id "' + elementOrId + '" was not found.';
 		}
 

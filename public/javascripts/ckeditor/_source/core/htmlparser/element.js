@@ -114,7 +114,7 @@ CKEDITOR.htmlParser.element = function( name, attributes )
 			 */
 			element.filterChildren = function()
 			{
-				if( !isChildrenFiltered )
+				if ( !isChildrenFiltered )
 				{
 					var writer = new CKEDITOR.htmlParser.basicWriter();
 					CKEDITOR.htmlParser.fragment.prototype.writeChildrenHtml.call( element, writer, filter );
@@ -171,13 +171,13 @@ CKEDITOR.htmlParser.element = function( name, attributes )
 			var attribsArray = [];
 			// Iterate over the attributes twice since filters may alter
 			// other attributes.
-			for( var i = 0 ; i < 2; i++ )
+			for ( var i = 0 ; i < 2; i++ )
 			{
 				for ( a in attributes )
 				{
 					newAttrName = a;
 					value = attributes[ a ];
-					if( i == 1 )
+					if ( i == 1 )
 						attribsArray.push( [ a, value ] );
 					else if ( filter )
 					{
@@ -188,7 +188,7 @@ CKEDITOR.htmlParser.element = function( name, attributes )
 								delete attributes[ a ];
 								break;
 							}
-							else if( newAttrName != a )
+							else if ( newAttrName != a )
 							{
 								delete attributes[ a ];
 								a = newAttrName;
@@ -197,9 +197,9 @@ CKEDITOR.htmlParser.element = function( name, attributes )
 							else
 								break;
 						}
-						if( newAttrName )
+						if ( newAttrName )
 						{
-							if( ( value = filter.onAttribute( element, newAttrName, value ) ) === false )
+							if ( ( value = filter.onAttribute( element, newAttrName, value ) ) === false )
 								delete attributes[ newAttrName ];
 							else
 								attributes [ newAttrName ] = value;

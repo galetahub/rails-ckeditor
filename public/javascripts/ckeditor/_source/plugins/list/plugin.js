@@ -570,7 +570,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				nodeBefore = firstNestedList && firstNestedList.previous,
 				tailNbspmatch;
 
-			if( nodeBefore
+			if ( nodeBefore
 				&& ( nodeBefore.name && nodeBefore.name == 'br'
 					|| nodeBefore.value && ( tailNbspmatch = nodeBefore.value.match( tailNbspRegex ) ) ) )
 			{
@@ -594,11 +594,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	}
 
 	var defaultListDataFilterRules = { elements : {} };
-	for( var i in dtd.$listItem )
+	for ( var i in dtd.$listItem )
 		defaultListDataFilterRules.elements[ i ] = getExtendNestedListFilter();
 
 	var defaultListHtmlFilterRules = { elements : {} };
-	for( i in dtd.$listItem )
+	for ( i in dtd.$listItem )
 		defaultListHtmlFilterRules.elements[ i ] = getExtendNestedListFilter( true );
 
 	CKEDITOR.plugins.add( 'list',
@@ -631,7 +631,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		afterInit : function ( editor )
 		{
 			var dataProcessor = editor.dataProcessor;
-			if( dataProcessor )
+			if ( dataProcessor )
 			{
 				dataProcessor.dataFilter.addRules( defaultListDataFilterRules );
 				dataProcessor.htmlFilter.addRules( defaultListHtmlFilterRules );

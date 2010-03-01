@@ -27,7 +27,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				exec : function()
 				{
 					forceFromWord = 1;
-					if( editor.execCommand( 'paste' ) === false )
+					if ( editor.execCommand( 'paste' ) === false )
 					{
 						editor.on( 'dialogHide', function ( evt )
 							{
@@ -59,7 +59,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							// Event continuation with the original data.
 							if ( isLazyLoad )
 								editor.fire( 'paste', data );
-							else if( !editor.config.pasteFromWordPromptCleanup
+							else if ( !editor.config.pasteFromWordPromptCleanup
 							  || ( forceFromWord || confirm( editor.lang.pastefromword.confirmCleanup ) ) )
 							 {
 								data[ 'html' ] = CKEDITOR.cleanWord( mswordHtml, editor );
@@ -96,8 +96,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 })();
 
 /**
- * Whether prompt the user about the clean-up of content from MS-Word.
+ * Whether to prompt the user about the clean up of content being pasted from
+ * MS Word.
  * @name CKEDITOR.config.pasteFromWordPromptCleanup
+ * @since 3.1
  * @type Boolean
  * @default undefined
  * @example
@@ -105,9 +107,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
 /**
- * The file that provides the MS-Word Filtering rules.
- * Note: It's a global configuration which are shared by all editor instances.
+ * The file that provides the MS Word cleanup function for pasting operations.
+ * Note: This is a global configuration shared by all editor instances present
+ * in the page.
  * @name CKEDITOR.config.pasteFromWordCleanupFile
+ * @since 3.1
  * @type String
  * @default 'default'
  * @example

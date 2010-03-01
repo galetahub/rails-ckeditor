@@ -31,7 +31,11 @@ CKEDITOR.lang['ko'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: '소스',
@@ -68,12 +72,12 @@ CKEDITOR.lang['ko'] =
 		flash			: '플래쉬',
 		form			: '폼',
 		checkbox		: '체크박스',
-		radio		: '라디오버튼',
+		radio			: '라디오버튼',
 		textField		: '입력필드',
 		textarea		: '입력영역',
 		hiddenField		: '숨김필드',
 		button			: '버튼',
-		select	: '펼침목록',
+		select			: '펼침목록',
 		imageButton		: '이미지버튼',
 		notSet			: '<설정되지 않음>',
 		id				: 'ID',
@@ -88,11 +92,19 @@ CKEDITOR.lang['ko'] =
 		cssStyle		: 'Style',
 		ok				: '예',
 		cancel			: '아니오',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: '자세히',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['ko'] =
 		upload		: '업로드',
 		advanced	: '자세히',
 		type		: '링크 종류',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: '책갈피',
 		toEmail		: '이메일',
-		target		: '타겟',
-		targetNotSet	: '<설정되지 않음>',
-		targetFrame	: '<프레임>',
-		targetPopup	: '<팝업창>',
-		targetNew	: '새 창 (_blank)',
-		targetTop	: '최 상위 창 (_top)',
-		targetSelf	: '현재 창 (_self)',
-		targetParent	: '부모 창 (_parent)',
+		targetFrame		: '<프레임>',
+		targetPopup		: '<팝업창>',
 		targetFrameName	: '타겟 프레임 이름',
 		targetPopupName	: '팝업창 이름',
 		popupFeatures	: '팝업창 설정',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: '상태바',
-		popupLocationBar	: '주소표시줄',
+		popupLocationBar: '주소표시줄',
 		popupToolbar	: '툴바',
 		popupMenuBar	: '메뉴바',
 		popupFullScreen	: '전체화면 (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['ko'] =
 		popupTop		: '윗쪽 위치',
 		id				: 'Id', // MISSING
 		langDir			: '쓰기 방향',
-		langDirNotSet	: '<설정되지 않음>',
 		langDirLTR		: '왼쪽에서 오른쪽 (LTR)',
 		langDirRTL		: '오른쪽에서 왼쪽 (RTL)',
 		acccessKey		: '엑세스 키',
@@ -203,13 +209,13 @@ CKEDITOR.lang['ko'] =
 		columns		: '세로줄',
 		border		: '테두리 크기',
 		align		: '정렬',
-		alignNotSet	: '<설정되지 않음>',
 		alignLeft	: '왼쪽',
 		alignCenter	: '가운데',
 		alignRight	: '오른쪽',
 		width		: '너비',
 		widthPx		: '픽셀',
 		widthPc		: '퍼센트',
+		widthUnit	: 'width unit', // MISSING
 		height		: '높이',
 		cellSpace	: '셀 간격',
 		cellPad		: '셀 여백',
@@ -260,7 +266,7 @@ CKEDITOR.lang['ko'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['ko'] =
 		menu		: '폼 속성',
 		action		: '실행경로(Action)',
 		method		: '방법(Method)',
-		encoding	: 'Encoding', // MISSING
-		target		: '타겟',
-		targetNotSet	: '<설정되지 않음>',
-		targetNew	: '새 창 (_blank)',
-		targetTop	: '최 상위 창 (_top)',
-		targetSelf	: '현재 창 (_self)',
-		targetParent	: '부모 창 (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['ko'] =
 		title		: '이미지 설정',
 		titleButton	: '이미지버튼 속성',
 		menu		: '이미지 설정',
-		infoTab	: '이미지 정보',
+		infoTab		: '이미지 정보',
 		btnUpload	: '서버로 전송',
-		url		: 'URL',
-		upload	: '업로드',
-		alt		: '이미지 설명',
+		upload		: '업로드',
+		alt			: '이미지 설명',
 		width		: '너비',
-		height	: '높이',
+		height		: '높이',
 		lockRatio	: '비율 유지',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: '원래 크기로',
-		border	: '테두리',
-		hSpace	: '수평여백',
-		vSpace	: '수직여백',
+		border		: '테두리',
+		hSpace		: '수평여백',
+		vSpace		: '수직여백',
 		align		: '정렬',
 		alignLeft	: '왼쪽',
 		alignRight	: '오른쪽',
-		preview	: '미리보기',
 		alertUrl	: '이미지 URL을 입력하십시요',
-		linkTab	: '링크',
+		linkTab		: '링크',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['ko'] =
 	{
 		properties		: '플래쉬 속성',
 		propertiesTab	: 'Properties', // MISSING
-		title		: '플래쉬 등록정보',
-		chkPlay		: '자동재생',
-		chkLoop		: '반복',
-		chkMenu		: '플래쉬메뉴 가능',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: '영역',
+		title			: '플래쉬 등록정보',
+		chkPlay			: '자동재생',
+		chkLoop			: '반복',
+		chkMenu			: '플래쉬메뉴 가능',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: '영역',
 		scaleAll		: '모두보기',
 		scaleNoBorder	: '경계선없음',
 		scaleFit		: '영역자동조절',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: '정렬',
-		alignLeft	: '왼쪽',
-		alignAbsBottom: '줄아래(Abs Bottom)',
-		alignAbsMiddle: '줄중간(Abs Middle)',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: '정렬',
+		alignLeft		: '왼쪽',
+		alignAbsBottom	: '줄아래(Abs Bottom)',
+		alignAbsMiddle	: '줄중간(Abs Middle)',
 		alignBaseline	: '기준선',
-		alignBottom	: '아래',
-		alignMiddle	: '중간',
-		alignRight	: '오른쪽',
+		alignBottom		: '아래',
+		alignMiddle		: '중간',
+		alignRight		: '오른쪽',
 		alignTextTop	: '글자상단',
-		alignTop	: '위',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: '배경 색상',
-		width	: '너비',
-		height	: '높이',
-		hSpace	: '수평여백',
-		vSpace	: '수직여백',
-		validateSrc : '링크 URL을 입력하십시요.',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: '위',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: '배경 색상',
+		width			: '너비',
+		height			: '높이',
+		hSpace			: '수평여백',
+		vSpace			: '수직여백',
+		validateSrc		: '링크 URL을 입력하십시요.',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['ko'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : '순서있는 목록',
-	bulletedlist : '순서없는 목록',
-	indent : '들여쓰기',
-	outdent : '내어쓰기',
+	numberedlist	: '순서있는 목록',
+	bulletedlist	: '순서없는 목록',
+	indent			: '들여쓰기',
+	outdent			: '내어쓰기',
 
 	justify :
 	{
-		left : '왼쪽 정렬',
-		center : '가운데 정렬',
-		right : '오른쪽 정렬',
-		block : '양쪽 맞춤'
+		left	: '왼쪽 정렬',
+		center	: '가운데 정렬',
+		right	: '오른쪽 정렬',
+		block	: '양쪽 맞춤'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['ko'] =
 		cutError	: '브라우저의 보안설정때문에 잘라내기 기능을 실행할 수 없습니다. 키보드 명령을 사용하십시요. (Ctrl+X).',
 		copyError	: '브라우저의 보안설정때문에 복사하기 기능을 실행할 수 없습니다. 키보드 명령을 사용하십시요.  (Ctrl+C).',
 		pasteMsg	: '키보드의 (<STRONG>Ctrl+V</STRONG>) 를 이용해서 상자안에 붙여넣고 <STRONG>OK</STRONG> 를 누르세요.',
-		securityMsg	: '브러우저 보안 설정으로 인해, 클립보드의 자료를 직접 접근할 수 없습니다. 이 창에 다시 붙여넣기 하십시오.'
+		securityMsg	: '브러우저 보안 설정으로 인해, 클립보드의 자료를 직접 접근할 수 없습니다. 이 창에 다시 붙여넣기 하십시오.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'MS Word 형식에서 붙여넣기',
-		title : 'MS Word 형식에서 붙여넣기',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'MS Word 형식에서 붙여넣기',
+		title			: 'MS Word 형식에서 붙여넣기',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : '텍스트로 붙여넣기',
-		title : '텍스트로 붙여넣기'
+		button	: '텍스트로 붙여넣기',
+		title	: '텍스트로 붙여넣기'
 	},
 
 	templates :
 	{
-		button : '템플릿',
-		title : '내용 템플릿',
-		insertOption: '현재 내용 바꾸기',
-		selectPromptMsg: '에디터에서 사용할 템플릿을 선택하십시요.<br>(지금까지 작성된 내용은 사라집니다.):',
-		emptyListMsg : '(템플릿이 없습니다.)'
+		button			: '템플릿',
+		title			: '내용 템플릿',
+		insertOption	: '현재 내용 바꾸기',
+		selectPromptMsg	: '에디터에서 사용할 템플릿을 선택하십시요.<br>(지금까지 작성된 내용은 사라집니다.):',
+		emptyListMsg	: '(템플릿이 없습니다.)'
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : '스타일',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: '스타일',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : '포맷',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : '포맷',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: '포맷',
+		panelTitle	: '포맷',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatted',
-		tag_address : 'Address',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Normal (DIV)' // MISSING
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatted',
+		tag_address	: 'Address',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Normal (DIV)' // MISSING
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['ko'] =
 
 	font :
 	{
-		label : '폰트',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : '폰트',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: '폰트',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: '폰트'
 	},
 
 	fontSize :
 	{
-		label : '글자 크기',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : '글자 크기',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: '글자 크기',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: '글자 크기'
 	},
 
 	colorButton :
 	{
-		textColorTitle : '글자 색상',
-		bgColorTitle : '배경 색상',
-		auto : '기본색상',
-		more : '색상선택...'
+		textColorTitle	: '글자 색상',
+		bgColorTitle	: '배경 색상',
+		panelTitle		: 'Colors', // MISSING
+		auto			: '기본색상',
+		more			: '색상선택...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['ko'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['ko'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

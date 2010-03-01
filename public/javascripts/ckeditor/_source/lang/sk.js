@@ -31,7 +31,11 @@ CKEDITOR.lang['sk'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Zdroj',
@@ -68,12 +72,12 @@ CKEDITOR.lang['sk'] =
 		flash			: 'Flash',
 		form			: 'Formulár',
 		checkbox		: 'Zaškrtávacie políčko',
-		radio		: 'Prepínač',
+		radio			: 'Prepínač',
 		textField		: 'Textové pole',
 		textarea		: 'Textová oblasť',
 		hiddenField		: 'Skryté pole',
 		button			: 'Tlačidlo',
-		select	: 'Rozbaľovací zoznam',
+		select			: 'Rozbaľovací zoznam',
 		imageButton		: 'Obrázkové tlačidlo',
 		notSet			: '<nenastavené>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['sk'] =
 		cssStyle		: 'Štýl',
 		ok				: 'OK',
 		cancel			: 'Zrušiť',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'Hlavné',
 		advancedTab		: 'Rozšírené',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['sk'] =
 		upload		: 'Odoslať',
 		advanced	: 'Rozšírené',
 		type		: 'Typ odkazu',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Kotva v tejto stránke',
 		toEmail		: 'E-Mail',
-		target		: 'Cieľ',
-		targetNotSet	: '<nenastavené>',
-		targetFrame	: '<rámec>',
-		targetPopup	: '<vyskakovacie okno>',
-		targetNew	: 'Nové okno (_blank)',
-		targetTop	: 'Hlavné okno (_top)',
-		targetSelf	: 'Rovnaké okno (_self)',
-		targetParent	: 'Rodičovské okno (_parent)',
+		targetFrame		: '<rámec>',
+		targetPopup		: '<vyskakovacie okno>',
 		targetFrameName	: 'Meno rámu cieľa',
 		targetPopupName	: 'Názov vyskakovacieho okna',
 		popupFeatures	: 'Vlastnosti vyskakovacieho okna',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'Stavový riadok',
-		popupLocationBar	: 'Panel umiestnenia',
+		popupLocationBar: 'Panel umiestnenia',
 		popupToolbar	: 'Panel nástrojov',
 		popupMenuBar	: 'Panel ponuky',
 		popupFullScreen	: 'Celá obrazovka (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['sk'] =
 		popupTop		: 'Horný okraj',
 		id				: 'Id', // MISSING
 		langDir			: 'Orientácia jazyka',
-		langDirNotSet	: '<nenastavené>',
 		langDirLTR		: 'Zľava doprava (LTR)',
 		langDirRTL		: 'Sprava doľava (RTL)',
 		acccessKey		: 'Prístupový kľúč',
@@ -203,13 +209,13 @@ CKEDITOR.lang['sk'] =
 		columns		: 'Stĺpce',
 		border		: 'Ohraničenie',
 		align		: 'Zarovnanie',
-		alignNotSet	: '<nenastavené>',
 		alignLeft	: 'Vľavo',
 		alignCenter	: 'Na stred',
 		alignRight	: 'Vpravo',
 		width		: 'Šírka',
 		widthPx		: 'pixelov',
 		widthPc		: 'percent',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Výška',
 		cellSpace	: 'Vzdialenosť buniek',
 		cellPad		: 'Odsadenie obsahu',
@@ -260,7 +266,7 @@ CKEDITOR.lang['sk'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['sk'] =
 		menu		: 'Vlastnosti formulára',
 		action		: 'Akcie',
 		method		: 'Metóda',
-		encoding	: 'Encoding', // MISSING
-		target		: 'Cieľ',
-		targetNotSet	: '<nenastavené>',
-		targetNew	: 'Nové okno (_blank)',
-		targetTop	: 'Hlavné okno (_top)',
-		targetSelf	: 'Rovnaké okno (_self)',
-		targetParent	: 'Rodičovské okno (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['sk'] =
 		title		: 'Vlastnosti obrázku',
 		titleButton	: 'Vlastnosti obrázkového tlačidla',
 		menu		: 'Vlastnosti obrázku',
-		infoTab	: 'Informácie o obrázku',
+		infoTab		: 'Informácie o obrázku',
 		btnUpload	: 'Odoslať na server',
-		url		: 'URL',
-		upload	: 'Odoslať',
-		alt		: 'Alternatívny text',
+		upload		: 'Odoslať',
+		alt			: 'Alternatívny text',
 		width		: 'Šírka',
-		height	: 'Výška',
+		height		: 'Výška',
 		lockRatio	: 'Zámok',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Pôvodná veľkosť',
-		border	: 'Okraje',
-		hSpace	: 'H-medzera',
-		vSpace	: 'V-medzera',
+		border		: 'Okraje',
+		hSpace		: 'H-medzera',
+		vSpace		: 'V-medzera',
 		align		: 'Zarovnanie',
 		alignLeft	: 'Vľavo',
 		alignRight	: 'Vpravo',
-		preview	: 'Náhľad',
 		alertUrl	: 'Zadajte prosím URL obrázku',
-		linkTab	: 'Odkaz',
+		linkTab		: 'Odkaz',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['sk'] =
 	{
 		properties		: 'Vlastnosti Flashu',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'Vlastnosti Flashu',
-		chkPlay		: 'Automatické prehrávanie',
-		chkLoop		: 'Opakovanie',
-		chkMenu		: 'Povoliť Flash Menu',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Mierka',
+		title			: 'Vlastnosti Flashu',
+		chkPlay			: 'Automatické prehrávanie',
+		chkLoop			: 'Opakovanie',
+		chkMenu			: 'Povoliť Flash Menu',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'Mierka',
 		scaleAll		: 'Zobraziť mierku',
 		scaleNoBorder	: 'Bez okrajov',
 		scaleFit		: 'Roztiahnuť na celé',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Zarovnanie',
-		alignLeft	: 'Vľavo',
-		alignAbsBottom: 'Úplne dole',
-		alignAbsMiddle: 'Do stredu',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'Zarovnanie',
+		alignLeft		: 'Vľavo',
+		alignAbsBottom	: 'Úplne dole',
+		alignAbsMiddle	: 'Do stredu',
 		alignBaseline	: 'Na základňu',
-		alignBottom	: 'Dole',
-		alignMiddle	: 'Na stred',
-		alignRight	: 'Vpravo',
+		alignBottom		: 'Dole',
+		alignMiddle		: 'Na stred',
+		alignRight		: 'Vpravo',
 		alignTextTop	: 'Na horný okraj textu',
-		alignTop	: 'Nahor',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Farba pozadia',
-		width	: 'Šírka',
-		height	: 'Výška',
-		hSpace	: 'H-medzera',
-		vSpace	: 'V-medzera',
-		validateSrc : 'Zadajte prosím URL odkazu',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'Nahor',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'Farba pozadia',
+		width			: 'Šírka',
+		height			: 'Výška',
+		hSpace			: 'H-medzera',
+		vSpace			: 'V-medzera',
+		validateSrc		: 'Zadajte prosím URL odkazu',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['sk'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'Číslovanie',
-	bulletedlist : 'Odrážky',
-	indent : 'Zväčšiť odsadenie',
-	outdent : 'Zmenšiť odsadenie',
+	numberedlist	: 'Číslovanie',
+	bulletedlist	: 'Odrážky',
+	indent			: 'Zväčšiť odsadenie',
+	outdent			: 'Zmenšiť odsadenie',
 
 	justify :
 	{
-		left : 'Zarovnať vľavo',
-		center : 'Zarovnať na stred',
-		right : 'Zarovnať vpravo',
-		block : 'Zarovnať do bloku'
+		left	: 'Zarovnať vľavo',
+		center	: 'Zarovnať na stred',
+		right	: 'Zarovnať vpravo',
+		block	: 'Zarovnať do bloku'
 	},
 
 	blockquote : 'Citácia',
@@ -501,61 +506,59 @@ CKEDITOR.lang['sk'] =
 		cutError	: 'Bezpečnostné nastavenia Vášho prehliadača nedovoľujú editoru spustiť funkciu pre vystrihnutie zvoleného textu do schránky. Prosím vystrihnite zvolený text do schránky pomocou klávesnice (Ctrl+X).',
 		copyError	: 'Bezpečnostné nastavenia Vášho prehliadača nedovoľujú editoru spustiť funkciu pre kopírovanie zvoleného textu do schránky. Prosím skopírujte zvolený text do schránky pomocou klávesnice (Ctrl+C).',
 		pasteMsg	: 'Prosím vložte nasledovný rámček použitím klávesnice (<STRONG>Ctrl+V</STRONG>) a stlačte <STRONG>OK</STRONG>.',
-		securityMsg	: 'Bezpečnostné nastavenia Vášho prehliadača nedovoľujú editoru pristupovať priamo k datám v schránke. Musíte ich vložiť znovu do tohto okna.'
+		securityMsg	: 'Bezpečnostné nastavenia Vášho prehliadača nedovoľujú editoru pristupovať priamo k datám v schránke. Musíte ich vložiť znovu do tohto okna.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Vložiť z Wordu',
-		title : 'Vložiť z Wordu',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'Vložiť z Wordu',
+		title			: 'Vložiť z Wordu',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Vložiť ako čistý text',
-		title : 'Vložiť ako čistý text'
+		button	: 'Vložiť ako čistý text',
+		title	: 'Vložiť ako čistý text'
 	},
 
 	templates :
 	{
-		button : 'Šablóny',
-		title : 'Šablóny obsahu',
-		insertOption: 'Nahradiť aktuálny obsah',
-		selectPromptMsg: 'Prosím vyberte šablóny na otvorenie v editore<br>(súšasný obsah bude stratený):',
-		emptyListMsg : '(žiadne šablóny nenájdené)'
+		button			: 'Šablóny',
+		title			: 'Šablóny obsahu',
+		insertOption	: 'Nahradiť aktuálny obsah',
+		selectPromptMsg	: 'Prosím vyberte šablóny na otvorenie v editore<br>(súšasný obsah bude stratený):',
+		emptyListMsg	: '(žiadne šablóny nenájdené)'
 	},
 
 	showBlocks : 'Ukázať bloky',
 
 	stylesCombo :
 	{
-		label : 'Štýl',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Štýl',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'Formát',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Formát',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Formát',
+		panelTitle	: 'Formát',
 
-		tag_p : 'Normálny',
-		tag_pre : 'Formátovaný',
-		tag_address : 'Adresa',
-		tag_h1 : 'Nadpis 1',
-		tag_h2 : 'Nadpis 2',
-		tag_h3 : 'Nadpis 3',
-		tag_h4 : 'Nadpis 4',
-		tag_h5 : 'Nadpis 5',
-		tag_h6 : 'Nadpis 6',
-		tag_div : 'Odsek (DIV)'
+		tag_p		: 'Normálny',
+		tag_pre		: 'Formátovaný',
+		tag_address	: 'Adresa',
+		tag_h1		: 'Nadpis 1',
+		tag_h2		: 'Nadpis 2',
+		tag_h3		: 'Nadpis 3',
+		tag_h4		: 'Nadpis 4',
+		tag_h5		: 'Nadpis 5',
+		tag_h6		: 'Nadpis 6',
+		tag_div		: 'Odsek (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['sk'] =
 
 	font :
 	{
-		label : 'Písmo',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Písmo',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Písmo',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'Písmo'
 	},
 
 	fontSize :
 	{
-		label : 'Veľkosť',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Veľkosť',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Veľkosť',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'Veľkosť'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Farba textu',
-		bgColorTitle : 'Farba pozadia',
-		auto : 'Automaticky',
-		more : 'Viac farieb...'
+		textColorTitle	: 'Farba textu',
+		bgColorTitle	: 'Farba pozadia',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automaticky',
+		more			: 'Viac farieb...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['sk'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['sk'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

@@ -31,7 +31,11 @@ CKEDITOR.lang['th'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'ดูรหัส HTML',
@@ -68,12 +72,12 @@ CKEDITOR.lang['th'] =
 		flash			: 'ไฟล์ Flash',
 		form			: 'แบบฟอร์ม',
 		checkbox		: 'เช็คบ๊อก',
-		radio		: 'เรดิโอบัตตอน',
+		radio			: 'เรดิโอบัตตอน',
 		textField		: 'เท็กซ์ฟิลด์',
 		textarea		: 'เท็กซ์แอเรีย',
 		hiddenField		: 'ฮิดเดนฟิลด์',
 		button			: 'ปุ่ม',
-		select	: 'แถบตัวเลือก',
+		select			: 'แถบตัวเลือก',
 		imageButton		: 'ปุ่มแบบรูปภาพ',
 		notSet			: '<ไม่ระบุ>',
 		id				: 'ไอดี',
@@ -88,11 +92,19 @@ CKEDITOR.lang['th'] =
 		cssStyle		: 'ลักษณะการแสดงผล',
 		ok				: 'ตกลง',
 		cancel			: 'ยกเลิก',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'ขั้นสูง',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['th'] =
 		upload		: 'อัพโหลดไฟล์',
 		advanced	: 'ขั้นสูง',
 		type		: 'ประเภทของลิงค์',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'จุดเชื่อมโยง (Anchor)',
 		toEmail		: 'ส่งอีเมล์ (E-Mail)',
-		target		: 'การเปิดหน้าลิงค์',
-		targetNotSet	: '<ไม่ระบุ>',
-		targetFrame	: '<เปิดในเฟรม>',
-		targetPopup	: '<เปิดหน้าจอเล็ก (Pop-up)>',
-		targetNew	: 'เปิดหน้าจอใหม่ (_blank)',
-		targetTop	: 'เปิดในหน้าบนสุด (_top)',
-		targetSelf	: 'เปิดในหน้าปัจจุบัน (_self)',
-		targetParent	: 'เปิดในหน้าหลัก (_parent)',
+		targetFrame		: '<เปิดในเฟรม>',
+		targetPopup		: '<เปิดหน้าจอเล็ก (Pop-up)>',
 		targetFrameName	: 'ชื่อทาร์เก็ตเฟรม',
 		targetPopupName	: 'ระบุชื่อหน้าจอเล็ก (Pop-up)',
 		popupFeatures	: 'คุณสมบัติของหน้าจอเล็ก (Pop-up)',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'แสดงแถบสถานะ',
-		popupLocationBar	: 'แสดงที่อยู่ของไฟล์',
+		popupLocationBar: 'แสดงที่อยู่ของไฟล์',
 		popupToolbar	: 'แสดงแถบเครื่องมือ',
 		popupMenuBar	: 'แสดงแถบเมนู',
 		popupFullScreen	: 'แสดงเต็มหน้าจอ (IE5.5++ เท่านั้น)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['th'] =
 		popupTop		: 'พิกัดบน (Top Position)',
 		id				: 'Id', // MISSING
 		langDir			: 'การเขียน-อ่านภาษา',
-		langDirNotSet	: '<ไม่ระบุ>',
 		langDirLTR		: 'จากซ้ายไปขวา (LTR)',
 		langDirRTL		: 'จากขวามาซ้าย (RTL)',
 		acccessKey		: 'แอคเซส คีย์',
@@ -203,13 +209,13 @@ CKEDITOR.lang['th'] =
 		columns		: 'สดมน์',
 		border		: 'ขนาดเส้นขอบ',
 		align		: 'การจัดตำแหน่ง',
-		alignNotSet	: '<ไม่ระบุ>',
 		alignLeft	: 'ชิดซ้าย',
 		alignCenter	: 'กึ่งกลาง',
 		alignRight	: 'ชิดขวา',
 		width		: 'กว้าง',
 		widthPx		: 'จุดสี',
 		widthPc		: 'เปอร์เซ็น',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'สูง',
 		cellSpace	: 'ระยะแนวนอนน',
 		cellPad		: 'ระยะแนวตั้ง',
@@ -260,7 +266,7 @@ CKEDITOR.lang['th'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['th'] =
 		menu		: 'คุณสมบัติของ แบบฟอร์ม',
 		action		: 'แอคชั่น',
 		method		: 'เมธอด',
-		encoding	: 'Encoding', // MISSING
-		target		: 'การเปิดหน้าลิงค์',
-		targetNotSet	: '<ไม่ระบุ>',
-		targetNew	: 'เปิดหน้าจอใหม่ (_blank)',
-		targetTop	: 'เปิดในหน้าบนสุด (_top)',
-		targetSelf	: 'เปิดในหน้าปัจจุบัน (_self)',
-		targetParent	: 'เปิดในหน้าหลัก (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['th'] =
 		title		: 'คุณสมบัติของ รูปภาพ',
 		titleButton	: 'คุณสมบัติของ ปุ่มแบบรูปภาพ',
 		menu		: 'คุณสมบัติของ รูปภาพ',
-		infoTab	: 'ข้อมูลของรูปภาพ',
+		infoTab		: 'ข้อมูลของรูปภาพ',
 		btnUpload	: 'อัพโหลดไฟล์ไปเก็บไว้ที่เครื่องแม่ข่าย (เซิร์ฟเวอร์)',
-		url		: 'ที่อยู่อ้างอิง URL',
-		upload	: 'อัพโหลดไฟล์',
-		alt		: 'คำประกอบรูปภาพ',
+		upload		: 'อัพโหลดไฟล์',
+		alt			: 'คำประกอบรูปภาพ',
 		width		: 'ความกว้าง',
-		height	: 'ความสูง',
+		height		: 'ความสูง',
 		lockRatio	: 'กำหนดอัตราส่วน กว้าง-สูง แบบคงที่',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'กำหนดรูปเท่าขนาดจริง',
-		border	: 'ขนาดขอบรูป',
-		hSpace	: 'ระยะแนวนอน',
-		vSpace	: 'ระยะแนวตั้ง',
+		border		: 'ขนาดขอบรูป',
+		hSpace		: 'ระยะแนวนอน',
+		vSpace		: 'ระยะแนวตั้ง',
 		align		: 'การจัดวาง',
 		alignLeft	: 'ชิดซ้าย',
 		alignRight	: 'ชิดขวา',
-		preview	: 'หน้าเอกสารตัวอย่าง',
 		alertUrl	: 'กรุณาระบุที่อยู่อ้างอิงออนไลน์ของไฟล์รูปภาพ (URL)',
-		linkTab	: 'ลิ้งค์',
+		linkTab		: 'ลิ้งค์',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['th'] =
 	{
 		properties		: 'คุณสมบัติของไฟล์ Flash',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'คุณสมบัติของไฟล์ Flash',
-		chkPlay		: 'เล่นอัตโนมัติ Auto Play',
-		chkLoop		: 'เล่นวนรอบ Loop',
-		chkMenu		: 'ให้ใช้งานเมนูของ Flash',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'อัตราส่วน Scale',
+		title			: 'คุณสมบัติของไฟล์ Flash',
+		chkPlay			: 'เล่นอัตโนมัติ Auto Play',
+		chkLoop			: 'เล่นวนรอบ Loop',
+		chkMenu			: 'ให้ใช้งานเมนูของ Flash',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'อัตราส่วน Scale',
 		scaleAll		: 'แสดงให้เห็นทั้งหมด Show all',
 		scaleNoBorder	: 'ไม่แสดงเส้นขอบ No Border',
 		scaleFit		: 'แสดงให้พอดีกับพื้นที่ Exact Fit',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'การจัดวาง',
-		alignLeft	: 'ชิดซ้าย',
-		alignAbsBottom: 'ชิดด้านล่างสุด',
-		alignAbsMiddle: 'กึ่งกลาง',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'การจัดวาง',
+		alignLeft		: 'ชิดซ้าย',
+		alignAbsBottom	: 'ชิดด้านล่างสุด',
+		alignAbsMiddle	: 'กึ่งกลาง',
 		alignBaseline	: 'ชิดบรรทัด',
-		alignBottom	: 'ชิดด้านล่าง',
-		alignMiddle	: 'กึ่งกลางแนวตั้ง',
-		alignRight	: 'ชิดขวา',
+		alignBottom		: 'ชิดด้านล่าง',
+		alignMiddle		: 'กึ่งกลางแนวตั้ง',
+		alignRight		: 'ชิดขวา',
 		alignTextTop	: 'ใต้ตัวอักษร',
-		alignTop	: 'บนสุด',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'สีพื้นหลัง',
-		width	: 'ความกว้าง',
-		height	: 'ความสูง',
-		hSpace	: 'ระยะแนวนอน',
-		vSpace	: 'ระยะแนวตั้ง',
-		validateSrc : 'กรุณาระบุที่อยู่อ้างอิงออนไลน์ (URL)',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'บนสุด',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'สีพื้นหลัง',
+		width			: 'ความกว้าง',
+		height			: 'ความสูง',
+		hSpace			: 'ระยะแนวนอน',
+		vSpace			: 'ระยะแนวตั้ง',
+		validateSrc		: 'กรุณาระบุที่อยู่อ้างอิงออนไลน์ (URL)',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['th'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'ลำดับรายการแบบตัวเลข',
-	bulletedlist : 'ลำดับรายการแบบสัญลักษณ์',
-	indent : 'เพิ่มระยะย่อหน้า',
-	outdent : 'ลดระยะย่อหน้า',
+	numberedlist	: 'ลำดับรายการแบบตัวเลข',
+	bulletedlist	: 'ลำดับรายการแบบสัญลักษณ์',
+	indent			: 'เพิ่มระยะย่อหน้า',
+	outdent			: 'ลดระยะย่อหน้า',
 
 	justify :
 	{
-		left : 'จัดชิดซ้าย',
-		center : 'จัดกึ่งกลาง',
-		right : 'จัดชิดขวา',
-		block : 'จัดพอดีหน้ากระดาษ'
+		left	: 'จัดชิดซ้าย',
+		center	: 'จัดกึ่งกลาง',
+		right	: 'จัดชิดขวา',
+		block	: 'จัดพอดีหน้ากระดาษ'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['th'] =
 		cutError	: 'ไม่สามารถตัดข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl และตัว X พร้อมกัน).',
 		copyError	: 'ไม่สามารถสำเนาข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl และตัว C พร้อมกัน).',
 		pasteMsg	: 'กรุณาใช้คีย์บอร์ดเท่านั้น โดยกดปุ๋ม (<strong>Ctrl และ V</strong>)พร้อมๆกัน และกด <strong>OK</strong>.',
-		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.' // MISSING
+		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'วางสำเนาจากตัวอักษรเวิร์ด',
-		title : 'วางสำเนาจากตัวอักษรเวิร์ด',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'วางสำเนาจากตัวอักษรเวิร์ด',
+		title			: 'วางสำเนาจากตัวอักษรเวิร์ด',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'วางแบบตัวอักษรธรรมดา',
-		title : 'วางแบบตัวอักษรธรรมดา'
+		button	: 'วางแบบตัวอักษรธรรมดา',
+		title	: 'วางแบบตัวอักษรธรรมดา'
 	},
 
 	templates :
 	{
-		button : 'เทมเพลต',
-		title : 'เทมเพลตของส่วนเนื้อหาเว็บไซต์',
-		insertOption: 'แทนที่เนื้อหาเว็บไซต์ที่เลือก',
-		selectPromptMsg: 'กรุณาเลือก เทมเพลต เพื่อนำไปแก้ไขในอีดิตเตอร์<br />(เนื้อหาส่วนนี้จะหายไป):',
-		emptyListMsg : '(ยังไม่มีการกำหนดเทมเพลต)'
+		button			: 'เทมเพลต',
+		title			: 'เทมเพลตของส่วนเนื้อหาเว็บไซต์',
+		insertOption	: 'แทนที่เนื้อหาเว็บไซต์ที่เลือก',
+		selectPromptMsg	: 'กรุณาเลือก เทมเพลต เพื่อนำไปแก้ไขในอีดิตเตอร์<br />(เนื้อหาส่วนนี้จะหายไป):',
+		emptyListMsg	: '(ยังไม่มีการกำหนดเทมเพลต)'
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : 'ลักษณะ',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'ลักษณะ',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'รูปแบบ',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'รูปแบบ',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'รูปแบบ',
+		panelTitle	: 'รูปแบบ',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatted',
-		tag_address : 'Address',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Paragraph (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatted',
+		tag_address	: 'Address',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Paragraph (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['th'] =
 
 	font :
 	{
-		label : 'แบบอักษร',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'แบบอักษร',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'แบบอักษร',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'แบบอักษร'
 	},
 
 	fontSize :
 	{
-		label : 'ขนาด',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'ขนาด',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'ขนาด',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'ขนาด'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'สีตัวอักษร',
-		bgColorTitle : 'สีพื้นหลัง',
-		auto : 'สีอัตโนมัติ',
-		more : 'เลือกสีอื่นๆ...'
+		textColorTitle	: 'สีตัวอักษร',
+		bgColorTitle	: 'สีพื้นหลัง',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'สีอัตโนมัติ',
+		more			: 'เลือกสีอื่นๆ...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['th'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['th'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

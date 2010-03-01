@@ -166,7 +166,7 @@ CKEDITOR.plugins.add( 'forms',
 	afterInit : function( editor )
 	{
 		// Cleanup certain IE form elements default values.
-		if( CKEDITOR.env.ie )
+		if ( CKEDITOR.env.ie )
 		{
 			var dataProcessor = editor.dataProcessor,
 				htmlFilter = dataProcessor && dataProcessor.htmlFilter;
@@ -179,7 +179,7 @@ CKEDITOR.plugins.add( 'forms',
 					{
 						var attrs = input.attributes,
 							type = attrs.type;
-						if( type == 'checkbox' || type == 'radio' )
+						if ( type == 'checkbox' || type == 'radio' )
 							attrs.value == 'on' && delete attrs.value;
 					}
 				}

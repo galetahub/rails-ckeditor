@@ -31,7 +31,11 @@ CKEDITOR.lang['ms'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Sumber',
@@ -68,12 +72,12 @@ CKEDITOR.lang['ms'] =
 		flash			: 'Flash', // MISSING
 		form			: 'Borang',
 		checkbox		: 'Checkbox',
-		radio		: 'Butang Radio',
+		radio			: 'Butang Radio',
 		textField		: 'Text Field',
 		textarea		: 'Textarea',
 		hiddenField		: 'Field Tersembunyi',
 		button			: 'Butang',
-		select	: 'Field Pilihan',
+		select			: 'Field Pilihan',
 		imageButton		: 'Butang Bergambar',
 		notSet			: '<tidak di set>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['ms'] =
 		cssStyle		: 'Stail',
 		ok				: 'OK',
 		cancel			: 'Batal',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'Advanced',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['ms'] =
 		upload		: 'Muat Naik',
 		advanced	: 'Advanced',
 		type		: 'Jenis Sambungan',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Pautan dalam muka surat ini',
 		toEmail		: 'E-Mail',
-		target		: 'Sasaran',
-		targetNotSet	: '<tidak di set>',
-		targetFrame	: '<bingkai>',
-		targetPopup	: '<tetingkap popup>',
-		targetNew	: 'Tetingkap Baru (_blank)',
-		targetTop	: 'Tetingkap yang paling atas (_top)',
-		targetSelf	: 'Tetingkap yang Sama (_self)',
-		targetParent	: 'Tetingkap Parent (_parent)',
+		targetFrame		: '<bingkai>',
+		targetPopup		: '<tetingkap popup>',
 		targetFrameName	: 'Nama Bingkai Sasaran',
 		targetPopupName	: 'Nama Tetingkap Popup',
 		popupFeatures	: 'Ciri Tetingkap Popup',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'Bar Status',
-		popupLocationBar	: 'Bar Lokasi',
+		popupLocationBar: 'Bar Lokasi',
 		popupToolbar	: 'Toolbar',
 		popupMenuBar	: 'Bar Menu',
 		popupFullScreen	: 'Skrin Penuh (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['ms'] =
 		popupTop		: 'Posisi Atas',
 		id				: 'Id', // MISSING
 		langDir			: 'Arah Tulisan',
-		langDirNotSet	: '<tidak di set>',
 		langDirLTR		: 'Kiri ke Kanan (LTR)',
 		langDirRTL		: 'Kanan ke Kiri (RTL)',
 		acccessKey		: 'Kunci Akses',
@@ -203,13 +209,13 @@ CKEDITOR.lang['ms'] =
 		columns		: 'Jaluran',
 		border		: 'Saiz Border',
 		align		: 'Penjajaran',
-		alignNotSet	: '<Tidak diset>',
 		alignLeft	: 'Kiri',
 		alignCenter	: 'Tengah',
 		alignRight	: 'Kanan',
 		width		: 'Lebar',
 		widthPx		: 'piksel-piksel',
 		widthPc		: 'peratus',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Tinggi',
 		cellSpace	: 'Ruangan Antara Sel',
 		cellPad		: 'Tambahan Ruang Sel',
@@ -260,7 +266,7 @@ CKEDITOR.lang['ms'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['ms'] =
 		menu		: 'Ciri-ciri Borang',
 		action		: 'Tindakan borang',
 		method		: 'Cara borang dihantar',
-		encoding	: 'Encoding', // MISSING
-		target		: 'Sasaran',
-		targetNotSet	: '<tidak di set>',
-		targetNew	: 'Tetingkap Baru (_blank)',
-		targetTop	: 'Tetingkap yang paling atas (_top)',
-		targetSelf	: 'Tetingkap yang Sama (_self)',
-		targetParent	: 'Tetingkap Parent (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['ms'] =
 		title		: 'Ciri-ciri Imej',
 		titleButton	: 'Ciri-ciri Butang Bergambar',
 		menu		: 'Ciri-ciri Imej',
-		infoTab	: 'Info Imej',
+		infoTab		: 'Info Imej',
 		btnUpload	: 'Hantar ke Server',
-		url		: 'URL',
-		upload	: 'Muat Naik',
-		alt		: 'Text Alternatif',
+		upload		: 'Muat Naik',
+		alt			: 'Text Alternatif',
 		width		: 'Lebar',
-		height	: 'Tinggi',
+		height		: 'Tinggi',
 		lockRatio	: 'Tetapkan Nisbah',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Saiz Set Semula',
-		border	: 'Border',
-		hSpace	: 'Ruang Melintang',
-		vSpace	: 'Ruang Menegak',
+		border		: 'Border',
+		hSpace		: 'Ruang Melintang',
+		vSpace		: 'Ruang Menegak',
 		align		: 'Jajaran',
 		alignLeft	: 'Kiri',
 		alignRight	: 'Kanan',
-		preview	: 'Prebiu',
 		alertUrl	: 'Sila taip URL untuk fail gambar',
-		linkTab	: 'Sambungan',
+		linkTab		: 'Sambungan',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['ms'] =
 	{
 		properties		: 'Flash Properties', // MISSING
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'Flash Properties', // MISSING
-		chkPlay		: 'Auto Play', // MISSING
-		chkLoop		: 'Loop', // MISSING
-		chkMenu		: 'Enable Flash Menu', // MISSING
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Scale', // MISSING
+		title			: 'Flash Properties', // MISSING
+		chkPlay			: 'Auto Play', // MISSING
+		chkLoop			: 'Loop', // MISSING
+		chkMenu			: 'Enable Flash Menu', // MISSING
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'Scale', // MISSING
 		scaleAll		: 'Show all', // MISSING
 		scaleNoBorder	: 'No Border', // MISSING
 		scaleFit		: 'Exact Fit', // MISSING
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Jajaran',
-		alignLeft	: 'Kiri',
-		alignAbsBottom: 'Bawah Mutlak',
-		alignAbsMiddle: 'Pertengahan Mutlak',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'Jajaran',
+		alignLeft		: 'Kiri',
+		alignAbsBottom	: 'Bawah Mutlak',
+		alignAbsMiddle	: 'Pertengahan Mutlak',
 		alignBaseline	: 'Garis Dasar',
-		alignBottom	: 'Bawah',
-		alignMiddle	: 'Pertengahan',
-		alignRight	: 'Kanan',
+		alignBottom		: 'Bawah',
+		alignMiddle		: 'Pertengahan',
+		alignRight		: 'Kanan',
 		alignTextTop	: 'Atas Text',
-		alignTop	: 'Atas',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Warna Latarbelakang',
-		width	: 'Lebar',
-		height	: 'Tinggi',
-		hSpace	: 'Ruang Melintang',
-		vSpace	: 'Ruang Menegak',
-		validateSrc : 'Sila taip sambungan URL',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'Atas',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'Warna Latarbelakang',
+		width			: 'Lebar',
+		height			: 'Tinggi',
+		hSpace			: 'Ruang Melintang',
+		vSpace			: 'Ruang Menegak',
+		validateSrc		: 'Sila taip sambungan URL',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['ms'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'Senarai bernombor',
-	bulletedlist : 'Senarai tidak bernombor',
-	indent : 'Tambahkan Inden',
-	outdent : 'Kurangkan Inden',
+	numberedlist	: 'Senarai bernombor',
+	bulletedlist	: 'Senarai tidak bernombor',
+	indent			: 'Tambahkan Inden',
+	outdent			: 'Kurangkan Inden',
 
 	justify :
 	{
-		left : 'Jajaran Kiri',
-		center : 'Jajaran Tengah',
-		right : 'Jajaran Kanan',
-		block : 'Jajaran Blok'
+		left	: 'Jajaran Kiri',
+		center	: 'Jajaran Tengah',
+		right	: 'Jajaran Kanan',
+		block	: 'Jajaran Blok'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['ms'] =
 		cutError	: 'Keselamatan perisian browser anda tidak membenarkan operasi suntingan text/imej. Sila gunakan papan kekunci (Ctrl+X).',
 		copyError	: 'Keselamatan perisian browser anda tidak membenarkan operasi salinan text/imej. Sila gunakan papan kekunci (Ctrl+C).',
 		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK', // MISSING
-		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.' // MISSING
+		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Tampal dari Word',
-		title : 'Tampal dari Word',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'Tampal dari Word',
+		title			: 'Tampal dari Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Tampal sebagai text biasa',
-		title : 'Tampal sebagai text biasa'
+		button	: 'Tampal sebagai text biasa',
+		title	: 'Tampal sebagai text biasa'
 	},
 
 	templates :
 	{
-		button : 'Templat',
-		title : 'Templat Kandungan',
-		insertOption: 'Replace actual contents', // MISSING
-		selectPromptMsg: 'Sila pilih templat untuk dibuka oleh editor<br>(kandungan sebenar akan hilang):',
-		emptyListMsg : '(Tiada Templat Disimpan)'
+		button			: 'Templat',
+		title			: 'Templat Kandungan',
+		insertOption	: 'Replace actual contents', // MISSING
+		selectPromptMsg	: 'Sila pilih templat untuk dibuka oleh editor<br>(kandungan sebenar akan hilang):',
+		emptyListMsg	: '(Tiada Templat Disimpan)'
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : 'Stail',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Stail',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'Format',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Format',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Format',
+		panelTitle	: 'Format',
 
-		tag_p : 'Normal',
-		tag_pre : 'Telah Diformat',
-		tag_address : 'Alamat',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Perenggan (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Telah Diformat',
+		tag_address	: 'Alamat',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Perenggan (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['ms'] =
 
 	font :
 	{
-		label : 'Font',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Font',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Font',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'Font'
 	},
 
 	fontSize :
 	{
-		label : 'Saiz',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Saiz',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Saiz',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'Saiz'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Warna Text',
-		bgColorTitle : 'Warna Latarbelakang',
-		auto : 'Otomatik',
-		more : 'Warna lain-lain...'
+		textColorTitle	: 'Warna Text',
+		bgColorTitle	: 'Warna Latarbelakang',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Otomatik',
+		more			: 'Warna lain-lain...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['ms'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['ms'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

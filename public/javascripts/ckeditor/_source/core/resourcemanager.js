@@ -127,7 +127,7 @@ CKEDITOR.resourceManager.prototype =
 		var external = this.externals[ name ];
 		return CKEDITOR.getUrl(
 				this.getPath( name ) +
-				( ( external && external.file ) || ( this.fileName + '.js' ) ) );
+				( ( external && ( typeof external.file == 'string' ) ) ? external.file : this.fileName + '.js' ) );
 	},
 
 	/**
@@ -136,13 +136,17 @@ CKEDITOR.resourceManager.prototype =
 	 * @param {String} names The resource names, separated by commas.
 	 * @param {String} path The path of the folder containing the resource.
 	 * @param {String} [fileName] The resource file name. If not provided, the
-	 *		default name is used.
+	 *		default name is used; If provided with a empty string, will implicitly indicates that {@param path}
+	 * 		is already the full path.
 	 * @example
 	 * // Loads a plugin from '/myplugin/samples/plugin.js'.
 	 * CKEDITOR.plugins.addExternal( 'sample', '/myplugins/sample/' );
 	 * @example
 	 * // Loads a plugin from '/myplugin/samples/my_plugin.js'.
 	 * CKEDITOR.plugins.addExternal( 'sample', '/myplugins/sample/', 'my_plugin.js' );
+	 * @example
+	 * // Loads a plugin from '/myplugin/samples/my_plugin.js'.
+	 * CKEDITOR.plugins.addExternal( 'sample', '/myplugins/sample/my_plugin.js', '' );
 	 */
 	addExternal : function( names, path, fileName )
 	{

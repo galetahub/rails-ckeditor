@@ -93,7 +93,7 @@ CKEDITOR.skins.add( 'kama', (function()
 			function getStylesheet( document )
 			{
 				var node = document.getById( uiColorStylesheetId );
-				if( !node )
+				if ( !node )
 				{
 					node = document.getHead().append( 'style' );
 					node.setAttribute( "id", uiColorStylesheetId );

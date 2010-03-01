@@ -120,14 +120,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	// Gets a snapshot image which represent the current document status.
 	function Image( editor )
 	{
-		var selection = editor.getSelection();
-
-		this.contents	= editor.getSnapshot();
-		this.bookmarks	= selection && selection.createBookmarks2( true );
+		var contents	= editor.getSnapshot(),
+			selection	= contents && editor.getSelection();
 
 		// In IE, we need to remove the expando attributes.
-		if ( CKEDITOR.env.ie )
-			this.contents = this.contents.replace( /\s+_cke_expando=".*?"/g, '' );
+		CKEDITOR.env.ie && contents && ( contents = contents.replace( /\s+_cke_expando=".*?"/g, '' ) );
+
+		this.contents	= contents;
+		this.bookmarks	= selection && selection.createBookmarks2( true );
 	}
 
 	// Attributes that browser may changing them when setting via innerHTML.
@@ -141,13 +141,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				otherContents = otherImage.contents;
 
 			// For IE6/7 : Comparing only the protected attribute values but not the original ones.(#4522)
-			if( CKEDITOR.env.ie && ( CKEDITOR.env.ie7Compat || CKEDITOR.env.ie6Compat ) )
+			if ( CKEDITOR.env.ie && ( CKEDITOR.env.ie7Compat || CKEDITOR.env.ie6Compat ) )
 			{
 				thisContents = thisContents.replace( protectedAttrs, '' );
 				otherContents = otherContents.replace( protectedAttrs, '' );
 			}
 
-			if( thisContents != otherContents )
+			if ( thisContents != otherContents )
 				return false;
 
 			if ( contentOnly )
@@ -351,6 +351,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			if ( !image )
 				image = new Image( this.editor );
 
+			// Do nothing if it was not possible to retrieve an image.
+			if ( image.contents === false )
+				return false;
+
 			// Check if this is a duplicate. In such case, do nothing.
 			if ( this.currentImage && image.equals( this.currentImage, onContentOnly ) )
 				return false;
@@ -390,7 +394,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			this.index = image.index;
 
-			this.currentImage = image;
+			// Update current image with the actual editor
+			// content, since actualy content may differ from
+			// the original snapshot due to dom change. (#4622)
+			this.snapshots.splice( this.index, 1, ( this.currentImage =  new Image( this.editor ) ) );
 
 			this.fireChange();
 		},
@@ -503,3 +510,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * config.undoStackSize = 50;
  */
 CKEDITOR.config.undoStackSize = 20;
+
+/**
+ * Fired when the editor is about to save an undo snapshot. This event can be
+ * fired by plugins and customizations to make the editor saving undo snapshots.
+ * @name CKEDITOR.editor#saveSnapshot
+ * @event
+ */

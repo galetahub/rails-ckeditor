@@ -164,6 +164,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		if ( CKEDITOR.env.ie && doc.getById( 'cke_pastebin' ) )
 			return;
 
+		// If the browser supports it, get the data directly
+		if (mode == 'text' && evt.data && evt.data.$.clipboardData)
+		{
+			// evt.data.$.clipboardData.types contains all the flavours in Mac's Safari, but not on windows.
+			var plain = evt.data.$.clipboardData.getData( 'text/plain' );
+			if (plain)
+			{
+				evt.data.preventDefault();
+				callback( plain );
+				return;
+			}
+		}
+
 		var sel = this.getSelection(),
 			range = new CKEDITOR.dom.range( doc );
 
@@ -241,7 +254,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	// Register the plugin.
 	CKEDITOR.plugins.add( 'clipboard',
 		{
-			requires : [ 'htmldataprocessor' ],
+			requires : [ 'dialog', 'htmldataprocessor' ],
 			init : function( editor )
 			{
 				// Inserts processed data into the editor at the end of the
@@ -305,10 +318,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				editor.on( 'contentDom', function()
 				{
 					var body = editor.document.getBody();
-					body.on( ( mode == 'text' && CKEDITOR.env.ie ) ? 'paste' : 'beforepaste',
+					body.on( ( (mode == 'text' && CKEDITOR.env.ie) || CKEDITOR.env.webkit ) ? 'paste' : 'beforepaste',
 						function( evt )
 						{
-							if( depressBeforePasteEvent )
+							if ( depressBeforePasteEvent )
 								return;
 
 							getClipboardData.call( editor, evt, mode, function ( data )
@@ -356,3 +369,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			}
 		});
 })();
+
+/**
+ * Fired when a clipboard operation is about to be taken into the editor.
+ * Listeners can manipulate the data to be pasted before having it effectively
+ * inserted into the document.
+ * @name CKEDITOR.editor#paste
+ * @since 3.1
+ * @event
+ * @param {String} [data.html] The HTML data to be pasted. If not available, e.data.text will be defined.
+ * @param {String} [data.text] The plain text data to be pasted, available when plain text operations are to used. If not available, e.data.html will be defined.
+ */

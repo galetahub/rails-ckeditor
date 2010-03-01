@@ -44,6 +44,11 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 						|| CKEDITOR.document;
 
 		panelDefinition.className = ( panelDefinition.className || '' ) + ' cke_rcombopanel';
+		panelDefinition.block =
+		{
+			multiSelect : panelDefinition.multiSelect,
+			attributes : panelDefinition.attributes
+		};
 
 		this._ =
 		{
@@ -83,6 +88,8 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 		 */
 		render : function( editor, output )
 		{
+			var env = CKEDITOR.env;
+
 			var id = 'cke_' + this.id;
 			var clickFn = CKEDITOR.tools.addFunction( function( $element )
 				{
@@ -162,9 +169,11 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 				output.push( ' class="', this.className, ' cke_off"');
 
 			output.push(
-				'>' +
-					'<span class=cke_label>', this.label, '</span>' +
-					'<a hidefocus=true title="', this.title, '" tabindex="-1" href="javascript:void(\'', this.label, '\')"' );
+				'>',
+					'<span id="' + id+ '_label" class=cke_label>', this.label, '</span>',
+					'<a hidefocus=true title="', this.title, '" tabindex="-1"',
+						env.gecko && env.version >= 10900 && !env.hc ? '' : ' href="javascript:void(\'' + this.label + '\')"',
+						' role="button" aria-labelledby="', id , '_label" aria-describedby="', id, '_text" aria-haspopup="true"' );
 
 			// Some browsers don't cancel key events in the keydown but in the
 			// keypress.
@@ -187,10 +196,9 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 					' onkeydown="CKEDITOR.tools.callFunction( ', keyDownFn, ', event, this );"' +
 					' onclick="CKEDITOR.tools.callFunction(', clickFn, ', this); return false;">' +
 						'<span>' +
-							'<span class="cke_accessibility">' + ( this.voiceLabel ? this.voiceLabel + ' ' : '' ) + '</span>' +
 							'<span id="' + id + '_text" class="cke_text cke_inline_label">' + this.label + '</span>' +
 						'</span>' +
-						'<span class=cke_openbutton></span>' +
+						'<span class=cke_openbutton>' + ( CKEDITOR.env.hc ? '<span>&#9660;</span>' : '' ) + '</span>' +	// BLACK DOWN-POINTING TRIANGLE
 					'</a>' +
 				'</span>' +
 				'</span>' );
@@ -207,9 +215,10 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 				return;
 
 			var panelDefinition = this._.panelDefinition,
+				panelBlockDefinition = this._.panelDefinition.block,
 				panelParentElement = panelDefinition.parent || CKEDITOR.document.getBody(),
 				panel = new CKEDITOR.ui.floatPanel( editor, panelParentElement, panelDefinition ),
-				list = panel.addListBlock( this.id, this.multiSelect ),
+				list = panel.addListBlock( this.id, panelBlockDefinition ),
 				me = this;
 
 			panel.onShow = function()
@@ -290,6 +299,7 @@ CKEDITOR.ui.richCombo = CKEDITOR.tools.createClass(
 			}
 			else
 				textElement.removeClass( 'cke_inline_label' );
+
 			textElement.setHtml( typeof text != 'undefined' ? text : value );
 		},
 

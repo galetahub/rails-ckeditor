@@ -25,7 +25,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		for ( var i = 0; i < children.length; i++ )
 		{
 			child = children[ i ];
-			if( !child.name )
+			if ( !child.name )
 				continue;
 
 			if ( child.name == tagName )
@@ -80,9 +80,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// style literal.
 			if ( typeof name == 'object' )
 			{
-				for( var style in name )
+				for ( var style in name )
 				{
-					if( name.hasOwnProperty( style ) )
+					if ( name.hasOwnProperty( style ) )
 						addingStyleText += style + ':' + name[ style ] + ';';
 				}
 			}
@@ -93,7 +93,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			isPrepend = value;
 		}
 
-		if( !this.attributes )
+		if ( !this.attributes )
 			this.attributes = {};
 
 		styleText = this.attributes.style || '';
@@ -186,7 +186,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			isListBulletIndicator : function( element )
 			{
 				var styleText = element.attributes && element.attributes.style;
-				if( /mso-list\s*:\s*Ignore/i.test( styleText ) )
+				if ( /mso-list\s*:\s*Ignore/i.test( styleText ) )
 					return true;
 			},
 
@@ -257,7 +257,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				return function( cssLength )
 				{
-					if( cssLengthRelativeUnit.test( cssLength ) )
+					if ( cssLengthRelativeUnit.test( cssLength ) )
 					{
 						calculator.setStyle( 'width', cssLength );
 						return calculator.$.clientWidth + 'px';
@@ -328,14 +328,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						child = children[ i ];
 						var attributes = child.attributes;
 
-						if( child.name in CKEDITOR.dtd.$listItem )
+						if ( child.name in CKEDITOR.dtd.$listItem )
 						{
 							var listItemChildren = child.children,
 								count = listItemChildren.length,
 								last = listItemChildren[ count - 1 ];
 
 							// Move out nested list.
-							if( last.name in CKEDITOR.dtd.$list )
+							if ( last.name in CKEDITOR.dtd.$list )
 							{
 								children.splice( i + 1, 0, last );
 								last.parent = element;
@@ -420,8 +420,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								{
 									// There might be a negative gap between two list levels. (#4944)
 									var diff = indent - listItemIndent,
-										parent = list.parent;
-									while( diff-- && parent )
+										parent;
+									while ( diff-- && ( parent = list.parent ) )
 										list = parent.parent;
 
 									list.add( listItem );
@@ -477,9 +477,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 										 valuePattern,
 										 newValue,
 										 newName;
-									 for( var i = 0 ; i < styles.length; i++ )
+									 for ( var i = 0 ; i < styles.length; i++ )
 									 {
-										if( styles[ i ] )
+										if ( styles[ i ] )
 										{
 											namePattern = styles[ i ][ 0 ];
 											valuePattern = styles[ i ][ 1 ];
@@ -492,15 +492,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 												name = newName || name;
 												whitelist && ( newValue = newValue || value );
 
-												if( typeof newValue == 'function' )
+												if ( typeof newValue == 'function' )
 													newValue = newValue( value, element, name );
 
 												// Return an couple indicate both name and value
 												// changed.
-												if( newValue && newValue.push )
+												if ( newValue && newValue.push )
 													name = newValue[ 0 ], newValue = newValue[ 1 ];
 
-												if( typeof newValue == 'string' )
+												if ( typeof newValue == 'string' )
 													rules.push( [ name, newValue ] );
 												return;
 											}
@@ -567,7 +567,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				 */
 				bogusAttrFilter : function( value, element )
 				{
-					if( element.name.indexOf( 'cke:' ) == -1 )
+					if ( element.name.indexOf( 'cke:' ) == -1 )
 						return false;
 				},
 
@@ -645,7 +645,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						{
 							element.filterChildren();
 							// Is the heading actually a list item?
-							if( resolveListItem( element ) )
+							if ( resolveListItem( element ) )
 								return;
 
 							// Adapt heading styles to editor's convention.
@@ -720,12 +720,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 													className = className.substring( 1, className.length );
 
 													// Reject MS-Word Normal styles.
-													if( className.match( /MsoNormal/ ) )
+													if ( className.match( /MsoNormal/ ) )
 														return;
 
-													if( !rules[ tagName ] )
+													if ( !rules[ tagName ] )
 														rules[ tagName ] = {};
-													if( className )
+													if ( className )
 														rules[ tagName ][ className ] = styleBlock;
 													else
 														rules[ tagName ] = styleBlock;
@@ -738,10 +738,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									var name = rules[ '*' ] ? '*' : element.name,
 										className = element.attributes && element.attributes[ 'class' ],
 										style;
-									if( name in rules )
+									if ( name in rules )
 									{
 										style = rules[ name ];
-										if( typeof style == 'object' )
+										if ( typeof style == 'object' )
 											style = style[ className ];
 										// Maintain style rules priorities.
 										style && element.addStyle( style, true );
@@ -782,7 +782,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						// table cells inherit as text-align styles, which is wrong.
 						// Instead we use a clear-float div after the table to properly achieve the same layout.
 						var singleChild = element.onlyChild();
-						if( singleChild && singleChild.name == 'table' )
+						if ( singleChild && singleChild.name == 'table' )
 						{
 							var attrs = element.attributes;
 							singleChild.attributes = CKEDITOR.tools.extend( singleChild.attributes, attrs );
@@ -924,7 +924,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					'a' : function( element )
 					{
 						var attrs = element.attributes;
-						if( attrs && !attrs.href && attrs.name )
+						if ( attrs && !attrs.href && attrs.name )
 							delete element.name;
 					},
 					'cke:listbullet' : function( element )
@@ -983,14 +983,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						[ ( /^border.*|margin.*|vertical-align|float$/ ), null,
 							function( value, element )
 							{
-								if( element.name == 'img' )
+								if ( element.name == 'img' )
 									return value;
 							} ],
 
 						[ (/^width|height$/ ), null,
 							function( value, element )
 							{
-								if( element.name in { table : 1, td : 1, th : 1, img : 1 } )
+								if ( element.name in { table : 1, td : 1, th : 1, img : 1 } )
 									return value;
 							} ]
 					] :
@@ -1000,9 +1000,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						// Fixing color values.
 						[ ( /-color$/ ), null, function( value )
 						{
-							if( value == 'transparent' )
+							if ( value == 'transparent' )
 								return false;
-							if( CKEDITOR.env.gecko )
+							if ( CKEDITOR.env.gecko )
 								return value.replace( /-moz-use-text-color/g, 'transparent' );
 						} ],
 						// Remove empty margin values, e.g. 0.00001pt 0em 0pt
@@ -1017,13 +1017,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// Prefer width styles over 'width' attributes.
 					'width' : function( value, element )
 					{
-						if( element.name in dtd.$tableContent )
+						if ( element.name in dtd.$tableContent )
 							return false;
 					},
 					// Prefer border styles over table 'border' attributes.
 					'border' : function( value, element )
 					{
-						if( element.name in dtd.$tableContent )
+						if ( element.name in dtd.$tableContent )
 							return false;
 					},
 
@@ -1064,7 +1064,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							}
 
 							// Reveal the <img> element in conditional comments for Firefox.
-							if( CKEDITOR.env.gecko && imageInfo )
+							if ( CKEDITOR.env.gecko && imageInfo )
 							{
 								var img = CKEDITOR.htmlParser.fragment.fromHtml( imageInfo[ 0 ] ).children[ 0 ],
 									previousComment = node.previous,
@@ -1107,7 +1107,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		// Firefox will be confused by those downlevel-revealed IE conditional
 		// comments, fixing them first( convert it to upperlevel-revealed one ).
 		// e.g. <![if !vml]>...<![endif]>
-		if( CKEDITOR.env.gecko )
+		if ( CKEDITOR.env.gecko )
 			data = data.replace( /(<!--\[if[^<]*?\])-->([\S\s]*?)<!--(\[endif\]-->)/gi, '$1$2$3' );
 
 		var dataProcessor = new pasteProcessor(),
@@ -1144,11 +1144,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 })();
 
 /**
- * Whether the ignore all font-related format styles, including:
- * - font size;
- * - font family;
- * - font fore/background color;
+ * Whether to ignore all font related formatting styles, including:
+ * <ul>	<li>font size;</li>
+ *		<li>font family;</li>
+ *		<li>font foreground/background color.</li></ul>
  * @name CKEDITOR.config.pasteFromWordRemoveFontStyles
+ * @since 3.1
  * @type Boolean
  * @default true
  * @example
@@ -1156,8 +1157,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
 /**
- * Whether transform MS-Word Outline Numbered Heading into html list.
+ * Whether to transform MS Word outline numbered headings into lists.
  * @name CKEDITOR.config.pasteFromWordNumberedHeadingToList
+ * @since 3.1
  * @type Boolean
  * @default false
  * @example
@@ -1165,10 +1167,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  */
 
 /**
- * Whether remove element styles that can't be managed with editor, note that this
- * this doesn't handle the font-specific styles, which depends on
- * how {@link CKEDITOR.config.pasteFromWordRemoveFontStyles} is configured.
+ * Whether to remove element styles that can't be managed with the editor. Note
+ * that this doesn't handle the font specific styles, which depends on the
+ * {@link CKEDITOR.config.pasteFromWordRemoveFontStyles} setting instead.
  * @name CKEDITOR.config.pasteFromWordRemoveStyles
+ * @since 3.1
  * @type Boolean
  * @default true
  * @example

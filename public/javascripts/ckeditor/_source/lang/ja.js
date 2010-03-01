@@ -31,7 +31,11 @@ CKEDITOR.lang['ja'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'リッチテキストエディタ, %1',
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'ソース',
@@ -68,12 +72,12 @@ CKEDITOR.lang['ja'] =
 		flash			: 'Flash',
 		form			: 'フォーム',
 		checkbox		: 'チェックボックス',
-		radio		: 'ラジオボタン',
+		radio			: 'ラジオボタン',
 		textField		: '１行テキスト',
 		textarea		: 'テキストエリア',
 		hiddenField		: '不可視フィールド',
 		button			: 'ボタン',
-		select	: '選択フィールド',
+		select			: '選択フィールド',
 		imageButton		: '画像ボタン',
 		notSet			: '<なし>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['ja'] =
 		cssStyle		: 'スタイルシート',
 		ok				: 'OK',
 		cancel			: 'キャンセル',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: '全般',
 		advancedTab		: '高度な設定',
-		validateNumberFailed	: '値が数ではありません',
+		validateNumberFailed : '値が数ではありません',
 		confirmNewPage	: '変更内容を保存せず、 新しいページを開いてもよろしいでしょうか？',
 		confirmCancel	: 'オプション設定を変更しました。ダイアログを閉じてもよろしいでしょうか？',
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, 利用不可能</span>'
@@ -116,22 +128,17 @@ CKEDITOR.lang['ja'] =
 		upload		: 'アップロード',
 		advanced	: '高度な設定',
 		type		: 'リンクタイプ',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'このページのアンカー',
 		toEmail		: 'E-Mail',
-		target		: 'ターゲット',
-		targetNotSet	: '<なし>',
-		targetFrame	: '<フレーム>',
-		targetPopup	: '<ポップアップウィンドウ>',
-		targetNew	: '新しいウィンドウ (_blank)',
-		targetTop	: '最上位ウィンドウ (_top)',
-		targetSelf	: '同じウィンドウ (_self)',
-		targetParent	: '親ウィンドウ (_parent)',
+		targetFrame		: '<フレーム>',
+		targetPopup		: '<ポップアップウィンドウ>',
 		targetFrameName	: '目的のフレーム名',
 		targetPopupName	: 'ポップアップウィンドウ名',
 		popupFeatures	: 'ポップアップウィンドウ特徴',
 		popupResizable	: 'サイズ可変',
 		popupStatusBar	: 'ステータスバー',
-		popupLocationBar	: 'ロケーションバー',
+		popupLocationBar: 'ロケーションバー',
 		popupToolbar	: 'ツールバー',
 		popupMenuBar	: 'メニューバー',
 		popupFullScreen	: '全画面モード(IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['ja'] =
 		popupTop		: '上端からの座標で指定',
 		id				: 'Id',
 		langDir			: '文字表記の方向',
-		langDirNotSet	: '<なし>',
 		langDirLTR		: '左から右 (LTR)',
 		langDirRTL		: '右から左 (RTL)',
 		acccessKey		: 'アクセスキー',
@@ -203,13 +209,13 @@ CKEDITOR.lang['ja'] =
 		columns		: '列',
 		border		: 'ボーダーサイズ',
 		align		: 'テーブルの整列',
-		alignNotSet	: '<なし>',
 		alignLeft	: '左',
 		alignCenter	: '中央',
 		alignRight	: '右',
 		width		: '幅',
 		widthPx		: 'ピクセル',
 		widthPc		: 'パーセント',
+		widthUnit	: 'width unit', // MISSING
 		height		: '高さ',
 		cellSpace	: 'セル内余白',
 		cellPad		: 'セル内間隔',
@@ -260,7 +266,7 @@ CKEDITOR.lang['ja'] =
 			invalidHeight	: 'セル高さは数値で入力してください。',
 			invalidRowSpan	: '縦幅(行数)は数値で入力してください。',
 			invalidColSpan	: '横幅(列数)は数値で入力してください。',
-			chooseColor : '色の選択'
+			chooseColor		: '色の選択'
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['ja'] =
 		menu		: 'フォーム プロパティ',
 		action		: 'アクション',
 		method		: 'メソッド',
-		encoding	: 'エンコーディング',
-		target		: 'ターゲット',
-		targetNotSet	: '<なし>',
-		targetNew	: '新しいウィンドウ (_blank)',
-		targetTop	: '最上位ウィンドウ (_top)',
-		targetSelf	: '同じウィンドウ (_self)',
-		targetParent	: '親ウィンドウ (_parent)'
+		encoding	: 'エンコーディング'
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['ja'] =
 		title		: 'イメージ プロパティ',
 		titleButton	: '画像ボタン プロパティ',
 		menu		: 'イメージ プロパティ',
-		infoTab	: 'イメージ 情報',
+		infoTab		: 'イメージ 情報',
 		btnUpload	: 'サーバーに送信',
-		url		: 'URL',
-		upload	: 'アップロード',
-		alt		: '代替テキスト',
+		upload		: 'アップロード',
+		alt			: '代替テキスト',
 		width		: '幅',
-		height	: '高さ',
+		height		: '高さ',
 		lockRatio	: 'ロック比率',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'サイズリセット',
-		border	: 'ボーダー',
-		hSpace	: '横間隔',
-		vSpace	: '縦間隔',
+		border		: 'ボーダー',
+		hSpace		: '横間隔',
+		vSpace		: '縦間隔',
 		align		: '行揃え',
 		alignLeft	: '左',
 		alignRight	: '右',
-		preview	: 'プレビュー',
 		alertUrl	: 'イメージのURLを入力してください。',
-		linkTab	: 'リンク',
+		linkTab		: 'リンク',
 		button2Img	: '選択したボタンを画像に置き換えますか？',
 		img2Button	: '選択した画像をボタンに置き換えますか？',
-		urlMissing : 'イメージのURLを入力してください。'
+		urlMissing	: 'イメージのURLを入力してください。',
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['ja'] =
 	{
 		properties		: 'Flash プロパティ',
 		propertiesTab	: 'プロパティ',
-		title		: 'Flash プロパティ',
-		chkPlay		: '再生',
-		chkLoop		: 'ループ再生',
-		chkMenu		: 'Flashメニュー可能',
-		chkFull		: 'フルスクリーン許可',
- 		scale		: '拡大縮小設定',
+		title			: 'Flash プロパティ',
+		chkPlay			: '再生',
+		chkLoop			: 'ループ再生',
+		chkMenu			: 'Flashメニュー可能',
+		chkFull			: 'フルスクリーン許可',
+ 		scale			: '拡大縮小設定',
 		scaleAll		: 'すべて表示',
 		scaleNoBorder	: '外が見えない様に拡大',
 		scaleFit		: '上下左右にフィット',
 		access			: 'スプリクトアクセス(AllowScriptAccess)',
 		accessAlways	: 'すべての場合に通信可能(Always)',
-		accessSameDomain	: '同一ドメインのみに通信可能(Same domain)',
-		accessNever	: 'すべての場合に通信不可能(Never)',
-		align		: '行揃え',
-		alignLeft	: '左',
-		alignAbsBottom: '下部(絶対的)',
-		alignAbsMiddle: '中央(絶対的)',
+		accessSameDomain: '同一ドメインのみに通信可能(Same domain)',
+		accessNever		: 'すべての場合に通信不可能(Never)',
+		align			: '行揃え',
+		alignLeft		: '左',
+		alignAbsBottom	: '下部(絶対的)',
+		alignAbsMiddle	: '中央(絶対的)',
 		alignBaseline	: 'ベースライン',
-		alignBottom	: '下',
-		alignMiddle	: '中央',
-		alignRight	: '右',
+		alignBottom		: '下',
+		alignMiddle		: '中央',
+		alignRight		: '右',
 		alignTextTop	: 'テキスト上部',
-		alignTop	: '上',
-		quality		: '画質',
-		qualityBest		 : '品質優先',
-		qualityHigh		 : '高',
-		qualityAutoHigh	 : '自動/高',
-		qualityMedium	 : '中',
-		qualityAutoLow	 : '自動/低',
-		qualityLow		 : '低',
-		windowModeWindow	 : '標準',
-		windowModeOpaque	 : '背景を不透明設定',
-		windowModeTransparent	 : '背景を透過設定',
-		windowMode	: 'ウィンドウモード',
-		flashvars	: 'フラッシュに渡す変数(FlashVars)',
-		bgcolor	: '背景色',
-		width	: '幅',
-		height	: '高さ',
-		hSpace	: '横間隔',
-		vSpace	: '縦間隔',
-		validateSrc : 'リンクURLを入力してください。',
-		validateWidth : '幅は数値で入力してください。',
-		validateHeight : '高さは数値で入力してください。',
-		validateHSpace : '横間隔は数値で入力してください。',
-		validateVSpace : '縦間隔は数値で入力してください。'
+		alignTop		: '上',
+		quality			: '画質',
+		qualityBest		: '品質優先',
+		qualityHigh		: '高',
+		qualityAutoHigh	: '自動/高',
+		qualityMedium	: '中',
+		qualityAutoLow	: '自動/低',
+		qualityLow		: '低',
+		windowModeWindow: '標準',
+		windowModeOpaque: '背景を不透明設定',
+		windowModeTransparent : '背景を透過設定',
+		windowMode		: 'ウィンドウモード',
+		flashvars		: 'フラッシュに渡す変数(FlashVars)',
+		bgcolor			: '背景色',
+		width			: '幅',
+		height			: '高さ',
+		hSpace			: '横間隔',
+		vSpace			: '縦間隔',
+		validateSrc		: 'リンクURLを入力してください。',
+		validateWidth	: '幅は数値で入力してください。',
+		validateHeight	: '高さは数値で入力してください。',
+		validateHSpace	: '横間隔は数値で入力してください。',
+		validateVSpace	: '縦間隔は数値で入力してください。'
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['ja'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 エレメント'
 	},
 
-	numberedlist : '段落番号',
-	bulletedlist : '箇条書き',
-	indent : 'インデント',
-	outdent : 'インデント解除',
+	numberedlist	: '段落番号',
+	bulletedlist	: '箇条書き',
+	indent			: 'インデント',
+	outdent			: 'インデント解除',
 
 	justify :
 	{
-		left : '左揃え',
-		center : '中央揃え',
-		right : '右揃え',
-		block : '両端揃え'
+		left	: '左揃え',
+		center	: '中央揃え',
+		right	: '右揃え',
+		block	: '両端揃え'
 	},
 
 	blockquote : 'ブロック引用',
@@ -501,61 +506,59 @@ CKEDITOR.lang['ja'] =
 		cutError	: 'ブラウザーのセキュリティ設定によりエディタの切り取り操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl+X)を使用してください。',
 		copyError	: 'ブラウザーのセキュリティ設定によりエディタのコピー操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl+C)を使用してください。',
 		pasteMsg	: 'キーボード(<STRONG>Ctrl+V</STRONG>)を使用して、次の入力エリア内で貼って、<STRONG>OK</STRONG>を押してください。',
-		securityMsg	: 'ブラウザのセキュリティ設定により、エディタはクリップボード・データに直接アクセスすることができません。このウィンドウは貼り付け操作を行う度に表示されます。'
+		securityMsg	: 'ブラウザのセキュリティ設定により、エディタはクリップボード・データに直接アクセスすることができません。このウィンドウは貼り付け操作を行う度に表示されます。',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : '貼り付けを行うテキストは、ワード文章からコピーされようとしています。貼り付ける前にクリーニングを行いますか？',
-		toolbar : 'ワード文章から貼り付け',
-		title : 'ワード文章から貼り付け',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: '貼り付けを行うテキストは、ワード文章からコピーされようとしています。貼り付ける前にクリーニングを行いますか？',
+		toolbar			: 'ワード文章から貼り付け',
+		title			: 'ワード文章から貼り付け',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'プレーンテキスト貼り付け',
-		title : 'プレーンテキスト貼り付け'
+		button	: 'プレーンテキスト貼り付け',
+		title	: 'プレーンテキスト貼り付け'
 	},
 
 	templates :
 	{
-		button : 'テンプレート(雛形)',
-		title : 'テンプレート内容',
-		insertOption: '現在のエディタの内容と置換えをします',
-		selectPromptMsg: 'エディターで使用するテンプレートを選択してください。<br>(現在のエディタの内容は失われます):',
-		emptyListMsg : '(テンプレートが定義されていません)'
+		button			: 'テンプレート(雛形)',
+		title			: 'テンプレート内容',
+		insertOption	: '現在のエディタの内容と置換えをします',
+		selectPromptMsg	: 'エディターで使用するテンプレートを選択してください。<br>(現在のエディタの内容は失われます):',
+		emptyListMsg	: '(テンプレートが定義されていません)'
 	},
 
 	showBlocks : 'ブロック表示',
 
 	stylesCombo :
 	{
-		label : 'スタイル',
-		voiceLabel : 'スタイル',
-		panelVoiceLabel : 'スタイルを選択してください',
-		panelTitle1 : 'ブロックスタイル',
-		panelTitle2 : 'インラインスタイル',
-		panelTitle3 : 'オブジェクトスタイル'
+		label		: 'スタイル',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'ブロックスタイル',
+		panelTitle2	: 'インラインスタイル',
+		panelTitle3	: 'オブジェクトスタイル'
 	},
 
 	format :
 	{
-		label : 'フォーマット',
-		voiceLabel : 'フォーマット',
-		panelTitle : 'フォーマット',
-		panelVoiceLabel : 'パラグラフ形式を選択してください。',
+		label		: 'フォーマット',
+		panelTitle	: 'フォーマット',
 
-		tag_p : '標準',
-		tag_pre : '書式付き',
-		tag_address : 'アドレス',
-		tag_h1 : '見出し 1',
-		tag_h2 : '見出し 2',
-		tag_h3 : '見出し 3',
-		tag_h4 : '見出し 4',
-		tag_h5 : '見出し 5',
-		tag_h6 : '見出し 6',
-		tag_div : '標準 (DIV)'
+		tag_p		: '標準',
+		tag_pre		: '書式付き',
+		tag_address	: 'アドレス',
+		tag_h1		: '見出し 1',
+		tag_h2		: '見出し 2',
+		tag_h3		: '見出し 3',
+		tag_h4		: '見出し 4',
+		tag_h5		: '見出し 5',
+		tag_h6		: '見出し 6',
+		tag_div		: '標準 (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['ja'] =
 
 	font :
 	{
-		label : 'フォント',
-		voiceLabel : 'フォント',
-		panelTitle : 'フォント',
-		panelVoiceLabel : 'フォントを選択してください'
+		label		: 'フォント',
+		voiceLabel	: 'フォント',
+		panelTitle	: 'フォント'
 	},
 
 	fontSize :
 	{
-		label : 'サイズ',
-		voiceLabel : 'フォントサイズ',
-		panelTitle : 'サイズ',
-		panelVoiceLabel : 'フォントサイズを選択してください'
+		label		: 'サイズ',
+		voiceLabel	: 'フォントサイズ',
+		panelTitle	: 'サイズ'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'テキスト色',
-		bgColorTitle : '背景色',
-		auto : '自動',
-		more : 'その他の色...'
+		textColorTitle	: 'テキスト色',
+		bgColorTitle	: '背景色',
+		panelTitle		: 'Colors', // MISSING
+		auto			: '自動',
+		more			: 'その他の色...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['ja'] =
 
 	scayt :
 	{
-		title : 'スペルチェック設定(SCAYT)',
-		enable : 'SCAYT有効',
-		disable : 'SCAYT無効',
-		about : 'SCAYTﾊﾞｰｼﾞｮﾝ',
-		toggle : 'SCAYT切替',
-		options : 'オプション',
-		langs : '言語',
-		moreSuggestions : '他の候補',
-		ignore : '無視',
-		ignoreAll : 'すべて無視',
-		addWord : '語句追加',
-		emptyDic : '辞書名は必ず入力してください',
-		optionsTab : 'オプション',
-		languagesTab : '言語',
-		dictionariesTab : '辞書',
-		aboutTab : 'バージョン情報'
+		title			: 'スペルチェック設定(SCAYT)',
+		enable			: 'SCAYT有効',
+		disable			: 'SCAYT無効',
+		about			: 'SCAYTﾊﾞｰｼﾞｮﾝ',
+		toggle			: 'SCAYT切替',
+		options			: 'オプション',
+		langs			: '言語',
+		moreSuggestions	: '他の候補',
+		ignore			: '無視',
+		ignoreAll		: 'すべて無視',
+		addWord			: '語句追加',
+		emptyDic		: '辞書名は必ず入力してください',
+		optionsTab		: 'オプション',
+		languagesTab	: '言語',
+		dictionariesTab	: '辞書',
+		aboutTab		: 'バージョン情報'
 	},
 
 	about :
 	{
-		title : 'CKEditorバージョン情報',
-		dlgTitle : 'CKEditorバージョン情報',
-		moreInfo : 'ライセンス情報の詳細はウェブサイトにて確認してください:',
-		copy : 'Copyright &copy; $1. All rights reserved.'
+		title		: 'CKEditorバージョン情報',
+		dlgTitle	: 'CKEditorバージョン情報',
+		moreInfo	: 'ライセンス情報の詳細はウェブサイトにて確認してください:',
+		copy		: 'Copyright &copy; $1. All rights reserved.'
 	},
 
 	maximize : '最大化',
@@ -676,22 +678,22 @@ CKEDITOR.lang['ja'] =
 
 	fakeobjects :
 	{
-		anchor : 'アンカー',
-		flash : 'Flash Animation',
-		div : 'Page Break',
-		unknown : 'Unknown Object'
+		anchor	: 'アンカー',
+		flash	: 'Flash Animation',
+		div		: 'Page Break',
+		unknown	: 'Unknown Object'
 	},
 
 	resize : 'ドラッグしてリサイズ',
 
 	colordialog :
 	{
-		title : '色選択',
-		highlight : 'ハイライト',
-		selected : '選択された色',
-		clear : 'クリア'
+		title		: '色選択',
+		highlight	: 'ハイライト',
+		selected	: '選択された色',
+		clear		: 'クリア'
 	},
 
-	toolbarCollapse : 'ツールバーを閉じる',
-	toolbarExpand : 'ツールバーを開く'
+	toolbarCollapse	: 'ツールバーを閉じる',
+	toolbarExpand	: 'ツールバーを開く'
 };

@@ -31,7 +31,11 @@ CKEDITOR.lang['bs'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'HTML kôd',
@@ -68,12 +72,12 @@ CKEDITOR.lang['bs'] =
 		flash			: 'Flash', // MISSING
 		form			: 'Form', // MISSING
 		checkbox		: 'Checkbox', // MISSING
-		radio		: 'Radio Button', // MISSING
+		radio			: 'Radio Button', // MISSING
 		textField		: 'Text Field', // MISSING
 		textarea		: 'Textarea', // MISSING
 		hiddenField		: 'Hidden Field', // MISSING
 		button			: 'Button', // MISSING
-		select	: 'Selection Field', // MISSING
+		select			: 'Selection Field', // MISSING
 		imageButton		: 'Image Button', // MISSING
 		notSet			: '<nije podešeno>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['bs'] =
 		cssStyle		: 'Stil',
 		ok				: 'OK',
 		cancel			: 'Odustani',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'Naprednije',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['bs'] =
 		upload		: 'Šalji',
 		advanced	: 'Naprednije',
 		type		: 'Tip linka',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Sidro na ovoj stranici',
 		toEmail		: 'E-Mail',
-		target		: 'Prozor',
-		targetNotSet	: '<nije podešeno>',
-		targetFrame	: '<frejm>',
-		targetPopup	: '<popup prozor>',
-		targetNew	: 'Novi prozor (_blank)',
-		targetTop	: 'Najgornji prozor (_top)',
-		targetSelf	: 'Isti prozor (_self)',
-		targetParent	: 'Glavni prozor (_parent)',
+		targetFrame		: '<frejm>',
+		targetPopup		: '<popup prozor>',
 		targetFrameName	: 'Target Frame Name', // MISSING
 		targetPopupName	: 'Naziv popup prozora',
 		popupFeatures	: 'Moguænosti popup prozora',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'Statusna traka',
-		popupLocationBar	: 'Traka za lokaciju',
+		popupLocationBar: 'Traka za lokaciju',
 		popupToolbar	: 'Traka sa alatima',
 		popupMenuBar	: 'Izborna traka',
 		popupFullScreen	: 'Cijeli ekran (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['bs'] =
 		popupTop		: 'Gornja pozicija',
 		id				: 'Id', // MISSING
 		langDir			: 'Smjer pisanja',
-		langDirNotSet	: '<nije podešeno>',
 		langDirLTR		: 'S lijeva na desno (LTR)',
 		langDirRTL		: 'S desna na lijevo (RTL)',
 		acccessKey		: 'Pristupna tipka',
@@ -203,13 +209,13 @@ CKEDITOR.lang['bs'] =
 		columns		: 'Kolona',
 		border		: 'Okvir',
 		align		: 'Poravnanje',
-		alignNotSet	: '<Nije podešeno>',
 		alignLeft	: 'Lijevo',
 		alignCenter	: 'Centar',
 		alignRight	: 'Desno',
 		width		: 'Širina',
 		widthPx		: 'piksela',
 		widthPc		: 'posto',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Visina',
 		cellSpace	: 'Razmak æelija',
 		cellPad		: 'Uvod æelija',
@@ -260,7 +266,7 @@ CKEDITOR.lang['bs'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['bs'] =
 		menu		: 'Form Properties', // MISSING
 		action		: 'Action', // MISSING
 		method		: 'Method', // MISSING
-		encoding	: 'Encoding', // MISSING
-		target		: 'Prozor',
-		targetNotSet	: '<nije podešeno>',
-		targetNew	: 'Novi prozor (_blank)',
-		targetTop	: 'Najgornji prozor (_top)',
-		targetSelf	: 'Isti prozor (_self)',
-		targetParent	: 'Glavni prozor (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['bs'] =
 		title		: 'Svojstva slike',
 		titleButton	: 'Image Button Properties', // MISSING
 		menu		: 'Svojstva slike',
-		infoTab	: 'Info slike',
+		infoTab		: 'Info slike',
 		btnUpload	: 'Šalji na server',
-		url		: 'URL',
-		upload	: 'Šalji',
-		alt		: 'Tekst na slici',
+		upload		: 'Šalji',
+		alt			: 'Tekst na slici',
 		width		: 'Širina',
-		height	: 'Visina',
+		height		: 'Visina',
 		lockRatio	: 'Zakljuèaj odnos',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Resetuj dimenzije',
-		border	: 'Okvir',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
+		border		: 'Okvir',
+		hSpace		: 'HSpace',
+		vSpace		: 'VSpace',
 		align		: 'Poravnanje',
 		alignLeft	: 'Lijevo',
 		alignRight	: 'Desno',
-		preview	: 'Prikaz',
 		alertUrl	: 'Molimo ukucajte URL od slike.',
-		linkTab	: 'Link', // MISSING
+		linkTab		: 'Link', // MISSING
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['bs'] =
 	{
 		properties		: 'Flash Properties', // MISSING
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'Flash Properties', // MISSING
-		chkPlay		: 'Auto Play', // MISSING
-		chkLoop		: 'Loop', // MISSING
-		chkMenu		: 'Enable Flash Menu', // MISSING
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Scale', // MISSING
+		title			: 'Flash Properties', // MISSING
+		chkPlay			: 'Auto Play', // MISSING
+		chkLoop			: 'Loop', // MISSING
+		chkMenu			: 'Enable Flash Menu', // MISSING
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'Scale', // MISSING
 		scaleAll		: 'Show all', // MISSING
 		scaleNoBorder	: 'No Border', // MISSING
 		scaleFit		: 'Exact Fit', // MISSING
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Poravnanje',
-		alignLeft	: 'Lijevo',
-		alignAbsBottom: 'Abs dole',
-		alignAbsMiddle: 'Abs sredina',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'Poravnanje',
+		alignLeft		: 'Lijevo',
+		alignAbsBottom	: 'Abs dole',
+		alignAbsMiddle	: 'Abs sredina',
 		alignBaseline	: 'Bazno',
-		alignBottom	: 'Dno',
-		alignMiddle	: 'Sredina',
-		alignRight	: 'Desno',
+		alignBottom		: 'Dno',
+		alignMiddle		: 'Sredina',
+		alignRight		: 'Desno',
 		alignTextTop	: 'Vrh teksta',
-		alignTop	: 'Vrh',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Boja pozadine',
-		width	: 'Širina',
-		height	: 'Visina',
-		hSpace	: 'HSpace',
-		vSpace	: 'VSpace',
-		validateSrc : 'Molimo ukucajte URL link',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'Vrh',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'Boja pozadine',
+		width			: 'Širina',
+		height			: 'Visina',
+		hSpace			: 'HSpace',
+		vSpace			: 'VSpace',
+		validateSrc		: 'Molimo ukucajte URL link',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['bs'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'Numerisana lista',
-	bulletedlist : 'Lista',
-	indent : 'Poveæaj uvod',
-	outdent : 'Smanji uvod',
+	numberedlist	: 'Numerisana lista',
+	bulletedlist	: 'Lista',
+	indent			: 'Poveæaj uvod',
+	outdent			: 'Smanji uvod',
 
 	justify :
 	{
-		left : 'Lijevo poravnanje',
-		center : 'Centralno poravnanje',
-		right : 'Desno poravnanje',
-		block : 'Puno poravnanje'
+		left	: 'Lijevo poravnanje',
+		center	: 'Centralno poravnanje',
+		right	: 'Desno poravnanje',
+		block	: 'Puno poravnanje'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['bs'] =
 		cutError	: 'Sigurnosne postavke vašeg pretraživaèa ne dozvoljavaju operacije automatskog rezanja. Molimo koristite kraticu na tastaturi (Ctrl+X).',
 		copyError	: 'Sigurnosne postavke Vašeg pretraživaèa ne dozvoljavaju operacije automatskog kopiranja. Molimo koristite kraticu na tastaturi (Ctrl+C).',
 		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK', // MISSING
-		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.' // MISSING
+		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Zalijepi iz Word-a',
-		title : 'Zalijepi iz Word-a',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'Zalijepi iz Word-a',
+		title			: 'Zalijepi iz Word-a',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Zalijepi kao obièan tekst',
-		title : 'Zalijepi kao obièan tekst'
+		button	: 'Zalijepi kao obièan tekst',
+		title	: 'Zalijepi kao obièan tekst'
 	},
 
 	templates :
 	{
-		button : 'Templates', // MISSING
-		title : 'Content Templates', // MISSING
-		insertOption: 'Replace actual contents', // MISSING
-		selectPromptMsg: 'Please select the template to open in the editor', // MISSING
-		emptyListMsg : '(No templates defined)' // MISSING
+		button			: 'Templates', // MISSING
+		title			: 'Content Templates', // MISSING
+		insertOption	: 'Replace actual contents', // MISSING
+		selectPromptMsg	: 'Please select the template to open in the editor', // MISSING
+		emptyListMsg	: '(No templates defined)' // MISSING
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : 'Stil',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Stil',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'Format',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Format',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Format',
+		panelTitle	: 'Format',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatted',
-		tag_address : 'Address',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Normal (DIV)' // MISSING
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatted',
+		tag_address	: 'Address',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Normal (DIV)' // MISSING
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['bs'] =
 
 	font :
 	{
-		label : 'Font',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Font',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Font',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'Font'
 	},
 
 	fontSize :
 	{
-		label : 'Velièina',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Velièina',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Velièina',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'Velièina'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Boja teksta',
-		bgColorTitle : 'Boja pozadine',
-		auto : 'Automatska',
-		more : 'Više boja...'
+		textColorTitle	: 'Boja teksta',
+		bgColorTitle	: 'Boja pozadine',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automatska',
+		more			: 'Više boja...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['bs'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['bs'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

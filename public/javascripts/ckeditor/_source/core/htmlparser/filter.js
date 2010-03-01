@@ -150,7 +150,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 	function addItemsToList( list, items, priority )
 	{
-		if( typeof items == 'function' )
+		if ( typeof items == 'function' )
 			items = [ items ];
 
 		var i, j,

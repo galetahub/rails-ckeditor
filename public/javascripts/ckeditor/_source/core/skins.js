@@ -194,7 +194,7 @@ CKEDITOR.skins = (function()
 			else
 			{
 				paths[ skinName ] = skinPath;
-				CKEDITOR.scriptLoader.load( skinPath + 'skin.js', function()
+				CKEDITOR.scriptLoader.load( CKEDITOR.getUrl( skinPath + 'skin.js' ), function()
 						{
 							 loadPart( editor, skinName, skinPart, callback );
 						});

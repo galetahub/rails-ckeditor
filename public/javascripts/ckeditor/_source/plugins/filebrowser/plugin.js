@@ -278,7 +278,18 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				if ( url )
 				{
-					element.onClick = uploadFile;
+					var onClick = element.onClick;
+					element.onClick = function( evt )
+					{
+						// "element" here means the definition object, so we need to find the correct
+						// button to scope the event call
+						var sender = evt.sender;
+						if ( onClick && onClick.call( sender, evt ) === false )
+							return false;
+
+						return uploadFile.call( sender, evt );
+					};
+
 					element.filebrowser.url = url;
 					element.hidden = false;
 					setupFileElement( editor, definition.getContents( element[ 'for' ][ 0 ] ).get( element[ 'for' ][ 1 ] ), element.filebrowser );
@@ -335,7 +346,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			return false;
 		}
 
-		return ( definition.getContents( tabId ).get( elementId ).filebrowser && definition.getContents( tabId ).get( elementId ).filebrowser.url );
+		var elementFileBrowser = definition.getContents( tabId ).get( elementId ).filebrowser;
+		return ( elementFileBrowser && elementFileBrowser.url );
 	}
 
 	function setUrl( fileUrl, data )
@@ -346,6 +358,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		if ( targetInput )
 			dialog.getContentElement( targetInput[ 0 ], targetInput[ 1 ] ).reset();
+
+		if ( typeof data == 'function' && data.call( this._.filebrowserSe ) === false )
+			return;
 
 		if ( onSelect && onSelect.call( this._.filebrowserSe, fileUrl, data ) === false )
 			return;
@@ -366,14 +381,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			CKEDITOR.on( 'dialogDefinition', function( evt )
 			{
+				var definition = evt.data.definition,
+					element;
 				// Associate filebrowser to elements with 'filebrowser' attribute.
-				for ( var i in evt.data.definition.contents )
+				for ( var i in definition.contents )
 				{
-					attachFileBrowser( evt.editor, evt.data.name, evt.data.definition, evt.data.definition.contents[ i ].elements );
-					if ( evt.data.definition.contents[ i ].hidden && evt.data.definition.contents[ i ].filebrowser )
+					element = definition.contents[ i ] ;
+					attachFileBrowser( evt.editor, evt.data.name, definition, element.elements );
+					if ( element.hidden && element.filebrowser )
 					{
-						evt.data.definition.contents[ i ].hidden =
-							!isConfigured( evt.data.definition, evt.data.definition.contents[ i ][ 'id' ], evt.data.definition.contents[ i ].filebrowser );
+						element.hidden = !isConfigured( definition, element[ 'id' ], element.filebrowser );
 					}
 				}
 			} );
@@ -381,3 +398,82 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	} );
 
 } )();
+
+/**
+ * The location of an external file browser, that should be launched when "Browse Server" button is pressed.
+ * If configured, the "Browse Server" button will appear in Link, Image and Flash dialogs.
+ * @see The <a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_(Uploader)">File Browser/Uploader</a> documentation.
+ * @name CKEDITOR.config.filebrowserBrowseUrl
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserBrowseUrl = '/browser/browse.php';
+ */
+
+/**
+ * The location of a script that handles file uploads.
+ * If set, the "Upload" tab will appear in "Link", "Image" and "Flash" dialogs.
+ * @name CKEDITOR.config.filebrowserUploadUrl
+ * @see The <a href="http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_(Uploader)">File Browser/Uploader</a> documentation.
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserUploadUrl = '/uploader/upload.php';
+ */
+
+/**
+ * The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Image dialog.
+ * If not set, CKEditor will use {@link CKEDITOR.config.filebrowserBrowseUrl}.
+ * @name CKEDITOR.config.filebrowserImageBrowseUrl
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserImageBrowseUrl = '/browser/browse.php?type=Images';
+ */
+
+/**
+ * The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Flash dialog.
+ * If not set, CKEditor will use {@link CKEDITOR.config.filebrowserBrowseUrl}.
+ * @name CKEDITOR.config.filebrowserFlashBrowseUrl
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserFlashBrowseUrl = '/browser/browse.php?type=Flash';
+ */
+
+/**
+ * The location of a script that handles file uploads in the Image dialog.
+ * If not set, CKEditor will use {@link CKEDITOR.config.filebrowserUploadUrl}.
+ * @name CKEDITOR.config.filebrowserImageUploadUrl
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserImageUploadUrl = '/uploader/upload.php?type=Images';
+ */
+
+/**
+ * The location of a script that handles file uploads in the Flash dialog.
+ * If not set, CKEditor will use {@link CKEDITOR.config.filebrowserUploadUrl}.
+ * @name CKEDITOR.config.filebrowserFlashUploadUrl
+ * @since 3.0
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserFlashUploadUrl = '/uploader/upload.php?type=Flash';
+ */
+
+/**
+ * The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Link tab of Image dialog.
+ * If not set, CKEditor will use {@link CKEDITOR.config.filebrowserBrowseUrl}.
+ * @name CKEDITOR.config.filebrowserImageBrowseLinkUrl
+ * @since 3.2
+ * @type String
+ * @default '' (empty string = disabled)
+ * @example
+ * config.filebrowserImageBrowseLinkUrl = '/browser/browse.php';
+ */

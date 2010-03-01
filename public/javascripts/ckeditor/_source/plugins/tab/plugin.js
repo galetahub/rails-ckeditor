@@ -5,11 +5,17 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 (function()
 {
+	var meta =
+	{
+		editorFocus : false,
+		modes : { wysiwyg:1, source:1 }
+	};
+
 	var blurCommand =
 		{
 			exec : function( editor )
 			{
-				editor.container.focusNext( true );
+				editor.container.focusNext( true, editor.tabIndex );
 			}
 		};
 
@@ -17,7 +23,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			exec : function( editor )
 			{
-				editor.container.focusPrevious( true );
+				editor.container.focusPrevious( true, editor.tabIndex );
 			}
 		};
 
@@ -27,57 +33,46 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		init : function( editor )
 		{
-			// Register the keystrokes.
-			var keystrokes = editor.keystrokeHandler.keystrokes;
-			keystrokes[ 9 /* TAB */ ] = 'tab';
-			keystrokes[ CKEDITOR.SHIFT + 9 /* TAB */ ] = 'shiftTab';
-
-			var tabSpaces = editor.config.tabSpaces,
+			var tabSpaces = editor.config.tabSpaces || 0,
 				tabText = '';
 
 			while ( tabSpaces-- )
 				tabText += '\xa0';
 
-			// Register the "tab" and "shiftTab" commands.
-			editor.addCommand( 'tab',
-				{
-					exec : function( editor )
+			if ( tabText )
+			{
+				editor.on( 'key', function( ev )
 					{
-						// Fire the "tab" event, making it possible to
-						// customize the TAB key behavior on specific cases.
-						if ( !editor.fire( 'tab' ) )
+						if ( ev.data.keyCode == 9 )	// TAB
 						{
-							if ( tabText.length > 0 )
-								editor.insertHtml( tabText );
-							else
-							{
-								// All browsers jump to the next field on TAB,
-								// except Safari, so we have to do that manually
-								// here.
-								/// https://bugs.webkit.org/show_bug.cgi?id=20597
-								return editor.execCommand( 'blur' );
-							}
+							editor.insertHtml( tabText );
+							ev.cancel();
+						}
+					});
+			}
+
+			if ( CKEDITOR.env.webkit )
+			{
+				editor.on( 'key', function( ev )
+					{
+						var keyCode = ev.data.keyCode;
+
+						if ( keyCode == 9 && !tabText )				// TAB
+						{
+							ev.cancel();
+							editor.execCommand( 'blur' );
 						}
 
-						return true;
-					}
-				});
+						if ( keyCode == ( CKEDITOR.SHIFT + 9 ) )	// SHIFT+TAB
+						{
+							editor.execCommand( 'blurBack' );
+							ev.cancel();
+						}
+					});
+			}
 
-			editor.addCommand( 'shiftTab',
-				{
-					exec : function( editor )
-					{
-						// Fire the "tab" event, making it possible to
-						// customize the TAB key behavior on specific cases.
-						if ( !editor.fire( 'shiftTab' ) )
-							return editor.execCommand( 'blurBack' );
-
-						return true;
-					}
-				});
-
-			editor.addCommand( 'blur', blurCommand );
-			editor.addCommand( 'blurBack', blurBackCommand );
+			editor.addCommand( 'blur', CKEDITOR.tools.extend( blurCommand, meta ) );
+			editor.addCommand( 'blurBack', CKEDITOR.tools.extend( blurBackCommand, meta ) );
 		}
 	});
 })();
@@ -89,10 +84,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * var element = CKEDITOR.document.getById( 'example' );
  * element.focusNext();
  */
-CKEDITOR.dom.element.prototype.focusNext = function( ignoreChildren )
+CKEDITOR.dom.element.prototype.focusNext = function( ignoreChildren, indexToUse )
 {
 	var $ = this.$,
-		curTabIndex = this.getTabIndex(),
+		curTabIndex = ( indexToUse === undefined ? this.getTabIndex() : indexToUse ),
 		passedCurrent, enteredCurrent,
 		elected, electedTabIndex,
 		element, elementTabIndex;
@@ -104,7 +99,7 @@ CKEDITOR.dom.element.prototype.focusNext = function( ignoreChildren )
 
 		element = this.getNextSourceNode( ignoreChildren, CKEDITOR.NODE_ELEMENT );
 
-		while( element )
+		while ( element )
 		{
 			if ( element.isVisible() && element.getTabIndex() === 0 )
 			{
@@ -125,7 +120,7 @@ CKEDITOR.dom.element.prototype.focusNext = function( ignoreChildren )
 
 		element = this.getDocument().getBody().getFirst();
 
-		while( ( element = element.getNextSourceNode( false, CKEDITOR.NODE_ELEMENT ) ) )
+		while ( ( element = element.getNextSourceNode( false, CKEDITOR.NODE_ELEMENT ) ) )
 		{
 			if ( !passedCurrent )
 			{
@@ -177,10 +172,10 @@ CKEDITOR.dom.element.prototype.focusNext = function( ignoreChildren )
  * var element = CKEDITOR.document.getById( 'example' );
  * element.focusPrevious();
  */
-CKEDITOR.dom.element.prototype.focusPrevious = function( ignoreChildren )
+CKEDITOR.dom.element.prototype.focusPrevious = function( ignoreChildren, indexToUse )
 {
 	var $ = this.$,
-		curTabIndex = this.getTabIndex(),
+		curTabIndex = ( indexToUse === undefined ? this.getTabIndex() : indexToUse ),
 		passedCurrent, enteredCurrent,
 		elected,
 		electedTabIndex = 0,
@@ -188,7 +183,7 @@ CKEDITOR.dom.element.prototype.focusPrevious = function( ignoreChildren )
 
 	var element = this.getDocument().getBody().getLast();
 
-	while( ( element = element.getPreviousSourceNode( false, CKEDITOR.NODE_ELEMENT ) ) )
+	while ( ( element = element.getPreviousSourceNode( false, CKEDITOR.NODE_ELEMENT ) ) )
 	{
 		if ( !passedCurrent )
 		{
@@ -258,9 +253,9 @@ CKEDITOR.dom.element.prototype.focusPrevious = function( ignoreChildren )
  * Intructs the editor to add a number of spaces (&amp;nbsp;) to the text when
  * hitting the TAB key. If set to zero, the TAB key will be used to move the
  * cursor focus to the next element in the page, out of the editor focus.
+ * @name CKEDITOR.config.tabSpaces
  * @type Number
  * @default 0
  * @example
  * config.tabSpaces = 4;
  */
-CKEDITOR.config.tabSpaces = 0 ;

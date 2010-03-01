@@ -29,12 +29,14 @@ function createEditor()
 	// This sample may break here if the ckeditor_basic.js is used. In such case, the following code should be used instead:
 	/*
 	if ( editor.setData )
-	editor.setData( html );
+		editor.setData( html );
 	else
-	CKEDITOR.on( 'loaded', function()
 	{
-	editor.setData( html );
-	});
+		CKEDITOR.on( 'loaded', function()
+			{
+				editor.setData( html );
+			});
+	}
 	*/
 }
 

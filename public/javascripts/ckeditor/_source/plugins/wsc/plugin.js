@@ -10,6 +10,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 // Register a plugin named "wsc".
 CKEDITOR.plugins.add( 'wsc',
 {
+	requires : [ 'dialog' ],
 	init : function( editor )
 	{
 		var commandName = 'checkspell';

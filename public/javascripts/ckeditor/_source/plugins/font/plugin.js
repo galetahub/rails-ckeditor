@@ -17,27 +17,33 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var styles = {};
 		for ( var i = 0 ; i < names.length ; i++ )
 		{
-			var vars = {};
-			var parts = names[ i ].split( '/' );
+			var parts = names[ i ];
 
-			var name = names[ i ] = parts[ 0 ];
-			vars[ styleType ] = values[ i ] = parts[ 1 ] || name;
+			if ( parts )
+			{
+				parts = parts.split( '/' );
 
-			styles[ name ] = new CKEDITOR.style( styleDefinition, vars );
+				var vars = {},
+					name = names[ i ] = parts[ 0 ];
+
+				vars[ styleType ] = values[ i ] = parts[ 1 ] || name;
+
+				styles[ name ] = new CKEDITOR.style( styleDefinition, vars );
+			}
+			else
+				names.splice( i--, 1 );
 		}
 
 		editor.ui.addRichCombo( comboName,
 			{
 				label : lang.label,
 				title : lang.panelTitle,
-				voiceLabel : lang.voiceLabel,
 				className : 'cke_' + ( styleType == 'size' ? 'fontSize' : 'font' ),
-				multiSelect : false,
-
 				panel :
 				{
 					css : editor.skin.editor.css.concat( config.contentsCss ),
-					voiceLabel : lang.panelVoiceLabel
+					multiSelect : false,
+					attributes : { 'aria-label' : lang.panelTitle }
 				},
 
 				init : function()

@@ -31,7 +31,11 @@ CKEDITOR.lang['et'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Lähtekood',
@@ -68,12 +72,12 @@ CKEDITOR.lang['et'] =
 		flash			: 'Flash',
 		form			: 'Vorm',
 		checkbox		: 'Märkeruut',
-		radio		: 'Raadionupp',
+		radio			: 'Raadionupp',
 		textField		: 'Tekstilahter',
 		textarea		: 'Tekstiala',
 		hiddenField		: 'Varjatud lahter',
 		button			: 'Nupp',
-		select	: 'Valiklahter',
+		select			: 'Valiklahter',
 		imageButton		: 'Piltnupp',
 		notSet			: '<määramata>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['et'] =
 		cssStyle		: 'Laad',
 		ok				: 'OK',
 		cancel			: 'Loobu',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'Täpsemalt',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['et'] =
 		upload		: 'Lae üles',
 		advanced	: 'Täpsemalt',
 		type		: 'Lingi tüüp',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Ankur sellel lehel',
 		toEmail		: 'E-post',
-		target		: 'Sihtkoht',
-		targetNotSet	: '<määramata>',
-		targetFrame	: '<raam>',
-		targetPopup	: '<hüpikaken>',
-		targetNew	: 'Uus aken (_blank)',
-		targetTop	: 'Pealmine aken (_top)',
-		targetSelf	: 'Sama aken (_self)',
-		targetParent	: 'Esivanem aken (_parent)',
+		targetFrame		: '<raam>',
+		targetPopup		: '<hüpikaken>',
 		targetFrameName	: 'Sihtmärk raami nimi',
 		targetPopupName	: 'Hüpikakna nimi',
 		popupFeatures	: 'Hüpikakna omadused',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'Olekuriba',
-		popupLocationBar	: 'Aadressiriba',
+		popupLocationBar: 'Aadressiriba',
 		popupToolbar	: 'Tööriistariba',
 		popupMenuBar	: 'Menüüriba',
 		popupFullScreen	: 'Täisekraan (IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['et'] =
 		popupTop		: 'Ülemine asukoht',
 		id				: 'Id', // MISSING
 		langDir			: 'Keele suund',
-		langDirNotSet	: '<määramata>',
 		langDirLTR		: 'Vasakult paremale (LTR)',
 		langDirRTL		: 'Paremalt vasakule (RTL)',
 		acccessKey		: 'Juurdepääsu võti',
@@ -203,13 +209,13 @@ CKEDITOR.lang['et'] =
 		columns		: 'Veerud',
 		border		: 'Joone suurus',
 		align		: 'Joondus',
-		alignNotSet	: '<Määramata>',
 		alignLeft	: 'Vasak',
 		alignCenter	: 'Kesk',
 		alignRight	: 'Parem',
 		width		: 'Laius',
 		widthPx		: 'pikslit',
 		widthPc		: 'protsenti',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Kõrgus',
 		cellSpace	: 'Lahtri vahe',
 		cellPad		: 'Lahtri täidis',
@@ -260,7 +266,7 @@ CKEDITOR.lang['et'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['et'] =
 		menu		: 'Vormi omadused',
 		action		: 'Toiming',
 		method		: 'Meetod',
-		encoding	: 'Encoding', // MISSING
-		target		: 'Sihtkoht',
-		targetNotSet	: '<määramata>',
-		targetNew	: 'Uus aken (_blank)',
-		targetTop	: 'Pealmine aken (_top)',
-		targetSelf	: 'Sama aken (_self)',
-		targetParent	: 'Esivanem aken (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['et'] =
 		title		: 'Pildi atribuudid',
 		titleButton	: 'Piltnupu omadused',
 		menu		: 'Pildi atribuudid',
-		infoTab	: 'Pildi info',
+		infoTab		: 'Pildi info',
 		btnUpload	: 'Saada serverissee',
-		url		: 'URL',
-		upload	: 'Lae üles',
-		alt		: 'Alternatiivne tekst',
+		upload		: 'Lae üles',
+		alt			: 'Alternatiivne tekst',
 		width		: 'Laius',
-		height	: 'Kõrgus',
+		height		: 'Kõrgus',
 		lockRatio	: 'Lukusta kuvasuhe',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Lähtesta suurus',
-		border	: 'Joon',
-		hSpace	: 'H. vaheruum',
-		vSpace	: 'V. vaheruum',
+		border		: 'Joon',
+		hSpace		: 'H. vaheruum',
+		vSpace		: 'V. vaheruum',
 		align		: 'Joondus',
 		alignLeft	: 'Vasak',
 		alignRight	: 'Paremale',
-		preview	: 'Eelvaade',
 		alertUrl	: 'Palun kirjuta pildi URL',
-		linkTab	: 'Link',
+		linkTab		: 'Link',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['et'] =
 	{
 		properties		: 'Flash omadused',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'Flash omadused',
-		chkPlay		: 'Automaatne start ',
-		chkLoop		: 'Korduv',
-		chkMenu		: 'Võimalda flash menüü',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Mastaap',
+		title			: 'Flash omadused',
+		chkPlay			: 'Automaatne start ',
+		chkLoop			: 'Korduv',
+		chkMenu			: 'Võimalda flash menüü',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'Mastaap',
 		scaleAll		: 'Näita kõike',
 		scaleNoBorder	: 'Äärist ei ole',
 		scaleFit		: 'Täpne sobivus',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Joondus',
-		alignLeft	: 'Vasak',
-		alignAbsBottom: 'Abs alla',
-		alignAbsMiddle: 'Abs keskele',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'Joondus',
+		alignLeft		: 'Vasak',
+		alignAbsBottom	: 'Abs alla',
+		alignAbsMiddle	: 'Abs keskele',
 		alignBaseline	: 'Baasjoonele',
-		alignBottom	: 'Alla',
-		alignMiddle	: 'Keskele',
-		alignRight	: 'Paremale',
+		alignBottom		: 'Alla',
+		alignMiddle		: 'Keskele',
+		alignRight		: 'Paremale',
 		alignTextTop	: 'Tekstit üles',
-		alignTop	: 'Üles',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Tausta värv',
-		width	: 'Laius',
-		height	: 'Kõrgus',
-		hSpace	: 'H. vaheruum',
-		vSpace	: 'V. vaheruum',
-		validateSrc : 'Palun kirjuta lingi URL',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'Üles',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'Tausta värv',
+		width			: 'Laius',
+		height			: 'Kõrgus',
+		hSpace			: 'H. vaheruum',
+		vSpace			: 'V. vaheruum',
+		validateSrc		: 'Palun kirjuta lingi URL',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,20 +481,21 @@ CKEDITOR.lang['et'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'Nummerdatud loetelu',
-	bulletedlist : 'Punktiseeritud loetelu',
-	indent : 'Suurenda taanet',
-	outdent : 'Vähenda taanet',
+	numberedlist	: 'Nummerdatud loetelu',
+	bulletedlist	: 'Punktiseeritud loetelu',
+	indent			: 'Suurenda taanet',
+	outdent			: 'Vähenda taanet',
 
 	justify :
 	{
-		left : 'Vasakjoondus',
-		center : 'Keskjoondus',
-		right : 'Paremjoondus',
-		block : 'Rööpjoondus'
+		left	: 'Vasakjoondus',
+		center	: 'Keskjoondus',
+		right	: 'Paremjoondus',
+		block	: 'Rööpjoondus'
 	},
 
 	blockquote : 'Blokktsitaat',
@@ -501,61 +506,59 @@ CKEDITOR.lang['et'] =
 		cutError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt lõigata. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl+X).',
 		copyError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt kopeerida. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl+C).',
 		pasteMsg	: 'Palun kleebi järgnevasse kasti kasutades klaviatuuri klahvikombinatsiooni (<STRONG>Ctrl+V</STRONG>) ja vajuta seejärel <STRONG>OK</STRONG>.',
-		securityMsg	: 'Sinu veebisirvija turvaseadete tõttu, ei oma redaktor otsest ligipääsu lõikelaua andmetele. Sa pead kleepima need uuesti siia aknasse.'
+		securityMsg	: 'Sinu veebisirvija turvaseadete tõttu, ei oma redaktor otsest ligipääsu lõikelaua andmetele. Sa pead kleepima need uuesti siia aknasse.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Kleebi Wordist',
-		title : 'Kleebi Wordist',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'Kleebi Wordist',
+		title			: 'Kleebi Wordist',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Kleebi tavalise tekstina',
-		title : 'Kleebi tavalise tekstina'
+		button	: 'Kleebi tavalise tekstina',
+		title	: 'Kleebi tavalise tekstina'
 	},
 
 	templates :
 	{
-		button : 'Šabloon',
-		title : 'Sisu šabloonid',
-		insertOption: 'Asenda tegelik sisu',
-		selectPromptMsg: 'Palun vali šabloon, et avada see redaktoris<br />(praegune sisu läheb kaotsi):',
-		emptyListMsg : '(Ühtegi šablooni ei ole defineeritud)'
+		button			: 'Šabloon',
+		title			: 'Sisu šabloonid',
+		insertOption	: 'Asenda tegelik sisu',
+		selectPromptMsg	: 'Palun vali šabloon, et avada see redaktoris<br />(praegune sisu läheb kaotsi):',
+		emptyListMsg	: '(Ühtegi šablooni ei ole defineeritud)'
 	},
 
 	showBlocks : 'Näita blokke',
 
 	stylesCombo :
 	{
-		label : 'Laad',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Laad',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'Vorming',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Vorming',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Vorming',
+		panelTitle	: 'Vorming',
 
-		tag_p : 'Tavaline',
-		tag_pre : 'Vormindatud',
-		tag_address : 'Aadress',
-		tag_h1 : 'Pealkiri 1',
-		tag_h2 : 'Pealkiri 2',
-		tag_h3 : 'Pealkiri 3',
-		tag_h4 : 'Pealkiri 4',
-		tag_h5 : 'Pealkiri 5',
-		tag_h6 : 'Pealkiri 6',
-		tag_div : 'Tavaline (DIV)'
+		tag_p		: 'Tavaline',
+		tag_pre		: 'Vormindatud',
+		tag_address	: 'Aadress',
+		tag_h1		: 'Pealkiri 1',
+		tag_h2		: 'Pealkiri 2',
+		tag_h3		: 'Pealkiri 3',
+		tag_h4		: 'Pealkiri 4',
+		tag_h5		: 'Pealkiri 5',
+		tag_h6		: 'Pealkiri 6',
+		tag_div		: 'Tavaline (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['et'] =
 
 	font :
 	{
-		label : 'Kiri',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Kiri',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Kiri',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'Kiri'
 	},
 
 	fontSize :
 	{
-		label : 'Suurus',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Suurus',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Suurus',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'Suurus'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Teksti värv',
-		bgColorTitle : 'Tausta värv',
-		auto : 'Automaatne',
-		more : 'Rohkem värve...'
+		textColorTitle	: 'Teksti värv',
+		bgColorTitle	: 'Tausta värv',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automaatne',
+		more			: 'Rohkem värve...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['et'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['et'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

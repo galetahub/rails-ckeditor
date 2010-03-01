@@ -31,20 +31,22 @@ CKEDITOR.plugins.add( 'colorbutton',
 
 					panel :
 					{
-						css : editor.skin.editor.css
+						css : editor.skin.editor.css,
+						attributes : { role : 'listbox', 'aria-label' : lang.panelTitle }
 					},
 
-					onBlock : function( panel, blockName )
+					onBlock : function( panel, block )
 					{
-						var block = panel.addBlock( blockName );
 						block.autoSize = true;
 						block.element.addClass( 'cke_colorblock' );
 						block.element.setHtml( renderColors( panel, type ) );
 
 						var keys = block.keys;
 						keys[ 39 ]	= 'next';					// ARROW-RIGHT
+						keys[ 40 ]	= 'next';					// ARROW-DOWN
 						keys[ 9 ]	= 'next';					// TAB
 						keys[ 37 ]	= 'prev';					// ARROW-LEFT
+						keys[ 38 ]	= 'prev';					// ARROW-UP
 						keys[ CKEDITOR.SHIFT + 9 ]	= 'prev';	// SHIFT + TAB
 						keys[ 32 ]	= 'click';					// SPACE
 					}
@@ -55,7 +57,8 @@ CKEDITOR.plugins.add( 'colorbutton',
 		function renderColors( panel, type )
 		{
 			var output = [],
-				colors = config.colorButton_colors.split( ',' );
+				colors = config.colorButton_colors.split( ',' ),
+				total = colors.length + ( config.colorButton_enableMore ? 2 : 1 );
 
 			var clickFn = CKEDITOR.tools.addFunction( function( color, type )
 				{
@@ -98,8 +101,9 @@ CKEDITOR.plugins.add( 'colorbutton',
 				'<a class="cke_colorauto" _cke_focus=1 hidefocus=true' +
 					' title="', lang.auto, '"' +
 					' onclick="CKEDITOR.tools.callFunction(', clickFn, ',null,\'', type, '\');return false;"' +
-					' href="javascript:void(\'', lang.auto, '\')">' +
-					'<table cellspacing=0 cellpadding=0 width="100%">' +
+					' href="javascript:void(\'', lang.auto, '\')"' +
+					' role="option" aria-posinset="1" aria-setsize="', total, '">' +
+					'<table role="presentation" cellspacing=0 cellpadding=0 width="100%">' +
 						'<tr>' +
 							'<td>' +
 								'<span class="cke_colorbox" style="background-color:#000"></span>' +
@@ -110,7 +114,7 @@ CKEDITOR.plugins.add( 'colorbutton',
 						'</tr>' +
 					'</table>' +
 				'</a>' +
-				'<table cellspacing=0 cellpadding=0 width="100%">' );
+				'<table role="presentation" cellspacing=0 cellpadding=0 width="100%">' );
 
 			// Render the color boxes.
 			for ( var i = 0 ; i < colors.length ; i++ )
@@ -125,7 +129,8 @@ CKEDITOR.plugins.add( 'colorbutton',
 						'<a class="cke_colorbox" _cke_focus=1 hidefocus=true' +
 							' title="', colorLabel, '"' +
 							' onclick="CKEDITOR.tools.callFunction(', clickFn, ',\'#', colorCode, '\',\'', type, '\'); return false;"' +
-							' href="javascript:void(\'', colorLabel, '\')">' +
+							' href="javascript:void(\'', colorLabel, '\')"' +
+							' role="option" aria-posinset="', ( i + 2 ), '" aria-setsize="', total, '">' +
 							'<span class="cke_colorbox" style="background-color:#', colorCode, '"></span>' +
 						'</a>' +
 					'</td>' );
@@ -141,7 +146,8 @@ CKEDITOR.plugins.add( 'colorbutton',
 							'<a class="cke_colormore" _cke_focus=1 hidefocus=true' +
 								' title="', lang.more, '"' +
 								' onclick="CKEDITOR.tools.callFunction(', clickFn, ',\'?\',\'', type, '\');return false;"' +
-								' href="javascript:void(\'', lang.more, '\')">',
+								' href="javascript:void(\'', lang.more, '\')"',
+								' role="option" aria-posinset="', total, '" aria-setsize="', total, '">',
 								lang.more,
 							'</a>' +
 						'</td>' );	// It is later in the code.
@@ -194,7 +200,13 @@ CKEDITOR.config.colorButton_foreStyle =
 	{
 		element		: 'span',
 		styles		: { 'color' : '#(color)' },
-		overrides	: [ { element : 'font', attributes : { 'color' : null } } ]
+		overrides	: [ { element : 'font', attributes : { 'color' : null } } ],
+
+		// Fore color style must be applied inside links instead of around it.
+		childRule : function( element )
+		{
+			return element.getName() != 'a';
+		}
 	};
 
 /**

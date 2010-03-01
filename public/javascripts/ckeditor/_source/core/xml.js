@@ -119,7 +119,7 @@ CKEDITOR.xml.prototype =
 				if ( result )
 				{
 					var node;
-					while( ( node = result.iterateNext() ) )
+					while ( ( node = result.iterateNext() ) )
 						nodes.push( node );
 				}
 			}

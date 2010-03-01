@@ -459,17 +459,21 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								testRange = range.duplicate();
 
 								testRange.moveToElementText( child );
+
+								var comparisonStart = testRange.compareEndPoints( 'StartToStart', range ),
+									comparisonEnd = testRange.compareEndPoints( 'EndToStart', range );
+
 								testRange.collapse();
 
-								var comparison = testRange.compareEndPoints( 'StartToStart', range );
-
-								if ( comparison > 0 )
+								if ( comparisonStart > 0 )
 									break;
-								else if ( comparison === 0 )
-									return {
-										container : parent,
-										offset : i
-									};
+								// When selection stay at the side of certain self-closing elements, e.g. BR,
+								// our comparison will never shows an equality. (#4824)
+								else if ( !comparisonStart
+									|| comparisonEnd == 1 && comparisonStart == -1 )
+									return { container : parent, offset : i };
+								else if ( !comparisonEnd )
+									return { container : parent, offset : i + 1 };
 
 								testRange = null;
 							}
@@ -488,8 +492,17 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						// breaking character counting logic below. (#3949)
 						var distance = testRange.text.replace( /(\r\n|\r)/g, '\n' ).length;
 
-						while ( distance > 0 )
-							distance -= siblings[ --i ].nodeValue.length;
+						try
+						{
+							while ( distance > 0 )
+								distance -= siblings[ --i ].nodeValue.length;
+						}
+						// Measurement in IE could be somtimes wrong because of <select> element. (#4611)
+						catch( e )
+						{
+							distance = 0;
+						}
+
 
 						if ( distance === 0 )
 						{
@@ -628,7 +641,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							// Decrease the range content to exclude particial
 							// selected node on the start which doesn't have
 							// visual impact. ( #3231 )
-							while( true )
+							while ( true )
 							{
 								var startContainer = range.startContainer,
 									startOffset = range.startOffset;

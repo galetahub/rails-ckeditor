@@ -110,7 +110,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					} );
 			}
 
-			if( htmlFilter )
+			if ( htmlFilter )
 			{
 				htmlFilter.addRules(
 				{
@@ -133,7 +133,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// Table dialog must be aware of it.
 			CKEDITOR.on( 'dialogDefinition', function( ev )
 				{
-					if( ev.editor != editor )
+					if ( ev.editor != editor )
 						return;
 
 					var dialogName = ev.data.name;

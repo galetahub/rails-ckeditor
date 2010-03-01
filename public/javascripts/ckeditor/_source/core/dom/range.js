@@ -133,7 +133,7 @@ CKEDITOR.dom.range = function( document )
 
 			currentNode = levelStartNode.getNext();
 
-			while( currentNode )
+			while ( currentNode )
 			{
 				// Stop processing when the current node matches a node in the
 				// endParents tree or if it is the endNode.
@@ -180,7 +180,7 @@ CKEDITOR.dom.range = function( document )
 			{
 				currentNode = levelStartNode.getPrevious();
 
-				while( currentNode )
+				while ( currentNode )
 				{
 					// Stop processing when the current node matches a node in the
 					// startParents tree or if it is the startNode.
@@ -252,10 +252,10 @@ CKEDITOR.dom.range = function( document )
 		}
 
 		// Cleanup any marked node.
-		if( removeStartNode )
+		if ( removeStartNode )
 			startNode.remove();
 
-		if( removeEndNode && endNode.$.parentNode )
+		if ( removeEndNode && endNode.$.parentNode )
 			endNode.remove();
 	};
 
@@ -278,7 +278,7 @@ CKEDITOR.dom.range = function( document )
 				if ( CKEDITOR.tools.trim( node.getText() ).length )
 					return false;
 				}
-			else if( node.type == CKEDITOR.NODE_ELEMENT )
+			else if ( node.type == CKEDITOR.NODE_ELEMENT )
 			{
 				// If there are non-empty inline elements (e.g. <img />), then we're not
 				// at the start.
@@ -742,15 +742,21 @@ CKEDITOR.dom.range = function( document )
 
 					startOffset = startContainer.getIndex() + 1;
 					startContainer = startContainer.getParent();
-					// Check if it is necessary to update the end boundary.
-					if ( !collapsed && this.startContainer.equals( this.endContainer ) )
+
+					// Check all necessity of updating the end boundary.
+					if ( this.startContainer.equals( this.endContainer ) )
 						this.setEnd( nextText, this.endOffset - this.startOffset );
+					else if ( startContainer.equals( this.endContainer ) )
+						this.endOffset += 1;
 				}
 
 				this.setStart( startContainer, startOffset );
 
 				if ( collapsed )
+				{
 					this.collapse( true );
+					return;
+				}
 			}
 
 			var endContainer = this.endContainer;

@@ -201,7 +201,7 @@ CKEDITOR.htmlParser = function()
 				}
 
 				// Comment
-				if( ( tagName = parts[ 2 ] ) )
+				if ( ( tagName = parts[ 2 ] ) )
 					this.onComment( tagName );
 			}
 

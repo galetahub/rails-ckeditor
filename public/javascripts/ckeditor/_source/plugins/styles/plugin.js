@@ -209,7 +209,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 						else if ( fullMatch )
 								return false;
 					}
-					if( fullMatch )
+					if ( fullMatch )
 						return true;
 				}
 				else
@@ -375,13 +375,17 @@ CKEDITOR.STYLE_OBJECT = 3;
 				}
 
 				// Check if the current node can be a child of the style element.
-				if ( !nodeName || ( dtd[ nodeName ] && ( currentNode.getPosition( lastNode ) | CKEDITOR.POSITION_PRECEDING | CKEDITOR.POSITION_IDENTICAL | CKEDITOR.POSITION_IS_CONTAINED ) == ( CKEDITOR.POSITION_PRECEDING + CKEDITOR.POSITION_IDENTICAL + CKEDITOR.POSITION_IS_CONTAINED ) ) )
+				if ( !nodeName || ( dtd[ nodeName ]
+					&& ( currentNode.getPosition( lastNode ) | CKEDITOR.POSITION_PRECEDING | CKEDITOR.POSITION_IDENTICAL | CKEDITOR.POSITION_IS_CONTAINED ) == ( CKEDITOR.POSITION_PRECEDING + CKEDITOR.POSITION_IDENTICAL + CKEDITOR.POSITION_IS_CONTAINED )
+					&& ( !def.childRule || def.childRule( currentNode ) ) ) )
 				{
 					var currentParent = currentNode.getParent();
 
 					// Check if the style element can be a child of the current
 					// node parent or if the element is not defined in the DTD.
-					if ( currentParent && ( ( currentParent.getDtd() || CKEDITOR.dtd.span )[ elementName ] || isUnknownElement ) )
+					if ( currentParent
+						&& ( ( currentParent.getDtd() || CKEDITOR.dtd.span )[ elementName ] || isUnknownElement )
+						&& ( !def.parentRule || def.parentRule( currentParent ) ) )
 					{
 						// This node will be part of our range, so if it has not
 						// been started, place its start right before the node.
@@ -406,7 +410,8 @@ CKEDITOR.STYLE_OBJECT = 3;
 							// to the range.
 							while ( !includedNode.$.nextSibling
 								&& ( parentNode = includedNode.getParent(), dtd[ parentNode.getName() ] )
-								&& ( parentNode.getPosition( firstNode ) | CKEDITOR.POSITION_FOLLOWING | CKEDITOR.POSITION_IDENTICAL | CKEDITOR.POSITION_IS_CONTAINED ) == ( CKEDITOR.POSITION_FOLLOWING + CKEDITOR.POSITION_IDENTICAL + CKEDITOR.POSITION_IS_CONTAINED ) )
+								&& ( parentNode.getPosition( firstNode ) | CKEDITOR.POSITION_FOLLOWING | CKEDITOR.POSITION_IDENTICAL | CKEDITOR.POSITION_IS_CONTAINED ) == ( CKEDITOR.POSITION_FOLLOWING + CKEDITOR.POSITION_IDENTICAL + CKEDITOR.POSITION_IS_CONTAINED )
+								&& ( !def.childRule || def.childRule( parentNode ) ) )
 							{
 								includedNode = parentNode;
 							}
@@ -575,7 +580,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 					if ( newElement.equals( boundaryElement ) )
 						break;
 					// Avoid copying any matched element.
-					else if( newElement.match )
+					else if ( newElement.match )
 						continue;
 					else
 						newElement = newElement.clone();
@@ -645,7 +650,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 				if ( currentNode.type == CKEDITOR.NODE_ELEMENT && this.checkElementRemovable( currentNode ) )
 				{
 					// Remove style from element or overriding element.
-					if( currentNode.getName() == this.element )
+					if ( currentNode.getName() == this.element )
 						removeFromElement( this, currentNode );
 					else
 						removeOverrides( currentNode, getOverrides( this )[ currentNode.getName() ] );
@@ -682,7 +687,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 		var doc = range.document;
 		var previousPreBlock;
 
-		while( ( block = iterator.getNextParagraph() ) )		// Only one =
+		while ( ( block = iterator.getNextParagraph() ) )		// Only one =
 		{
 			var newBlock = getElement( this, doc );
 			replaceBlock( block, newBlock );
@@ -890,7 +895,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 
 		// Now remove override styles on the element.
 		attributes = overrides[ element.getName() ];
-		if( attributes )
+		if ( attributes )
 			removeAttrs();
 		removeNoAttribsElement( element );
 	}
@@ -1126,7 +1131,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 	 */
 	function getOverrides( style )
 	{
-		if( style._.overrides )
+		if ( style._.overrides )
 			return style._.overrides;
 
 		var overrides = ( style._.overrides = {} ),
@@ -1191,7 +1196,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 			// retrieving its final format.
 			var temp = new CKEDITOR.dom.element( 'span' );
 			temp.setAttribute( 'style', unparsedCssText );
-			styleText = temp.getAttribute( 'style' );
+			styleText = temp.getAttribute( 'style' ) || '';
 		}
 		else
 			styleText = unparsedCssText;
@@ -1241,3 +1246,13 @@ CKEDITOR.styleCommand.prototype.exec = function( editor )
 
 	return !!doc;
 };
+
+CKEDITOR.stylesSet = new CKEDITOR.resourceManager( '', 'stylesSet' );
+
+// Backward compatibility (#5025).
+CKEDITOR.addStylesSet = CKEDITOR.tools.bind( CKEDITOR.stylesSet.add, CKEDITOR.stylesSet );
+CKEDITOR.loadStylesSet = function( name, url, callback )
+	{
+		CKEDITOR.stylesSet.addExternal( name, url, '' );
+		CKEDITOR.stylesSet.load( name, callback );
+	};

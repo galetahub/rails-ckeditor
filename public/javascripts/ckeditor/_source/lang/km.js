@@ -31,7 +31,11 @@ CKEDITOR.lang['km'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'កូត',
@@ -68,12 +72,12 @@ CKEDITOR.lang['km'] =
 		flash			: 'Flash',
 		form			: 'បែបបទ',
 		checkbox		: 'ប្រអប់ជ្រើសរើស',
-		radio		: 'ប៉ូតុនរង្វង់មូល',
+		radio			: 'ប៉ូតុនរង្វង់មូល',
 		textField		: 'ជួរសរសេរអត្ថបទ',
 		textarea		: 'តំបន់សរសេរអត្ថបទ',
 		hiddenField		: 'ជួរលាក់',
 		button			: 'ប៉ូតុន',
-		select	: 'ជួរជ្រើសរើស',
+		select			: 'ជួរជ្រើសរើស',
 		imageButton		: 'ប៉ូតុនរូបភាព',
 		notSet			: '<មិនមែន>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['km'] =
 		cssStyle		: 'ម៉ូត',
 		ok				: 'យល់ព្រម',
 		cancel			: 'មិនយល់ព្រម',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'កំរិតខ្ពស់',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['km'] =
 		upload		: 'ទាញយក',
 		advanced	: 'កំរិតខ្ពស់',
 		type		: 'ប្រភេទឈ្នាប់',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'យុថ្កានៅក្នុងទំព័រនេះ',
 		toEmail		: 'អ៊ីមែល',
-		target		: 'គោលដៅ',
-		targetNotSet	: '<មិនមែន>',
-		targetFrame	: '<ហ្វ្រេម>',
-		targetPopup	: '<វីនដូវ លោត>',
-		targetNew	: 'វីនដូវថ្មី (_blank)',
-		targetTop	: 'វីនដូវនៅលើគេ(_top)',
-		targetSelf	: 'វីនដូវដដែល (_self)',
-		targetParent	: 'វីនដូវមេ (_parent)',
+		targetFrame		: '<ហ្វ្រេម>',
+		targetPopup		: '<វីនដូវ លោត>',
 		targetFrameName	: 'ឈ្មោះហ្រ្វេមដែលជាគោលដៅ',
 		targetPopupName	: 'ឈ្មោះវីនដូវលោត',
 		popupFeatures	: 'លក្ខណះរបស់វីនដូលលោត',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'របា ពត៌មាន',
-		popupLocationBar	: 'របា ទីតាំង',
+		popupLocationBar: 'របា ទីតាំង',
 		popupToolbar	: 'របា ឩបករណ៍',
 		popupMenuBar	: 'របា មឺនុយ',
 		popupFullScreen	: 'អេក្រុងពេញ(IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['km'] =
 		popupTop		: 'ទីតាំងខាងលើ',
 		id				: 'Id', // MISSING
 		langDir			: 'ទិសដៅភាសា',
-		langDirNotSet	: '<មិនមែន>',
 		langDirLTR		: 'ពីឆ្វេងទៅស្តាំ(LTR)',
 		langDirRTL		: 'ពីស្តាំទៅឆ្វេង(RTL)',
 		acccessKey		: 'ឃី សំរាប់ចូល',
@@ -203,13 +209,13 @@ CKEDITOR.lang['km'] =
 		columns		: 'ជួរឈរ',
 		border		: 'ទំហំស៊ុម',
 		align		: 'ការកំណត់ទីតាំង',
-		alignNotSet	: '<មិនកំណត់>',
 		alignLeft	: 'ខាងឆ្វេង',
 		alignCenter	: 'កណ្តាល',
 		alignRight	: 'ខាងស្តាំ',
 		width		: 'ទទឹង',
 		widthPx		: 'ភីកសែល',
 		widthPc		: 'ភាគរយ',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'កំពស់',
 		cellSpace	: 'គំលាតសែល',
 		cellPad		: 'គែមសែល',
@@ -260,7 +266,7 @@ CKEDITOR.lang['km'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['km'] =
 		menu		: 'ការកំណត់បែបបទ',
 		action		: 'សកម្មភាព',
 		method		: 'វិធី',
-		encoding	: 'Encoding', // MISSING
-		target		: 'គោលដៅ',
-		targetNotSet	: '<មិនមែន>',
-		targetNew	: 'វីនដូវថ្មី (_blank)',
-		targetTop	: 'វីនដូវនៅលើគេ(_top)',
-		targetSelf	: 'វីនដូវដដែល (_self)',
-		targetParent	: 'វីនដូវមេ (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['km'] =
 		title		: 'ការកំណត់រូបភាព',
 		titleButton	: 'ការកំណត់ប៉ូតុនរូបភាព',
 		menu		: 'ការកំណត់រូបភាព',
-		infoTab	: 'ពត៌មានអំពីរូបភាព',
+		infoTab		: 'ពត៌មានអំពីរូបភាព',
 		btnUpload	: 'បញ្ជូនទៅកាន់ម៉ាស៊ីនផ្តល់សេវា',
-		url		: 'URL',
-		upload	: 'ទាញយក',
-		alt		: 'អត្ថបទជំនួស',
+		upload		: 'ទាញយក',
+		alt			: 'អត្ថបទជំនួស',
 		width		: 'ទទឹង',
-		height	: 'កំពស់',
+		height		: 'កំពស់',
 		lockRatio	: 'អត្រាឡុក',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'កំណត់ទំហំឡើងវិញ',
-		border	: 'ស៊ុម',
-		hSpace	: 'គំលាតទទឹង',
-		vSpace	: 'គំលាតបណ្តោយ',
+		border		: 'ស៊ុម',
+		hSpace		: 'គំលាតទទឹង',
+		vSpace		: 'គំលាតបណ្តោយ',
 		align		: 'កំណត់ទីតាំង',
 		alignLeft	: 'ខាងឆ្វង',
 		alignRight	: 'ខាងស្តាំ',
-		preview	: 'មើលសាកល្បង',
 		alertUrl	: 'សូមសរសេរងាស័យដ្ឋានរបស់រូបភាព',
-		linkTab	: 'ឈ្នាប់',
+		linkTab		: 'ឈ្នាប់',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['km'] =
 	{
 		properties		: 'ការកំណត់ Flash',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'ការកំណត់ Flash',
-		chkPlay		: 'លេងដោយស្វ័យប្រវត្ត',
-		chkLoop		: 'ចំនួនដង',
-		chkMenu		: 'បង្ហាញ មឺនុយរបស់ Flash',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'ទំហំ',
+		title			: 'ការកំណត់ Flash',
+		chkPlay			: 'លេងដោយស្វ័យប្រវត្ត',
+		chkLoop			: 'ចំនួនដង',
+		chkMenu			: 'បង្ហាញ មឺនុយរបស់ Flash',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'ទំហំ',
 		scaleAll		: 'បង្ហាញទាំងអស់',
 		scaleNoBorder	: 'មិនបង្ហាញស៊ុម',
 		scaleFit		: 'ត្រូវល្មម',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'កំណត់ទីតាំង',
-		alignLeft	: 'ខាងឆ្វង',
-		alignAbsBottom: 'Abs Bottom', // MISSING
-		alignAbsMiddle: 'Abs Middle', // MISSING
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'កំណត់ទីតាំង',
+		alignLeft		: 'ខាងឆ្វង',
+		alignAbsBottom	: 'Abs Bottom', // MISSING
+		alignAbsMiddle	: 'Abs Middle', // MISSING
 		alignBaseline	: 'បន្ទាត់ជាមូលដ្ឋាន',
-		alignBottom	: 'ខាងក្រោម',
-		alignMiddle	: 'កណ្តាល',
-		alignRight	: 'ខាងស្តាំ',
+		alignBottom		: 'ខាងក្រោម',
+		alignMiddle		: 'កណ្តាល',
+		alignRight		: 'ខាងស្តាំ',
 		alignTextTop	: 'លើអត្ថបទ',
-		alignTop	: 'ខាងលើ',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'ពណ៌ផ្ទៃខាងក្រោយ',
-		width	: 'ទទឹង',
-		height	: 'កំពស់',
-		hSpace	: 'គំលាតទទឹង',
-		vSpace	: 'គំលាតបណ្តោយ',
-		validateSrc : 'សូមសរសេរ អាស័យដ្ឋាន URL',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'ខាងលើ',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'ពណ៌ផ្ទៃខាងក្រោយ',
+		width			: 'ទទឹង',
+		height			: 'កំពស់',
+		hSpace			: 'គំលាតទទឹង',
+		vSpace			: 'គំលាតបណ្តោយ',
+		validateSrc		: 'សូមសរសេរ អាស័យដ្ឋាន URL',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['km'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'បញ្ជីជាអក្សរ',
-	bulletedlist : 'បញ្ជីជារង្វង់មូល',
-	indent : 'បន្ថែមការចូលបន្ទាត់',
-	outdent : 'បន្ថយការចូលបន្ទាត់',
+	numberedlist	: 'បញ្ជីជាអក្សរ',
+	bulletedlist	: 'បញ្ជីជារង្វង់មូល',
+	indent			: 'បន្ថែមការចូលបន្ទាត់',
+	outdent			: 'បន្ថយការចូលបន្ទាត់',
 
 	justify :
 	{
-		left : 'តំរឹមឆ្វេង',
-		center : 'តំរឹមកណ្តាល',
-		right : 'តំរឹមស្តាំ',
-		block : 'តំរឹមសងខាង'
+		left	: 'តំរឹមឆ្វេង',
+		center	: 'តំរឹមកណ្តាល',
+		right	: 'តំរឹមស្តាំ',
+		block	: 'តំរឹមសងខាង'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['km'] =
 		cutError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ កាត់អត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ  (Ctrl+X) ។',
 		copyError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ ចំលងអត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ (Ctrl+C)។',
 		pasteMsg	: 'សូមចំលងអត្ថបទទៅដាក់ក្នុងប្រអប់ដូចខាងក្រោមដោយប្រើប្រាស់ ឃី \u200b(<STRONG>Ctrl+V</STRONG>) ហើយចុច <STRONG>OK</STRONG> ។',
-		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.' // MISSING
+		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'ចំលងដាក់ពី Word',
-		title : 'ចំលងដាក់ពី Word',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'ចំលងដាក់ពី Word',
+		title			: 'ចំលងដាក់ពី Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'ចំលងដាក់អត្ថបទធម្មតា',
-		title : 'ចំលងដាក់អត្ថបទធម្មតា'
+		button	: 'ចំលងដាក់អត្ថបទធម្មតា',
+		title	: 'ចំលងដាក់អត្ថបទធម្មតា'
 	},
 
 	templates :
 	{
-		button : 'ឯកសារគំរូ',
-		title : 'ឯកសារគំរូ របស់អត្ថន័យ',
-		insertOption: 'Replace actual contents', // MISSING
-		selectPromptMsg: 'សូមជ្រើសរើសឯកសារគំរូ ដើម្បីបើកនៅក្នុងកម្មវិធីតាក់តែងអត្ថបទ<br>(អត្ថបទនឹងបាត់បង់):',
-		emptyListMsg : '(ពុំមានឯកសារគំរូត្រូវបានកំណត់)'
+		button			: 'ឯកសារគំរូ',
+		title			: 'ឯកសារគំរូ របស់អត្ថន័យ',
+		insertOption	: 'Replace actual contents', // MISSING
+		selectPromptMsg	: 'សូមជ្រើសរើសឯកសារគំរូ ដើម្បីបើកនៅក្នុងកម្មវិធីតាក់តែងអត្ថបទ<br>(អត្ថបទនឹងបាត់បង់):',
+		emptyListMsg	: '(ពុំមានឯកសារគំរូត្រូវបានកំណត់)'
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : 'ម៉ូត',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'ម៉ូត',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'រចនា',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'រចនា',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'រចនា',
+		panelTitle	: 'រចនា',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formatted',
-		tag_address : 'Address',
-		tag_h1 : 'Heading 1',
-		tag_h2 : 'Heading 2',
-		tag_h3 : 'Heading 3',
-		tag_h4 : 'Heading 4',
-		tag_h5 : 'Heading 5',
-		tag_h6 : 'Heading 6',
-		tag_div : 'Normal (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Formatted',
+		tag_address	: 'Address',
+		tag_h1		: 'Heading 1',
+		tag_h2		: 'Heading 2',
+		tag_h3		: 'Heading 3',
+		tag_h4		: 'Heading 4',
+		tag_h5		: 'Heading 5',
+		tag_h6		: 'Heading 6',
+		tag_div		: 'Normal (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['km'] =
 
 	font :
 	{
-		label : 'ហ្វុង',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'ហ្វុង',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'ហ្វុង',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'ហ្វុង'
 	},
 
 	fontSize :
 	{
-		label : 'ទំហំ',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'ទំហំ',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'ទំហំ',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'ទំហំ'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'ពណ៌អក្សរ',
-		bgColorTitle : 'ពណ៌ផ្ទៃខាងក្រោយ',
-		auto : 'ស្វ័យប្រវត្ត',
-		more : 'ពណ៌ផ្សេងទៀត..'
+		textColorTitle	: 'ពណ៌អក្សរ',
+		bgColorTitle	: 'ពណ៌ផ្ទៃខាងក្រោយ',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'ស្វ័យប្រវត្ត',
+		more			: 'ពណ៌ផ្សេងទៀត..'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['km'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['km'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

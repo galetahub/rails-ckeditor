@@ -60,6 +60,10 @@ CKEDITOR.htmlParser.basicWriter = CKEDITOR.tools.createClass(
 		 */
 		attribute : function( attName, attValue )
 		{
+			// Browsers don't always escape quote in attribute values. (#4683)
+			if ( typeof attValue == 'string' )
+				attValue = attValue.replace( /"/g, '&quot;' );
+
 			this._.output.push( ' ', attName, '="', attValue, '"' );
 		},
 

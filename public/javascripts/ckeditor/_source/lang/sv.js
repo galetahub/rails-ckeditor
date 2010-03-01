@@ -31,7 +31,11 @@ CKEDITOR.lang['sv'] =
 	 * Screenreader titles. Please note that screenreaders are not always capable
 	 * of reading non-English words. So be careful while translating it.
 	 */
-	editorTitle		: 'Rich text editor, %1', // MISSING
+	editorTitle : 'Rich text editor, %1, press ALT 0 for help.', // MISSING
+
+	// ARIA descriptions.
+	toolbar	: 'Toolbar', // MISSING
+	editor	: 'Rich Text Editor', // MISSING
 
 	// Toolbar buttons without dialogs.
 	source			: 'Källa',
@@ -68,12 +72,12 @@ CKEDITOR.lang['sv'] =
 		flash			: 'Flash',
 		form			: 'Formulär',
 		checkbox		: 'Kryssruta',
-		radio		: 'Alternativknapp',
+		radio			: 'Alternativknapp',
 		textField		: 'Textfält',
 		textarea		: 'Textruta',
 		hiddenField		: 'Dolt fält',
 		button			: 'Knapp',
-		select	: 'Flervalslista',
+		select			: 'Flervalslista',
 		imageButton		: 'Bildknapp',
 		notSet			: '<ej angivet>',
 		id				: 'Id',
@@ -88,11 +92,19 @@ CKEDITOR.lang['sv'] =
 		cssStyle		: 'Style',
 		ok				: 'OK',
 		cancel			: 'Avbryt',
+		close			: 'Close', // MISSING
+		preview			: 'Preview', // MISSING
 		generalTab		: 'General', // MISSING
 		advancedTab		: 'Avancerad',
-		validateNumberFailed	: 'This value is not a number.', // MISSING
+		validateNumberFailed : 'This value is not a number.', // MISSING
 		confirmNewPage	: 'Any unsaved changes to this content will be lost. Are you sure you want to load new page?', // MISSING
 		confirmCancel	: 'Some of the options have been changed. Are you sure to close the dialog?', // MISSING
+		options			: 'Options', // MISSING
+		target			: 'Target', // MISSING
+		targetNew		: 'New Window (_blank)', // MISSING
+		targetTop		: 'Topmost Window (_top)', // MISSING
+		targetSelf		: 'Same Window (_self)', // MISSING
+		targetParent	: 'Parent Window (_parent)', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
@@ -116,22 +128,17 @@ CKEDITOR.lang['sv'] =
 		upload		: 'Ladda upp',
 		advanced	: 'Avancerad',
 		type		: 'Länktyp',
+		toUrl		: 'URL', // MISSING
 		toAnchor	: 'Ankare i sidan',
 		toEmail		: 'E-post',
-		target		: 'Mål',
-		targetNotSet	: '<ej angivet>',
-		targetFrame	: '<ram>',
-		targetPopup	: '<popup-fönster>',
-		targetNew	: 'Nytt fönster (_blank)',
-		targetTop	: 'Översta fönstret (_top)',
-		targetSelf	: 'Detta fönstret (_self)',
-		targetParent	: 'Föregående Window (_parent)',
+		targetFrame		: '<ram>',
+		targetPopup		: '<popup-fönster>',
 		targetFrameName	: 'Målets ramnamn',
 		targetPopupName	: 'Popup-fönstrets namn',
 		popupFeatures	: 'Popup-fönstrets egenskaper',
 		popupResizable	: 'Resizable', // MISSING
 		popupStatusBar	: 'Statusfält',
-		popupLocationBar	: 'Adressfält',
+		popupLocationBar: 'Adressfält',
 		popupToolbar	: 'Verktygsfält',
 		popupMenuBar	: 'Menyfält',
 		popupFullScreen	: 'Helskärm (endast IE)',
@@ -143,7 +150,6 @@ CKEDITOR.lang['sv'] =
 		popupTop		: 'Position från sidans topp',
 		id				: 'Id', // MISSING
 		langDir			: 'Språkriktning',
-		langDirNotSet	: '<ej angivet>',
 		langDirLTR		: 'Vänster till Höger (VTH)',
 		langDirRTL		: 'Höger till Vänster (HTV)',
 		acccessKey		: 'Behörighetsnyckel',
@@ -203,13 +209,13 @@ CKEDITOR.lang['sv'] =
 		columns		: 'Kolumner',
 		border		: 'Kantstorlek',
 		align		: 'Justering',
-		alignNotSet	: '<ej angivet>',
 		alignLeft	: 'Vänster',
 		alignCenter	: 'Centrerad',
 		alignRight	: 'Höger',
 		width		: 'Bredd',
 		widthPx		: 'pixlar',
 		widthPc		: 'procent',
+		widthUnit	: 'width unit', // MISSING
 		height		: 'Höjd',
 		cellSpace	: 'Cellavstånd',
 		cellPad		: 'Cellutfyllnad',
@@ -260,7 +266,7 @@ CKEDITOR.lang['sv'] =
 			invalidHeight	: 'Cell height must be a number.', // MISSING
 			invalidRowSpan	: 'Rows span must be a whole number.', // MISSING
 			invalidColSpan	: 'Columns span must be a whole number.', // MISSING
-			chooseColor : 'Choose' // MISSING
+			chooseColor		: 'Choose' // MISSING
 		},
 
 		row :
@@ -307,13 +313,7 @@ CKEDITOR.lang['sv'] =
 		menu		: 'Egenskaper för formulär',
 		action		: 'Funktion',
 		method		: 'Metod',
-		encoding	: 'Encoding', // MISSING
-		target		: 'Mål',
-		targetNotSet	: '<ej angivet>',
-		targetNew	: 'Nytt fönster (_blank)',
-		targetTop	: 'Översta fönstret (_top)',
-		targetSelf	: 'Detta fönstret (_self)',
-		targetParent	: 'Föregående Window (_parent)'
+		encoding	: 'Encoding' // MISSING
 	},
 
 	// Select Field Dialog.
@@ -371,27 +371,31 @@ CKEDITOR.lang['sv'] =
 		title		: 'Bildegenskaper',
 		titleButton	: 'Egenskaper för bildknapp',
 		menu		: 'Bildegenskaper',
-		infoTab	: 'Bildinformation',
+		infoTab		: 'Bildinformation',
 		btnUpload	: 'Skicka till server',
-		url		: 'URL',
-		upload	: 'Ladda upp',
-		alt		: 'Alternativ text',
+		upload		: 'Ladda upp',
+		alt			: 'Alternativ text',
 		width		: 'Bredd',
-		height	: 'Höjd',
+		height		: 'Höjd',
 		lockRatio	: 'Lås höjd/bredd förhållanden',
+		unlockRatio	: 'Unlock Ratio', // MISSING
 		resetSize	: 'Återställ storlek',
-		border	: 'Kant',
-		hSpace	: 'Horis. marginal',
-		vSpace	: 'Vert. marginal',
+		border		: 'Kant',
+		hSpace		: 'Horis. marginal',
+		vSpace		: 'Vert. marginal',
 		align		: 'Justering',
 		alignLeft	: 'Vänster',
 		alignRight	: 'Höger',
-		preview	: 'Förhandsgranska',
 		alertUrl	: 'Var god och ange bildens URL',
-		linkTab	: 'Länk',
+		linkTab		: 'Länk',
 		button2Img	: 'Do you want to transform the selected image button on a simple image?', // MISSING
 		img2Button	: 'Do you want to transform the selected image on a image button?', // MISSING
-		urlMissing : 'Image source URL is missing.' // MISSING
+		urlMissing	: 'Image source URL is missing.', // MISSING
+		validateWidth	: 'Width must be a whole number.', // MISSING
+		validateHeight	: 'Height must be a whole number.', // MISSING
+		validateBorder	: 'Border must be a whole number.', // MISSING
+		validateHSpace	: 'HSpace must be a whole number.', // MISSING
+		validateVSpace	: 'VSpace must be a whole number.' // MISSING
 	},
 
 	// Flash Dialog
@@ -399,51 +403,51 @@ CKEDITOR.lang['sv'] =
 	{
 		properties		: 'Flashegenskaper',
 		propertiesTab	: 'Properties', // MISSING
-		title		: 'Flashegenskaper',
-		chkPlay		: 'Automatisk uppspelning',
-		chkLoop		: 'Upprepa/Loopa',
-		chkMenu		: 'Aktivera Flashmeny',
-		chkFull		: 'Allow Fullscreen', // MISSING
- 		scale		: 'Skala',
+		title			: 'Flashegenskaper',
+		chkPlay			: 'Automatisk uppspelning',
+		chkLoop			: 'Upprepa/Loopa',
+		chkMenu			: 'Aktivera Flashmeny',
+		chkFull			: 'Allow Fullscreen', // MISSING
+ 		scale			: 'Skala',
 		scaleAll		: 'Visa allt',
 		scaleNoBorder	: 'Ingen ram',
 		scaleFit		: 'Exakt passning',
 		access			: 'Script Access', // MISSING
 		accessAlways	: 'Always', // MISSING
-		accessSameDomain	: 'Same domain', // MISSING
-		accessNever	: 'Never', // MISSING
-		align		: 'Justering',
-		alignLeft	: 'Vänster',
-		alignAbsBottom: 'Absolut nederkant',
-		alignAbsMiddle: 'Absolut centrering',
+		accessSameDomain: 'Same domain', // MISSING
+		accessNever		: 'Never', // MISSING
+		align			: 'Justering',
+		alignLeft		: 'Vänster',
+		alignAbsBottom	: 'Absolut nederkant',
+		alignAbsMiddle	: 'Absolut centrering',
 		alignBaseline	: 'Baslinje',
-		alignBottom	: 'Nederkant',
-		alignMiddle	: 'Mitten',
-		alignRight	: 'Höger',
+		alignBottom		: 'Nederkant',
+		alignMiddle		: 'Mitten',
+		alignRight		: 'Höger',
 		alignTextTop	: 'Text överkant',
-		alignTop	: 'Överkant',
-		quality		: 'Quality', // MISSING
-		qualityBest		 : 'Best', // MISSING
-		qualityHigh		 : 'High', // MISSING
-		qualityAutoHigh	 : 'Auto High', // MISSING
-		qualityMedium	 : 'Medium', // MISSING
-		qualityAutoLow	 : 'Auto Low', // MISSING
-		qualityLow		 : 'Low', // MISSING
-		windowModeWindow	 : 'Window', // MISSING
-		windowModeOpaque	 : 'Opaque', // MISSING
-		windowModeTransparent	 : 'Transparent', // MISSING
-		windowMode	: 'Window mode', // MISSING
-		flashvars	: 'Variables for Flash', // MISSING
-		bgcolor	: 'Bakgrundsfärg',
-		width	: 'Bredd',
-		height	: 'Höjd',
-		hSpace	: 'Horis. marginal',
-		vSpace	: 'Vert. marginal',
-		validateSrc : 'Var god ange länkens URL',
-		validateWidth : 'Width must be a number.', // MISSING
-		validateHeight : 'Height must be a number.', // MISSING
-		validateHSpace : 'HSpace must be a number.', // MISSING
-		validateVSpace : 'VSpace must be a number.' // MISSING
+		alignTop		: 'Överkant',
+		quality			: 'Quality', // MISSING
+		qualityBest		: 'Best', // MISSING
+		qualityHigh		: 'High', // MISSING
+		qualityAutoHigh	: 'Auto High', // MISSING
+		qualityMedium	: 'Medium', // MISSING
+		qualityAutoLow	: 'Auto Low', // MISSING
+		qualityLow		: 'Low', // MISSING
+		windowModeWindow: 'Window', // MISSING
+		windowModeOpaque: 'Opaque', // MISSING
+		windowModeTransparent : 'Transparent', // MISSING
+		windowMode		: 'Window mode', // MISSING
+		flashvars		: 'Variables for Flash', // MISSING
+		bgcolor			: 'Bakgrundsfärg',
+		width			: 'Bredd',
+		height			: 'Höjd',
+		hSpace			: 'Horis. marginal',
+		vSpace			: 'Vert. marginal',
+		validateSrc		: 'Var god ange länkens URL',
+		validateWidth	: 'Width must be a number.', // MISSING
+		validateHeight	: 'Height must be a number.', // MISSING
+		validateHSpace	: 'HSpace must be a number.', // MISSING
+		validateVSpace	: 'VSpace must be a number.' // MISSING
 	},
 
 	// Speller Pages Dialog
@@ -477,23 +481,24 @@ CKEDITOR.lang['sv'] =
 
 	elementsPath :
 	{
+		eleLabel : 'Elements path', // MISSING
 		eleTitle : '%1 element' // MISSING
 	},
 
-	numberedlist : 'Numrerad lista',
-	bulletedlist : 'Punktlista',
-	indent : 'Öka indrag',
-	outdent : 'Minska indrag',
+	numberedlist	: 'Numrerad lista',
+	bulletedlist	: 'Punktlista',
+	indent			: 'Öka indrag',
+	outdent			: 'Minska indrag',
 
 	justify :
 	{
-		left : 'Vänsterjustera',
-		center : 'Centrera',
-		right : 'Högerjustera',
-		block : 'Justera till marginaler'
+		left	: 'Vänsterjustera',
+		center	: 'Centrera',
+		right	: 'Högerjustera',
+		block	: 'Justera till marginaler'
 	},
 
-	blockquote : 'Blockquote', // MISSING
+	blockquote : 'Block Quote', // MISSING
 
 	clipboard :
 	{
@@ -501,61 +506,59 @@ CKEDITOR.lang['sv'] =
 		cutError	: 'Säkerhetsinställningar i Er webläsare tillåter inte åtgården Klipp ut. Använd (Ctrl+X) istället.',
 		copyError	: 'Säkerhetsinställningar i Er webläsare tillåter inte åtgården Kopiera. Använd (Ctrl+C) istället',
 		pasteMsg	: 'Var god och klistra in Er text i rutan nedan genom att använda (<STRONG>Ctrl+V</STRONG>) klicka sen på <STRONG>OK</STRONG>.',
-		securityMsg	: 'På grund av din webläsares säkerhetsinställningar kan verktyget inte få åtkomst till urklippsdatan. Var god och använd detta fönster istället.'
+		securityMsg	: 'På grund av din webläsares säkerhetsinställningar kan verktyget inte få åtkomst till urklippsdatan. Var god och använd detta fönster istället.',
+		pasteArea	: 'Paste Area' // MISSING
 	},
 
 	pastefromword :
 	{
-		confirmCleanup : 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
-		toolbar : 'Klistra in från Word',
-		title : 'Klistra in från Word',
-		error : 'It was not possible to clean up the pasted data due to an internal error' // MISSING
+		confirmCleanup	: 'The text you want to paste seems to be copied from Word. Do you want to clean it before pasting?', // MISSING
+		toolbar			: 'Klistra in från Word',
+		title			: 'Klistra in från Word',
+		error			: 'It was not possible to clean up the pasted data due to an internal error' // MISSING
 	},
 
 	pasteText :
 	{
-		button : 'Klistra in som vanlig text',
-		title : 'Klistra in som vanlig text'
+		button	: 'Klistra in som vanlig text',
+		title	: 'Klistra in som vanlig text'
 	},
 
 	templates :
 	{
-		button : 'Sidmallar',
-		title : 'Sidmallar',
-		insertOption: 'Ersätt aktuellt innehåll',
-		selectPromptMsg: 'Var god välj en mall att använda med editorn<br>(allt nuvarande innehåll raderas):',
-		emptyListMsg : '(Ingen mall är vald)'
+		button			: 'Sidmallar',
+		title			: 'Sidmallar',
+		insertOption	: 'Ersätt aktuellt innehåll',
+		selectPromptMsg	: 'Var god välj en mall att använda med editorn<br>(allt nuvarande innehåll raderas):',
+		emptyListMsg	: '(Ingen mall är vald)'
 	},
 
 	showBlocks : 'Show Blocks', // MISSING
 
 	stylesCombo :
 	{
-		label : 'Anpassad stil',
-		voiceLabel : 'Styles', // MISSING
-		panelVoiceLabel : 'Select a style', // MISSING
-		panelTitle1 : 'Block Styles', // MISSING
-		panelTitle2 : 'Inline Styles', // MISSING
-		panelTitle3 : 'Object Styles' // MISSING
+		label		: 'Anpassad stil',
+		panelTitle	: 'Formatting Styles', // MISSING
+		panelTitle1	: 'Block Styles', // MISSING
+		panelTitle2	: 'Inline Styles', // MISSING
+		panelTitle3	: 'Object Styles' // MISSING
 	},
 
 	format :
 	{
-		label : 'Teckenformat',
-		voiceLabel : 'Format', // MISSING
-		panelTitle : 'Teckenformat',
-		panelVoiceLabel : 'Select a paragraph format', // MISSING
+		label		: 'Teckenformat',
+		panelTitle	: 'Teckenformat',
 
-		tag_p : 'Normal',
-		tag_pre : 'Formaterad',
-		tag_address : 'Adress',
-		tag_h1 : 'Rubrik 1',
-		tag_h2 : 'Rubrik 2',
-		tag_h3 : 'Rubrik 3',
-		tag_h4 : 'Rubrik 4',
-		tag_h5 : 'Rubrik 5',
-		tag_h6 : 'Rubrik 6',
-		tag_div : 'Normal (DIV)'
+		tag_p		: 'Normal',
+		tag_pre		: 'Formaterad',
+		tag_address	: 'Adress',
+		tag_h1		: 'Rubrik 1',
+		tag_h2		: 'Rubrik 2',
+		tag_h3		: 'Rubrik 3',
+		tag_h4		: 'Rubrik 4',
+		tag_h5		: 'Rubrik 5',
+		tag_h6		: 'Rubrik 6',
+		tag_div		: 'Normal (DIV)'
 	},
 
 	div :
@@ -577,26 +580,25 @@ CKEDITOR.lang['sv'] =
 
 	font :
 	{
-		label : 'Typsnitt',
-		voiceLabel : 'Font', // MISSING
-		panelTitle : 'Typsnitt',
-		panelVoiceLabel : 'Select a font' // MISSING
+		label		: 'Typsnitt',
+		voiceLabel	: 'Font', // MISSING
+		panelTitle	: 'Typsnitt'
 	},
 
 	fontSize :
 	{
-		label : 'Storlek',
-		voiceLabel : 'Font Size', // MISSING
-		panelTitle : 'Storlek',
-		panelVoiceLabel : 'Select a font size' // MISSING
+		label		: 'Storlek',
+		voiceLabel	: 'Font Size', // MISSING
+		panelTitle	: 'Storlek'
 	},
 
 	colorButton :
 	{
-		textColorTitle : 'Textfärg',
-		bgColorTitle : 'Bakgrundsfärg',
-		auto : 'Automatisk',
-		more : 'Fler färger...'
+		textColorTitle	: 'Textfärg',
+		bgColorTitle	: 'Bakgrundsfärg',
+		panelTitle		: 'Colors', // MISSING
+		auto			: 'Automatisk',
+		more			: 'Fler färger...'
 	},
 
 	colors :
@@ -645,30 +647,30 @@ CKEDITOR.lang['sv'] =
 
 	scayt :
 	{
-		title : 'Spell Check As You Type', // MISSING
-		enable : 'Enable SCAYT', // MISSING
-		disable : 'Disable SCAYT', // MISSING
-		about : 'About SCAYT', // MISSING
-		toggle : 'Toggle SCAYT', // MISSING
-		options : 'Options', // MISSING
-		langs : 'Languages', // MISSING
-		moreSuggestions : 'More suggestions', // MISSING
-		ignore : 'Ignore', // MISSING
-		ignoreAll : 'Ignore All', // MISSING
-		addWord : 'Add Word', // MISSING
-		emptyDic : 'Dictionary name should not be empty.', // MISSING
-		optionsTab : 'Options', // MISSING
-		languagesTab : 'Languages', // MISSING
-		dictionariesTab : 'Dictionaries', // MISSING
-		aboutTab : 'About' // MISSING
+		title			: 'Spell Check As You Type', // MISSING
+		enable			: 'Enable SCAYT', // MISSING
+		disable			: 'Disable SCAYT', // MISSING
+		about			: 'About SCAYT', // MISSING
+		toggle			: 'Toggle SCAYT', // MISSING
+		options			: 'Options', // MISSING
+		langs			: 'Languages', // MISSING
+		moreSuggestions	: 'More suggestions', // MISSING
+		ignore			: 'Ignore', // MISSING
+		ignoreAll		: 'Ignore All', // MISSING
+		addWord			: 'Add Word', // MISSING
+		emptyDic		: 'Dictionary name should not be empty.', // MISSING
+		optionsTab		: 'Options', // MISSING
+		languagesTab	: 'Languages', // MISSING
+		dictionariesTab	: 'Dictionaries', // MISSING
+		aboutTab		: 'About' // MISSING
 	},
 
 	about :
 	{
-		title : 'About CKEditor', // MISSING
-		dlgTitle : 'About CKEditor', // MISSING
-		moreInfo : 'For licensing information please visit our web site:', // MISSING
-		copy : 'Copyright &copy; $1. All rights reserved.' // MISSING
+		title		: 'About CKEditor', // MISSING
+		dlgTitle	: 'About CKEditor', // MISSING
+		moreInfo	: 'For licensing information please visit our web site:', // MISSING
+		copy		: 'Copyright &copy; $1. All rights reserved.' // MISSING
 	},
 
 	maximize : 'Maximize', // MISSING
@@ -676,22 +678,22 @@ CKEDITOR.lang['sv'] =
 
 	fakeobjects :
 	{
-		anchor : 'Anchor', // MISSING
-		flash : 'Flash Animation', // MISSING
-		div : 'Page Break', // MISSING
-		unknown : 'Unknown Object' // MISSING
+		anchor	: 'Anchor', // MISSING
+		flash	: 'Flash Animation', // MISSING
+		div		: 'Page Break', // MISSING
+		unknown	: 'Unknown Object' // MISSING
 	},
 
 	resize : 'Drag to resize', // MISSING
 
 	colordialog :
 	{
-		title : 'Select color', // MISSING
-		highlight : 'Highlight', // MISSING
-		selected : 'Selected', // MISSING
-		clear : 'Clear' // MISSING
+		title		: 'Select color', // MISSING
+		highlight	: 'Highlight', // MISSING
+		selected	: 'Selected', // MISSING
+		clear		: 'Clear' // MISSING
 	},
 
-	toolbarCollapse : 'Collapse Toolbar', // MISSING
-	toolbarExpand : 'Expand Toolbar' // MISSING
+	toolbarCollapse	: 'Collapse Toolbar', // MISSING
+	toolbarExpand	: 'Expand Toolbar' // MISSING
 };

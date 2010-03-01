@@ -9,7 +9,7 @@ module Ckeditor
       logging = options[:logging].nil? ? true : options[:logging]
 
       Dir.foreach(source) do |entry|
-        next if entry =~ /^(\.|_)/
+        next if entry =~ /^(\.|_)|(\.php)$/
         
         if File.directory?(File.join(source, entry))
           unless File.exist?(File.join(dest, entry))

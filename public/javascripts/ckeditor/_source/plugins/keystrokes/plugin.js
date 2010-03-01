@@ -214,5 +214,16 @@ CKEDITOR.config.keystrokes =
 	[ CKEDITOR.CTRL + 73 /*I*/, 'italic' ],
 	[ CKEDITOR.CTRL + 85 /*U*/, 'underline' ],
 
-	[ CKEDITOR.ALT + 109 /*-*/, 'toolbarCollapse' ]
+	[ CKEDITOR.ALT + 109 /*-*/, 'toolbarCollapse' ],
+	[ CKEDITOR.ALT + 48 /*0*/, 'a11yHelp' ]
 ];
+
+/**
+ * Fired when any keyboard key (or combination) is pressed into the editing area.
+ * @name CKEDITOR#key
+ * @event
+ * @param {Number} data.keyCode A number representing the key code (or
+ *		combination). It is the sum of the current key code and the
+ *		{@link CKEDITOR.CTRL}, {@link CKEDITOR.SHIFT} and {@link CKEDITOR.ALT}
+ *		constants, if those are pressed.
+ */

@@ -6,7 +6,7 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.1
+CKEditor version: 3.2
 SWFUpload version: 2.2.0
 Rails version: 2.3.x
 
@@ -120,6 +120,8 @@ We recommend using a paperclip plugin for file storage and processing images. Co
 for displaying and uploading files. It uses classes Picture and AttachmentFile, who are descendants of the Asset class. So, your project must have these classes.
 
 "http://github.com/thoughtbot/paperclip":http://github.com/thoughtbot/paperclip
+
+For S3 storage look at @../rails-ckeditor/examples/s3@
 
 For paperclip:
 ActiveRecord model Asset (asset.rb):

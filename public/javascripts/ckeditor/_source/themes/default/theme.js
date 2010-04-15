@@ -229,6 +229,8 @@ CKEDITOR.themes.add( 'default', (function()
 		destroy : function( editor )
 		{
 			var container = editor.container;
+			container.clearCustomData();
+			editor.element.clearCustomData();
 
 			/*
 			 * IE BUG: Removing the editor DOM elements while the selection is inside
@@ -256,10 +258,9 @@ CKEDITOR.themes.add( 'default', (function()
 				container.remove();
 
 			if ( editor.elementMode == CKEDITOR.ELEMENT_MODE_REPLACE )
-			{
 				editor.element.show();
-				delete editor.element;
-			}
+
+			delete editor.element;
 		}
 	};
 })() );

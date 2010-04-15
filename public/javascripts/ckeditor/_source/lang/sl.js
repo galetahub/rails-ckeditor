@@ -110,17 +110,24 @@ CKEDITOR.lang['sl'] =
 		unavailable		: '%1<span class="cke_accessibility">, nedosegljiv</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Vstavi posebni znak',
-		title		: 'Izberi posebni znak'
+		title		: 'Izberi posebni znak',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Vstavi/uredi povezavo',
+		other 		: '<drug>',
 		menu		: 'Uredi povezavo',
 		title		: 'Povezava',
 		info		: 'Podatki o povezavi',
@@ -476,7 +483,8 @@ CKEDITOR.lang['sl'] =
 	smiley :
 	{
 		toolbar	: 'Smeško',
-		title	: 'Vstavi smeška'
+		title	: 'Vstavi smeška',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['sl'] =
 	clipboard :
 	{
 		title		: 'Prilepi',
-		cutError	: 'Varnostne nastavitve brskalnika ne dopuščajo samodejnega izrezovanja. Uporabite kombinacijo tipk na tipkovnici (Ctrl+X).',
-		copyError	: 'Varnostne nastavitve brskalnika ne dopuščajo samodejnega kopiranja. Uporabite kombinacijo tipk na tipkovnici (Ctrl+C).',
-		pasteMsg	: 'Prosim prilepite v sleči okvir s pomočjo tipkovnice (<STRONG>Ctrl+V</STRONG>) in pritisnite <STRONG>V redu</STRONG>.',
+		cutError	: 'Varnostne nastavitve brskalnika ne dopuščajo samodejnega izrezovanja. Uporabite kombinacijo tipk na tipkovnici (Ctrl/Cmd+X).',
+		copyError	: 'Varnostne nastavitve brskalnika ne dopuščajo samodejnega kopiranja. Uporabite kombinacijo tipk na tipkovnici (Ctrl/Cmd+C).',
+		pasteMsg	: 'Prosim prilepite v sleči okvir s pomočjo tipkovnice (<STRONG>Ctrl/Cmd+V</STRONG>) in pritisnite <STRONG>V redu</STRONG>.',
 		securityMsg	: 'Zaradi varnostnih nastavitev vašega brskalnika urejevalnik ne more neposredno dostopati do odložišča. Vsebino odložišča ponovno prilepite v to okno.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['sl'] =
 	{
 		button			: 'Predloge',
 		title			: 'Vsebinske predloge',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Zamenjaj trenutno vsebino',
 		selectPromptMsg	: 'Izberite predlogo, ki jo želite odpreti v urejevalniku<br>(trenutna vsebina bo izgubljena):',
 		emptyListMsg	: '(Ni pripravljenih predlog)'

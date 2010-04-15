@@ -110,17 +110,24 @@ CKEDITOR.lang['he'] =
 		unavailable		: '%1<span class="cke_accessibility">, לא זמין</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'הוספת תו מיוחד',
-		title		: 'בחירת תו מיוחד'
+		title		: 'בחירת תו מיוחד',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'הוספת/עריכת קישור',
+		other 		: '<אחר>',
 		menu		: 'מאפייני קישור',
 		title		: 'קישור',
 		info		: 'מידע על הקישור',
@@ -476,7 +483,8 @@ CKEDITOR.lang['he'] =
 	smiley :
 	{
 		toolbar	: 'סמיילי',
-		title	: 'הוספת סמיילי'
+		title	: 'הוספת סמיילי',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['he'] =
 	clipboard :
 	{
 		title		: 'הדבקה',
-		cutError	: 'הגדרות האבטחה בדפדפן שלך לא מאפשרות לעורך לבצע פעולות גזירה אוטומטיות. יש להשתמש במקלדת לשם כך (Ctrl+X).',
-		copyError	: 'הגדרות האבטחה בדפדפן שלך לא מאפשרות לעורך לבצע פעולות העתקה אוטומטיות. יש להשתמש במקלדת לשם כך (Ctrl+C).',
-		pasteMsg	: 'נא להדביק בתוך הקופסה באמצעות (<b>Ctrl+V</b>) וללחוץ על <b>אישור</b>.',
+		cutError	: 'הגדרות האבטחה בדפדפן שלך לא מאפשרות לעורך לבצע פעולות גזירה אוטומטיות. יש להשתמש במקלדת לשם כך (Ctrl/Cmd+X).',
+		copyError	: 'הגדרות האבטחה בדפדפן שלך לא מאפשרות לעורך לבצע פעולות העתקה אוטומטיות. יש להשתמש במקלדת לשם כך (Ctrl/Cmd+C).',
+		pasteMsg	: 'נא להדביק בתוך הקופסה באמצעות (<b>Ctrl/Cmd+V</b>) וללחוץ על <b>אישור</b>.',
 		securityMsg	: 'עקב הגדרות אבטחה בדפדפן, לא ניתן לגשת אל לוח הגזירים (Clipboard) בצורה ישירה. נא להדביק שוב בחלון זה.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['he'] =
 	{
 		button			: 'תבניות',
 		title			: 'תביות תוכן',
+		options : 'Template Options', // MISSING
 		insertOption	: 'החלפת תוכן ממשי',
 		selectPromptMsg	: 'יש לבחור תבנית לפתיחה בעורך.<br />התוכן המקורי ימחק:',
 		emptyListMsg	: '(לא הוגדרו תבניות)'

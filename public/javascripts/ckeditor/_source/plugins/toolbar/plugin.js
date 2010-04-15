@@ -60,14 +60,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			var itemKeystroke = function( item, keystroke )
 			{
 				var next, nextToolGroup, groupItemsCount;
+				var rtl = editor.lang.dir == 'rtl';
 
 				switch ( keystroke )
 				{
-					case 39 :					// RIGHT-ARROW
+					case rtl ? 37 : 39 :					// RIGHT-ARROW
 					case 9 :					// TAB
 						do
 						{
-							// Look for the previous item in the toolbar.
+							// Look for the next item in the toolbar.
 							next = item.next;
 
 							if ( !next )
@@ -99,7 +100,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 						return false;
 
-					case 37 :					// LEFT-ARROW
+					case rtl ? 39 : 37 :					// LEFT-ARROW
 					case CKEDITOR.SHIFT + 9 :	// SHIFT + TAB
 						do
 						{
@@ -284,6 +285,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									editor.execCommand( 'toolbarCollapse' );
 								} );
 
+							editor.on( 'destroy', function () {
+									CKEDITOR.tools.removeFunction( collapserFn );
+								} );
+
 							var collapserId = 'cke_' + CKEDITOR.tools.getNextNumber();
 
 							editor.addCommand( 'toolbarCollapse',
@@ -408,7 +413,7 @@ CKEDITOR.config.toolbar_Basic =
  *     ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
  *     '/',
  *     ['Bold','Italic','Underline','Strike','-','Subscript','Superscript'],
- *     ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote'],
+ *     ['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
  *     ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
  *     ['Link','Unlink','Anchor'],
  *     ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],

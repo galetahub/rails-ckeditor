@@ -9,9 +9,9 @@ CKEDITOR.plugins.add( 'listblock',
 
 	onLoad : function()
 	{
-		CKEDITOR.ui.panel.prototype.addListBlock = function( name, definiton )
+		CKEDITOR.ui.panel.prototype.addListBlock = function( name, definition )
 		{
-			return this.addBlock( name, new CKEDITOR.ui.listBlock( this.getHolderElement(), definiton ) );
+			return this.addBlock( name, new CKEDITOR.ui.listBlock( this.getHolderElement(), definition ) );
 		};
 
 		CKEDITOR.ui.listBlock = CKEDITOR.tools.createClass(
@@ -195,11 +195,14 @@ CKEDITOR.plugins.add( 'listblock',
 
 						this.element.getDocument().getById( itemId + '_option' ).setAttribute( 'aria-selected', true );
 						this.element.setAttribute( 'aria-activedescendant', itemId + '_option' );
+
+						this.onMark && this.onMark( item );
 					},
 
 					unmark : function( value )
 					{
 						this.element.getDocument().getById( this._.items[ value ] ).removeClass( 'cke_selected' );
+						this.onUnmark && this.onUnmark( this._.items[ value ] );
 					},
 
 					unmarkAll : function()
@@ -211,6 +214,8 @@ CKEDITOR.plugins.add( 'listblock',
 						{
 							doc.getById( items[ value ] ).removeClass( 'cke_selected' );
 						}
+
+						this.onUnmark && this.onUnmark();
 					},
 
 					isMarked : function( value )

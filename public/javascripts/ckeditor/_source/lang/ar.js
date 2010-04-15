@@ -110,17 +110,24 @@ CKEDITOR.lang['ar'] =
 		unavailable		: '%1<span class="cke_accessibility">, غير متاح</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'إدراج  خاص.ِ',
-		title		: 'اختر الخواص'
+		title		: 'اختر الخواص',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'رابط',
+		other 		: '<أخرى>',
 		menu		: 'تحرير رابط',
 		title		: 'إرتباط تشعبي',
 		info		: 'معلومات الرابط',
@@ -476,7 +483,8 @@ CKEDITOR.lang['ar'] =
 	smiley :
 	{
 		toolbar	: 'ابتسامات',
-		title	: 'إدراج ابتسامات'
+		title	: 'إدراج ابتسامات',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['ar'] =
 	clipboard :
 	{
 		title		: 'لصق',
-		cutError	: 'الإعدادات الأمنية للمتصفح الذي تستخدمه تمنع القص التلقائي. فضلاً إستخدم لوحة المفاتيح لفعل ذلك (Ctrl+X).',
-		copyError	: 'الإعدادات الأمنية للمتصفح الذي تستخدمه تمنع النسخ التلقائي. فضلاً إستخدم لوحة المفاتيح لفعل ذلك (Ctrl+C).',
-		pasteMsg	: 'الصق داخل الصندوق بإستخدام زرائر (<STRONG>Ctrl+V</STRONG>) في لوحة المفاتيح، ثم اضغط زر  <STRONG>موافق</STRONG>.',
+		cutError	: 'الإعدادات الأمنية للمتصفح الذي تستخدمه تمنع القص التلقائي. فضلاً إستخدم لوحة المفاتيح لفعل ذلك (Ctrl/Cmd+X).',
+		copyError	: 'الإعدادات الأمنية للمتصفح الذي تستخدمه تمنع النسخ التلقائي. فضلاً إستخدم لوحة المفاتيح لفعل ذلك (Ctrl/Cmd+C).',
+		pasteMsg	: 'الصق داخل الصندوق بإستخدام زرائر (<STRONG>Ctrl/Cmd+V</STRONG>) في لوحة المفاتيح، ثم اضغط زر  <STRONG>موافق</STRONG>.',
 		securityMsg	: 'نظراً لإعدادات الأمان الخاصة بمتصفحك، لن يتمكن هذا المحرر من الوصول لمحتوى حافظتك، لذلك يجب عليك لصق المحتوى مرة أخرى في هذه النافذة.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['ar'] =
 	{
 		button			: 'القوالب',
 		title			: 'قوالب المحتوى',
+		options : 'Template Options', // MISSING
 		insertOption	: 'استبدال المحتوى',
 		selectPromptMsg	: 'اختر القالب الذي تود وضعه في المحرر',
 		emptyListMsg	: '(لم يتم تعريف أي قالب)'

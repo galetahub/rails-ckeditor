@@ -110,17 +110,24 @@ CKEDITOR.lang['cy'] =
 		unavailable		: '%1<span class="cke_accessibility">, ddim ar gael</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Mewnosod Nodau Arbennig',
-		title		: 'Dewis Nod Arbennig'
+		title		: 'Dewis Nod Arbennig',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Dolen',
+		other 		: '<eraill>',
 		menu		: 'Golygu Dolen',
 		title		: 'Dolen',
 		info		: 'Gwyb ar y Ddolen',
@@ -476,7 +483,8 @@ CKEDITOR.lang['cy'] =
 	smiley :
 	{
 		toolbar	: 'Gwenoglun',
-		title	: 'Mewnosod Gwenoglun'
+		title	: 'Mewnosod Gwenoglun',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['cy'] =
 	clipboard :
 	{
 		title		: 'Gludo',
-		cutError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd torri\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl+X).',
-		copyError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd copïo\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl+C).',
-		pasteMsg	: 'Gludwch i mewn i\'r blwch canlynol gan ddefnyddio\'r bysellfwrdd (<strong>Ctrl+V</strong>) a phwyso <strong>Iawn</strong>.',
+		cutError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd torri\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl/Cmd+X).',
+		copyError	: 'Nid yw gosodiadau diogelwch eich porwr yn caniatàu\'r golygydd i gynnal \'gweithredoedd copïo\' yn awtomatig. Defnyddiwch y bysellfwrdd (Ctrl/Cmd+C).',
+		pasteMsg	: 'Gludwch i mewn i\'r blwch canlynol gan ddefnyddio\'r bysellfwrdd (<strong>Ctrl/Cmd+V</strong>) a phwyso <strong>Iawn</strong>.',
 		securityMsg	: 'Oherwydd gosodiadau diogelwch eich porwr, nid yw\'r porwr yn gallu ennill mynediad i\'r data ar y clipfwrdd yn uniongyrchol. Mae angen i chi ei ludo eto i\'r ffenestr hon.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['cy'] =
 	{
 		button			: 'Templedi',
 		title			: 'Templedi Cynnwys',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Amnewid y cynnwys go iawn',
 		selectPromptMsg	: 'Dewiswch dempled i\'w agor yn y golygydd',
 		emptyListMsg	: '(Dim templedi wedi\'u diffinio)'

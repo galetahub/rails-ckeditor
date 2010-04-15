@@ -110,17 +110,24 @@ CKEDITOR.lang['zh-cn'] =
 		unavailable		: '%1<span class="cke_accessibility">, 不可用</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: '插入特殊符号',
-		title		: '选择特殊符号'
+		title		: '选择特殊符号',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: '插入/编辑超链接',
+		other 		: '<其他>',
 		menu		: '编辑超链接',
 		title		: '超链接',
 		info		: '超链接信息',
@@ -476,7 +483,8 @@ CKEDITOR.lang['zh-cn'] =
 	smiley :
 	{
 		toolbar	: '表情符',
-		title	: '插入表情图标'
+		title	: '插入表情图标',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['zh-cn'] =
 	clipboard :
 	{
 		title		: '粘贴',
-		cutError	: '您的浏览器安全设置不允许编辑器自动执行剪切操作，请使用键盘快捷键(Ctrl+X)来完成',
-		copyError	: '您的浏览器安全设置不允许编辑器自动执行复制操作，请使用键盘快捷键(Ctrl+C)来完成',
-		pasteMsg	: '请使用键盘快捷键(<STRONG>Ctrl+V</STRONG>)把内容粘贴到下面的方框里，再按 <STRONG>确定</STRONG>',
+		cutError	: '您的浏览器安全设置不允许编辑器自动执行剪切操作，请使用键盘快捷键(Ctrl/Cmd+X)来完成',
+		copyError	: '您的浏览器安全设置不允许编辑器自动执行复制操作，请使用键盘快捷键(Ctrl/Cmd+C)来完成',
+		pasteMsg	: '请使用键盘快捷键(<STRONG>Ctrl/Cmd+V</STRONG>)把内容粘贴到下面的方框里，再按 <STRONG>确定</STRONG>',
 		securityMsg	: '因为你的浏览器的安全设置原因，本编辑器不能直接访问你的剪贴板内容，你需要在本窗口重新粘贴一次',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['zh-cn'] =
 	{
 		button			: '模板',
 		title			: '内容模板',
+		options : 'Template Options', // MISSING
 		insertOption	: '替换当前内容',
 		selectPromptMsg	: '请选择编辑器内容模板:',
 		emptyListMsg	: '(没有模板)'

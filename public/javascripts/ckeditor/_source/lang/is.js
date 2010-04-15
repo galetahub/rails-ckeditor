@@ -110,17 +110,24 @@ CKEDITOR.lang['is'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Setja inn merki',
-		title		: 'Velja tákn'
+		title		: 'Velja tákn',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Stofna/breyta stiklu',
+		other 		: '<annar>',
 		menu		: 'Breyta stiklu',
 		title		: 'Stikla',
 		info		: 'Almennt',
@@ -476,7 +483,8 @@ CKEDITOR.lang['is'] =
 	smiley :
 	{
 		toolbar	: 'Svipur',
-		title	: 'Velja svip'
+		title	: 'Velja svip',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['is'] =
 	clipboard :
 	{
 		title		: 'Líma',
-		cutError	: 'Öryggisstillingar vafrans þíns leyfa ekki klippingu texta með músaraðgerð. Notaðu lyklaborðið í klippa (Ctrl+X).',
-		copyError	: 'Öryggisstillingar vafrans þíns leyfa ekki afritun texta með músaraðgerð. Notaðu lyklaborðið í afrita (Ctrl+C).',
-		pasteMsg	: 'Límdu í svæðið hér að neðan og (<STRONG>Ctrl+V</STRONG>) og smelltu á <STRONG>OK</STRONG>.',
+		cutError	: 'Öryggisstillingar vafrans þíns leyfa ekki klippingu texta með músaraðgerð. Notaðu lyklaborðið í klippa (Ctrl/Cmd+X).',
+		copyError	: 'Öryggisstillingar vafrans þíns leyfa ekki afritun texta með músaraðgerð. Notaðu lyklaborðið í afrita (Ctrl/Cmd+C).',
+		pasteMsg	: 'Límdu í svæðið hér að neðan og (<STRONG>Ctrl/Cmd+V</STRONG>) og smelltu á <STRONG>OK</STRONG>.',
 		securityMsg	: 'Vegna öryggisstillinga í vafranum þínum fær ritillinn ekki beinan aðgang að klippuborðinu. Þú verður að líma innihaldið aftur inn í þennan glugga.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['is'] =
 	{
 		button			: 'Sniðmát',
 		title			: 'Innihaldssniðmát',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Skipta út raunverulegu innihaldi',
 		selectPromptMsg	: 'Veldu sniðmát til að opna í ritlinum.<br>(Núverandi innihald víkur fyrir því!):',
 		emptyListMsg	: '(Ekkert sniðmát er skilgreint!)'

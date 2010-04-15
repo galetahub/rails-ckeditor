@@ -69,9 +69,13 @@ CKEDITOR.ui.button.prototype =
 	 */
 	render : function( editor, output )
 	{
-		var env = CKEDITOR.env;
+		var env = CKEDITOR.env,
+			id = this._.id = 'cke_' + CKEDITOR.tools.getNextNumber(),
+			classes = '',
+			command = this.command, // Get the command name.
+			clickFn,
+			index;
 
-		var id = this._.id = 'cke_' + CKEDITOR.tools.getNextNumber();
 		this._.editor = editor;
 
 		var instance =
@@ -90,14 +94,9 @@ CKEDITOR.ui.button.prototype =
 			}
 		};
 
-		var clickFn = CKEDITOR.tools.addFunction( instance.execute, instance );
+		instance.clickFn = clickFn = CKEDITOR.tools.addFunction( instance.execute, instance );
 
-		var index = CKEDITOR.ui.button._.instances.push( instance ) - 1;
-
-		var classes = '';
-
-		// Get the command name.
-		var command = this.command;
+		instance.index = index = CKEDITOR.ui.button._.instances.push( instance ) - 1;
 
 		if ( this.modes )
 		{
@@ -179,7 +178,10 @@ CKEDITOR.ui.button.prototype =
 		if ( this.hasArrow )
 		{
 			output.push(
-					'<span class="cke_buttonarrow"></span>' );
+					'<span class="cke_buttonarrow">'
+					// BLACK DOWN-POINTING TRIANGLE
+					+ ( CKEDITOR.env.hc ? '&#9660;' : '' )
+					+ '</span>' );
 		}
 
 		output.push(

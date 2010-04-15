@@ -110,17 +110,24 @@ CKEDITOR.lang['zh'] =
 		unavailable		: '%1<span class="cke_accessibility">, 已關閉</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: '插入特殊符號',
-		title		: '請選擇特殊符號'
+		title		: '請選擇特殊符號',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: '插入/編輯超連結',
+		other 		: '<其他>',
 		menu		: '編輯超連結',
 		title		: '超連結',
 		info		: '超連結資訊',
@@ -476,7 +483,8 @@ CKEDITOR.lang['zh'] =
 	smiley :
 	{
 		toolbar	: '表情符號',
-		title	: '插入表情符號'
+		title	: '插入表情符號',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['zh'] =
 	clipboard :
 	{
 		title		: '貼上',
-		cutError	: '瀏覽器的安全性設定不允許編輯器自動執行剪下動作。請使用快捷鍵 (Ctrl+X) 剪下。',
-		copyError	: '瀏覽器的安全性設定不允許編輯器自動執行複製動作。請使用快捷鍵 (Ctrl+C) 複製。',
-		pasteMsg	: '請使用快捷鍵 (<strong>Ctrl+V</strong>) 貼到下方區域中並按下 <strong>確定</strong>',
+		cutError	: '瀏覽器的安全性設定不允許編輯器自動執行剪下動作。請使用快捷鍵 (Ctrl/Cmd+X) 剪下。',
+		copyError	: '瀏覽器的安全性設定不允許編輯器自動執行複製動作。請使用快捷鍵 (Ctrl/Cmd+C) 複製。',
+		pasteMsg	: '請使用快捷鍵 (<strong>Ctrl/Cmd+V</strong>) 貼到下方區域中並按下 <strong>確定</strong>',
 		securityMsg	: '因為瀏覽器的安全性設定，本編輯器無法直接存取您的剪貼簿資料，請您自行在本視窗進行貼上動作。',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['zh'] =
 	{
 		button			: '樣版',
 		title			: '內容樣版',
+		options : 'Template Options', // MISSING
 		insertOption	: '取代原有內容',
 		selectPromptMsg	: '請選擇欲開啟的樣版<br> (原有的內容將會被清除):',
 		emptyListMsg	: '(無樣版)'

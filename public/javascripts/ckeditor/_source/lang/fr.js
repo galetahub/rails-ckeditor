@@ -110,17 +110,24 @@ CKEDITOR.lang['fr'] =
 		unavailable		: '%1<span class="cke_accessibility">, Indisponible</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insérer un caractère spécial',
-		title		: 'Sélectionnez un caractère'
+		title		: 'Sélectionnez un caractère',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Lien',
+		other 		: '<autre>',
 		menu		: 'Editer le lien',
 		title		: 'Lien',
 		info		: 'Infos sur le lien',
@@ -476,7 +483,8 @@ CKEDITOR.lang['fr'] =
 	smiley :
 	{
 		toolbar	: 'Emoticon',
-		title	: 'Insérer un émoticon'
+		title	: 'Insérer un émoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['fr'] =
 	clipboard :
 	{
 		title		: 'Coller',
-		cutError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement l\'opération "couper". Veuillez utiliser le raccourci clavier (Ctrl+X).',
-		copyError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement des opérations de copie. Veuillez utiliser le raccourci clavier (Ctrl+C).',
-		pasteMsg	: 'Veuillez coller le texte dans la zone suivante en utilisant le raccourci clavier (<strong>Ctrl+V</strong>) et cliquez sur OK',
+		cutError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement l\'opération "couper". Veuillez utiliser le raccourci clavier (Ctrl/Cmd+X).',
+		copyError	: 'Les paramètres de sécurité de votre navigateur ne permettent pas à l\'éditeur d\'exécuter automatiquement des opérations de copie. Veuillez utiliser le raccourci clavier (Ctrl/Cmd+C).',
+		pasteMsg	: 'Veuillez coller le texte dans la zone suivante en utilisant le raccourci clavier (<strong>Ctrl/Cmd+V</strong>) et cliquez sur OK',
 		securityMsg	: 'A cause des paramètres de sécurité de votre navigateur, l\'éditeur n\'est pas en mesure d\'accéder directement à vos données contenues dans le presse-papier. Vous devriez réessayer de coller les données dans la fenêtre.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['fr'] =
 	{
 		button			: 'Modèles',
 		title			: 'Contenu des modèles',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Remplacer le contenu actuel',
 		selectPromptMsg	: 'Veuillez sélectionner le modèle pour l\'ouvrir dans l\'éditeur',
 		emptyListMsg	: '(Aucun modèle disponible)'

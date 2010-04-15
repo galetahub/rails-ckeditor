@@ -110,17 +110,24 @@ CKEDITOR.lang['eu'] =
 		unavailable		: '%1<span class="cke_accessibility">, erabilezina</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Txertatu Karaktere Berezia',
-		title		: 'Karaktere Berezia Aukeratu'
+		title		: 'Karaktere Berezia Aukeratu',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Txertatu/Editatu Esteka',
+		other 		: '<other>', // MISSING
 		menu		: 'Aldatu Esteka',
 		title		: 'Esteka',
 		info		: 'Estekaren Informazioa',
@@ -476,7 +483,8 @@ CKEDITOR.lang['eu'] =
 	smiley :
 	{
 		toolbar	: 'Aurpegierak',
-		title	: 'Aurpegiera Sartu'
+		title	: 'Aurpegiera Sartu',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['eu'] =
 	clipboard :
 	{
 		title		: 'Itsatsi',
-		cutError	: 'Zure web nabigatzailearen segurtasun ezarpenak testuak automatikoki moztea ez dute baimentzen. Mesedez teklatua erabili ezazu (Ctrl+X).',
-		copyError	: 'Zure web nabigatzailearen segurtasun ezarpenak testuak automatikoki kopiatzea ez dute baimentzen. Mesedez teklatua erabili ezazu (Ctrl+C).',
-		pasteMsg	: 'Mesedez teklatua erabilita (<STRONG>Ctrl+V</STRONG>) ondorego eremuan testua itsatsi eta <STRONG>OK</STRONG> sakatu.',
+		cutError	: 'Zure web nabigatzailearen segurtasun ezarpenak testuak automatikoki moztea ez dute baimentzen. Mesedez teklatua erabili ezazu (Ctrl/Cmd+X).',
+		copyError	: 'Zure web nabigatzailearen segurtasun ezarpenak testuak automatikoki kopiatzea ez dute baimentzen. Mesedez teklatua erabili ezazu (Ctrl/Cmd+C).',
+		pasteMsg	: 'Mesedez teklatua erabilita (<STRONG>Ctrl/Cmd+V</STRONG>) ondorego eremuan testua itsatsi eta <STRONG>OK</STRONG> sakatu.',
 		securityMsg	: 'Nabigatzailearen segurtasun ezarpenak direla eta, editoreak ezin du arbela zuzenean erabili. Leiho honetan berriro itsatsi behar duzu.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['eu'] =
 	{
 		button			: 'Txantiloiak',
 		title			: 'Eduki Txantiloiak',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Ordeztu oraingo edukiak',
 		selectPromptMsg	: 'Mesedez txantiloia aukeratu editorean kargatzeko<br>(orain dauden edukiak galduko dira):',
 		emptyListMsg	: '(Ez dago definitutako txantiloirik)'

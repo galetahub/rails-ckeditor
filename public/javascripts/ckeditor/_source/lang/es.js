@@ -110,17 +110,24 @@ CKEDITOR.lang['es'] =
 		unavailable		: '%1<span class="cke_accessibility">, no disponible</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insertar Caracter Especial',
-		title		: 'Seleccione un caracter especial'
+		title		: 'Seleccione un caracter especial',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Insertar/Editar Vínculo',
+		other 		: '<otro>',
 		menu		: 'Editar Vínculo',
 		title		: 'Vínculo',
 		info		: 'Información de Vínculo',
@@ -476,7 +483,8 @@ CKEDITOR.lang['es'] =
 	smiley :
 	{
 		toolbar	: 'Emoticons',
-		title	: 'Insertar un Emoticon'
+		title	: 'Insertar un Emoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['es'] =
 	clipboard :
 	{
 		title		: 'Pegar',
-		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl+X).',
-		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl+C).',
-		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
+		cutError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de cortado.\r\nPor favor use el teclado (Ctrl/Cmd+X).',
+		copyError	: 'La configuración de seguridad de este navegador no permite la ejecución automática de operaciones de copiado.\r\nPor favor use el teclado (Ctrl/Cmd+C).',
+		pasteMsg	: 'Por favor pegue dentro del cuadro utilizando el teclado (<STRONG>Ctrl/Cmd+V</STRONG>);\r\nluego presione <STRONG>Aceptar</STRONG>.',
 		securityMsg	: 'Debido a la configuración de seguridad de su navegador, el editor no tiene acceso al portapapeles.\r\nEs necesario que lo pegue de nuevo en esta ventana.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['es'] =
 	{
 		button			: 'Plantillas',
 		title			: 'Contenido de Plantillas',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Reemplazar el contenido actual',
 		selectPromptMsg	: 'Por favor selecciona la plantilla a abrir en el editor<br>(el contenido actual se perderá):',
 		emptyListMsg	: '(No hay plantillas definidas)'

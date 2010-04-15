@@ -110,17 +110,24 @@ CKEDITOR.lang['th'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'แทรกตัวอักษรพิเศษ',
-		title		: 'แทรกตัวอักษรพิเศษ'
+		title		: 'แทรกตัวอักษรพิเศษ',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'แทรก/แก้ไข ลิงค์',
+		other 		: '<อื่น ๆ>',
 		menu		: 'แก้ไข ลิงค์',
 		title		: 'ลิงค์เชื่อมโยงเว็บ อีเมล์ รูปภาพ หรือไฟล์อื่นๆ',
 		info		: 'รายละเอียด',
@@ -476,7 +483,8 @@ CKEDITOR.lang['th'] =
 	smiley :
 	{
 		toolbar	: 'รูปสื่ออารมณ์',
-		title	: 'แทรกสัญลักษณ์สื่ออารมณ์'
+		title	: 'แทรกสัญลักษณ์สื่ออารมณ์',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['th'] =
 	clipboard :
 	{
 		title		: 'วาง',
-		cutError	: 'ไม่สามารถตัดข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl และตัว X พร้อมกัน).',
-		copyError	: 'ไม่สามารถสำเนาข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl และตัว C พร้อมกัน).',
-		pasteMsg	: 'กรุณาใช้คีย์บอร์ดเท่านั้น โดยกดปุ๋ม (<strong>Ctrl และ V</strong>)พร้อมๆกัน และกด <strong>OK</strong>.',
+		cutError	: 'ไม่สามารถตัดข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl/Cmd และตัว X พร้อมกัน).',
+		copyError	: 'ไม่สามารถสำเนาข้อความที่เลือกไว้ได้เนื่องจากการกำหนดค่าระดับความปลอดภัย. กรุณาใช้ปุ่มลัดเพื่อวางข้อความแทน (กดปุ่ม Ctrl/Cmd และตัว C พร้อมกัน).',
+		pasteMsg	: 'กรุณาใช้คีย์บอร์ดเท่านั้น โดยกดปุ๋ม (<strong>Ctrl/Cmd และ V</strong>)พร้อมๆกัน และกด <strong>OK</strong>.',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['th'] =
 	{
 		button			: 'เทมเพลต',
 		title			: 'เทมเพลตของส่วนเนื้อหาเว็บไซต์',
+		options : 'Template Options', // MISSING
 		insertOption	: 'แทนที่เนื้อหาเว็บไซต์ที่เลือก',
 		selectPromptMsg	: 'กรุณาเลือก เทมเพลต เพื่อนำไปแก้ไขในอีดิตเตอร์<br />(เนื้อหาส่วนนี้จะหายไป):',
 		emptyListMsg	: '(ยังไม่มีการกำหนดเทมเพลต)'

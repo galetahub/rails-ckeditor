@@ -110,17 +110,24 @@ CKEDITOR.lang['en-gb'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Insert Special Character',
-		title		: 'Select Special Character'
+		title		: 'Select Special Character',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link',
+		other 		: '<other>',
 		menu		: 'Edit Link',
 		title		: 'Link',
 		info		: 'Link Info',
@@ -476,7 +483,8 @@ CKEDITOR.lang['en-gb'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Insert a Smiley'
+		title	: 'Insert a Smiley',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['en-gb'] =
 	clipboard :
 	{
 		title		: 'Paste',
-		cutError	: 'Your browser security settings don\'t permit the editor to automatically execute cutting operations. Please use the keyboard for that (Ctrl+X).',
-		copyError	: 'Your browser security settings don\'t permit the editor to automatically execute copying operations. Please use the keyboard for that (Ctrl+C).',
-		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK',
+		cutError	: 'Your browser security settings don\'t permit the editor to automatically execute cutting operations. Please use the keyboard for that (Ctrl/Cmd+X).',
+		copyError	: 'Your browser security settings don\'t permit the editor to automatically execute copying operations. Please use the keyboard for that (Ctrl/Cmd+C).',
+		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl/Cmd+V</strong>) and hit OK',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.',
 		pasteArea	: 'Paste Area'
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['en-gb'] =
 	{
 		button			: 'Templates',
 		title			: 'Content Templates',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents',
 		selectPromptMsg	: 'Please select the template to open in the editor',
 		emptyListMsg	: '(No templates defined)'

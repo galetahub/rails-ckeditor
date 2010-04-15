@@ -110,17 +110,24 @@ CKEDITOR.lang['mn'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Онцгой тэмдэгт оруулах',
-		title		: 'Онцгой тэмдэгт сонгох'
+		title		: 'Онцгой тэмдэгт сонгох',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Линк Оруулах/Засварлах',
+		other 		: '<other>', // MISSING
 		menu		: 'Холбоос засварлах',
 		title		: 'Линк',
 		info		: 'Линкийн мэдээлэл',
@@ -476,7 +483,8 @@ CKEDITOR.lang['mn'] =
 	smiley :
 	{
 		toolbar	: 'Тодорхойлолт',
-		title	: 'Тодорхойлолт оруулах'
+		title	: 'Тодорхойлолт оруулах',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['mn'] =
 	clipboard :
 	{
 		title		: 'Буулгах',
-		cutError	: 'Таны browser-ын хамгаалалтын тохиргоо editor-д автоматаар хайчлах үйлдэлийг зөвшөөрөхгүй байна. (Ctrl+X) товчны хослолыг ашиглана уу.',
-		copyError	: 'Таны browser-ын хамгаалалтын тохиргоо editor-д автоматаар хуулах үйлдэлийг зөвшөөрөхгүй байна. (Ctrl+C) товчны хослолыг ашиглана уу.',
-		pasteMsg	: '(<strong>Ctrl+V</strong>) товчийг ашиглан paste хийнэ үү. Мөн <strong>OK</strong> дар.',
+		cutError	: 'Таны browser-ын хамгаалалтын тохиргоо editor-д автоматаар хайчлах үйлдэлийг зөвшөөрөхгүй байна. (Ctrl/Cmd+X) товчны хослолыг ашиглана уу.',
+		copyError	: 'Таны browser-ын хамгаалалтын тохиргоо editor-д автоматаар хуулах үйлдэлийг зөвшөөрөхгүй байна. (Ctrl/Cmd+C) товчны хослолыг ашиглана уу.',
+		pasteMsg	: '(<strong>Ctrl/Cmd+V</strong>) товчийг ашиглан paste хийнэ үү. Мөн <strong>OK</strong> дар.',
 		securityMsg	: 'Таны үзүүлэгч/browser/-н хамгаалалтын тохиргооноос болоод editor clipboard өгөгдөлрүү шууд хандах боломжгүй. Энэ цонход дахин paste хийхийг оролд.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['mn'] =
 	{
 		button			: 'Загварууд',
 		title			: 'Загварын агуулга',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Одоогийн агууллагыг дарж бичих',
 		selectPromptMsg	: 'Загварыг нээж editor-рүү сонгож оруулна уу<br />(Одоогийн агууллагыг устаж магадгүй):',
 		emptyListMsg	: '(Загвар тодорхойлогдоогүй байна)'

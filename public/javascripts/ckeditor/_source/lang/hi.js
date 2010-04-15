@@ -110,17 +110,24 @@ CKEDITOR.lang['hi'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'विशेष करॅक्टर इन्सर्ट करें',
-		title		: 'विशेष करॅक्टर चुनें'
+		title		: 'विशेष करॅक्टर चुनें',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'लिंक इन्सर्ट/संपादन',
+		other 		: '<अन्य>',
 		menu		: 'लिंक संपादन',
 		title		: 'लिंक',
 		info		: 'लिंक  ',
@@ -476,7 +483,8 @@ CKEDITOR.lang['hi'] =
 	smiley :
 	{
 		toolbar	: 'स्माइली',
-		title	: 'स्माइली इन्सर्ट करें'
+		title	: 'स्माइली इन्सर्ट करें',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['hi'] =
 	clipboard :
 	{
 		title		: 'पेस्ट',
-		cutError	: 'आपके ब्राउज़र की सुरक्षा सॅटिन्ग्स ने कट करने की अनुमति नहीं प्रदान की है। (Ctrl+X) का प्रयोग करें।',
-		copyError	: 'आपके ब्राआउज़र की सुरक्षा सॅटिन्ग्स ने कॉपी करने की अनुमति नहीं प्रदान की है। (Ctrl+C) का प्रयोग करें।',
-		pasteMsg	: 'Ctrl+V का प्रयोग करके पेस्ट करें और ठीक है करें.',
+		cutError	: 'आपके ब्राउज़र की सुरक्षा सॅटिन्ग्स ने कट करने की अनुमति नहीं प्रदान की है। (Ctrl/Cmd+X) का प्रयोग करें।',
+		copyError	: 'आपके ब्राआउज़र की सुरक्षा सॅटिन्ग्स ने कॉपी करने की अनुमति नहीं प्रदान की है। (Ctrl/Cmd+C) का प्रयोग करें।',
+		pasteMsg	: 'Ctrl/Cmd+V का प्रयोग करके पेस्ट करें और ठीक है करें.',
 		securityMsg	: 'आपके ब्राउज़र की सुरक्षा आपके ब्राउज़र की सुरKश सैटिंग के कारण, एडिटर आपके क्लिपबोर्ड डेटा को नहीं पा सकता है. आपको उसे इस विन्डो में दोबारा पेस्ट करना होगा.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['hi'] =
 	{
 		button			: 'टॅम्प्लेट',
 		title			: 'कन्टेन्ट टॅम्प्लेट',
+		options : 'Template Options', // MISSING
 		insertOption	: 'मूल शब्दों को बदलें',
 		selectPromptMsg	: 'ऍडिटर में ओपन करने हेतु टॅम्प्लेट चुनें(वर्तमान कन्टॅन्ट सेव नहीं होंगे):',
 		emptyListMsg	: '(कोई टॅम्प्लेट डिफ़ाइन नहीं किया गया है)'

@@ -110,17 +110,24 @@ CKEDITOR.lang['pl'] =
 		unavailable		: '%1<span class="cke_accessibility">, niedostępne</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Wstaw znak specjalny',
-		title		: 'Wybierz znak specjalny'
+		title		: 'Wybierz znak specjalny',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Wstaw/edytuj hiperłącze',
+		other 		: '<inny>',
 		menu		: 'Edytuj hiperłącze',
 		title		: 'Hiperłącze',
 		info		: 'Informacje ',
@@ -476,7 +483,8 @@ CKEDITOR.lang['pl'] =
 	smiley :
 	{
 		toolbar	: 'Emotikona',
-		title	: 'Wstaw emotikonę'
+		title	: 'Wstaw emotikonę',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['pl'] =
 	clipboard :
 	{
 		title		: 'Wklej',
-		cutError	: 'Ustawienia bezpieczeństwa Twojej przeglądarki nie pozwalają na automatyczne wycinanie tekstu. Użyj skrótu klawiszowego Ctrl+X.',
-		copyError	: 'Ustawienia bezpieczeństwa Twojej przeglądarki nie pozwalają na automatyczne kopiowanie tekstu. Użyj skrótu klawiszowego Ctrl+C.',
-		pasteMsg	: 'Proszę wkleić w poniższym polu używając klawiaturowego skrótu (<STRONG>Ctrl+V</STRONG>) i kliknąć <STRONG>OK</STRONG>.',
+		cutError	: 'Ustawienia bezpieczeństwa Twojej przeglądarki nie pozwalają na automatyczne wycinanie tekstu. Użyj skrótu klawiszowego Ctrl/Cmd+X.',
+		copyError	: 'Ustawienia bezpieczeństwa Twojej przeglądarki nie pozwalają na automatyczne kopiowanie tekstu. Użyj skrótu klawiszowego Ctrl/Cmd+C.',
+		pasteMsg	: 'Proszę wkleić w poniższym polu używając klawiaturowego skrótu (<STRONG>Ctrl/Cmd+V</STRONG>) i kliknąć <STRONG>OK</STRONG>.',
 		securityMsg	: 'Zabezpieczenia przeglądarki uniemożliwiają wklejenie danych bezpośrednio do edytora. Proszę dane wkleić ponownie w tym okienku.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['pl'] =
 	{
 		button			: 'Szablony',
 		title			: 'Szablony zawartości',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Zastąp aktualną zawartość',
 		selectPromptMsg	: 'Wybierz szablon do otwarcia w edytorze<br>(obecna zawartość okna edytora zostanie utracona):',
 		emptyListMsg	: '(Brak zdefiniowanych szablonów)'

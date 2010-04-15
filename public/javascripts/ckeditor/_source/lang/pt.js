@@ -110,17 +110,24 @@ CKEDITOR.lang['pt'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Inserir Caracter Especial',
-		title		: 'Seleccione um caracter especial'
+		title		: 'Seleccione um caracter especial',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Inserir/Editar Hiperligação',
+		other 		: '<outro>',
 		menu		: 'Editar Hiperligação',
 		title		: 'Hiperligação',
 		info		: 'Informação de Hiperligação',
@@ -476,7 +483,8 @@ CKEDITOR.lang['pt'] =
 	smiley :
 	{
 		toolbar	: 'Emoticons',
-		title	: 'Inserir um Emoticon'
+		title	: 'Inserir um Emoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['pt'] =
 	clipboard :
 	{
 		title		: 'Colar',
-		cutError	: 'A configuração de segurança do navegador não permite a execução automática de operações de cortar. Por favor use o teclado (Ctrl+X).',
-		copyError	: 'A configuração de segurança do navegador não permite a execução automática de operações de copiar. Por favor use o teclado (Ctrl+C).',
-		pasteMsg	: 'Por favor, cole dentro da seguinte caixa usando o teclado (<STRONG>Ctrl+V</STRONG>) e prima <STRONG>OK</STRONG>.',
+		cutError	: 'A configuração de segurança do navegador não permite a execução automática de operações de cortar. Por favor use o teclado (Ctrl/Cmd+X).',
+		copyError	: 'A configuração de segurança do navegador não permite a execução automática de operações de copiar. Por favor use o teclado (Ctrl/Cmd+C).',
+		pasteMsg	: 'Por favor, cole dentro da seguinte caixa usando o teclado (<STRONG>Ctrl/Cmd+V</STRONG>) e prima <STRONG>OK</STRONG>.',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['pt'] =
 	{
 		button			: 'Modelos',
 		title			: 'Modelo de Conteúdo',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'Por favor, seleccione o modelo a abrir no editor<br>(o conteúdo actual será perdido):',
 		emptyListMsg	: '(Sem modelos definidos)'

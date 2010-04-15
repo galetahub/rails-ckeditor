@@ -110,17 +110,24 @@ CKEDITOR.lang['el'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Εισαγωγή Ειδικού Συμβόλου',
-		title		: 'Επιλέξτε ένα Ειδικό Σύμβολο'
+		title		: 'Επιλέξτε ένα Ειδικό Σύμβολο',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Εισαγωγή/Μεταβολή Συνδέσμου (Link)',
+		other 		: '<άλλος>',
 		menu		: 'Μεταβολή Συνδέσμου (Link)',
 		title		: 'Σύνδεσμος (Link)',
 		info		: 'Link',
@@ -476,7 +483,8 @@ CKEDITOR.lang['el'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Επιλέξτε ένα Smiley'
+		title	: 'Επιλέξτε ένα Smiley',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['el'] =
 	clipboard :
 	{
 		title		: 'Επικόλληση',
-		cutError	: 'Οι ρυθμίσεις ασφαλείας του φυλλομετρητή σας δεν επιτρέπουν την επιλεγμένη εργασία αποκοπής. Χρησιμοποιείστε το πληκτρολόγιο (Ctrl+X).',
-		copyError	: 'Οι ρυθμίσεις ασφαλείας του φυλλομετρητή σας δεν επιτρέπουν την επιλεγμένη εργασία αντιγραφής. Χρησιμοποιείστε το πληκτρολόγιο (Ctrl+C).',
-		pasteMsg	: 'Παρακαλώ επικολήστε στο ακόλουθο κουτί χρησιμοποιόντας το πληκτρολόγιο (<STRONG>Ctrl+V</STRONG>) και πατήστε <STRONG>OK</STRONG>.',
+		cutError	: 'Οι ρυθμίσεις ασφαλείας του φυλλομετρητή σας δεν επιτρέπουν την επιλεγμένη εργασία αποκοπής. Χρησιμοποιείστε το πληκτρολόγιο (Ctrl/Cmd+X).',
+		copyError	: 'Οι ρυθμίσεις ασφαλείας του φυλλομετρητή σας δεν επιτρέπουν την επιλεγμένη εργασία αντιγραφής. Χρησιμοποιείστε το πληκτρολόγιο (Ctrl/Cmd+C).',
+		pasteMsg	: 'Παρακαλώ επικολήστε στο ακόλουθο κουτί χρησιμοποιόντας το πληκτρολόγιο (<STRONG>Ctrl/Cmd+V</STRONG>) και πατήστε <STRONG>OK</STRONG>.',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['el'] =
 	{
 		button			: 'Πρότυπα',
 		title			: 'Πρότυπα περιεχομένου',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Αντικατάσταση υπάρχοντων περιεχομένων',
 		selectPromptMsg	: 'Παρακαλώ επιλέξτε πρότυπο για εισαγωγή στο πρόγραμμα<br>(τα υπάρχοντα περιεχόμενα θα χαθούν):',
 		emptyListMsg	: '(Δεν έχουν καθοριστεί πρότυπα)'

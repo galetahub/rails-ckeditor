@@ -110,17 +110,24 @@ CKEDITOR.lang['fa'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'گنجاندن نویسهٴ ویژه',
-		title		: 'گزینش نویسهٴویژه'
+		title		: 'گزینش نویسهٴویژه',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'گنجاندن/ویرایش ِپیوند',
+		other 		: '<سایر>',
 		menu		: 'ویرایش پیوند',
 		title		: 'پیوند',
 		info		: 'اطلاعات پیوند',
@@ -476,7 +483,8 @@ CKEDITOR.lang['fa'] =
 	smiley :
 	{
 		toolbar	: 'خندانک',
-		title	: 'گنجاندن خندانک'
+		title	: 'گنجاندن خندانک',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['fa'] =
 	clipboard :
 	{
 		title		: 'چسباندن',
-		cutError	: 'تنظیمات امنیتی مرورگر شما اجازه نمیدهد که ویرایشگر به طور خودکار عملکردهای برش را انجام دهد. لطفا با دکمههای صفحهکلید این کار را انجام دهید (Ctrl+X).',
-		copyError	: 'تنظیمات امنیتی مرورگر شما اجازه نمیدهد که ویرایشگر به طور خودکار عملکردهای کپیکردن را انجام دهد. لطفا با دکمههای صفحهکلید این کار را انجام دهید (Ctrl+C).',
-		pasteMsg	: 'لطفا متن را با کلیدهای (<STRONG>Ctrl+V</STRONG>) در این جعبهٴ متنی بچسبانید و <STRONG>پذیرش</STRONG> را بزنید.',
+		cutError	: 'تنظیمات امنیتی مرورگر شما اجازه نمیدهد که ویرایشگر به طور خودکار عملکردهای برش را انجام دهد. لطفا با دکمههای صفحهکلید این کار را انجام دهید (Ctrl/Cmd+X).',
+		copyError	: 'تنظیمات امنیتی مرورگر شما اجازه نمیدهد که ویرایشگر به طور خودکار عملکردهای کپیکردن را انجام دهد. لطفا با دکمههای صفحهکلید این کار را انجام دهید (Ctrl/Cmd+C).',
+		pasteMsg	: 'لطفا متن را با کلیدهای (<STRONG>Ctrl/Cmd+V</STRONG>) در این جعبهٴ متنی بچسبانید و <STRONG>پذیرش</STRONG> را بزنید.',
 		securityMsg	: 'به خاطر تنظیمات امنیتی مرورگر شما، ویرایشگر نمیتواند دسترسی مستقیم به دادههای clipboard داشته باشد. شما باید دوباره آنرا در این پنجره بچسبانید.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['fa'] =
 	{
 		button			: 'الگوها',
 		title			: 'الگوهای محتویات',
+		options : 'Template Options', // MISSING
 		insertOption	: 'محتویات کنونی جایگزین شوند',
 		selectPromptMsg	: 'لطفا الگوی موردنظر را برای بازکردن در ویرایشگر برگزینید<br>(محتویات کنونی از دست خواهند رفت):',
 		emptyListMsg	: '(الگوئی تعریف نشده است)'

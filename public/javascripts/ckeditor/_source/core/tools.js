@@ -323,6 +323,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		},
 
 		/**
+		 * Replace special HTML characters in HTMLElement's attribute with their relative HTML entity values.
+		 * @param {String} The attribute's value to be encoded.
+		 * @returns {String} The encode value.
+		 * @example
+		 * element.setAttribute( 'title', '<a " b >' );
+		 * alert( CKEDITOR.tools.htmlEncodeAttr( element.getAttribute( 'title' ) );  // "&gt;a &quot; b &lt;"
+		 */
+		htmlEncodeAttr : function( text )
+		{
+			return text.replace( /"/g, '&quot;' ).replace( /</g, '&lt;' ).replace( />/, '&gt;' );
+		},
+
+		/**
 		 * Replace characters can't be represented through CSS Selectors string
 		 * by CSS Escape Notation where the character escape sequence consists
 		 * of a backslash character (\) followed by the orginal characters.
@@ -540,7 +553,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 * <li> Public (prototype) fields </li>
 		 * <li> Chainable base class constructor </li>
 		 * </ul>
-		 * @param {Object} definiton The class definiton object.
+		 * @param {Object} definition The class definition object.
 		 * @returns {Function} A class-like JavaScript function.
 		 */
 		createClass : function( definition )

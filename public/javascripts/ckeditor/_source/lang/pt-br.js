@@ -110,17 +110,24 @@ CKEDITOR.lang['pt-br'] =
 		unavailable		: '%1<span class="cke_accessibility">, indisponível</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Inserir Caractere Especial',
-		title		: 'Selecione um Caractere Especial'
+		title		: 'Selecione um Caractere Especial',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Inserir/Editar Hiperlink',
+		other 		: '<other>', // MISSING
 		menu		: 'Editar Hiperlink',
 		title		: 'Hiperlink',
 		info		: 'Informações',
@@ -476,7 +483,8 @@ CKEDITOR.lang['pt-br'] =
 	smiley :
 	{
 		toolbar	: 'Emoticon',
-		title	: 'Inserir Emoticon'
+		title	: 'Inserir Emoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['pt-br'] =
 	clipboard :
 	{
 		title		: 'Colar',
-		cutError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl+X).',
-		copyError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl+C).',
-		pasteMsg	: 'Transfira o link usado no box usando o teclado com (<STRONG>Ctrl+V</STRONG>) e <STRONG>OK</STRONG>.',
+		cutError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de recortar automaticamente. Por favor, utilize o teclado para recortar (Ctrl/Cmd+X).',
+		copyError	: 'As configurações de segurança do seu navegador não permitem que o editor execute operações de copiar automaticamente. Por favor, utilize o teclado para copiar (Ctrl/Cmd+C).',
+		pasteMsg	: 'Transfira o link usado no box usando o teclado com (<STRONG>Ctrl/Cmd+V</STRONG>) e <STRONG>OK</STRONG>.',
 		securityMsg	: 'As configurações de segurança do seu navegador não permitem que o editor acesse os dados da área de transferência diretamente. Por favor cole o conteúdo novamente nesta janela.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['pt-br'] =
 	{
 		button			: 'Modelos de layout',
 		title			: 'Modelo de layout do conteúdo',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Substituir o conteúdo atual',
 		selectPromptMsg	: 'Selecione um modelo de layout para ser aberto no editor<br>(o conteúdo atual será perdido):',
 		emptyListMsg	: '(Não foram definidos modelos de layout)'

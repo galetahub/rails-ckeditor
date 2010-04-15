@@ -110,17 +110,24 @@ CKEDITOR.lang['de'] =
 		unavailable		: '%1<span class="cke_accessibility">, nicht verfügbar</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Sonderzeichen einfügen/editieren',
-		title		: 'Sonderzeichen auswählen'
+		title		: 'Sonderzeichen auswählen',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link einfügen/editieren',
+		other 		: '<andere>',
 		menu		: 'Link editieren',
 		title		: 'Link',
 		info		: 'Link-Info',
@@ -476,7 +483,8 @@ CKEDITOR.lang['de'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Smiley auswählen'
+		title	: 'Smiley auswählen',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -528,6 +536,7 @@ CKEDITOR.lang['de'] =
 	{
 		button			: 'Vorlagen',
 		title			: 'Vorlagen',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Aktuellen Inhalt ersetzen',
 		selectPromptMsg	: 'Klicken Sie auf eine Vorlage, um sie im Editor zu öffnen (der aktuelle Inhalt wird dabei gelöscht!):',
 		emptyListMsg	: '(keine Vorlagen definiert)'

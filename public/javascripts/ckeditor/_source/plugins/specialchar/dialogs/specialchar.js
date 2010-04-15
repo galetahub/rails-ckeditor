@@ -11,6 +11,30 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 	 */
 	var dialog,
 		lang = editor.lang.specialChar;
+
+	var insertSpecialChar = function ( specialChar )
+	{
+		var selection = editor.getSelection(),
+			ranges	  = selection.getRanges(),
+			range, textNode;
+
+		editor.fire( 'saveSnapshot' );
+
+		for ( var i = 0, len = ranges.length ; i < len ; i++ )
+		{
+			range = ranges[ i ];
+			range.deleteContents();
+
+			textNode =  CKEDITOR.dom.element.createFromHtml( specialChar );
+			range.insertNode( textNode );
+		}
+
+		range.moveToPosition( textNode, CKEDITOR.POSITION_AFTER_END );
+		range.select();
+
+		editor.fire( 'saveSnapshot' );
+	};
+
 	var onChoice = function( evt )
 	{
 		var target, value;
@@ -23,7 +47,12 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 		{
 			target.removeClass( "cke_light_background" );
 			dialog.hide();
-			editor.insertHtml( value );
+
+			// Firefox has bug on insert chars into a element use its own API. (#5170)
+			if ( CKEDITOR.env.gecko )
+				insertSpecialChar( value );
+			else
+				editor.insertHtml( value );
 		}
 	};
 
@@ -81,6 +110,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 		var element = ev.getTarget();
 		var relative, nodeToMove;
 		var keystroke = ev.getKeystroke();
+		var rtl = editor.lang.dir == 'rtl';
 
 		switch ( keystroke )
 		{
@@ -119,7 +149,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				break;
 
 			// RIGHT-ARROW
-			case 39 :
+			case rtl ? 37 : 39 :
 			// TAB
 			case 9 :
 				// relative is TD
@@ -153,7 +183,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				break;
 
 			// LEFT-ARROW
-			case 37 :
+			case rtl ? 39 : 37 :
 			// SHIFT + TAB
 			case CKEDITOR.SHIFT + 9 :
 				// relative is TD
@@ -260,7 +290,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 						charDesc = charDesc || character;
 
 						html.push(
-							'<td class="cke_dark_background" style="cursor: default">' +
+							'<td class="cke_dark_background" style="cursor: default" role="presentation">' +
 							'<a href="javascript: void(0);" role="option"' +
 							' aria-posinset="' + ( i +1 ) + '"',
 							' aria-setsize="' + size + '"',
@@ -284,7 +314,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 				html.push( '</tr>' );
 			}
 
-			html.push( '</tbody></table>', '<span id="specialchar_table_label" class="cke_voice_label">' + editor.lang.common.options +'</span>' );
+			html.push( '</tbody></table>', '<span id="specialchar_table_label" class="cke_voice_label">' + lang.options +'</span>' );
 
 			this.getContentElement( 'info', 'charContainer' ).getElement().setHtml( html.join( '' ) );
 		},

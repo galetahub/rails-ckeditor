@@ -110,17 +110,24 @@ CKEDITOR.lang['bn'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'বিশেষ অক্ষর যুক্ত কর',
-		title		: 'বিশেষ ক্যারেক্টার বাছাই কর'
+		title		: 'বিশেষ ক্যারেক্টার বাছাই কর',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'লিংক যুক্ত কর',
+		other 		: '<other>', // MISSING
 		menu		: 'লিংক সম্পাদন',
 		title		: 'লিংক',
 		info		: 'লিংক তথ্য',
@@ -476,7 +483,8 @@ CKEDITOR.lang['bn'] =
 	smiley :
 	{
 		toolbar	: 'স্মাইলী',
-		title	: 'স্মাইলী যুক্ত কর'
+		title	: 'স্মাইলী যুক্ত কর',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['bn'] =
 	clipboard :
 	{
 		title		: 'পেস্ট',
-		cutError	: 'আপনার ব্রাউজারের সুরক্ষা সেটিংস এডিটরকে অটোমেটিক কাট করার অনুমতি দেয়নি। দয়া করে এই কাজের জন্য কিবোর্ড ব্যবহার করুন (Ctrl+X)।',
-		copyError	: 'আপনার ব্রাউজারের সুরক্ষা সেটিংস এডিটরকে অটোমেটিক কপি করার অনুমতি দেয়নি। দয়া করে এই কাজের জন্য কিবোর্ড ব্যবহার করুন (Ctrl+C)।',
-		pasteMsg	: 'অনুগ্রহ করে নীচের বাক্সে কিবোর্ড ব্যবহার করে (<STRONG>Ctrl+V</STRONG>) পেস্ট করুন এবং <STRONG>OK</STRONG> চাপ দিন',
+		cutError	: 'আপনার ব্রাউজারের সুরক্ষা সেটিংস এডিটরকে অটোমেটিক কাট করার অনুমতি দেয়নি। দয়া করে এই কাজের জন্য কিবোর্ড ব্যবহার করুন (Ctrl/Cmd+X)।',
+		copyError	: 'আপনার ব্রাউজারের সুরক্ষা সেটিংস এডিটরকে অটোমেটিক কপি করার অনুমতি দেয়নি। দয়া করে এই কাজের জন্য কিবোর্ড ব্যবহার করুন (Ctrl/Cmd+C)।',
+		pasteMsg	: 'অনুগ্রহ করে নীচের বাক্সে কিবোর্ড ব্যবহার করে (<STRONG>Ctrl/Cmd+V</STRONG>) পেস্ট করুন এবং <STRONG>OK</STRONG> চাপ দিন',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['bn'] =
 	{
 		button			: 'টেমপ্লেট',
 		title			: 'কনটেন্ট টেমপ্লেট',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'অনুগ্রহ করে এডিটরে ওপেন করার জন্য টেমপ্লেট বাছাই করুন<br>(আসল কনটেন্ট হারিয়ে যাবে):',
 		emptyListMsg	: '(কোন টেমপ্লেট ডিফাইন করা নেই)'

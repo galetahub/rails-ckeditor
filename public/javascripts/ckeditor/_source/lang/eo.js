@@ -110,17 +110,24 @@ CKEDITOR.lang['eo'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Enmeti Specialan Signon',
-		title		: 'Enmeti Specialan Signon'
+		title		: 'Enmeti Specialan Signon',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Enmeti/Ŝanĝi Ligilon',
+		other 		: '<other>', // MISSING
 		menu		: 'Modifier Ligilon',
 		title		: 'Ligilo',
 		info		: 'Informoj pri la Ligilo',
@@ -476,7 +483,8 @@ CKEDITOR.lang['eo'] =
 	smiley :
 	{
 		toolbar	: 'Mienvinjeto',
-		title	: 'Enmeti Mienvinjeton'
+		title	: 'Enmeti Mienvinjeton',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['eo'] =
 	clipboard :
 	{
 		title		: 'Interglui',
-		cutError	: 'La sekurecagordo de via TTT-legilo ne permesas, ke la redaktilo faras eltondajn operaciojn. Bonvolu uzi la klavaron por tio (ctrl-X).',
-		copyError	: 'La sekurecagordo de via TTT-legilo ne permesas, ke la redaktilo faras kopiajn operaciojn. Bonvolu uzi la klavaron por tio (ctrl-C).',
-		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK', // MISSING
+		cutError	: 'La sekurecagordo de via TTT-legilo ne permesas, ke la redaktilo faras eltondajn operaciojn. Bonvolu uzi la klavaron por tio (Ctrl/Cmd-X).',
+		copyError	: 'La sekurecagordo de via TTT-legilo ne permesas, ke la redaktilo faras kopiajn operaciojn. Bonvolu uzi la klavaron por tio (Ctrl/Cmd-C).',
+		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl/Cmd+V</strong>) and hit OK', // MISSING
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['eo'] =
 	{
 		button			: 'Templates', // MISSING
 		title			: 'Content Templates', // MISSING
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'Please select the template to open in the editor', // MISSING
 		emptyListMsg	: '(No templates defined)' // MISSING

@@ -110,17 +110,24 @@ CKEDITOR.lang['af'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Spesiaale Karakter byvoeg',
-		title		: 'Kies spesiale karakter'
+		title		: 'Kies spesiale karakter',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Skakel byvoeg/verander',
+		other 		: '<ander>',
 		menu		: 'Verander skakel',
 		title		: 'Skakel',
 		info		: 'Skakel informasie',
@@ -476,7 +483,8 @@ CKEDITOR.lang['af'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Voeg Smiley by'
+		title	: 'Voeg Smiley by',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['af'] =
 	clipboard :
 	{
 		title		: 'Byvoeg',
-		cutError	: 'U browser se sekuriteit instelling behinder die uitsny aksie. Gebruik asseblief die sleutel kombenasie(Ctrl+X).',
-		copyError	: 'U browser se sekuriteit instelling behinder die kopieerings aksie. Gebruik asseblief die sleutel kombenasie(Ctrl+C).',
-		pasteMsg	: 'Voeg asseblief die inhoud in die gegewe box by met sleutel kombenasie(<STRONG>Ctrl+V</STRONG>) en druk <STRONG>OK</STRONG>.',
+		cutError	: 'U browser se sekuriteit instelling behinder die uitsny aksie. Gebruik asseblief die sleutel kombenasie(Ctrl/Cmd+X).',
+		copyError	: 'U browser se sekuriteit instelling behinder die kopieerings aksie. Gebruik asseblief die sleutel kombenasie(Ctrl/Cmd+C).',
+		pasteMsg	: 'Voeg asseblief die inhoud in die gegewe box by met sleutel kombenasie(<STRONG>Ctrl/Cmd+V</STRONG>) en druk <STRONG>OK</STRONG>.',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['af'] =
 	{
 		button			: 'Templates',
 		title			: 'Inhoud Templates',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Vervang bestaande inhoud',
 		selectPromptMsg	: 'Kies die template om te gebruik in die editor<br>(Inhoud word vervang!):',
 		emptyListMsg	: '(Geen templates gedefinieerd)'

@@ -55,6 +55,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 		var relative, nodeToMove;
 
 		var keystroke = ev.getKeystroke();
+		var rtl = editor.lang.dir == 'rtl';
 		switch ( keystroke )
 		{
 			// UP-ARROW
@@ -86,7 +87,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 				break;
 
 			// RIGHT-ARROW
-			case 39 :
+			case rtl ? 37 : 39 :
 			// TAB
 			case 9 :
 				// relative is TD
@@ -107,7 +108,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 				break;
 
 			// LEFT-ARROW
-			case 37 :
+			case rtl ? 39 : 37 :
 			// SHIFT + TAB
 			case CKEDITOR.SHIFT + 9 :
 				// relative is TD
@@ -135,7 +136,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 	var html =
 	[
 		'<div>' +
-		'<span id="smiley_emtions_label" class="cke_voice_label">' + editor.lang.common.options +'</span>',
+		'<span id="smiley_emtions_label" class="cke_voice_label">' + lang.options +'</span>',
 		'<table role="listbox" aria-labelledby="smiley_emtions_label" style="width:100%;height:100%" cellspacing="2" cellpadding="2"',
 		CKEDITOR.env.ie && CKEDITOR.env.quirks ? ' style="position:absolute;"' : '',
 		'><tbody>'
@@ -191,7 +192,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 			firstSmile.focus();
  		},
 		onClick : onClick,
-		style : 'width: 100%; height: 100%; border-collapse: separate;'
+		style : 'width: 100%; border-collapse: separate;'
 	};
 
 	return {

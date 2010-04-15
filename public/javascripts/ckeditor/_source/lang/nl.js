@@ -110,17 +110,24 @@ CKEDITOR.lang['nl'] =
 		unavailable		: '%1<span class="cke_accessibility">, niet beschikbaar</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Speciaal teken invoegen',
-		title		: 'Selecteer speciaal teken'
+		title		: 'Selecteer speciaal teken',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Link invoegen/wijzigen',
+		other 		: '<ander>',
 		menu		: 'Link wijzigen',
 		title		: 'Link',
 		info		: 'Linkomschrijving',
@@ -476,7 +483,8 @@ CKEDITOR.lang['nl'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Smiley invoegen'
+		title	: 'Smiley invoegen',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['nl'] =
 	clipboard :
 	{
 		title		: 'Plakken',
-		cutError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch knippen. Gebruik de sneltoets Ctrl+X van het toetsenbord.',
-		copyError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch kopiëren. Gebruik de sneltoets Ctrl+C van het toetsenbord.',
-		pasteMsg	: 'Plak de tekst in het volgende vak gebruik makend van uw toetsenbord (<strong>Ctrl+V</strong>) en klik op <strong>OK</strong>.',
+		cutError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch knippen. Gebruik de sneltoets Ctrl/Cmd+X van het toetsenbord.',
+		copyError	: 'De beveiligingsinstelling van de browser verhinderen het automatisch kopiëren. Gebruik de sneltoets Ctrl/Cmd+C van het toetsenbord.',
+		pasteMsg	: 'Plak de tekst in het volgende vak gebruik makend van uw toetsenbord (<strong>Ctrl/Cmd+V</strong>) en klik op <strong>OK</strong>.',
 		securityMsg	: 'Door de beveiligingsinstellingen van uw browser is het niet mogelijk om direct vanuit het klembord in de editor te plakken. Middels opnieuw plakken in dit venster kunt u de tekst alsnog plakken in de editor.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['nl'] =
 	{
 		button			: 'Sjablonen',
 		title			: 'Inhoud sjabonen',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Vervang de huidige inhoud',
 		selectPromptMsg	: 'Selecteer het sjabloon dat in de editor geopend moet worden (de actuele inhoud gaat verloren):',
 		emptyListMsg	: '(Geen sjablonen gedefinieerd)'

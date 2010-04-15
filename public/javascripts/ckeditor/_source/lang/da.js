@@ -110,17 +110,24 @@ CKEDITOR.lang['da'] =
 		unavailable		: '%1<span class="cke_accessibility">, ikke tilgængelig</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Indsæt symbol',
-		title		: 'Vælg symbol'
+		title		: 'Vælg symbol',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Indsæt/redigér hyperlink',
+		other 		: '<anden>',
 		menu		: 'Redigér hyperlink',
 		title		: 'Egenskaber for hyperlink',
 		info		: 'Generelt',
@@ -476,7 +483,8 @@ CKEDITOR.lang['da'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Vælg smiley'
+		title	: 'Vælg smiley',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['da'] =
 	clipboard :
 	{
 		title		: 'Indsæt',
-		cutError	: 'Din browsers sikkerhedsindstillinger tillader ikke editoren at få automatisk adgang til udklipsholderen.<br><br>Brug i stedet tastaturet til at klippe teksten (Ctrl+X).',
-		copyError	: 'Din browsers sikkerhedsindstillinger tillader ikke editoren at få automatisk adgang til udklipsholderen.<br><br>Brug i stedet tastaturet til at kopiere teksten (Ctrl+C).',
-		pasteMsg	: 'Indsæt i feltet herunder (<STRONG>Ctrl+V</STRONG>) og klik på <STRONG>OK</STRONG>.',
+		cutError	: 'Din browsers sikkerhedsindstillinger tillader ikke editoren at få automatisk adgang til udklipsholderen.<br><br>Brug i stedet tastaturet til at klippe teksten (Ctrl/Cmd+X).',
+		copyError	: 'Din browsers sikkerhedsindstillinger tillader ikke editoren at få automatisk adgang til udklipsholderen.<br><br>Brug i stedet tastaturet til at kopiere teksten (Ctrl/Cmd+C).',
+		pasteMsg	: 'Indsæt i feltet herunder (<STRONG>Ctrl/Cmd+V</STRONG>) og klik på <STRONG>OK</STRONG>.',
 		securityMsg	: 'Din browsers sikkerhedsindstillinger tillader ikke editoren at få automatisk adgang til udklipsholderen.<br><br>Du skal indsætte udklipsholderens indhold i dette vindue igen.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['da'] =
 	{
 		button			: 'Skabeloner',
 		title			: 'Indholdsskabeloner',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Erstat det faktiske indhold',
 		selectPromptMsg	: 'Vælg den skabelon, som skal åbnes i editoren (nuværende indhold vil blive overskrevet):',
 		emptyListMsg	: '(Der er ikke defineret nogen skabelon)'

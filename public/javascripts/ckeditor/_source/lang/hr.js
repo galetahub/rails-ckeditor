@@ -110,17 +110,24 @@ CKEDITOR.lang['hr'] =
 		unavailable		: '%1<span class="cke_accessibility">, nedostupno</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Ubaci posebne znakove',
-		title		: 'Odaberite posebni karakter'
+		title		: 'Odaberite posebni karakter',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Ubaci/promijeni link',
+		other 		: '<drugi>',
 		menu		: 'Promijeni link',
 		title		: 'Link',
 		info		: 'Link Info',
@@ -476,7 +483,8 @@ CKEDITOR.lang['hr'] =
 	smiley :
 	{
 		toolbar	: 'Smješko',
-		title	: 'Ubaci smješka'
+		title	: 'Ubaci smješka',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['hr'] =
 	clipboard :
 	{
 		title		: 'Zalijepi',
-		cutError	: 'Sigurnosne postavke Vašeg pretraživača ne dozvoljavaju operacije automatskog izrezivanja. Molimo koristite kraticu na tipkovnici (Ctrl+X).',
-		copyError	: 'Sigurnosne postavke Vašeg pretraživača ne dozvoljavaju operacije automatskog kopiranja. Molimo koristite kraticu na tipkovnici (Ctrl+C).',
-		pasteMsg	: 'Molimo zaljepite unutar doljnjeg okvira koristeći tipkovnicu (<STRONG>Ctrl+V</STRONG>) i kliknite <STRONG>OK</STRONG>.',
+		cutError	: 'Sigurnosne postavke Vašeg pretraživača ne dozvoljavaju operacije automatskog izrezivanja. Molimo koristite kraticu na tipkovnici (Ctrl/Cmd+X).',
+		copyError	: 'Sigurnosne postavke Vašeg pretraživača ne dozvoljavaju operacije automatskog kopiranja. Molimo koristite kraticu na tipkovnici (Ctrl/Cmd+C).',
+		pasteMsg	: 'Molimo zaljepite unutar doljnjeg okvira koristeći tipkovnicu (<STRONG>Ctrl/Cmd+V</STRONG>) i kliknite <STRONG>OK</STRONG>.',
 		securityMsg	: 'Zbog sigurnosnih postavki Vašeg pretraživača, editor nema direktan pristup Vašem međuspremniku. Potrebno je ponovno zalijepiti tekst u ovaj prozor.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['hr'] =
 	{
 		button			: 'Predlošci',
 		title			: 'Predlošci sadržaja',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Zamijeni trenutne sadržaje',
 		selectPromptMsg	: 'Molimo odaberite predložak koji želite otvoriti<br>(stvarni sadržaj će biti izgubljen):',
 		emptyListMsg	: '(Nema definiranih predložaka)'

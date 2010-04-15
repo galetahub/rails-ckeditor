@@ -53,7 +53,9 @@ CKEDITOR.plugins.add( 'resize',
 						editor.document.on( 'mousemove', dragHandler );
 						editor.document.on( 'mouseup', dragEndHandler );
 					}
-				} );
+				});
+
+			editor.on( 'destroy', function() { CKEDITOR.tools.removeFunction( mouseDownFn ); } );
 
 			editor.on( 'themeSpace', function( event )
 				{

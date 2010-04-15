@@ -227,6 +227,9 @@ CKEDITOR.ui.panel.prototype =
 				this.document.getById( 'cke_' + this.id + '_frame' )
 				: this._.holder;
 
+		// Disable context menu for block panel.
+		holder.getParent().getParent().disableContextMenu();
+
 		if ( current )
 		{
 			// Clean up the current block's effects on holder.
@@ -243,6 +246,16 @@ CKEDITOR.ui.panel.prototype =
 		block._.focusIndex = -1;
 
 		this._.onKeyDown = block.onKeyDown && CKEDITOR.tools.bind( block.onKeyDown, block );
+
+		block.onMark = function( item )
+		{
+			holder.setAttribute( 'aria-activedescendant', item.getId() + '_option' );
+		};
+
+		block.onUnmark = function()
+		{
+			holder.removeAttribute( 'aria-activedescendant' );
+		};
 
 		block.show();
 
@@ -278,6 +291,9 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 		if ( blockDefinition )
 			CKEDITOR.tools.extend( this, blockDefinition );
 
+		if ( !this.attributes.title )
+			this.attributes.title = this.attributes[ 'aria-label' ];
+
 		this.keys = {};
 
 		this._.focusIndex = -1;
@@ -303,6 +319,8 @@ CKEDITOR.ui.panel.block = CKEDITOR.tools.createClass(
 			if ( CKEDITOR.env.webkit )
 				item.getDocument().getWindow().focus();
 			item.focus();
+
+			this.onMark && this.onMark( item );
 		}
 	},
 

@@ -84,3 +84,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  *     editorFocus : false    // The command doesn't require focusing the editing document.
  * });
  */
+
+
+/**
+ * Whether the command state should be set to {@link CKEDITOR.TRISTATE_DISABLED} on startup.
+ * @name  CKEDITOR.commandDefinition.startDisabled
+ * @type {Boolean}
+ * @default false
+ * @example
+ * editorInstance.addCommand( 'unlink',
+ * {
+ *     exec : function( editor )
+ *     {
+ *     },
+ *     startDisabled : true    // Command is unavailable until selection is inside a link.
+ * });
+ */

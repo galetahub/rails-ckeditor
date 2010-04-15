@@ -568,6 +568,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 									{
 										if ( this.getValue() )
 											selectedTable.setAttribute( 'summary', this.getValue() );
+										else
+											selectedTable.removeAttribute( 'summary' );
 									}
 								}
 							]

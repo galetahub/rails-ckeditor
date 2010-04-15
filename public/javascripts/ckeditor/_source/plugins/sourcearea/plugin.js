@@ -138,6 +138,7 @@ CKEDITOR.plugins.add( 'sourcearea',
 
 						unload : function( holderElement )
 						{
+							textarea.clearCustomData();
 							editor.textarea = textarea = null;
 
 							if ( onResize )

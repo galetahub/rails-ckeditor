@@ -110,17 +110,24 @@ CKEDITOR.lang['it'] =
 		unavailable		: '%1<span class="cke_accessibility">, non disponibile</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Inserisci carattere speciale',
-		title		: 'Seleziona carattere speciale'
+		title		: 'Seleziona carattere speciale',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Inserisci/Modifica collegamento',
+		other 		: '<altro>',
 		menu		: 'Modifica collegamento',
 		title		: 'Collegamento',
 		info		: 'Informazioni collegamento',
@@ -476,7 +483,8 @@ CKEDITOR.lang['it'] =
 	smiley :
 	{
 		toolbar	: 'Emoticon',
-		title	: 'Inserisci emoticon'
+		title	: 'Inserisci emoticon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['it'] =
 	clipboard :
 	{
 		title		: 'Incolla',
-		cutError	: 'Le impostazioni di sicurezza del browser non permettono di tagliare automaticamente il testo. Usa la tastiera (Ctrl+X).',
-		copyError	: 'Le impostazioni di sicurezza del browser non permettono di copiare automaticamente il testo. Usa la tastiera (Ctrl+C).',
-		pasteMsg	: 'Incolla il testo all\'interno dell\'area sottostante usando la scorciatoia di tastiere (<STRONG>Ctrl+V</STRONG>) e premi <STRONG>OK</STRONG>.',
+		cutError	: 'Le impostazioni di sicurezza del browser non permettono di tagliare automaticamente il testo. Usa la tastiera (Ctrl/Cmd+X).',
+		copyError	: 'Le impostazioni di sicurezza del browser non permettono di copiare automaticamente il testo. Usa la tastiera (Ctrl/Cmd+C).',
+		pasteMsg	: 'Incolla il testo all\'interno dell\'area sottostante usando la scorciatoia di tastiere (<STRONG>Ctrl/Cmd+V</STRONG>) e premi <STRONG>OK</STRONG>.',
 		securityMsg	: 'A causa delle impostazioni di sicurezza del browser,l\'editor non è in grado di accedere direttamente agli appunti. E\' pertanto necessario incollarli di nuovo in questa finestra.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['it'] =
 	{
 		button			: 'Modelli',
 		title			: 'Contenuto dei modelli',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Cancella il contenuto corrente',
 		selectPromptMsg	: 'Seleziona il modello da aprire nell\'editor<br />(il contenuto attuale verrà eliminato):',
 		emptyListMsg	: '(Nessun modello definito)'

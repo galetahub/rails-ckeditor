@@ -110,17 +110,24 @@ CKEDITOR.lang['cs'] =
 		unavailable		: '%1<span class="cke_accessibility">, nedostupné</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Vložit speciální znaky',
-		title		: 'Výběr speciálního znaku'
+		title		: 'Výběr speciálního znaku',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Vložit/změnit odkaz',
+		other 		: '<jiný>',
 		menu		: 'Změnit odkaz',
 		title		: 'Odkaz',
 		info		: 'Informace o odkazu',
@@ -476,7 +483,8 @@ CKEDITOR.lang['cs'] =
 	smiley :
 	{
 		toolbar	: 'Smajlíky',
-		title	: 'Vkládání smajlíků'
+		title	: 'Vkládání smajlíků',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['cs'] =
 	clipboard :
 	{
 		title		: 'Vložit',
-		cutError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro vyjmutí zvoleného textu do schránky. Prosím vyjměte zvolený text do schránky pomocí klávesnice (Ctrl+X).',
-		copyError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro kopírování zvoleného textu do schránky. Prosím zkopírujte zvolený text do schránky pomocí klávesnice (Ctrl+C).',
-		pasteMsg	: 'Do následujícího pole vložte požadovaný obsah pomocí klávesnice (<STRONG>Ctrl+V</STRONG>) a stiskněte <STRONG>OK</STRONG>.',
+		cutError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro vyjmutí zvoleného textu do schránky. Prosím vyjměte zvolený text do schránky pomocí klávesnice (Ctrl/Cmd+X).',
+		copyError	: 'Bezpečnostní nastavení Vašeho prohlížeče nedovolují editoru spustit funkci pro kopírování zvoleného textu do schránky. Prosím zkopírujte zvolený text do schránky pomocí klávesnice (Ctrl/Cmd+C).',
+		pasteMsg	: 'Do následujícího pole vložte požadovaný obsah pomocí klávesnice (<STRONG>Ctrl/Cmd+V</STRONG>) a stiskněte <STRONG>OK</STRONG>.',
 		securityMsg	: 'Z důvodů nastavení bezpečnosti Vašeho prohlížeče nemůže editor přistupovat přímo do schránky. Obsah schránky prosím vložte znovu do tohoto okna.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['cs'] =
 	{
 		button			: 'Šablony',
 		title			: 'Šablony obsahu',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Nahradit aktuální obsah',
 		selectPromptMsg	: 'Prosím zvolte šablonu pro otevření v editoru<br>(aktuální obsah editoru bude ztracen):',
 		emptyListMsg	: '(Není definována žádná šablona)'

@@ -110,17 +110,24 @@ CKEDITOR.lang['et'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Sisesta erimärk',
-		title		: 'Vali erimärk'
+		title		: 'Vali erimärk',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Sisesta link / Muuda linki',
+		other 		: '<muu>',
 		menu		: 'Muuda linki',
 		title		: 'Link',
 		info		: 'Lingi info',
@@ -476,7 +483,8 @@ CKEDITOR.lang['et'] =
 	smiley :
 	{
 		toolbar	: 'Emotikon',
-		title	: 'Sisesta emotikon'
+		title	: 'Sisesta emotikon',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['et'] =
 	clipboard :
 	{
 		title		: 'Kleebi',
-		cutError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt lõigata. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl+X).',
-		copyError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt kopeerida. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl+C).',
-		pasteMsg	: 'Palun kleebi järgnevasse kasti kasutades klaviatuuri klahvikombinatsiooni (<STRONG>Ctrl+V</STRONG>) ja vajuta seejärel <STRONG>OK</STRONG>.',
+		cutError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt lõigata. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl/Cmd+X).',
+		copyError	: 'Sinu veebisirvija turvaseaded ei luba redaktoril automaatselt kopeerida. Palun kasutage selleks klaviatuuri klahvikombinatsiooni (Ctrl/Cmd+C).',
+		pasteMsg	: 'Palun kleebi järgnevasse kasti kasutades klaviatuuri klahvikombinatsiooni (<STRONG>Ctrl/Cmd+V</STRONG>) ja vajuta seejärel <STRONG>OK</STRONG>.',
 		securityMsg	: 'Sinu veebisirvija turvaseadete tõttu, ei oma redaktor otsest ligipääsu lõikelaua andmetele. Sa pead kleepima need uuesti siia aknasse.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['et'] =
 	{
 		button			: 'Šabloon',
 		title			: 'Sisu šabloonid',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Asenda tegelik sisu',
 		selectPromptMsg	: 'Palun vali šabloon, et avada see redaktoris<br />(praegune sisu läheb kaotsi):',
 		emptyListMsg	: '(Ühtegi šablooni ei ole defineeritud)'

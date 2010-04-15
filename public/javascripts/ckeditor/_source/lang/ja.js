@@ -110,17 +110,24 @@ CKEDITOR.lang['ja'] =
 		unavailable		: '%1<span class="cke_accessibility">, 利用不可能</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: '特殊文字挿入',
-		title		: '特殊文字選択'
+		title		: '特殊文字選択',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'リンク挿入/編集',
+		other 		: '<その他の>',
 		menu		: 'リンク編集',
 		title		: 'ハイパーリンク',
 		info		: 'ハイパーリンク 情報',
@@ -476,7 +483,8 @@ CKEDITOR.lang['ja'] =
 	smiley :
 	{
 		toolbar	: '絵文字',
-		title	: '顔文字挿入'
+		title	: '顔文字挿入',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['ja'] =
 	clipboard :
 	{
 		title		: '貼り付け',
-		cutError	: 'ブラウザーのセキュリティ設定によりエディタの切り取り操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl+X)を使用してください。',
-		copyError	: 'ブラウザーのセキュリティ設定によりエディタのコピー操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl+C)を使用してください。',
-		pasteMsg	: 'キーボード(<STRONG>Ctrl+V</STRONG>)を使用して、次の入力エリア内で貼って、<STRONG>OK</STRONG>を押してください。',
+		cutError	: 'ブラウザーのセキュリティ設定によりエディタの切り取り操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl/Cmd+X)を使用してください。',
+		copyError	: 'ブラウザーのセキュリティ設定によりエディタのコピー操作が自動で実行することができません。実行するには手動でキーボードの(Ctrl/Cmd+C)を使用してください。',
+		pasteMsg	: 'キーボード(<STRONG>Ctrl/Cmd+V</STRONG>)を使用して、次の入力エリア内で貼って、<STRONG>OK</STRONG>を押してください。',
 		securityMsg	: 'ブラウザのセキュリティ設定により、エディタはクリップボード・データに直接アクセスすることができません。このウィンドウは貼り付け操作を行う度に表示されます。',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['ja'] =
 	{
 		button			: 'テンプレート(雛形)',
 		title			: 'テンプレート内容',
+		options : 'Template Options', // MISSING
 		insertOption	: '現在のエディタの内容と置換えをします',
 		selectPromptMsg	: 'エディターで使用するテンプレートを選択してください。<br>(現在のエディタの内容は失われます):',
 		emptyListMsg	: '(テンプレートが定義されていません)'

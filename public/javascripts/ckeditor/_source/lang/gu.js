@@ -110,17 +110,24 @@ CKEDITOR.lang['gu'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'વિશિષ્ટ અક્ષર ઇન્સર્ટ/દાખલ કરવું',
-		title		: 'સ્પેશિઅલ વિશિષ્ટ અક્ષર પસંદ કરો'
+		title		: 'સ્પેશિઅલ વિશિષ્ટ અક્ષર પસંદ કરો',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'લિંક ઇન્સર્ટ/દાખલ કરવી',
+		other 		: '<other>', // MISSING
 		menu		: ' લિંક એડિટ/માં ફેરફાર કરવો',
 		title		: 'લિંક',
 		info		: 'લિંક ઇન્ફૉ ટૅબ',
@@ -476,7 +483,8 @@ CKEDITOR.lang['gu'] =
 	smiley :
 	{
 		toolbar	: 'સ્માઇલી',
-		title	: 'સ્માઇલી  પસંદ કરો'
+		title	: 'સ્માઇલી  પસંદ કરો',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['gu'] =
 	clipboard :
 	{
 		title		: 'પેસ્ટ',
-		cutError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કટ કરવાની પરવાનગી નથી આપતી. (Ctrl+X) નો ઉપયોગ કરો.',
-		copyError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કોપી કરવાની પરવાનગી નથી આપતી.  (Ctrl+C) का प्रयोग करें।',
-		pasteMsg	: 'Ctrl+V નો પ્રયોગ કરી પેસ્ટ કરો',
+		cutError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કટ કરવાની પરવાનગી નથી આપતી. (Ctrl/Cmd+X) નો ઉપયોગ કરો.',
+		copyError	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસ કોપી કરવાની પરવાનગી નથી આપતી.  (Ctrl/Cmd+C) का प्रयोग करें।',
+		pasteMsg	: 'Ctrl/Cmd+V નો પ્રયોગ કરી પેસ્ટ કરો',
 		securityMsg	: 'તમારા બ્રાઉઝર ની સુરક્ષિત સેટિંગસના કારણે,એડિટર તમારા કિલ્પબોર્ડ ડેટા ને કોપી નથી કરી શકતો. તમારે આ વિન્ડોમાં ફરીથી પેસ્ટ કરવું પડશે.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['gu'] =
 	{
 		button			: 'ટેમ્પ્લેટ',
 		title			: 'કન્ટેન્ટ ટેમ્પ્લેટ',
+		options : 'Template Options', // MISSING
 		insertOption	: 'મૂળ શબ્દને બદલો',
 		selectPromptMsg	: 'એડિટરમાં ઓપન કરવા ટેમ્પ્લેટ પસંદ કરો (વર્તમાન કન્ટેન્ટ સેવ નહીં થાય):',
 		emptyListMsg	: '(કોઈ ટેમ્પ્લેટ ડિફાઇન નથી)'

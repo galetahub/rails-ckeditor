@@ -110,17 +110,24 @@ CKEDITOR.lang['ms'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Masukkan Huruf Istimewa',
-		title		: 'Sila pilih huruf istimewa'
+		title		: 'Sila pilih huruf istimewa',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Masukkan/Sunting Sambungan',
+		other 		: '<lain>',
 		menu		: 'Sunting Sambungan',
 		title		: 'Sambungan',
 		info		: 'Butiran Sambungan',
@@ -476,7 +483,8 @@ CKEDITOR.lang['ms'] =
 	smiley :
 	{
 		toolbar	: 'Smiley',
-		title	: 'Masukkan Smiley'
+		title	: 'Masukkan Smiley',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['ms'] =
 	clipboard :
 	{
 		title		: 'Tampal',
-		cutError	: 'Keselamatan perisian browser anda tidak membenarkan operasi suntingan text/imej. Sila gunakan papan kekunci (Ctrl+X).',
-		copyError	: 'Keselamatan perisian browser anda tidak membenarkan operasi salinan text/imej. Sila gunakan papan kekunci (Ctrl+C).',
-		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl+V</strong>) and hit OK', // MISSING
+		cutError	: 'Keselamatan perisian browser anda tidak membenarkan operasi suntingan text/imej. Sila gunakan papan kekunci (Ctrl/Cmd+X).',
+		copyError	: 'Keselamatan perisian browser anda tidak membenarkan operasi salinan text/imej. Sila gunakan papan kekunci (Ctrl/Cmd+C).',
+		pasteMsg	: 'Please paste inside the following box using the keyboard (<strong>Ctrl/Cmd+V</strong>) and hit OK', // MISSING
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['ms'] =
 	{
 		button			: 'Templat',
 		title			: 'Templat Kandungan',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'Sila pilih templat untuk dibuka oleh editor<br>(kandungan sebenar akan hilang):',
 		emptyListMsg	: '(Tiada Templat Disimpan)'

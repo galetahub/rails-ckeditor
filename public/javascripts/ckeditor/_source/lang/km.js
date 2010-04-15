@@ -110,17 +110,24 @@ CKEDITOR.lang['km'] =
 		unavailable		: '%1<span class="cke_accessibility">, unavailable</span>' // MISSING
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'បន្ថែមអក្សរពិសេស',
-		title		: 'តូអក្សរពិសេស'
+		title		: 'តូអក្សរពិសេស',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'បន្ថែម/កែប្រែ ឈ្នាប់',
+		other 		: '<other>', // MISSING
 		menu		: 'កែប្រែឈ្នាប់',
 		title		: 'ឈ្នាប់',
 		info		: 'ពត៌មានអំពីឈ្នាប់',
@@ -476,7 +483,8 @@ CKEDITOR.lang['km'] =
 	smiley :
 	{
 		toolbar	: 'រូបភាព',
-		title	: 'បញ្ជូលរូបភាព'
+		title	: 'បញ្ជូលរូបភាព',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['km'] =
 	clipboard :
 	{
 		title		: 'ចំលងដាក់',
-		cutError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ កាត់អត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ  (Ctrl+X) ។',
-		copyError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ ចំលងអត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ (Ctrl+C)។',
-		pasteMsg	: 'សូមចំលងអត្ថបទទៅដាក់ក្នុងប្រអប់ដូចខាងក្រោមដោយប្រើប្រាស់ ឃី \u200b(<STRONG>Ctrl+V</STRONG>) ហើយចុច <STRONG>OK</STRONG> ។',
+		cutError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ កាត់អត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ  (Ctrl/Cmd+X) ។',
+		copyError	: 'ការកំណត់សុវត្ថភាពរបស់កម្មវិធីរុករករបស់លោកអ្នក នេះ\u200bមិនអាចធ្វើកម្មវិធីតាក់តែងអត្ថបទ ចំលងអត្ថបទយកដោយស្វ័យប្រវត្តបានឡើយ ។ សូមប្រើប្រាស់បន្សំ ឃីដូចនេះ (Ctrl/Cmd+C)។',
+		pasteMsg	: 'សូមចំលងអត្ថបទទៅដាក់ក្នុងប្រអប់ដូចខាងក្រោមដោយប្រើប្រាស់ ឃី \u200b(<STRONG>Ctrl/Cmd+V</STRONG>) ហើយចុច <STRONG>OK</STRONG> ។',
 		securityMsg	: 'Because of your browser security settings, the editor is not able to access your clipboard data directly. You are required to paste it again in this window.', // MISSING
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['km'] =
 	{
 		button			: 'ឯកសារគំរូ',
 		title			: 'ឯកសារគំរូ របស់អត្ថន័យ',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Replace actual contents', // MISSING
 		selectPromptMsg	: 'សូមជ្រើសរើសឯកសារគំរូ ដើម្បីបើកនៅក្នុងកម្មវិធីតាក់តែងអត្ថបទ<br>(អត្ថបទនឹងបាត់បង់):',
 		emptyListMsg	: '(ពុំមានឯកសារគំរូត្រូវបានកំណត់)'

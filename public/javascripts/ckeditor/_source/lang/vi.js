@@ -110,17 +110,24 @@ CKEDITOR.lang['vi'] =
 		unavailable		: '%1<span class="cke_accessibility">, không có</span>'
 	},
 
+	contextmenu :
+	{
+		options : 'Context Menu Options' // MISSING
+	},
+
 	// Special char dialog.
 	specialChar		:
 	{
 		toolbar		: 'Chèn Ký tự đặc biệt',
-		title		: 'Hãy chọn Ký tự đặc biệt'
+		title		: 'Hãy chọn Ký tự đặc biệt',
+		options : 'Special Character Options' // MISSING
 	},
 
 	// Link dialog.
 	link :
 	{
 		toolbar		: 'Chèn/Sửa Liên kết',
+		other 		: '<khác>',
 		menu		: 'Sửa Liên kết',
 		title		: 'Liên kết',
 		info		: 'Thông tin Liên kết',
@@ -476,7 +483,8 @@ CKEDITOR.lang['vi'] =
 	smiley :
 	{
 		toolbar	: 'Hình biểu lộ cảm xúc (mặt cười)',
-		title	: 'Chèn Hình biểu lộ cảm xúc (mặt cười)'
+		title	: 'Chèn Hình biểu lộ cảm xúc (mặt cười)',
+		options : 'Smiley Options' // MISSING
 	},
 
 	elementsPath :
@@ -503,9 +511,9 @@ CKEDITOR.lang['vi'] =
 	clipboard :
 	{
 		title		: 'Dán',
-		cutError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh cắt. Hãy sử dụng bàn phím cho lệnh này (Ctrl+X).',
-		copyError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh sao chép. Hãy sử dụng bàn phím cho lệnh này (Ctrl+C).',
-		pasteMsg	: 'Hãy dán nội dung vào trong khung bên dưới, sử dụng tổ hợp phím (<STRONG>Ctrl+V</STRONG>) và nhấn vào nút <STRONG>Đồng ý</STRONG>.',
+		cutError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh cắt. Hãy sử dụng bàn phím cho lệnh này (Ctrl/Cmd+X).',
+		copyError	: 'Các thiết lập bảo mật của trình duyệt không cho phép trình biên tập tự động thực thi lệnh sao chép. Hãy sử dụng bàn phím cho lệnh này (Ctrl/Cmd+C).',
+		pasteMsg	: 'Hãy dán nội dung vào trong khung bên dưới, sử dụng tổ hợp phím (<STRONG>Ctrl/Cmd+V</STRONG>) và nhấn vào nút <STRONG>Đồng ý</STRONG>.',
 		securityMsg	: 'Do thiết lập bảo mật của trình duyệt nên trình biên tập không thể truy cập trực tiếp vào nội dung đã sao chép. Bạn cần phải dán lại nội dung vào cửa sổ này.',
 		pasteArea	: 'Paste Area' // MISSING
 	},
@@ -528,6 +536,7 @@ CKEDITOR.lang['vi'] =
 	{
 		button			: 'Mẫu dựng sẵn',
 		title			: 'Nội dung Mẫu dựng sẵn',
+		options : 'Template Options', // MISSING
 		insertOption	: 'Thay thế nội dung hiện tại',
 		selectPromptMsg	: 'Hãy chọn Mẫu dựng sẵn để mở trong trình biên tập<br>(nội dung hiện tại sẽ bị mất):',
 		emptyListMsg	: '(Không có Mẫu dựng sẵn nào được định nghĩa)'

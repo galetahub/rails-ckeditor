@@ -135,8 +135,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		// Apply indenting or outdenting on the array.
 		var baseIndent = listArray[ lastItem.getCustomData( 'listarray_index' ) ].indent;
-		for ( i = startItem.getCustomData( 'listarray_index' ) ; i <= lastItem.getCustomData( 'listarray_index' ) ; i++ )
-			listArray[i].indent += indentOffset;
+		for ( i = startItem.getCustomData( 'listarray_index' ); i <= lastItem.getCustomData( 'listarray_index' ); i++ )
+		{
+			listArray[ i ].indent += indentOffset;
+			// Make sure the newly created sublist get a brand-new element of the same type. (#5372)
+			var listRoot = listArray[ i ].parent;
+			listArray[ i ].parent = new CKEDITOR.dom.element( listRoot.getName(), listRoot.getDocument() );
+		}
+
 		for ( i = lastItem.getCustomData( 'listarray_index' ) + 1 ;
 				i < listArray.length && listArray[i].indent > baseIndent ; i++ )
 			listArray[i].indent += indentOffset;
@@ -225,7 +231,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				if ( indentStep < 1 )
 					block.$.className = className;
 				else
-					block.addClass( editor.config.indentClasses[ indentStep - 1 ] );
+					block.$.className = CKEDITOR.tools.ltrim( className + ' ' + editor.config.indentClasses[ indentStep - 1 ] );
 			}
 			else
 			{
@@ -255,6 +261,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		}
 		else
 			this.indentCssProperty = editor.config.contentsLangDirection == 'ltr' ? 'margin-left' : 'margin-right';
+		this.startDisabled = name == 'outdent';
 	}
 
 	indentCommand.prototype = {
@@ -321,6 +328,31 @@ CKEDITOR.tools.extend( CKEDITOR.config,
 		indentUnit : 'px',
 		indentClasses : null
 	});
+
+/**
+ * Size of each indentation step
+ * @type Number
+ * @example
+ * config.indentOffset = 40;
+ */
+
+ /**
+ * Unit for the indentation style
+ * @type String
+ * @example
+ * config.indentUnit = 'px';
+ */
+
+ /**
+ * List of classes to use for indenting the contents.
+ * @type Array
+ * @example
+ * // Don't use classes for indenting. (this is the default value)
+ * config.indentClasses = null;
+ * @example
+ * // Use the classes 'Indent1', 'Indent2', 'Indent3'
+ * config.indentClasses = ['Indent1', 'Indent2', 'Indent3'];
+ */
 
 /**
  * Size of each indentation step

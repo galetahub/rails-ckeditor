@@ -1,19 +1,4 @@
 module Ckeditor
-  PLUGIN_NAME = 'rails-ckeditor'
-  PLUGIN_PATH = File.join(RAILS_ROOT, "vendor/plugins", PLUGIN_NAME)
-  
-  PLUGIN_PUBLIC_PATH = Ckeditor::Config.exists? ? Ckeditor::Config['public_path'] : "#{RAILS_ROOT}/public/uploads"
-  PLUGIN_PUBLIC_URI  = Ckeditor::Config.exists? ? Ckeditor::Config['public_uri'] : "/uploads"
-  
-  PLUGIN_CONTROLLER_PATH = File.join(PLUGIN_PATH, "/app/controllers")
-  PLUGIN_VIEWS_PATH      = File.join(PLUGIN_PATH, "/app/views")
-  PLUGIN_HELPER_PATH     = File.join(PLUGIN_PATH, "/app/helpers")
-  
-  PLUGIN_FILE_MANAGER_URI        = Ckeditor::Config.exists? ? Ckeditor::Config['file_manager_uri'] : ""
-  PLUGIN_FILE_MANAGER_UPLOAD_URI = Ckeditor::Config.exists? ? Ckeditor::Config['file_manager_upload_uri'] : ""
-  PLUGIN_FILE_MANAGER_IMAGE_URI  = Ckeditor::Config.exists? ? Ckeditor::Config['file_manager_image_uri'] : ""
-  PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI = Ckeditor::Config.exists? ? Ckeditor::Config['file_manager_image_upload_uri'] : ""
-
   module ViewHelper
     include ActionView::Helpers
     
@@ -57,13 +42,13 @@ module Ckeditor
       
       ckeditor_options[:swf_params] = options[:swf_params] unless options[:swf_params].nil?
       
-      ckeditor_options[:filebrowserBrowseUrl] = PLUGIN_FILE_MANAGER_URI
-      ckeditor_options[:filebrowserUploadUrl] = PLUGIN_FILE_MANAGER_UPLOAD_URI
+      ckeditor_options[:filebrowserBrowseUrl] = Ckeditor::Config['file_manager_uri']
+      ckeditor_options[:filebrowserUploadUrl] = Ckeditor::Config['file_manager_upload_uri']
       
-      ckeditor_options[:filebrowserImageBrowseUrl] = PLUGIN_FILE_MANAGER_IMAGE_URI
-      ckeditor_options[:filebrowserImageUploadUrl] = PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI
+      ckeditor_options[:filebrowserImageBrowseUrl] = Ckeditor::Config['file_manager_image_uri']
+      ckeditor_options[:filebrowserImageUploadUrl] = Ckeditor::Config['file_manager_image_upload_uri']
       
-      output_buffer = ActionView::SafeBuffer.new
+      output_buffer = ActiveSupport::SafeBuffer.new
       
       if options[:ajax]
         textarea_options.update(:name => id)

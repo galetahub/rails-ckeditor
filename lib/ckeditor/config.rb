@@ -1,10 +1,11 @@
-module Ckeditor
+require 'yaml'
 
+module Ckeditor
 	class Config
 		cattr_accessor :filepath
-  	@@filepath = File.join(RAILS_ROOT, "config/ckeditor.yml")
+  	@@filepath = Rails.root.join("config", "ckeditor.yml")
     
-  	@@available_settings = (File.exists?(@@filepath) ? YAML::load(File.open(@@filepath))[RAILS_ENV] : nil)
+  	@@available_settings = (File.exists?(@@filepath) ? YAML::load(File.open(@@filepath))[Rails.env] : nil)
   	
   	class << self
   	
@@ -22,22 +23,6 @@ module Ckeditor
 			def exists?
 				File.exists?(@@filepath)
 			end
-			
-			def create_yml
-        unless File.exists?(@@filepath)
-          ck_config = File.join(RAILS_ROOT, 'vendor/plugins/rails-ckeditor/', 'ckeditor.yml.tpl')
-          FileUtils.cp ck_config, @@filepath unless File.exist?(@@filepath)
-          
-          log "#{@@filepath} example file created!"
-          log "Please modify your settings"
-        else
-          log "config/#{@@filepath} already exists. Aborting task..."
-        end
-      end
-			
-			def log(message)
-        STDOUT.puts message
-      end
 		end
 	end
 end

@@ -6,7 +6,7 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.2
+CKEditor version: 3.2.1
 SWFUpload version: 2.2.0
 Rails version: 2.3.x
 
@@ -17,6 +17,20 @@ Demo appication:
 "rails-ckeditor-demo-app":http://github.com/galetahub/rails-ckeditor-demo-app
 
 h2. Install
+
+Rails 3.0
+
+@rails plugin install git://github.com/galetahub/rails-ckeditor.git@
+
+@rails generate ckeditor  [options]@
+
+Runtime options:
+  -f, [--force]    # Overwrite files that already exist
+  -p, [--pretend]  # Run but do not make any changes
+  -q, [--quiet]    # Supress status output
+  -s, [--skip]     # Skip files that already exist
+
+Rails 2.x
 
 @./script/plugin install git://github.com/galetahub/rails-ckeditor.git@
 
@@ -61,7 +75,7 @@ Then instead of the normal textarea helper from Rails use this one
 FormBuilder helper for more usefully 
 
 <pre><code>  
-  <% form_for :page, :url => pages_path do |form| -%>
+  <%= form_for :page, :url => pages_path do |form| -%>
     ...
     <%= form.cktext_area :notes, :toolbar=>'Full', :width=>'400px', :heigth=>'200px' %>
     ...

@@ -1,72 +1,44 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/packagetask'
 require 'rake/rdoctask'
-require 'find'
+require File.join(File.dirname(__FILE__), 'lib', 'ckeditor', 'version')
 
 desc 'Default: run unit tests.'
 task :default => :test
 
-desc 'Test the ckeditor plugin.'
+desc 'Test the rails-ckeditor plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
+  t.libs << 'test'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
 end
 
-desc 'Generate documentation for the ckeditor plugin.'
+desc 'Generate documentation for the rails-ckeditor plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'Ckeditor'
+  rdoc.title    = 'Rails Ckeditor'
   rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('README.textile')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-# Globals
-require 'lib/ckeditor_version'
-PKG_NAME = 'ckeditor_plugin'
-PKG_VERSION = CkeditorVersion.current
-
-PKG_FILES = ['README', 'CHANGELOG', 'init.rb', 'install.rb']
-PKG_DIRECTORIES = ['app/', 'lib/', 'public/', 'tasks/', 'test/']
-PKG_DIRECTORIES.each do |dir|
-  Find.find(dir) do |f|
-    if FileTest.directory?(f) and f =~ /\.svn/
-      Find.prune
-    else
-      PKG_FILES << f
-    end
-  end
-end
-
-# Tasks
-task :package
-Rake::PackageTask.new(PKG_NAME, PKG_VERSION) do |p|
-        p.need_tar = true
-        p.package_files = PKG_FILES
-end
-
-# "Gem" part of the Rakefile
 begin
-  require 'rake/gempackagetask'
-
-  spec = Gem::Specification.new do |s|
-          s.platform = Gem::Platform::RUBY
-          s.summary = "CKeditor plugin for Rails"
-          s.name = PKG_NAME
-          s.version = PKG_VERSION
-          s.requirements << 'none'
-          s.files = PKG_FILES
-          s.description = "Adds CKeditor helpers and code to Rails application"
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "ckeditor"
+    gemspec.version = Ckeditor::Version.dup
+    gemspec.summary = "Rails plugin for integration ckeditor 3.x"
+    gemspec.description = "CKEditor is a text editor to be used inside web pages. It’s a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to
+                           the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice."
+    gemspec.email = "galeta.igor@gmail.com"
+    gemspec.homepage = "http://github.com/galetahub/rails-ckeditor"
+    gemspec.authors = ["Igor Galeta"]
+    gemspec.files = FileList["[A-Z]*", "{app,config,lib}/**/*"]
+    gemspec.rubyforge_project = "ckeditor"
   end
-
-  desc "Create gem package for CKeditor plugin"
-  task :package_gem
-  Rake::GemPackageTask.new(spec) do |pkg|
-          pkg.need_zip = true
-          pkg.need_tar = true
-  end
+  
+  Jeweler::GemcutterTasks.new
 rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end
-

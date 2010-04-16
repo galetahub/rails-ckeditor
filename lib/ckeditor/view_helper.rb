@@ -42,11 +42,11 @@ module Ckeditor
       
       ckeditor_options[:swf_params] = options[:swf_params] unless options[:swf_params].nil?
       
-      ckeditor_options[:filebrowserBrowseUrl] = Ckeditor::Config['file_manager_uri']
-      ckeditor_options[:filebrowserUploadUrl] = Ckeditor::Config['file_manager_upload_uri']
+      ckeditor_options[:filebrowserBrowseUrl] = Ckeditor.file_manager_uri
+      ckeditor_options[:filebrowserUploadUrl] = Ckeditor.file_manager_upload_uri
       
-      ckeditor_options[:filebrowserImageBrowseUrl] = Ckeditor::Config['file_manager_image_uri']
-      ckeditor_options[:filebrowserImageUploadUrl] = Ckeditor::Config['file_manager_image_upload_uri']
+      ckeditor_options[:filebrowserImageBrowseUrl] = Ckeditor.file_manager_image_uri
+      ckeditor_options[:filebrowserImageUploadUrl] = Ckeditor.file_manager_image_upload_uri
       
       output_buffer = ActiveSupport::SafeBuffer.new
       

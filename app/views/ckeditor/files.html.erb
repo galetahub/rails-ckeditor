@@ -1,5 +1,5 @@
 <script type="text/javascript">	  
-  var upload_path = "<%= new_attachment_path_with_session_information(:file) %>";
+  var upload_path = "<%= ckeditor_attachment_path(:file) %>";
   
   function setUrl(url) 
   {  
@@ -83,7 +83,7 @@
 	<tr>
 		<td style="height: 100%;" id="qu">
 		  <div style="overflow:auto; height:550px;" id='container'>
-			 <%= render :partial=>"file", :collection=>@files %>
+			 <%= render :partial => "file", :collection => @files %>
 		  </div>
 		</td>
 	</tr>

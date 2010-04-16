@@ -1,6 +1,5 @@
-class CkeditorController < ActionController::Base
-  before_filter :swf_options, :only=>[:images, :files, :create]
-  
+class CkeditorController < ApplicationController
+  before_filter :swf_options, :only => [:images, :files, :create]
   layout "ckeditor"
   
   # GET /ckeditor/images
@@ -23,7 +22,7 @@ class CkeditorController < ActionController::Base
     end
   end
   
-  # POST /ckeditor/create
+  # POST /ckeditor/create/:kind
   def create
     @kind = params[:kind] || 'file'
     
@@ -44,13 +43,14 @@ class CkeditorController < ActionController::Base
 	  end
     
     @record.attributes = options
+    @record.user ||= current_user if respond_to?(:current_user)
     
     if @record.valid? && @record.save
       @text = params[:CKEditor].blank? ? @record.to_json(:only=>[:id, :type], :methods=>[:url, :content_type, :size, :filename, :format_created_at]) : %Q"<script type='text/javascript'>
         window.parent.CKEDITOR.tools.callFunction(#{params[:CKEditorFuncNum]}, '#{escape_single_quotes(@record.url(:content))}');
       </script>"
       
-      render :text=>@text
+      render :text => @text
     else
       render :nothing => true
     end
@@ -59,21 +59,19 @@ class CkeditorController < ActionController::Base
   private
     
     def swf_options
-      if Ckeditor::Config.exists?
-        @swf_file_post_name = Ckeditor::Config['swf_file_post_name']
-        
-        if params[:action] == 'images'
-          @file_size_limit = Ckeditor::Config['swf_image_file_size_limit']
-				  @file_types = Ckeditor::Config['swf_image_file_types']
-				  @file_types_description = Ckeditor::Config['swf_image_file_types_description']
-				  @file_upload_limit = Ckeditor::Config['swf_image_file_upload_limit']
-			  else
-			    @file_size_limit = Ckeditor::Config['swf_file_size_limit']
-			    @file_types = Ckeditor::Config['swf_file_types']
-			    @file_types_description = Ckeditor::Config['swf_file_types_description']
-			    @file_upload_limit = Ckeditor::Config['swf_file_upload_limit']
-			  end
-      end
+      @swf_file_post_name = Ckeditor.swf_file_post_name
+      
+      if params[:action] == 'images'
+        @file_size_limit        = Ckeditor.swf_image_file_size_limit
+			  @file_types             = Ckeditor.swf_image_file_types
+			  @file_types_description = Ckeditor.swf_image_file_types_description
+			  @file_upload_limit      = Ckeditor.swf_image_file_upload_limit
+		  else
+		    @file_size_limit        = Ckeditor.swf_file_size_limit
+		    @file_types             = Ckeditor.swf_file_types
+		    @file_types_description = Ckeditor.swf_file_types_description
+		    @file_upload_limit      = Ckeditor.swf_file_upload_limit
+		  end
       
       @swf_file_post_name ||= 'data'
       @file_size_limit ||= "5 MB"

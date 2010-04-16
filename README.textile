@@ -18,11 +18,14 @@ Demo appication:
 
 h2. Install
 
-Rails 3.0
+h3. Rails 3.0
 
-@rails plugin install git://github.com/galetahub/rails-ckeditor.git@
+@gem install ckeditor@
 
-@rails generate ckeditor  [options]@
+In "Gemfile":
+@gem 'ckeditor', '3.2.1'@
+
+@rails generate ckeditor [options]@
 
 Runtime options:
   -f, [--force]    # Overwrite files that already exist
@@ -30,7 +33,9 @@ Runtime options:
   -q, [--quiet]    # Supress status output
   -s, [--skip]     # Skip files that already exist
 
-Rails 2.x
+Check @config/initializers/ckeditor.rb@ for more configuration options
+
+h3. Rails 2.x
 
 @./script/plugin install git://github.com/galetahub/rails-ckeditor.git@
 
@@ -39,24 +44,6 @@ Rails 2.x
 @rake ckeditor:config@
 
 Last rake generated file config/ckeditor.yml:
-<pre><code>
-development: 
-  swf_file_post_name: "data"
-  swf_image_file_types_description: "Images"
-  swf_image_file_types: "*.jpg;*.jpeg;*.png;*.gif"
-  swf_image_file_size_limit: "5 MB"
-  swf_image_file_upload_limit: 10
-  swf_types_description: "Files"
-  swf_file_types: "*.doc;*.wpd;*.pdf;*.swf;*.xls"
-  swf_file_size_limit: "10 MB"
-  swf_file_file_upload_limit: 5
-  public_uri: "/uploads"
-  public_path: "public/uploads"
-  file_manager_uri: "/ckeditor/files"
-  file_manager_upload_uri: "/ckeditor/create?kind=file"
-  file_manager_image_upload_uri: "/ckeditor/create?kind=image"
-  file_manager_image_uri: "/ckeditor/images"
-</code></pre>
 
 For attachment_fu: @swf_file_post_name: "uploaded_data"@
 

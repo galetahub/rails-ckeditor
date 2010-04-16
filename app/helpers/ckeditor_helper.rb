@@ -1,24 +1,20 @@
 module CkeditorHelper
-  def new_attachment_path_with_session_information(kind)
-    session_key = ActionController::Base.session_options[:key]
-    
-    options = {}
-    controller = case kind
-      when :image then Ckeditor::PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI
-      when :file  then Ckeditor::PLUGIN_FILE_MANAGER_UPLOAD_URI
-      else '/ckeditor/create'
+  def ckeditor_attachment_path(kind)
+    path = case kind
+      when :image then Ckeditor.file_manager_image_upload_uri
+      when :file  then Ckeditor.file_manager_upload_uri
+      else '/ckeditor/create/default'
     end
     
-    if controller.include?('?')
-      arr = controller.split('?')
-      options = Rack::Utils.parse_query(arr.last)
-      controller = arr.first
-    end
+    session_key = Rails.application.config.send(:session_options)[:key]
     
-    options[:controller] = controller
+    options = Rails.application.routes.recognize_path(path, :method => :post)
     options[:protocol] = "http://"
-    options[session_key] = cookies[session_key]
-    options[request_forgery_protection_token] = form_authenticity_token unless request_forgery_protection_token.nil?
+    options[session_key] = CGI.unescape(cookies[session_key])
+    
+    unless request_forgery_protection_token.nil?
+      options[request_forgery_protection_token] = CGI.unescape(form_authenticity_token)
+    end
     
     url_for(options)
   end
@@ -36,6 +32,6 @@ module CkeditorHelper
       else '/javascripts/ckeditor/images/ckfnothumb.gif'
     end
     
-    image_tag(image, :alt=>path, :title=>filename, :onerror=>"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class=>'image')
+    image_tag(image, :alt => path, :title => filename, :onerror => "this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class => 'image')
   end
 end

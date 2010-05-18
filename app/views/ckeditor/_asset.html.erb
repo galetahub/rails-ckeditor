@@ -1,0 +1,15 @@
+<div class="FCKThumb">
+  <table border="0" cellpadding="0" cellspacing="0" height="100" width="100">
+    <tbody>
+      <tr>
+        <td align="center" valign="middle">
+          <%= image_tag(asset.url_thumb, :alt => asset.url_content, :title => asset.filename, :onerror=>"this.src='/javascripts/ckeditor/images/ckfnothumb.gif'", :class=>'image') %>
+        </td>
+       </tr>
+     </tbody>
+   </table>
+   
+   <div class="FCKFileName"><%= asset.filename %></div>
+   <div class="FCKFileDate"><%= asset.format_created_at %></div>
+   <div class="FCKFileSize"><%= number_to_human_size(asset.size, :precision => 2) %></div>
+</div>

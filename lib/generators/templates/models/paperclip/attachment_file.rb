@@ -18,7 +18,17 @@ class Ckeditor::AttachmentFile < Ckeditor::Asset
 	end
 	
 	def url_thumb
-	  "/images/download_ico.gif"
+	  extname = File.extname(filename)
+    
+    case extname.to_s
+      when '.swf' then '/javascripts/ckeditor/images/swf.gif'
+      when '.pdf' then '/javascripts/ckeditor/images/pdf.gif'
+      when '.doc', '.txt' then '/javascripts/ckeditor/images/doc.gif'
+      when '.mp3' then '/javascripts/ckeditor/images/mp3.gif'
+      when '.rar', '.zip', '.tg' then '/javascripts/ckeditor/images/rar.gif'
+      when '.xls' then '/javascripts/ckeditor/images/xls.gif'
+      else '/javascripts/ckeditor/images/ckfnothumb.gif'
+    end
 	end
 	
 	def to_json(options = {})

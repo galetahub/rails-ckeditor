@@ -83,7 +83,7 @@
 	<tr>
 		<td style="height: 100%;" id="qu">
 		  <div style="overflow:auto; height:550px;" id='container'>
-			 <%= render :partial => "file", :collection => @files %>
+			 <%= render :partial => "asset", :collection => @files, :as => :asset %>
 		  </div>
 		</td>
 	</tr>

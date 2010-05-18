@@ -6,19 +6,19 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-  CKEditor version: 3.2.1         http://ckeditor.com/
-  SWFUpload version: 2.2.0.1 Core http://swfupload.org/
-  Rails version: 3.0.0.beta3
+CKEditor version: 3.2.1         http://ckeditor.com/
+SWFUpload version: 2.2.0.1 Core http://swfupload.org/
+Rails version: 3.0.0.beta3 
 
 Demo appication (Rails 2.3.x):
-"rails-ckeditor-demo-app":http://github.com/galetahub/rails-ckeditor-demo-app
+http://github.com/galetahub/rails-ckeditor-demo-app
 
 ==Install
 
 ===Rails 3
 
-In "Gemfile":
-  gem 'ckeditor', '3.2.2'
+In your appication "Gemfile":
+  gem 'ckeditor', '3.2.3'
 
 Next step is generate ckeditor js files and configuration file
 Check "config/initializers/ckeditor.rb" for more configuration options:
@@ -45,7 +45,7 @@ Generate ckeditor core files:
 This rake generated file config/ckeditor.yml:
   rake ckeditor:config
 
-For attachment_fu: @swf_file_post_name: "uploaded_data"@
+For attachment_fu option "swf_file_post_name" must be "uploaded_data".
 
 ==Usage
 
@@ -66,14 +66,14 @@ FormBuilder helper for more usefully:
   <% end -%>
   
 ===Support options
-  :cols         # Textarea cols
-  :rows         # Textarea rows
-  :width        # Editor width
-  :height       # Editor height
+  :cols         # Textarea cols (default: 70)
+  :rows         # Textarea rows (default: 20)
+  :width        # Editor width (default: 100%)
+  :height       # Editor height (default: 100%)
   :class        # Textarea css class name
   :toolbar      # Toolbar name
   :skin         # Editor skin
-  :language     # Editor language
+  :language     # Editor language (default: I18n.locale)
   :swf_params   # SWFUpload additional params (Hash)
   :id           # textarea DOM element id
 

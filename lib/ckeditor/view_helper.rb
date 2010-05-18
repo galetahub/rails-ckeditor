@@ -23,7 +23,7 @@ module Ckeditor
       value = var.send(field.to_sym) if var
       value ||= options[:value] || ""
       
-      element_id = ckeditor_element_id(object, field)
+      element_id = options[:id] || ckeditor_element_id(object, field)
       
       textarea_options = { :id => element_id }
       
@@ -52,16 +52,9 @@ module Ckeditor
       
       output_buffer = ActiveSupport::SafeBuffer.new
       
-      if options[:ajax]
-        textarea_options.update(:name => element_id)
+      textarea_options.update(:style => "width:#{width};height:#{height}")
         
-        output_buffer << tag(:input, { "type" => "hidden", "name" => "#{object}[#{field}]", "id" => element_id})
-        output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
-      else
-        textarea_options.update(:style => "width:#{width};height:#{height}")
-        
-        output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
-      end
+      output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options)
       
       output_buffer << javascript_tag("CKEDITOR.replace('#{element_id}', { 
           #{ckeditor_applay_options(ckeditor_options)}
@@ -70,15 +63,20 @@ module Ckeditor
       output_buffer
     end
     
+    def ckeditor_ajax_script(backend = 'jquery')
+      javascript_tag("$(document).ready(function(){  
+        $('form[data-remote]').bind('ajax:before', function(){
+          for (instance in CKEDITOR.instances){
+            CKEDITOR.instances[instance].updateElement();
+          }
+        });
+      });")
+    end
+    
     protected
       
       def ckeditor_element_id(object, field)
         "#{object}_#{field}_editor"
-      end
-
-      def ckeditor_before_js(object, field)
-        id = ckeditor_element_id(object, field)
-        "var oEditor = CKEDITOR.instances.#{id}.getData();"
       end
       
       def ckeditor_applay_options(options={})

@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.2.2"
+  s.version = "3.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
@@ -14,14 +14,14 @@ Gem::Specification.new do |s|
                            the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
-    "README.textile",
-     "TODO"
+    "README.rdoc",
+     "README.textile"
   ]
   s.files = [
     "CHANGELOG",
+     "README.rdoc",
      "README.textile",
      "Rakefile",
-     "TODO",
      "app/controllers/ckeditor_controller.rb",
      "app/helpers/ckeditor_helper.rb",
      "app/views/ckeditor/_asset.html.erb",
@@ -32,7 +32,6 @@ Gem::Specification.new do |s|
      "config/routes.rb",
      "lib/ckeditor.rb",
      "lib/ckeditor/engine.rb",
-     "lib/ckeditor/file_storage.rb",
      "lib/ckeditor/form_builder.rb",
      "lib/ckeditor/formtastic.rb",
      "lib/ckeditor/middleware.rb",

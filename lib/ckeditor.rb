@@ -47,6 +47,22 @@ module Ckeditor
   mattr_accessor :file_manager_image_uri
   @@file_manager_image_uri = "/ckeditor/images"
   
+  mattr_accessor :file_manager_image_model
+  @@file_manager_image_model = "Ckeditor::Picture"
+  
+  mattr_accessor :file_manager_file_model
+  @@file_manager_file_model = "Ckeditor::AttachmentFile"
+  
+  def self.image_model
+    @@image_model ||= @@file_manager_image_model.to_s.constantize
+    @@image_model
+  end
+  
+  def self.file_model
+    @@file_model ||= @@file_manager_file_model.to_s.constantize
+    @@file_model
+  end
+  
   # Default way to setup Ckeditor. Run rails generate ckeditor to create
   # a fresh initializer with all configuration values.
   def self.setup
@@ -55,3 +71,7 @@ module Ckeditor
 end
 
 require 'ckeditor/engine'
+
+if Object.const_defined?("Formtastic")
+  require "ckeditor/formtastic"
+end

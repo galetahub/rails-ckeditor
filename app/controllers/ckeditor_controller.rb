@@ -1,10 +1,11 @@
 class CkeditorController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter :swf_options, :only => [:images, :files, :create]
   layout "ckeditor"
   
   # GET /ckeditor/images
   def images
-    @images = Picture.find(:all, :order=>"id DESC")
+    @images = Ckeditor.image_model.find(:all, :order=>"id DESC")
     
     respond_to do |format|
       format.html {}
@@ -14,7 +15,7 @@ class CkeditorController < ApplicationController
   
   # GET /ckeditor/files
   def files
-    @files = AttachmentFile.find(:all, :order=>"id DESC")
+    @files = Ckeditor.file_model.find(:all, :order=>"id DESC")
     
     respond_to do |format|
       format.html {}
@@ -27,8 +28,8 @@ class CkeditorController < ApplicationController
     @kind = params[:kind] || 'file'
     
     @record = case @kind.downcase
-      when 'file'  then AttachmentFile.new
-			when 'image' then Picture.new
+      when 'file'  then Ckeditor.file_model.new
+			when 'image' then Ckeditor.image_model.new
 	  end
 	  
 	  unless params[:CKEditor].blank?	  

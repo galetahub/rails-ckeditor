@@ -7,8 +7,8 @@ Because CKEditor is licensed under flexible Open Source and commercial licenses,
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
 CKEditor version: 3.2.1
-SWFUpload version: 2.2.0
-Rails version: 2.3.x
+SWFUpload version: 2.2.0.1 Core
+Rails version: 3.0.0.beta3
 
 "ckeditor.com":http://ckeditor.com/
 "swfupload.org":http://swfupload.org/
@@ -18,22 +18,25 @@ Demo appication:
 
 h2. Install
 
-h3. Rails 3.0
-
-@gem install ckeditor@
+h3. Rails 3
 
 In "Gemfile":
-@gem 'ckeditor', '3.2.1'@
+@gem 'ckeditor', '3.2.2'@
 
-@rails generate ckeditor [options]@
-
-Runtime options:
-  -f, [--force]    # Overwrite files that already exist
-  -p, [--pretend]  # Run but do not make any changes
-  -q, [--quiet]    # Supress status output
-  -s, [--skip]     # Skip files that already exist
-
+Copy ckeditor js files and generate configuration file
 Check @config/initializers/ckeditor.rb@ for more configuration options
+
+@rails generate ckeditor_core@
+
+Generate ckeditor models for file upload support
+
+For paperclip:
+@rails generate ckeditor_models@
+
+For attachment_fu:
+@rails generate ckeditor_models --backend=attachment_fu@
+
+@rake db:migarte@
 
 h3. Rails 2.x
 
@@ -91,28 +94,7 @@ h3. AJAX
 
 To use a remote form you need to do something like this
 <pre><code>
-  <%= form_remote_tag :url => @options.merge(:controller => @scaffold_controller),
-                    :before => Ckeditor_before_js('note', 'text') %>
-
-    <%= ckeditor_textarea( "note", "text", :ajax => true ) %>
-
-  <%= end_form_tag %>
-</code></pre>
-
-If you forget to put in the :before it won't work, you can also use the Ckeditor_form_remote_tag described below
-
-h3. Multiple Editors in a form
-
-To create a form using multiple editors use the Ckeditor_form_remote_tag helper and pass the :editors option. This takes an hash of model symbol keys with each having
-an array as its value. The array should contain the list of fields that will have editors attached to them.
-<pre><code>
-  <%= ckeditor_form_remote_tag :url => @options.merge(:controller => @scaffold_controller),
-                              :editors => { :multinote => ['text1', 'text2'] } %>
-
-    <%= ckeditor_textarea( "multinote", "text1", :ajax => true ) %>
-    <%= ckeditor_textarea( "multinote", "text2", :ajax => true ) %>
-
-  <%= end_form_tag %>
+  <%= ckeditor_textarea("note", "text", :ajax => true ) %>
 </code></pre>
 
 h3. File uploads
@@ -124,100 +106,17 @@ for displaying and uploading files. It uses classes Picture and AttachmentFile, 
 
 For S3 storage look at @../rails-ckeditor/examples/s3@
 
-For paperclip:
-ActiveRecord model Asset (asset.rb):
+h3. Formtastic integration
 <pre><code>
-class Asset < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :assetable, :polymorphic => true
-
-  def url(*args)
-    data.url(*args)
-  end
-  alias :public_filename :url
-
-  def filename
-    data_file_name
-  end
-  
-  def content_type
-    data_content_type
-  end
-  
-  def size
-    data_file_size
-  end
-  
-  def path
-    data.path
-  end
-  
-  def styles
-    data.styles
-  end
-  
-  def format_created_at
-    I18n.l(self.created_at, :format=>"%d.%m.%Y %H:%M")
-  end
-  
-  def to_xml(options = {})
-    xml = options[:builder] ||= Builder::XmlMarkup.new(:indent => options[:indent])
-
-    xml.tag!(self.type.to_s.downcase) do
-      xml.filename{ xml.cdata!(self.filename) }
-      xml.size self.size
-      xml.path{ xml.cdata!(self.url) }
-      
-      xml.styles do
-        self.styles.each do |style|
-          xml.tag!(style.first, self.url(style.first))
-        end
-      end unless self.styles.empty?
-    end
-  end
-end
-</pre></code>
-
-ActiveRecord model AttachmentFile (attachment_file.rb):
-<pre><code>
-class AttachmentFile < Asset
-  has_attached_file :data,
-                    :url => "/assets/attachments/:id/:filename",
-                    :path => ":rails_root/public/assets/attachments/:id/:filename"
-
-  validates_attachment_size :data, :less_than => 10.megabytes
-end
-</pre></code>
-
-ActiveRecord model Picture (picture.rb):
-<pre><code>
-class Picture < Asset
-  has_attached_file :data,
-                    :url  => "/assets/pictures/:id/:style_:basename.:extension",
-                    :path => ":rails_root/public/assets/pictures/:id/:style_:basename.:extension",
-	            :styles => { :content => '575>', :thumb => '100x100' }
-	
-  validates_attachment_size :data, :less_than => 2.megabytes
-  
-  def url_content
-    url(:content)
-  end
-  
-  def url_thumb
-    url(:thumb)
-  end
-  
-  def to_json(options = {})
-    options[:methods] ||= []
-    options[:methods] << :url_content
-    options[:methods] << :url_thumb
-    super options
-  end
-end
+  <%= form.input :content, :as => :ckeditor %>
 </code></pre>
 
-More info in @../rails-ckeditor/examples/models@. 
-Do not forget about migration @../rails-ckeditor/examples/migrations@.
+h3. Middleware
+
+Ckeditor appends middleware ("Ckeditor::Middleware") before session store to 
+support swf upload with AuthenticityToken.
+
+@rake middleware@
 
 h2. TODOs
 

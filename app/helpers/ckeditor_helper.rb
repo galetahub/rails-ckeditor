@@ -12,14 +12,14 @@ module CkeditorHelper
     options[:protocol] = "http://"
     options[session_key] = CGI.unescape(cookies[session_key])
     
-    unless request_forgery_protection_token.nil?
-      options[request_forgery_protection_token] = CGI.unescape(form_authenticity_token)
+    if protect_against_forgery?
+      options[request_forgery_protection_token] = form_authenticity_token
     end
     
     url_for(options)
   end
   
-  def file_image_tag(filename, path)
+  def ckeditor_image_tag(filename, path)
     extname = File.extname(filename)
     
     image = case extname.to_s

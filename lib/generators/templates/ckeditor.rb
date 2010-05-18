@@ -46,6 +46,7 @@ Ckeditor.setup do |config|
   # Path for upload images process
   #config.file_manager_image_upload_uri = "/ckeditor/create/image"
  
-  #config.public_uri = "/uploads"
-  #config.public_path = "public/uploads" 
+  # Model's names witch processing in ckeditor_controller
+  #config.file_manager_image_model = "Ckeditor::Picture"
+  #config.file_manager_file_model = "Ckeditor::AttachmentFile"
 end

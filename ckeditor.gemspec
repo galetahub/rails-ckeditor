@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.2.1"
+  s.version = "3.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-04-16}
+  s.date = %q{2010-05-18}
   s.description = %q{CKEditor is a text editor to be used inside web pages. It’s a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to
                            the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.}
   s.email = %q{galeta.igor@gmail.com}
@@ -35,10 +35,14 @@ Gem::Specification.new do |s|
      "lib/ckeditor/engine.rb",
      "lib/ckeditor/file_storage.rb",
      "lib/ckeditor/form_builder.rb",
+     "lib/ckeditor/formtastic.rb",
+     "lib/ckeditor/middleware.rb",
      "lib/ckeditor/utils.rb",
      "lib/ckeditor/version.rb",
      "lib/ckeditor/view_helper.rb",
-     "lib/generators/ckeditor_generator.rb",
+     "lib/generators/USAGE",
+     "lib/generators/ckeditor_core_generator.rb",
+     "lib/generators/ckeditor_models_generator.rb",
      "lib/generators/templates/ckeditor.rb",
      "lib/generators/templates/ckeditor.yml",
      "lib/generators/templates/ckeditor/CHANGES.html",
@@ -640,6 +644,14 @@ Gem::Specification.new do |s|
      "lib/generators/templates/ckeditor/swfupload/swfupload.swf",
      "lib/generators/templates/ckeditor/swfupload/swfupload.swfobject.js",
      "lib/generators/templates/ckeditor/themes/default/theme.js",
+     "lib/generators/templates/models/attachment_fu/asset.rb",
+     "lib/generators/templates/models/attachment_fu/attachment_file.rb",
+     "lib/generators/templates/models/attachment_fu/migration.rb",
+     "lib/generators/templates/models/attachment_fu/picture.rb",
+     "lib/generators/templates/models/paperclip/asset.rb",
+     "lib/generators/templates/models/paperclip/attachment_file.rb",
+     "lib/generators/templates/models/paperclip/migration.rb",
+     "lib/generators/templates/models/paperclip/picture.rb",
      "lib/tasks/ckeditor_tasks.rake"
   ]
   s.homepage = %q{http://github.com/galetahub/rails-ckeditor}
@@ -653,11 +665,11 @@ Gem::Specification.new do |s|
      "examples/migrations/paperclip/create_assets.rb",
      "examples/s3/attachment_file.rb",
      "examples/s3/picture.rb",
-     "examples/models/attachment_fu/attachment_file.rb",
      "examples/models/attachment_fu/asset.rb",
+     "examples/models/attachment_fu/attachment_file.rb",
      "examples/models/attachment_fu/picture.rb",
-     "examples/models/paperclip/attachment_file.rb",
      "examples/models/paperclip/asset.rb",
+     "examples/models/paperclip/attachment_file.rb",
      "examples/models/paperclip/picture.rb"
   ]
 

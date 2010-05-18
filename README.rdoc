@@ -6,9 +6,9 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.2.1         http://ckeditor.com/
-SWFUpload version: 2.2.0.1 Core http://swfupload.org/
-Rails version: 3.0.0.beta3 
+CKEditor version: 3.2.1 (http://ckeditor.com)
+SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
+Rails version: 3.0.0.beta3
 
 Demo appication (Rails 2.3.x):
 http://github.com/galetahub/rails-ckeditor-demo-app
@@ -57,7 +57,7 @@ Then instead of the normal textarea helper from Rails use this one:
 
 FormBuilder helper for more usefully:
 
-  <%= form_for :page, :url => pages_path do |form| -%>
+  <%= form_for @page do |form| -%>
     ...
     <%= form.cktext_area :notes, :toolbar=>'Full', :width=>'400px', :heigth=>'200px' %>
     ...
@@ -87,7 +87,7 @@ This stylesheet use editor for displaying edit area:
 
 To use a remote form you need to call "ckeditor_ajax_script" helper method:
 
-  <%= form_for :page, :url => pages_path, :remote => true do |form| -%>
+  <%= form_for @page, :remote => true do |form| -%>
     <%= form.cktext_area("note", "content") %>
     ...
     <%= form.cktext_area("note", "about") %>

@@ -5,22 +5,20 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.2.3"
+  s.version = "3.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-05-18}
+  s.date = %q{2010-06-01}
   s.description = %q{CKEditor is a text editor to be used inside web pages. It’s a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to
                            the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
-    "README.rdoc",
-     "README.textile"
+    "README.rdoc"
   ]
   s.files = [
     "CHANGELOG",
      "README.rdoc",
-     "README.textile",
      "Rakefile",
      "app/controllers/ckeditor_controller.rb",
      "app/helpers/ckeditor_helper.rb",
@@ -656,7 +654,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{ckeditor}
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Rails plugin for integration ckeditor 3.x}
   s.test_files = [
     "examples/migrations/attachment_fu/create_assets.rb",
@@ -675,7 +673,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else

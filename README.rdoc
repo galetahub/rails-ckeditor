@@ -7,7 +7,9 @@ Because CKEditor is licensed under flexible Open Source and commercial licenses,
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
 CKEditor version: 3.2.1 (http://ckeditor.com)
+
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
+
 Rails version: 3.0.0.beta3
 
 Demo appication (Rails 2.3.x):
@@ -59,7 +61,7 @@ FormBuilder helper for more usefully:
 
   <%= form_for @page do |form| -%>
     ...
-    <%= form.cktext_area :notes, :toolbar=>'Full', :width=>'400px', :heigth=>'200px' %>
+    <%= form.cktext_area :notes, :toolbar=>'Full', :width=>'400px', :height=>'200px' %>
     ...
     <%= form.cktext_area :content, :swf_params=>{:assetable_type=>'User', :assetable_id=>current_user.id} %>
     ...

@@ -10,10 +10,10 @@ module CkeditorHelper
     
     options = Rails.application.routes.recognize_path(path, :method => :post)
     options[:protocol] = "http://"
-    options[session_key] = CGI.unescape(cookies[session_key])
+    options[session_key] = Rack::Utils.escape(cookies[session_key])
     
     if protect_against_forgery?
-      options[request_forgery_protection_token] = form_authenticity_token
+      options[request_forgery_protection_token] = Rack::Utils.escape(form_authenticity_token)
     end
     
     url_for(options)

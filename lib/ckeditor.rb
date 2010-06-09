@@ -1,6 +1,7 @@
 module Ckeditor
   autoload :ViewHelper, 'ckeditor/view_helper'
   autoload :FormBuilder, 'ckeditor/form_builder'
+  autoload :CustomFormBuilder, 'ckeditor/formtastic'
   
   mattr_accessor :swf_file_post_name
   @@swf_file_post_name = "data"
@@ -71,7 +72,3 @@ module Ckeditor
 end
 
 require 'ckeditor/engine'
-
-if Object.const_defined?("Formtastic")
-  require "ckeditor/formtastic"
-end

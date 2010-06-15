@@ -1,0 +1,7 @@
+CKEditor
+========
+
+# Copy ckeditor's core files into 'public/javascripts' 
+# and generate configuration file in 'config/initializers/ckeditor.rb'
+
+rails generate ckeditor:base

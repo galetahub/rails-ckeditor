@@ -67,12 +67,6 @@ body .cke_dialog
 	margin-bottom: 10px;
 }
 
-.cke_skin_kama .cke_browser_ie.cke_rtl .cke_dialog_title
-{
-	position: static !important;
-	unicode-bidi: bidi-override;
-}
-
 .cke_skin_kama .cke_dialog_contents
 {
 	background-color: #ebebeb;
@@ -685,7 +679,7 @@ body .cke_dialog
 	cursor: hand;
 }
 
-.cke_skin_kama .cke_dialog  #ImagePreviewBox
+.cke_skin_kama .cke_dialog  .ImagePreviewBox
 {
 	border : 2px ridge black;
 	overflow : scroll;
@@ -695,7 +689,7 @@ body .cke_dialog
 	background-color : white;
 }
 
-.cke_skin_kama .cke_dialog #ImagePreviewBox table td {
+.cke_skin_kama .cke_dialog .ImagePreviewBox table td {
 	white-space: normal;
 }
 
@@ -705,7 +699,7 @@ body .cke_dialog
 	_position: absolute;
 }
 
-.cke_skin_kama .cke_dialog  #ImagePreviewLoader
+.cke_skin_kama .cke_dialog  .ImagePreviewLoader
 {
 	position: absolute;
 	white-space : normal;
@@ -720,7 +714,7 @@ body .cke_dialog
 	background-color : #e4e4e4;
 }
 
-.cke_skin_kama .cke_dialog  #FlashPreviewBox
+.cke_skin_kama .cke_dialog  .FlashPreviewBox
 {
 	white-space : normal;
 	border : 2px ridge black;

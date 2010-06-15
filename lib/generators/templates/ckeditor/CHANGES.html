@@ -35,6 +35,116 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		CKEditor Changelog
 	</h1>
 	<h3>
+			CKEditor 3.3.1</h3>
+	<p>
+			Fixed issues:</p>
+	<ul>
+		<li><a href="http://dev.fckeditor.net/ticket/5780">#5780</a> : Text selection lost when opening some of the dialogs.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5787">#5787</a> : Liststyle plugin wasn't packaged into the core (CKEDITOR.resourceManager.load exception).</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5637">#5637</a> : Fix wrong nesting that generated "&lt;head&gt; must be a child of &lt;html&gt;" warning in Webkit.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5790">#5790</a> : Internal only attributes output on fullpage &lt;html&gt; tag.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5761">#5761</a> : [IE] Color dialog matrix buttons are barely clickable in quirks mode.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5759">#5759</a> : [IE] Clicking on the scrollbar and then on the host page causes error.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5772">#5772</a> : List style dialog is missing tab page ids.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5782">#5782</a> : [FF] Wysiwyg mode is broken by 'display' style changes on editor's parent DOM tree.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5801">#5801</a> : [IE] contentEditable="false" doesn't apply in effect on inline-elements.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5794">#5794</a> : Empty find matching twice results in JavaScript error.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5732">#5732</a> : If it isn't possible to connect to the SCAYT servers the dialogs might hang in Firefox. Fix for Firefox>=3.6.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5807">#5807</a> : [FF2] New page command results in uneditable document.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5807">#5807</a> : [FF2] SCAYT plugin is disabled in Firefox2 due to selection interference.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5772">#5772</a> : [IE] Some numbered list style types are not supported by IE6/7 and causes JavaScript error.</li>
+	</ul>
+	<h3>
+		CKEditor 3.3</h3>
+	<p>
+		New features:</p>
+	<ul>
+		<li><a href="http://dev.fckeditor.net/ticket/635">#635</a> : The properties dialog will now open when double clicking on objects.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3893">#3893</a> : It's now possible to indent/outdent lists when selecting the first list item.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4968">#4968</a> : The <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.contentsLangDirection">contentsLangDirection</a> setting now has a default value 'ui' which inherit language direction from the editor UI language.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4649">#4649</a> : The color picker dialog is now accessible.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3593">#3593</a> : The editing area is now enabled by contentEditable="true" instead of designMode="on" to allow creating uneditable content elements in all browsers.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4056">#4056</a> : Hidden fields will now be displayed as fake element just like in FCKeditor 2.</li>
+	</ul>
+<h3>
+		CKEditor 3.2.2</h3>
+	<p>
+		New features:</p>
+	<ul>
+		<li>The SCAYT spell checker is now enabled by default through the <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.scayt_autoStartup">autoStartup</a> setting.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5631">#5631</a> : The SCAYT context menu options can now be reorganized through the <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.scayt_contextMenuItemsOrder">scayt_contextMenuItemsOrder</a> setting.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4231">#4231</a> : Introducing the <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.resize_dir">resize_dir setting</a>, to be able to restrict manual resizing of the editor to only one direction (horizontal/vertical).</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5479">#5479</a> : Introducing the classic ASP integration files and samples.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5024">#5024</a> : Added samples (<a href="http://nightly.ckeditor.com/latest/ckeditor/_samples/output_html.html">HTML</a> and <a href="http://nightly.ckeditor.com/latest/ckeditor/_samples/output_xhtml.html">XHTML</a>) to show how to output HTML using fonts and other attributes instead of styles.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4358">#4358</a> : Introduced the List Properties dialog.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5485">#5485</a> : Adding the <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.contentsLanguage">contentsLanguage</a> configuration option to be able to set the language for the editor contents.</li>
+	</ul>
+	<p>
+		Fixed issues:</p>
+	<ul>
+		<li><a href="http://dev.fckeditor.net/ticket/5330">#5330</a> : Corrected detection of CTRL and META keys in Macs for the context menu.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5434">#5434</a> : Fixed access denied issues with IE when accessing web sites through IPv6 IP addresses.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4476">#4476</a> : [IE] Inaccessible empty list item contains sub list.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4881">#4881</a> : [IE] Selection range broken because of cutting a single control type element from it.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5505">#5505</a> : Image dialog throw JavaScript error when click close dialog before preview area is loading.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5144">#5144</a> : [Chrome] Paste in Webkit sometimes leaves extra 'div' element.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5021">#5021</a> : [Firefox] Typing in empty document start from second line when <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.enterMode">enterMode</a> = CKEDITOR.ENTER_BR.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5416">#5416</a> : [IE] Delete table throws a error when <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.enterMode">enterMode</a> = CKEDITOR.ENTER_BR.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4459">#4459</a> : [IE] Select element is penetrating the maximized editor in IE6.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5559">#5559</a> : [IE] The first call to <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.editor.html#setData">setData</a> is affected by iframe cache when loading the wysiwyg mode.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5567">#5567</a> : [IE] Remove inline styles in some case doesn't join identical siblings.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5450">#5450</a> : [FireFox] Press ENTER on 'replace' button result wrong.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5121">#5121</a> : Recognizes the &lt;br /&gt; tag as a separator when apply block styles and <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.enterMode">enterMode</a> = CKEDITOR.ENTER_BR.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5575">#5575</a> : <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.html#.replaceAll">CKEDITOR.replaceAll</a> should consider all kind of white spaces between class names.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5582">#5582</a> : Prevent the default behavior when click the 'x' button to close dialog box.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5584">#5584</a> : ENTER key with <a href="http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.forceEnterMode">forceEnterMode</a> turns on doesn't inherit current block attributes.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4797">#4797</a> : [Opera] Press ENTER key in dialog fields to close throws JavaScript error.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5578">#5578</a> : Add flash fake element align property when switch mode (source to wysiwyg).</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5577">#5577</a> : Update delete column behavior when choose multiple cells in the same column.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5512">#5512</a> : Open context menu with SHIFT+F10 doesn't get correct editor selection.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5433">#5433</a> : English protocol text directions in Link dialog are not incorrect in 'rtl' UI languages.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5553">#5553</a> : Paste dialog clipboard area text direction is incorrect for 'rtl' content languages.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4734">#4734</a> : Font size resets when font name is changed in an empty numbered list.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5237">#5237</a> : English text in dialogs' title is flipped when using RTL language.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/3257">#3257</a> : Create list doesn't keep blocks as headings.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5111">#5111</a> : [Firefox] JAWS doesn't respect PC cursor mode (application role) on toolbar.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5530">#5530</a> : Page break for printing can't be removed with undo.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5381">#5381</a> : Unable to place cursor between two paragraphs in body.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5568">#5568</a> : [IE6/7] Selecting a entire table cell changes the original range.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5623">#5623</a> : [Firefox] Apply style that edges another inline style result incorrect.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5586">#5586</a> : [Firefox] Maximize the second editor ruins full screen mode.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5617">#5617</a> : HTML filter system does not allow two 'text' filter rules.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5663">#5663</a> : General memory clean up after destroying last instance.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5461">#5461</a> : [IE] Fix Paste from Word dialog doesn't accept imput problem.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5676">#5676</a> : Make color buttons use RRGGBB instead of RGB for better compatibility with IE.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/4948">#4948</a> : [Safari] Select the first/last cell of table to open context menu may lead to undetected table.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5591">#5591</a> : [Firefox] Select a list item makes selected element broken.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5667">#5667</a> : Pasting in a RTL page content causes shows up the horizontal scrollbar.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5688">#5688</a> : Duplicate ids are used in dialog definition.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5719">#5719</a> : [IE] 'change' dialog event should not be triggered when dialog is already closed.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5747">#5747</a> : [IE] Error thrown when IE input field editing mode is turned on.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5516">#5516</a> : IE8: Toolbar buttons have higher bottom padding.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5402">#5402</a> : SHIFT-ENTER could now be used to exit from preformat block.</li>
+		<li>SCAYT plugin related:<ul>
+			<li><a href="http://dev.fckeditor.net/ticket/4836">#4836</a> : Using SCAYT result in fragile elements when applying inline styles.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5425">#5425</a> : [Opera] Disable SCAYT plugin for Opera browser.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5632">#5632</a> : SCAYT word marker is not visible on text with background-color set.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/4125">#4125</a> : Remove Format command incorrectly removes SCAYT word markers.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5671">#5671</a> : SCAYT bootstrap script could be added multiple times unnecessarily.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5573">#5573</a> : SCAYT move cursor position after insert element into marked word text.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5546">#5546</a> : SCAYT interferes with undo/redo commands.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5570">#5570</a> : [IE] First enabling SCAYT blind cursor in editor.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5741">#5741</a> : Enable SCAYT cause error in multiple editor instances.</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5744">#5744</a> : Remove editor with SCAYT enabled in source mode throws error.</li>
+		</ul></li>
+		<li>Updated the following language files:<ul>
+			<li><a href="http://dev.fckeditor.net/ticket/5432">#5432</a> : Dutch;</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5619">#5619</a> : Finnish;</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5515">#5515</a> : Hebrew;</li>
+			<li><a href="http://dev.fckeditor.net/ticket/5588">#5588</a> : Turkish;</li>
+		</ul></li>
+	</ul>
+	<h3>
 		CKEditor 3.2.1</h3>
 	<p>
 		New features:</p>
@@ -123,12 +233,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		<li><a href="http://dev.fckeditor.net/ticket/5221">#5221</a> : Range is mangled when making collapsed selection in an empty paragraph.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/5261">#5261</a> : Config option 'scayt_autoStartup' slow down editor loading.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/3846">#3846</a> : Google Chrome - No Img properties after inserting.</li>
-		<li><a href="http://dev.fckeditor.net/ticket/5465">#5465</a> : ShiftEnter=DIV doesn't respect list item when pressing enter at end of list item.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5465">#5465</a> : ShiftEnter=DIV doesn't respect list item when pressing ENTER at end of list item.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/5454">#5454</a> : After replaced success, the popup window couldn't be closed and a js error occured.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/4784">#4784</a> : Incorrect cursor position after delete table cells.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/5149">#5149</a> : [FF] Cursor disappears after maximize when the editor has focus.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/5220">#5220</a> : DTD now shows tolerance to &lt;style&gt; appear inside content.</li>
-		<li><a href="http://dev.fckeditor.net/ticket/5540">#5540</a> : Mobile browsers (iPhone, Android...) are marked as incompatible as they don't support editing features.</li>
+		<li><a href="http://dev.fckeditor.net/ticket/5440">#5440</a> : Mobile browsers (iPhone, Android...) are marked as incompatible as they don't support editing features.</li>
 		<li><a href="http://dev.fckeditor.net/ticket/5504">#5504</a> : [IE6/7] 'Paste' dialog will always get opened even when user allows the clipboard access dialog when using 'Paste' button.</li>
 		<li>Updated the following language files:<ul>
 			<li><a href="http://dev.fckeditor.net/ticket/5326">#5326</a> : Catalan;</li>

@@ -20,7 +20,9 @@ http://github.com/galetahub/rails-ckeditor-demo-app
 ===Rails 3
 
 In your appication "Gemfile":
-  gem 'ckeditor', '3.2.3'
+  gem 'ckeditor', '3.2.4'
+or
+  gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
 Next step is generate ckeditor js files and configuration file
 Check "config/initializers/ckeditor.rb" for more configuration options:

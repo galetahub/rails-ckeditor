@@ -1,5 +1,5 @@
 <script type="text/javascript">	  
-  var upload_path = "<%= ckeditor_attachment_path(:image) %>";
+  var upload_path = "<%=raw ckeditor_attachment_path(:image) %>";
   
   function setUrl(url) 
   {  

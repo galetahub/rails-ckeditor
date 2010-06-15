@@ -31,7 +31,7 @@ module Ckeditor
       
       textarea_options[:cols]  = (options.delete(:cols) || 70).to_i
       textarea_options[:rows]  = (options.delete(:rows) || 20).to_i
-      textarea_options[:class] = (options.delete(:class) || 'ckeditor').to_s
+      textarea_options[:class] = (options.delete(:class) || 'editor').to_s
       textarea_options[:style] = "width:#{width};height:#{height}"
       
       ckeditor_options = {:width => width, :height => height }
@@ -51,9 +51,9 @@ module Ckeditor
         
       output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options.merge(options))
       
-      output_buffer << javascript_tag("CKEDITOR.replace('#{element_id}', { 
-          #{ckeditor_applay_options(ckeditor_options)}
-        });\n")
+      output_buffer << javascript_tag("if (CKEDITOR.instances['#{element_id}']) { 
+        CKEDITOR.remove(CKEDITOR.instances['#{element_id}']);}
+        CKEDITOR.replace('#{element_id}', { #{ckeditor_applay_options(ckeditor_options)} });")
         
       output_buffer
     end

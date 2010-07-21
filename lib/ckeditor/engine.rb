@@ -3,7 +3,7 @@ module Ckeditor
     initializer "ckeditor_engine.add_middleware" do |app|
       app.middleware.insert_before(
         ActionDispatch::Cookies,
-        Ckeditor::Middleware,
+        "Ckeditor::Middleware",
         app.config.send(:session_options)[:key])
     end
 

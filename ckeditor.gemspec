@@ -9,9 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-06-15}
-  s.description = %q{CKEditor is a text editor to be used inside web pages. It’s a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to
-                           the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.}
+  s.date = %q{2010-07-27}
+  s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
     "README.rdoc"
@@ -672,16 +671,16 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Rails plugin for integration ckeditor 3.x}
   s.test_files = [
-    "examples/migrations/attachment_fu/create_assets.rb",
-     "examples/migrations/paperclip/create_assets.rb",
-     "examples/s3/attachment_file.rb",
-     "examples/s3/picture.rb",
-     "examples/models/attachment_fu/asset.rb",
-     "examples/models/attachment_fu/attachment_file.rb",
-     "examples/models/attachment_fu/picture.rb",
-     "examples/models/paperclip/asset.rb",
+    "examples/migrations/paperclip/create_assets.rb",
+     "examples/migrations/attachment_fu/create_assets.rb",
+     "examples/models/paperclip/picture.rb",
      "examples/models/paperclip/attachment_file.rb",
-     "examples/models/paperclip/picture.rb"
+     "examples/models/paperclip/asset.rb",
+     "examples/models/attachment_fu/picture.rb",
+     "examples/models/attachment_fu/attachment_file.rb",
+     "examples/models/attachment_fu/asset.rb",
+     "examples/s3/picture.rb",
+     "examples/s3/attachment_file.rb"
   ]
 
   if s.respond_to? :specification_version then

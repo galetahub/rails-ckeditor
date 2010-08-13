@@ -1,0 +1,12 @@
+CKEditor
+========
+
+# Generate models to store uploaded images and files from ckeditor
+# It generate three models: Ckeditor::Asset, Ckeditor::Picture and Ckeditor::AttachmentFile,
+# and migration for "ckeditor_assets" table
+# By default backend is paperclip
+
+./script/generate ckeditor_migration
+
+# options:
+  --backend, [--backend=PROCESSOR] # Configure for selected file uploader (options: paperclip/attachment_fu)

@@ -1,8 +1,8 @@
+# encoding: utf-8
 require 'rake'
 require 'rake/testtask'
-require 'rake/packagetask'
 require 'rake/rdoctask'
-require 'find'
+require File.join(File.dirname(__FILE__), 'lib', 'ckeditor', 'version')
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -23,50 +23,23 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-# Globals
-require 'lib/ckeditor_version'
-PKG_NAME = 'ckeditor_plugin'
-PKG_VERSION = CkeditorVersion.current
-
-PKG_FILES = ['README', 'CHANGELOG', 'init.rb', 'install.rb']
-PKG_DIRECTORIES = ['app/', 'lib/', 'public/', 'tasks/', 'test/']
-PKG_DIRECTORIES.each do |dir|
-  Find.find(dir) do |f|
-    if FileTest.directory?(f) and f =~ /\.svn/
-      Find.prune
-    else
-      PKG_FILES << f
-    end
-  end
-end
-
-# Tasks
-task :package
-Rake::PackageTask.new(PKG_NAME, PKG_VERSION) do |p|
-        p.need_tar = true
-        p.package_files = PKG_FILES
-end
-
-# "Gem" part of the Rakefile
 begin
-  require 'rake/gempackagetask'
-
-  spec = Gem::Specification.new do |s|
-          s.platform = Gem::Platform::RUBY
-          s.summary = "CKeditor plugin for Rails"
-          s.name = PKG_NAME
-          s.version = PKG_VERSION
-          s.requirements << 'none'
-          s.files = PKG_FILES
-          s.description = "Adds CKeditor helpers and code to Rails application"
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "ckeditor"
+    gemspec.version = Ckeditor::Version.dup
+    gemspec.summary = "Rails plugin for integration ckeditor 3.x"
+    gemspec.description = "CKEditor is a WYSIWYG editor to be used inside web pages"
+    gemspec.email = "galeta.igor@gmail.com"
+    gemspec.homepage = "http://github.com/galetahub/rails-ckeditor"
+    gemspec.authors = ["Igor Galeta"]
+    gemspec.files = FileList["[A-Z]*", "{app,config,lib,generators,examples}/**/*"]
+    gemspec.rubyforge_project = "ckeditor"
+    
+    gemspec.add_dependency('mime-types', '>= 1.16')
   end
-
-  desc "Create gem package for CKeditor plugin"
-  task :package_gem
-  Rake::GemPackageTask.new(spec) do |pkg|
-          pkg.need_zip = true
-          pkg.need_tar = true
-  end
+  
+  Jeweler::GemcutterTasks.new
 rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
 end
-

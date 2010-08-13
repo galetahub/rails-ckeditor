@@ -1,24 +1,21 @@
 module CkeditorHelper
-  def new_attachment_path_with_session_information(kind)
+  def ckeditor_attachment_path(kind)
+    path = case kind
+      when :image then Ckeditor.file_manager_image_upload_uri
+      when :file  then Ckeditor.file_manager_upload_uri
+      else '/ckeditor/create/default'
+    end
+    
     session_key = ActionController::Base.session_options[:key]
     
-    options = {}
-    controller = case kind
-      when :image then Ckeditor::PLUGIN_FILE_MANAGER_IMAGE_UPLOAD_URI
-      when :file  then Ckeditor::PLUGIN_FILE_MANAGER_UPLOAD_URI
-      else '/ckeditor/create'
-    end
+    options = ActionController::Routing::Routes.recognize_path(path, :method => :post)
     
-    if controller.include?('?')
-      arr = controller.split('?')
-      options = Rack::Utils.parse_query(arr.last)
-      controller = arr.first
-    end
-    
-    options[:controller] = controller
     options[:protocol] = "http://"
-    options[session_key] = cookies[session_key]
-    options[request_forgery_protection_token] = form_authenticity_token unless request_forgery_protection_token.nil?
+    options[session_key] = Rack::Utils.escape(cookies[session_key])
+    
+    if protect_against_forgery?
+      options[request_forgery_protection_token] = Rack::Utils.escape(form_authenticity_token)
+    end
     
     url_for(options)
   end

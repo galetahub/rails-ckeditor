@@ -1,54 +1,89 @@
-require 'yaml'
-require 'fileutils'
-require 'tmpdir'
-
-# Include hook code here
-require 'ckeditor/config'
-require 'ckeditor/utils'
-require 'ckeditor/view_helper'
-require 'ckeditor/form_builder'
-
-unless defined?(ActionView::SafeBuffer)
+unless ActiveSupport.const_defined?("SafeBuffer")
   require 'ckeditor/safe_buffer'
 end
 
-ActionView::Base.send(:include, Ckeditor::ViewHelper)
-ActionView::Helpers::FormBuilder.send(:include, Ckeditor::FormBuilder)
-
-Ckeditor::Utils.check_and_install
-
-class ActionController::Routing::RouteSet
-  unless (instance_methods.include?('draw_with_ckeditor'))
-    class_eval <<-"end_eval", __FILE__, __LINE__  
-      alias draw_without_ckeditor draw
-      def draw_with_ckeditor
-        draw_without_ckeditor do |map|
-          map.connect 'ckeditor/images', :controller => 'ckeditor', :action => 'images'
-          map.connect 'ckeditor/files',  :controller => 'ckeditor', :action => 'files'
-          map.connect 'ckeditor/create', :controller => 'ckeditor', :action => 'create'
-          yield map
-        end
-      end
-      alias draw draw_with_ckeditor
-    end_eval
+module Ckeditor
+  autoload :ViewHelper,        'ckeditor/view_helper'
+  autoload :FormBuilder,       'ckeditor/form_builder'
+  autoload :CustomFormBuilder, 'ckeditor/formtastic'
+  autoload :Middleware,        'ckeditor/middleware'
+  autoload :Utils,             'ckeditor/utils'
+  
+  mattr_accessor :swf_file_post_name
+  @@swf_file_post_name = "data"
+  
+  mattr_accessor :swf_image_file_types_description
+  @@swf_image_file_types_description = "Images"
+  
+  mattr_accessor :swf_image_file_types
+  @@swf_image_file_types = "*.jpg;*.jpeg;*.png;*.gif"
+  
+  mattr_accessor :swf_image_file_size_limit
+  @@swf_image_file_size_limit = "5 MB"
+  
+  mattr_accessor :swf_image_file_upload_limit
+  @@swf_image_file_upload_limit = 10
+  
+  mattr_accessor :swf_file_types_description
+  @@swf_file_types_description = "Files"
+  
+  mattr_accessor :swf_file_types
+  @@swf_file_types = "*.doc;*.wpd;*.pdf;*.swf;*.xls"
+  
+  mattr_accessor :swf_file_size_limit
+  @@swf_file_size_limit = "10 MB"
+  
+  mattr_accessor :swf_file_upload_limit
+  @@swf_file_file_upload_limit = 5
+  
+  mattr_accessor :public_uri
+  @@public_uri = "/uploads"
+  
+  mattr_accessor :public_path
+  @@public_path = "public/uploads"
+  
+  mattr_accessor :file_manager_uri
+  @@file_manager_uri = "/ckeditor/files"
+  
+  mattr_accessor :file_manager_upload_uri
+  @@file_manager_upload_uri = "/ckeditor/create/file"
+  
+  mattr_accessor :file_manager_image_upload_uri
+  @@file_manager_image_upload_uri = "/ckeditor/create/image"
+  
+  mattr_accessor :file_manager_image_uri
+  @@file_manager_image_uri = "/ckeditor/images"
+  
+  mattr_accessor :file_manager_image_model
+  @@file_manager_image_model = "Ckeditor::Picture"
+  
+  mattr_accessor :file_manager_file_model
+  @@file_manager_file_model = "Ckeditor::AttachmentFile"
+  
+  def self.image_model
+    @@image_model ||= @@file_manager_image_model.to_s.classify.constantize
+    @@image_model
   end
-end
-
-include ActionView
-module ActionView::Helpers::AssetTagHelper
-  alias_method :rails_javascript_include_tag, :javascript_include_tag
-
-  #  <%= javascript_include_tag :defaults, :ckeditor %>
-  def javascript_include_tag(*sources)
-    main_sources, application_source = [], []
-    if sources.include?(:ckeditor)
-      sources.delete(:ckeditor)
-      sources.push('ckeditor/ckeditor')
+  
+  def self.file_model
+    @@file_model ||= @@file_manager_file_model.to_s.classify.constantize
+    @@file_model
+  end
+  
+  # Default way to setup Ckeditor. Run rails generate ckeditor to create
+  # a fresh initializer with all configuration values.
+  def self.setup
+    yield self
+  end
+  
+  def self.insert
+    ActionView::Base.send(:include, Ckeditor::ViewHelper)
+    ActionView::Helpers::FormBuilder.send(:include, Ckeditor::FormBuilder)
+    
+    ActionView::Helpers::AssetTagHelper.register_javascript_expansion :ckeditor => ["ckeditor/ckeditor"]
+    
+    if Object.const_defined?("Formtastic")
+      Formtastic::SemanticFormHelper.builder = Ckeditor::CustomFormBuilder
     end
-    unless sources.empty?
-      main_sources = rails_javascript_include_tag(*sources).split("\n")
-      application_source = main_sources.pop if main_sources.last.include?('application.js')
-    end
-    [main_sources.join("\n"), application_source].join("\n")
   end
 end

@@ -10,12 +10,12 @@ CKEditor version: 3.3.2 (http://ckeditor.com)
 
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
 
-Rails version: 2.3.8
-
 Demo appication (Rails 2.3.8):
 http://github.com/galetahub/rails-ckeditor-demo-app
 
 ==Install
+
+===Rails 2.3.8
 
 Via gem:
   config.gem 'ckeditor', '3.3.2'
@@ -43,6 +43,32 @@ Don't forget about migration:
 In your environment:
 
   config.load_paths += %W( #{RAILS_ROOT}/app/models/ckeditor )
+
+===Rails 3.0.0
+  
+  gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+
+Next step is generate ckeditor js files and configuration file
+Check "config/initializers/ckeditor.rb" for more configuration options:
+
+  rails generate ckeditor:base
+
+Generate ckeditor models for file upload support:
+For paperclip:
+
+  rails generate ckeditor:migration
+
+For attachment_fu:
+
+  rails generate ckeditor:migration --backend=attachment_fu
+
+Don't forget about migration:
+
+  rake db:migarte
+  
+In your application.rb:
+
+  config.autoload_paths += %W( #{RAILS_ROOT}/app/models/ckeditor )
 
 ==Usage
 

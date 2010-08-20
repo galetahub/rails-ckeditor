@@ -68,7 +68,7 @@ Don't forget about migration:
   
 In your application.rb:
 
-  config.autoload_paths += %W( #{RAILS_ROOT}/app/models/ckeditor )
+  config.autoload_paths += %W( #{config.root}/app/models/ckeditor )
 
 ==Usage
 

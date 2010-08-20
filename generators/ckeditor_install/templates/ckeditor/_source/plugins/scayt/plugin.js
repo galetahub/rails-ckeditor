@@ -624,9 +624,10 @@ CKEDITOR.plugins.scayt =
 			// If the "contextmenu" plugin is loaded, register the listeners.
 			if ( editor.contextMenu && editor.addMenuItems )
 			{
-				editor.contextMenu.addListener( function(  )
+				editor.contextMenu.addListener( function( element, selection )
 					{
-						if ( !plugin.isScaytEnabled( editor ) )
+						if ( !plugin.isScaytEnabled( editor )
+								|| selection.getCommonAncestor().isReadOnly() )
 							return null;
 
 						var scayt_control = plugin.getScayt( editor ),

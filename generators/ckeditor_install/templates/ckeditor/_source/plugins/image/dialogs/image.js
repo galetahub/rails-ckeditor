@@ -250,7 +250,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			switchLockRatio( this, false );	// Unlock.
 		};
 
-		var numbering = function( id ){ return id + CKEDITOR.tools.getNextNumber(); },
+		var numbering = function( id )
+			{
+				return CKEDITOR.tools.getNextId() + '_' + id;
+			},
 			btnLockSizesId = numbering( 'btnLockSizes' ),
 			btnResetSizeId = numbering( 'btnResetSize' ),
 			imagePreviewLoaderId = numbering( 'ImagePreviewLoader' ),

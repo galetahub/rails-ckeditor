@@ -472,7 +472,10 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 
 		// Insert the tabs and contents.
 		for ( var i = 0 ; i < definition.contents.length ; i++ )
-			this.addPage( definition.contents[i] );
+		{
+			var page = definition.contents[i];
+			page && this.addPage( page );
+		}
 
 		this.parts['tabs'].on( 'click', function( evt )
 				{
@@ -480,8 +483,10 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 					// If we aren't inside a tab, bail out.
 					if ( target.hasClass( 'cke_dialog_tab' ) )
 					{
+						// Get the ID of the tab, without the 'cke_' prefix and the unique number suffix.
 						var id = target.$.id;
-						this.selectPage( id.substr( 0, id.lastIndexOf( '_' ) ) );
+						this.selectPage( id.substring( 4, id.lastIndexOf( '_' ) ) );
+
 						if ( this._.tabBarMode )
 						{
 							this._.tabBarMode = false;
@@ -757,7 +762,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			for ( var i in this._.contents )
 			{
 				for ( var j in this._.contents[i] )
-					fn( this._.contents[i][j]);
+					fn( this._.contents[i][j] );
 			}
 			return this;
 		},
@@ -770,7 +775,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		 */
 		reset : (function()
 		{
-			var fn = function( widget ){ if ( widget.reset ) widget.reset(); };
+			var fn = function( widget ){ if ( widget.reset ) widget.reset( 1 ); };
 			return function(){ this.foreach( fn ); return this; };
 		})(),
 
@@ -881,7 +886,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 			page.setAttribute( 'role', 'tabpanel' );
 
 			var env = CKEDITOR.env;
-			var tabId = contents.id + '_' + CKEDITOR.tools.getNextNumber(),
+			var tabId = 'cke_' + contents.id + '_' + CKEDITOR.tools.getNextNumber(),
 				 tab = CKEDITOR.dom.element.createFromHtml( [
 					'<a class="cke_dialog_tab"',
 						( this._.pageCount > 0 ? ' cke_last' : 'cke_first' ),
@@ -1386,7 +1391,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		// Transform the contents entries in contentObjects.
 		var contents = dialogDefinition.contents;
 		for ( var i = 0, content ; ( content = contents[i] ) ; i++ )
-			contents[ i ] = new contentObject( dialog, content );
+			contents[ i ] = content && new contentObject( dialog, content );
 
 		CKEDITOR.tools.extend( this, dialogDefinition );
 	};
@@ -2051,7 +2056,7 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 					styles = ( stylesArg && stylesArg.call ? stylesArg( elementDefinition ) : stylesArg ) || {},
 					attributes = ( attributesArg && attributesArg.call ? attributesArg( elementDefinition ) : attributesArg ) || {},
 					innerHTML = ( contentsArg && contentsArg.call ? contentsArg.call( this, dialog, elementDefinition ) : contentsArg ) || '',
-					domId = this.domId = attributes.id || CKEDITOR.tools.getNextNumber() + '_uiElement',
+					domId = this.domId = attributes.id || CKEDITOR.tools.getNextId() + '_uiElement',
 					id = this.id = elementDefinition.id,
 					i;
 
@@ -2349,14 +2354,15 @@ CKEDITOR.DIALOG_RESIZE_BOTH = 3;
 		/**
 		 * Sets the value of this dialog UI object.
 		 * @param {Object} value The new value.
+		 * @param {Boolean} noChangeEvent Internal commit, to supress 'change' event on this element.
 		 * @returns {CKEDITOR.dialog.uiElement} The current UI element.
 		 * @example
 		 * uiElement.setValue( 'Dingo' );
 		 */
-		setValue : function( value )
+		setValue : function( value, noChangeEvent )
 		{
 			this.getInputElement().setValue( value );
-			this.fire( 'change', { value : value } );
+			!noChangeEvent && this.fire( 'change', { value : value } );
 			return this;
 		},
 

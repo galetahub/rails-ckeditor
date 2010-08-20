@@ -131,13 +131,13 @@ CKEDITOR.plugins.add( 'forms',
 		{
 			editor.contextMenu.addListener( function( element )
 				{
-					if ( element && element.hasAscendant( 'form', true ) )
+					if ( element && element.hasAscendant( 'form', true ) && !element.isReadOnly() )
 						return { form : CKEDITOR.TRISTATE_OFF };
 				});
 
 			editor.contextMenu.addListener( function( element )
 				{
-					if ( element )
+					if ( element && !element.isReadOnly() )
 					{
 						var name = element.getName();
 

@@ -131,7 +131,7 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 	});
 
 	// Build the HTML for the smiley images table.
-	var labelId = 'smiley_emtions_label' + CKEDITOR.tools.getNextNumber();
+	var labelId = CKEDITOR.tools.getNextId() + '_smiley_emtions_label';
 	var html =
 	[
 		'<div>' +

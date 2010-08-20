@@ -105,6 +105,10 @@ CKEDITOR.lang['de'] =
 		targetTop		: 'Oberstes Fenster (_top)',
 		targetSelf		: 'Gleiches Fenster (_self)',
 		targetParent	: 'Oberes Fenster (_parent)',
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, nicht verfügbar</span>'
@@ -744,5 +748,11 @@ CKEDITOR.lang['de'] =
 	},
 
 	toolbarCollapse	: 'Symbolleiste einklappen',
-	toolbarExpand	: 'Symbolleiste ausklappen'
+	toolbarExpand	: 'Symbolleiste ausklappen',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

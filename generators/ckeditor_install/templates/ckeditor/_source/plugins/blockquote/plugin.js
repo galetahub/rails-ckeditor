@@ -47,7 +47,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			var state = editor.getCommand( 'blockquote' ).state,
 				selection = editor.getSelection(),
-				range = selection && selection.getRanges()[0];
+				range = selection && selection.getRanges( true )[0];
 
 			if ( !range )
 				return;

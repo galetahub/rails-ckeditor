@@ -6,19 +6,18 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.3.2 (http://ckeditor.com)
+CKEditor version: 3.4 (http://ckeditor.com)
 
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
 
-Demo appication (Rails 2.3.8):
-http://github.com/galetahub/rails-ckeditor-demo-app
+{Demo appication (Rails 2.3.8)}[http://github.com/galetahub/rails-ckeditor-demo-app]
 
 ==Install
 
 ===Rails 2.3.8
 
 Via gem:
-  config.gem 'ckeditor', '3.3.2'
+  config.gem 'ckeditor', '3.4.0'
 
 Via plugin
   ./script/plugin install git://github.com/galetahub/rails-ckeditor.git
@@ -45,7 +44,11 @@ In your environment:
   config.load_paths += %W( #{RAILS_ROOT}/app/models/ckeditor )
 
 ===Rails 3.0.0
-  
+
+  gem 'ckeditor', '3.4.0.pre'
+
+Or
+
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
 Next step is generate ckeditor js files and configuration file

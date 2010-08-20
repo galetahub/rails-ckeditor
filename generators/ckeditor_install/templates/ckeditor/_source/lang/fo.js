@@ -105,6 +105,10 @@ CKEDITOR.lang['fo'] =
 		targetTop		: 'Vindeyga ovast (_top)',
 		targetSelf		: 'Sama vindeyga (_self)',
 		targetParent	: 'Upphavligt vindeyga (_parent)',
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, ikki tøkt</span>'
@@ -744,5 +748,11 @@ CKEDITOR.lang['fo'] =
 	},
 
 	toolbarCollapse	: 'Collapse Toolbar', // MISSING
-	toolbarExpand	: 'Expand Toolbar' // MISSING
+	toolbarExpand	: 'Expand Toolbar', // MISSING
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

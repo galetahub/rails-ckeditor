@@ -5,15 +5,17 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 (function()
 {
-	function nonEmptyText( node )
+	var isReplace;
+
+	function findEvaluator( node )
 	{
-		return ( node.type == CKEDITOR.NODE_TEXT && node.getLength() > 0 );
+		return node.type == CKEDITOR.NODE_TEXT && node.getLength() > 0 && ( !isReplace || !node.isReadOnly() );
 	}
 
 	/**
 	 * Elements which break characters been considered as sequence.
 	*/
-	function nonCharactersBoundary ( node )
+	function nonCharactersBoundary( node )
 	{
 		return !( node.type == CKEDITOR.NODE_ELEMENT && node.isBlockBoundary(
 			CKEDITOR.tools.extend( {}, CKEDITOR.dtd.$empty, CKEDITOR.dtd.$nonEditable ) ) );
@@ -84,7 +86,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			var walker =
 				new CKEDITOR.dom.walker( range );
 			walker.guard = matchWord ? nonCharactersBoundary : null;
-			walker[ 'evaluator' ] = nonEmptyText;
+			walker[ 'evaluator' ] = findEvaluator;
 			walker.breakOnFalse = true;
 
 			this._ = {
@@ -251,8 +253,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					this.removeHighlight();
 
 				// Apply the highlight.
-				var range = this.toDomRange();
+				var range = this.toDomRange(),
+					bookmark = range.createBookmark();
 				highlightStyle.applyToRange( range );
+				range.moveToBookmark( bookmark );
 				this._.highlightRange = range;
 
 				// Scroll the editor to the highlighted area.
@@ -273,9 +277,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				if ( !this._.highlightRange )
 					return;
 
+				var bookmark = this._.highlightRange.createBookmark();
 				highlightStyle.removeFromRange( this._.highlightRange );
+				this._.highlightRange.moveToBookmark( bookmark );
 				this.updateFromDomRange( this._.highlightRange );
 				this._.highlightRange = null;
+			},
+
+			isReadOnly : function()
+			{
+				if ( !this._.highlightRange )
+					return 0;
+
+				return this._.highlightRange.startContainer.isReadOnly();
 			},
 
 			moveBack : function()
@@ -514,13 +528,15 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			replace : function( dialog, pattern, newString, matchCase, matchWord,
 				matchCyclic , isReplaceAll )
 			{
+				isReplace = 1;
+
 				// Successiveness of current replace/find.
 				var result = false;
 
 				// 1. Perform the replace when there's already a match here.
 				// 2. Otherwise perform the find but don't replace it immediately.
 				if ( this.matchRange && this.matchRange.isMatched()
-						&& !this.matchRange._.isReplaced )
+						&& !this.matchRange._.isReplaced && !this.matchRange.isReadOnly() )
 				{
 					// Turn off highlight for a while when saving snapshots.
 					this.matchRange.removeHighlight();
@@ -549,6 +565,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				}
 				else
 					result = this.find( pattern, matchCase, matchWord, matchCyclic, !isReplaceAll );
+
+				isReplace = 0;
 
 				return result;
 			}

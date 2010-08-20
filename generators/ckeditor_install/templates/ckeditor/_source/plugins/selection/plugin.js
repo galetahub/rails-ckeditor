@@ -525,8 +525,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 * var ranges = selection.getRanges();
 		 * alert(ranges.length);
 		 */
-		getRanges :
-			CKEDITOR.env.ie ?
+		getRanges : (function ()
+		{
+			var func = CKEDITOR.env.ie ?
 				( function()
 				{
 					// Finds the container and offset for a specific boundary
@@ -614,10 +615,6 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 					return function()
 					{
-						var cache = this._.cache;
-						if ( cache.ranges )
-							return cache.ranges;
-
 						// IE doesn't have range support (in the W3C way), so we
 						// need to do some magic to transform selections into
 						// CKEDITOR.dom.range instances.
@@ -640,11 +637,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							boundaryInfo = getBoundaryInformation( nativeRange );
 							range.setEnd( new CKEDITOR.dom.node( boundaryInfo.container ), boundaryInfo.offset );
 
-							return ( cache.ranges = [ range ] );
+							return [ range ];
 						}
 						else if ( type == CKEDITOR.SELECTION_ELEMENT )
 						{
-							var retval = this._.cache.ranges = [];
+							var retval = [];
 
 							for ( var i = 0 ; i < nativeRange.length ; i++ )
 							{
@@ -665,15 +662,12 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							return retval;
 						}
 
-						return ( cache.ranges = [] );
+						return [];
 					};
 				})()
 			:
 				function()
 				{
-					var cache = this._.cache;
-					if ( cache.ranges )
-						return cache.ranges;
 
 					// On browsers implementing the W3C range, we simply
 					// tranform the native ranges in CKEDITOR.dom.range
@@ -694,9 +688,101 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 						range.setEnd( new CKEDITOR.dom.node( nativeRange.endContainer ), nativeRange.endOffset );
 						ranges.push( range );
 					}
+					return ranges;
+				};
 
-					return ( cache.ranges = ranges );
-				},
+			return function( onlyEditables )
+			{
+				var cache = this._.cache;
+				if ( cache.ranges && !onlyEditables )
+					return cache.ranges;
+				else if ( !cache.ranges )
+					cache.ranges = new CKEDITOR.dom.rangeList( func.call( this ) );
+
+				// Split range into multiple by read-only nodes.
+				if ( onlyEditables )
+				{
+					var ranges = cache.ranges;
+					for ( var i = 0; i < ranges.length; i++ )
+					{
+						var range = ranges[ i ];
+
+						// Drop range spans inside one ready-only node.
+						var parent = range.getCommonAncestor();
+						if ( parent.isReadOnly())
+							ranges.splice( i, 1 );
+
+						if ( range.collapsed )
+							continue;
+
+						var startContainer = range.startContainer,
+							endContainer = range.endContainer,
+							startOffset = range.startOffset,
+							endOffset = range.endOffset,
+							walkerRange = range.clone();
+
+						// Range may start inside a non-editable element, restart range
+						// by the end of it.
+						var readOnly;
+						if ( ( readOnly = startContainer.isReadOnly() ) )
+							range.setStartAfter( readOnly );
+
+						// Enlarge range start/end with text node to avoid walker
+						// being DOM destructive, it doesn't interfere our checking
+						// of elements below as well.
+						if ( startContainer && startContainer.type == CKEDITOR.NODE_TEXT )
+						{
+							if ( startOffset >= startContainer.getLength() )
+								walkerRange.setStartAfter( startContainer );
+							else
+								walkerRange.setStartBefore( startContainer );
+						}
+
+						if ( endContainer && endContainer.type == CKEDITOR.NODE_TEXT )
+						{
+							if ( !endOffset )
+								walkerRange.setEndBefore( endContainer );
+							else
+								walkerRange.setEndAfter( endContainer );
+						}
+
+						// Looking for non-editable element inside the range.
+						var walker = new CKEDITOR.dom.walker( walkerRange );
+						walker.evaluator = function( node )
+						{
+							if ( node.type == CKEDITOR.NODE_ELEMENT
+								&& node.getAttribute( 'contenteditable' ) == 'false' )
+							{
+								var newRange = range.clone();
+								range.setEndBefore( node );
+
+								// Drop collapsed range around read-only elements,
+								// it make sure the range list empty when selecting
+								// only non-editable elements.
+								if ( range.collapsed )
+									ranges.splice( i--, 1 );
+
+								// Avoid creating invalid range.
+								if ( !( node.getPosition( walkerRange.endContainer ) & CKEDITOR.POSITION_CONTAINS ) )
+								{
+									newRange.setStartAfter( node );
+									if ( !newRange.collapsed )
+										ranges.splice( i + 1, 0, newRange );
+								}
+
+								return true;
+							}
+
+							return false;
+						};
+
+						walker.next();
+					}
+				}
+
+				return cache.ranges;
+			};
+		})(),
 
 		/**
 		 * Gets the DOM element in which the selection starts.
@@ -900,7 +986,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				this._.cache.selectedElement = element;
 				this._.cache.startElement = element;
-				this._.cache.ranges = [ range ];
+				this._.cache.ranges = new CKEDITOR.dom.rangeList( range );
 				this._.cache.type = CKEDITOR.SELECTION_ELEMENT;
 
 				return;
@@ -956,8 +1042,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			if ( this.isLocked )
 			{
 				this._.cache.selectedElement = null;
-				this._.cache.startElement = ranges[ 0 ].getTouchedStartNode();
-				this._.cache.ranges = ranges;
+				this._.cache.startElement = ranges[ 0 ] && ranges[ 0 ].getTouchedStartNode();
+				this._.cache.ranges = new CKEDITOR.dom.rangeList( ranges );
 				this._.cache.type = CKEDITOR.SELECTION_TEXT;
 
 				return;
@@ -965,8 +1051,14 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			if ( CKEDITOR.env.ie )
 			{
-				// IE doesn't accept multiple ranges selection, so we just
-				// select the first one.
+				if ( ranges.length > 1 )
+				{
+					// IE doesn't accept multiple ranges selection, so we join all into one.
+					var last = ranges[ ranges.length -1 ] ;
+					ranges[ 0 ].setEnd( last.endContainer, last.endOffset );
+					ranges.length = 1;
+				}
+
 				if ( ranges[ 0 ] )
 					ranges[ 0 ].select();
 
@@ -975,10 +1067,35 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			else
 			{
 				var sel = this.getNative();
-				sel.removeAllRanges();
+
+				if ( ranges.length )
+					sel.removeAllRanges();
 
 				for ( var i = 0 ; i < ranges.length ; i++ )
 				{
+					// Joining sequential ranges introduced by
+					// readonly elements protection.
+					if ( i < ranges.length -1 )
+					{
+						var left = ranges[ i ], right = ranges[ i +1 ],
+								between = left.clone();
+						between.setStart( left.endContainer, left.endOffset );
+						between.setEnd( right.startContainer, right.startOffset );
+
+						// Don't confused by Firefox adjancent multi-ranges
+						// introduced by table cells selection.
+						if ( !between.collapsed )
+						{
+							between.shrink( CKEDITOR.NODE_ELEMENT, true );
+							if ( between.getCommonAncestor().isReadOnly())
+							{
+								right.setStart( left.startContainer, left.startOffset );
+								ranges.splice( i--, 1 );
+								continue;
+							}
+						}
+					}
+
 					var range = ranges[ i ];
 					var nativeRange = this.document.$.createRange();
 					var startContainer = range.startContainer;
@@ -1013,34 +1130,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 */
 		createBookmarks : function( serializable )
 		{
-			var retval = [],
-				ranges = this.getRanges(),
-				length = ranges.length,
-				bookmark;
-			for ( var i = 0; i < length ; i++ )
-			{
-			    retval.push( bookmark = ranges[ i ].createBookmark( serializable, true ) );
-
-				serializable = bookmark.serializable;
-
-				var bookmarkStart = serializable ? this.document.getById( bookmark.startNode ) : bookmark.startNode,
-					bookmarkEnd = serializable ? this.document.getById( bookmark.endNode ) : bookmark.endNode;
-
-			    // Updating the offset values for rest of ranges which have been mangled(#3256).
-			    for ( var j = i + 1 ; j < length ; j++ )
-			    {
-			        var dirtyRange = ranges[ j ],
-			               rangeStart = dirtyRange.startContainer,
-			               rangeEnd = dirtyRange.endContainer;
-
-			       rangeStart.equals( bookmarkStart.getParent() ) && dirtyRange.startOffset++;
-			       rangeStart.equals( bookmarkEnd.getParent() ) && dirtyRange.startOffset++;
-			       rangeEnd.equals( bookmarkStart.getParent() ) && dirtyRange.endOffset++;
-			       rangeEnd.equals( bookmarkEnd.getParent() ) && dirtyRange.endOffset++;
-			    }
-			}
-
-			return retval;
+			return this.getRanges().createBookmarks( serializable );
 		},
 
 		/**
@@ -1051,13 +1141,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		 */
 		createBookmarks2 : function( normalized )
 		{
-			var bookmarks = [],
-				ranges = this.getRanges();
-
-			for ( var i = 0 ; i < ranges.length ; i++ )
-				bookmarks.push( ranges[i].createBookmark2( normalized ) );
-
-			return bookmarks;
+			return this.getRanges().createBookmarks2( normalized );
 		},
 
 		/**

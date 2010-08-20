@@ -1294,7 +1294,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 			{
 				// Create element if current selection is collapsed.
 				var selection = editor.getSelection(),
-					ranges = selection.getRanges();
+					ranges = selection.getRanges( true );
 				if ( ranges.length == 1 && ranges[0].collapsed )
 				{
 					// Short mailto link text view (#5736).

@@ -104,6 +104,10 @@ CKEDITOR.lang['pt-br'] =
 		targetTop		: 'Janela de Cima (_top)',
 		targetSelf		: 'Mesma Janela (_self)',
 		targetParent	: 'Janela Pai (_parent)',
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, indisponível</span>'
@@ -743,5 +747,11 @@ CKEDITOR.lang['pt-br'] =
 	},
 
 	toolbarCollapse	: 'Diminuir Barra de Ferramentas',
-	toolbarExpand	: 'Aumentar Barra de Ferramentas'
+	toolbarExpand	: 'Aumentar Barra de Ferramentas',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

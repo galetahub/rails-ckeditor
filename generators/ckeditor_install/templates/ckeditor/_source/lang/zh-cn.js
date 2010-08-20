@@ -105,6 +105,10 @@ CKEDITOR.lang['zh-cn'] =
 		targetTop		: '整页 (_top)',
 		targetSelf		: '本窗口 (_self)',
 		targetParent	: '父窗口 (_parent)',
+		langDirLTR		: 'Left to Right (LTR)', // MISSING
+		langDirRTL		: 'Right to Left (RTL)', // MISSING
+		styles			: 'Style', // MISSING
+		cssClasses		: 'Stylesheet Classes', // MISSING
 
 		// Put the voice-only part of the label in the span.
 		unavailable		: '%1<span class="cke_accessibility">, 不可用</span>'
@@ -744,5 +748,11 @@ CKEDITOR.lang['zh-cn'] =
 	},
 
 	toolbarCollapse	: '折叠工具栏',
-	toolbarExpand	: '展开工具栏'
+	toolbarExpand	: '展开工具栏',
+
+	bidi :
+	{
+		ltr : 'Text direction from left to right', // MISSING
+		rtl : 'Text direction from right to left' // MISSING
+	}
 };

@@ -333,6 +333,10 @@ body .cke_dialog
 	padding: 1px 0px;
 }
 
+.cke_skin_office2003 .cke_browser_ie.cke_rtl div.cke_dialog_ui_input_text {
+	padding-right: 1px;
+}
+
 .cke_skin_office2003 .cke_browser_gecko.cke_hc div.cke_dialog_ui_input_text,
 .cke_skin_office2003 .cke_browser_gecko.cke_hc div.cke_dialog_ui_input_password
 {
@@ -537,7 +541,7 @@ body .cke_dialog
 	background-color: white;
 }
 
-.cke_skin_office2003 iframe.cke_dialog_ui_input_file
+.cke_skin_office2003 .cke_dialog_ui_input_file
 {
 	width: 100%;
 	height: 25px;
@@ -607,7 +611,6 @@ body .cke_dialog
 {
 	border: outset 1px;
 	cursor: pointer;
-	cursor: hand;
 }
 
 .cke_skin_office2003 .cke_dialog  .ImagePreviewBox
@@ -656,6 +659,27 @@ body .cke_dialog
 	background-color : white;
 }
 
+.cke_skin_office2003 .cke_dialog .cke_pastetext
+{
+	width: 346px;
+	height: 170px;
+}
+
+.cke_skin_office2003 .cke_dialog .cke_pastetext textarea
+{
+	width: 340px;
+	height: 170px;
+	resize: none;
+}
+
+.cke_skin_office2003 .cke_dialog iframe.cke_pasteframe
+{
+	width: 346px;
+	height: 130px;
+	background-color: white;
+	border: 1px solid black;
+}
+
 .cke_skin_office2003 .cke_dialog .cke_dark_background
 {
 	text-align : center;
@@ -672,7 +696,6 @@ body .cke_dialog
 .cke_skin_office2003 .cke_dialog .cke_hand
 {
 	cursor: pointer;
-	cursor: hand;
 }
 
 .cke_skin_office2003 .cke_disabled
@@ -704,7 +727,6 @@ body .cke_dialog
 {
 	display: inline;
 	cursor: pointer;
-	cursor: hand;
 	font-weight: bold;
 	position: relative;
 	top: 3px;
@@ -713,6 +735,11 @@ body .cke_dialog
 .cke_skin_office2003 .cke_dialog_body .cke_label
 {
 	display: none;
+}
+
+.cke_skin_office2003 .cke_dialog_body label.cke_required
+{
+	font-weight: bold;
 }
 
 .cke_skin_office2003 .cke_hc .cke_dialog_body .cke_label

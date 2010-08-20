@@ -6,11 +6,11 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.3.1 (http://ckeditor.com)
+CKEditor version: 3.4 (http://ckeditor.com)
 
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
 
-Rails version: 3.0.0.beta3
+Rails version: 3.0.0.rc
 
 Demo appication (Rails 2.3.x):
 http://github.com/galetahub/rails-ckeditor-demo-app
@@ -20,30 +20,36 @@ http://github.com/galetahub/rails-ckeditor-demo-app
 ===Rails 3
 
 In your appication "Gemfile":
-  gem 'ckeditor', '3.2.4'
+  gem 'ckeditor', '3.4.0.pre'
 or
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
 Next step is generate ckeditor js files and configuration file
 Check "config/initializers/ckeditor.rb" for more configuration options:
+
   rails generate ckeditor:base
 
 Generate ckeditor models for file upload support:
 For paperclip:
+
   rails generate ckeditor:migration
 
 For attachment_fu:
+
   rails generate ckeditor:migration --backend=attachment_fu
 
 Don't forget about migration:
+
   rake db:migarte
 
 ===Rails 2.3.x
 
 Install plugin:
+
   ./script/plugin install git://github.com/galetahub/rails-ckeditor.git
 
 Generate ckeditor core files:
+
   rake ckeditor:install
 
 This rake generated file config/ckeditor.yml:

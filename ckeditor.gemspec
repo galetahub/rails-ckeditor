@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.2.5"
+  s.version = "3.4.0.pre"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-07-27}
+  s.date = %q{2010-08-20}
   s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
@@ -53,6 +53,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/sample_posteddata.asp",
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/standalone.asp",
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/assets/output_xhtml.css",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/autogrow.html",
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/divreplace.html",
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/enterkey.html",
      "lib/generators/ckeditor/base/templates/ckeditor/_samples/fullpage.html",
@@ -95,6 +96,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/node.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/nodelist.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/range.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/rangelist.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/text.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/walker.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/dom/window.js",
@@ -192,13 +194,16 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/about/dialogs/about.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/about/dialogs/logo_ckeditor.png",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/about/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/ajax_save/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/dialogs/attachment.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/images/attachment.png",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/en.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/ru.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/uk.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/autogrow/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/basicstyles/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/bidi/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/blockquote/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/button/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/clipboard/dialogs/paste.js",
@@ -209,6 +214,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/contextmenu/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/dialog/dialogDefinition.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/dialog/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/dialogadvtab/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/dialogui/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/div/dialogs/div.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/div/plugin.js",
@@ -328,6 +334,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/tab/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/table/dialogs/table.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/table/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/tableresize/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/tabletools/dialogs/tableCell.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/tabletools/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/templates/dialogs/templates.js",
@@ -510,12 +517,14 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/a11yhelp/lang/he.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/about/dialogs/about.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/about/dialogs/logo_ckeditor.png",
+     "lib/generators/ckeditor/base/templates/ckeditor/plugins/ajax_save/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/dialogs/attachment.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/images/attachment.png",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/en.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/ru.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/uk.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/plugin.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/plugins/autogrow/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/clipboard/dialogs/paste.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/colordialog/dialogs/colordialog.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/dialog/dialogDefinition.js",
@@ -585,6 +594,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/specialchar/dialogs/specialchar.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/styles/styles/default.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/table/dialogs/table.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/plugins/tableresize/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/tabletools/dialogs/tableCell.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/templates/dialogs/templates.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/templates/templates/default.js",
@@ -671,16 +681,16 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Rails plugin for integration ckeditor 3.x}
   s.test_files = [
-    "examples/migrations/paperclip/create_assets.rb",
-     "examples/migrations/attachment_fu/create_assets.rb",
-     "examples/models/paperclip/picture.rb",
-     "examples/models/paperclip/attachment_file.rb",
-     "examples/models/paperclip/asset.rb",
-     "examples/models/attachment_fu/picture.rb",
-     "examples/models/attachment_fu/attachment_file.rb",
-     "examples/models/attachment_fu/asset.rb",
+    "examples/migrations/attachment_fu/create_assets.rb",
+     "examples/migrations/paperclip/create_assets.rb",
+     "examples/s3/attachment_file.rb",
      "examples/s3/picture.rb",
-     "examples/s3/attachment_file.rb"
+     "examples/models/attachment_fu/asset.rb",
+     "examples/models/attachment_fu/attachment_file.rb",
+     "examples/models/attachment_fu/picture.rb",
+     "examples/models/paperclip/asset.rb",
+     "examples/models/paperclip/attachment_file.rb",
+     "examples/models/paperclip/picture.rb"
   ]
 
   if s.respond_to? :specification_version then

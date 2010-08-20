@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.3.2"
+  s.version = "3.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-08-13}
+  s.date = %q{2010-08-20}
   s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
@@ -56,6 +56,7 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/_samples/asp/sample_posteddata.asp",
      "generators/ckeditor_install/templates/ckeditor/_samples/asp/standalone.asp",
      "generators/ckeditor_install/templates/ckeditor/_samples/assets/output_xhtml.css",
+     "generators/ckeditor_install/templates/ckeditor/_samples/autogrow.html",
      "generators/ckeditor_install/templates/ckeditor/_samples/divreplace.html",
      "generators/ckeditor_install/templates/ckeditor/_samples/enterkey.html",
      "generators/ckeditor_install/templates/ckeditor/_samples/fullpage.html",
@@ -98,6 +99,7 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/node.js",
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/nodelist.js",
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/range.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/core/dom/rangelist.js",
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/text.js",
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/walker.js",
      "generators/ckeditor_install/templates/ckeditor/_source/core/dom/window.js",
@@ -195,7 +197,16 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/about/dialogs/about.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/about/dialogs/logo_ckeditor.png",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/about/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/ajax_save/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/dialogs/attachment.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/images/attachment.png",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/lang/en.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/lang/ru.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/lang/uk.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/attachment/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/autogrow/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/basicstyles/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/bidi/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/blockquote/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/button/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/clipboard/dialogs/paste.js",
@@ -206,12 +217,19 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/contextmenu/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/dialog/dialogDefinition.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/dialog/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/dialogadvtab/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/dialogui/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/div/dialogs/div.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/div/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/domiterator/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/editingblock/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/elementspath/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/dialogs/embed.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/images/embed.png",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/lang/en.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/lang/ru.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/lang/uk.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/embed/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/enterkey/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/entities/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/fakeobjects/plugin.js",
@@ -319,6 +337,7 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/tab/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/table/dialogs/table.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/table/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/_source/plugins/tableresize/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/tabletools/dialogs/tableCell.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/tabletools/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/_source/plugins/templates/dialogs/templates.js",
@@ -508,6 +527,7 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/plugins/attachment/lang/ru.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/attachment/lang/uk.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/attachment/plugin.js",
+     "generators/ckeditor_install/templates/ckeditor/plugins/autogrow/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/clipboard/dialogs/paste.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/colordialog/dialogs/colordialog.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/dialog/dialogDefinition.js",
@@ -577,6 +597,7 @@ Gem::Specification.new do |s|
      "generators/ckeditor_install/templates/ckeditor/plugins/specialchar/dialogs/specialchar.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/styles/styles/default.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/table/dialogs/table.js",
+     "generators/ckeditor_install/templates/ckeditor/plugins/tableresize/plugin.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/tabletools/dialogs/tableCell.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/templates/dialogs/templates.js",
      "generators/ckeditor_install/templates/ckeditor/plugins/templates/templates/default.js",

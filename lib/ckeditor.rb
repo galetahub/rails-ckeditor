@@ -60,14 +60,14 @@ module Ckeditor
   mattr_accessor :file_manager_file_model
   @@file_manager_file_model = "Ckeditor::AttachmentFile"
   
+  # Get the image class from the image reference object.
   def self.image_model
-    @@image_model ||= @@file_manager_image_model.to_s.classify.constantize
-    @@image_model
+    @@file_manager_image_model.to_s.classify.constantize
   end
   
+  # Get the file class from the file reference object.
   def self.file_model
-    @@file_model ||= @@file_manager_file_model.to_s.classify.constantize
-    @@file_model
+    @@file_manager_file_model.to_s.classify.constantize
   end
   
   # Default way to setup Ckeditor. Run rails generate ckeditor to create

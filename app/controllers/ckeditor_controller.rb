@@ -32,12 +32,9 @@ class CkeditorController < ApplicationController
 	  end
 	  
     klass = case @kind.downcase
-      # TODO: fix issue TypeError (can't dup NilClass)
-      #when 'file'  then Ckeditor.file_model
-			#when 'image' then Ckeditor.image_model
-			when 'file' then Ckeditor::AttachmentFile
-			when 'image' then Ckeditor::Picture
-	  end 
+      when 'file'  then Ckeditor.file_model
+			when 'image' then Ckeditor.image_model
+	  end
   
 	  @record = klass.new
 	  

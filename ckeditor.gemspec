@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.4.0"
+  s.version = "3.4.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-08-20}
+  s.date = %q{2010-08-31}
   s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [

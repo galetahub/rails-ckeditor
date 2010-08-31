@@ -1,26 +1,19 @@
 class CkeditorController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
   before_filter :swf_options, :only => [:images, :files, :create]
+  respond_to :html, :xml, :json
   layout "ckeditor"
   
   # GET /ckeditor/images
   def images
-    @images = Ckeditor.image_model.find(:all, :order=>"id DESC")
-    
-    respond_to do |format|
-      format.html {}
-      format.xml { render :xml=>@images }
-    end
+    @images = Ckeditor.image_model.order("id DESC")
+    respond_with(@images)
   end
   
   # GET /ckeditor/files
   def files
-    @files = Ckeditor.file_model.find(:all, :order=>"id DESC")
-    
-    respond_to do |format|
-      format.html {}
-      format.xml { render :xml=>@files }
-    end
+    @files = Ckeditor.file_model.order("id DESC")
+    respond_with(@files)
   end
   
   # POST /ckeditor/create/:kind
@@ -48,7 +41,7 @@ class CkeditorController < ApplicationController
     
     if @record.valid? && @record.save
       @text = params[:CKEditor].blank? ? @record.to_json(:only=>[:id, :type], :methods=>[:url, :content_type, :size, :filename, :format_created_at], :root => "asset") : %Q"<script type='text/javascript'>
-        window.parent.CKEDITOR.tools.callFunction(#{params[:CKEditorFuncNum]}, '#{escape_single_quotes(@record.url_content)}');
+        window.parent.CKEDITOR.tools.callFunction(#{params[:CKEditorFuncNum]}, '#{Ckeditor::Utils.escape_single_quotes(@record.url_content)}');
       </script>"
       
       render :text => @text
@@ -80,9 +73,4 @@ class CkeditorController < ApplicationController
       @file_types_description ||= "Images"
       @file_upload_limit ||= 10
     end
-    
-    def escape_single_quotes(str)
-      str.gsub('\\','\0\0').gsub('</','<\/').gsub(/\r\n|\n|\r/, "\\n").gsub(/["']/) { |m| "\\#{m}" }
-    end
-  
 end

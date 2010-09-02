@@ -36,6 +36,8 @@ begin
     gemspec.authors = ["Igor Galeta"]
     gemspec.files = FileList["[A-Z]*", "{app,config,lib}/**/*"]
     gemspec.rubyforge_project = "ckeditor"
+    
+    gemspec.add_dependency('mime-types', '>= 1.16')
   end
   
   Jeweler::GemcutterTasks.new

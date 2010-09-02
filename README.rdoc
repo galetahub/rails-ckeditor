@@ -20,7 +20,7 @@ http://github.com/galetahub/rails-ckeditor-demo-app
 ===Rails 3
 
 In your appication "Gemfile":
-  gem 'ckeditor', '3.4.0.pre'
+  gem 'ckeditor', '3.4.1.pre'
 or
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 

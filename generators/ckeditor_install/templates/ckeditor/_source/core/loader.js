@@ -84,7 +84,7 @@ if ( !CKEDITOR.loader )
 
 			for ( var i = 0 ; i < scripts.length ; i++ )
 			{
-				var match = scripts[i].src.match( /(^|.*[\\\/])core\/loader.js(?:\?.*)?$/i );
+				var match = scripts[i].src.match( /(^|.*?[\\\/])(?:_source\/)?core\/loader.js(?:\?.*)?$/i );
 
 				if ( match )
 				{
@@ -108,7 +108,7 @@ if ( !CKEDITOR.loader )
 			return path;
 		})();
 
-		var timestamp = 'A7HG4HT';
+		var timestamp = 'A8LE4JO';
 
 		var getUrl = function( resource )
 		{

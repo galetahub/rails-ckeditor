@@ -305,7 +305,7 @@ CKEDITOR.dom.range = function( document )
 		return node.type != CKEDITOR.NODE_TEXT
 			    && node.getName() in CKEDITOR.dtd.$removeEmpty
 			    || !CKEDITOR.tools.trim( node.getText() )
-			    || node.getParent().hasAttribute( '_fck_bookmark' );
+			    || node.getParent().hasAttribute( '_cke_bookmark' );
 	}
 
 	var whitespaceEval = new CKEDITOR.dom.walker.whitespaces(),
@@ -400,7 +400,7 @@ CKEDITOR.dom.range = function( document )
 			var collapsed = this.collapsed;
 
 			startNode = this.document.createElement( 'span' );
-			startNode.setAttribute( '_fck_bookmark', 1 );
+			startNode.setAttribute( '_cke_bookmark', 1 );
 			startNode.setStyle( 'display', 'none' );
 
 			// For IE, it must have something inside, otherwise it may be
@@ -710,10 +710,10 @@ CKEDITOR.dom.range = function( document )
 				endNode = this.endContainer;
 
 			if ( startNode.is && startNode.is( 'span' )
-				&& startNode.hasAttribute( '_fck_bookmark' ) )
+				&& startNode.hasAttribute( '_cke_bookmark' ) )
 				this.setStartAt( startNode, CKEDITOR.POSITION_BEFORE_START );
 			if ( endNode && endNode.is && endNode.is( 'span' )
-				&& endNode.hasAttribute( '_fck_bookmark' ) )
+				&& endNode.hasAttribute( '_cke_bookmark' ) )
 				this.setEndAt( endNode,  CKEDITOR.POSITION_AFTER_END );
 		},
 
@@ -919,7 +919,7 @@ CKEDITOR.dom.range = function( document )
 								// If this is a visible element.
 								// We need to check for the bookmark attribute because IE insists on
 								// rendering the display:none nodes we use for bookmarks. (#3363)
-								if ( sibling.$.offsetWidth > 0 && !sibling.getAttribute( '_fck_bookmark' ) )
+								if ( sibling.$.offsetWidth > 0 && !sibling.getAttribute( '_cke_bookmark' ) )
 								{
 									// We'll accept it only if we need
 									// whitespace, and this is an inline
@@ -1078,7 +1078,7 @@ CKEDITOR.dom.range = function( document )
 								// If this is a visible element.
 								// We need to check for the bookmark attribute because IE insists on
 								// rendering the display:none nodes we use for bookmarks. (#3363)
-								if ( sibling.$.offsetWidth > 0 && !sibling.getAttribute( '_fck_bookmark' ) )
+								if ( sibling.$.offsetWidth > 0 && !sibling.getAttribute( '_cke_bookmark' ) )
 								{
 									// We'll accept it only if we need
 									// whitespace, and this is an inline

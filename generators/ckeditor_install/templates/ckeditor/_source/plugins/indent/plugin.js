@@ -157,7 +157,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 				// Convert the array back to a DOM forest (yes we might have a few subtrees now).
 				// And replace the old list with the new forest.
-				var newList = CKEDITOR.plugins.list.arrayToList( listArray, database, null, editor.config.enterMode, 0 );
+				var newListDir = listNode.getAttribute( 'dir' ) || listNode.getStyle( 'direction' );
+				var newList = CKEDITOR.plugins.list.arrayToList( listArray, database, null, editor.config.enterMode, newListDir );
 
 				// Avoid nested <li> after outdent even they're visually same,
 				// recording them for later refactoring.(#3982)
@@ -280,9 +281,19 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				ranges = selection && selection.getRanges( true ),
 				range;
 
+			var skipBookmarks = function( node )
+			{
+				return ! node.hasAttribute( '_cke_bookmark' );
+			};
+
 			var iterator = ranges.createIterator();
 			while ( ( range = iterator.getNextRange() ) )
 			{
+				// Do not indent body. (#6138)
+				range.shrink( CKEDITOR.SHRINK_ELEMENT );
+				if ( range.endContainer.getName() == 'body' )
+					range.setEndAt( range.endContainer.getLast( skipBookmarks ), CKEDITOR.POSITION_BEFORE_END );
+
 				var startContainer = range.startContainer,
 					endContainer = range.endContainer,
 					rangeRoot = range.getCommonAncestor(),

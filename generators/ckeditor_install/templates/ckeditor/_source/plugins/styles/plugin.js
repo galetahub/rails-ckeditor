@@ -137,6 +137,8 @@ CKEDITOR.STYLE_OBJECT = 3;
 			return ( this.removeFromRange =
 						this.type == CKEDITOR.STYLE_INLINE ?
 							removeInlineStyle
+						: this.type == CKEDITOR.STYLE_OBJECT ?
+							removeObjectStyle
 						: null ).call( this, range );
 		},
 
@@ -404,7 +406,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 				var nodeType = currentNode.type;
 				var nodeName = nodeType == CKEDITOR.NODE_ELEMENT ? currentNode.getName() : null;
 
-				if ( nodeName && currentNode.getAttribute( '_fck_bookmark' ) )
+				if ( nodeName && currentNode.getAttribute( '_cke_bookmark' ) )
 				{
 					currentNode = currentNode.getNextSourceNode( true );
 					continue;
@@ -719,6 +721,41 @@ CKEDITOR.STYLE_OBJECT = 3;
 		element && setupElement( element, this );
 	}
 
+	function removeObjectStyle( range )
+	{
+		var root = range.getCommonAncestor( true, true ),
+				element = root.getAscendant( this.element, true );
+
+		if ( !element )
+			return;
+
+		var style = this;
+		var def = style._.definition;
+		var attributes = def.attributes;
+		var styles = CKEDITOR.style.getStyleText( def );
+
+		// Remove all defined attributes.
+		if ( attributes )
+		{
+			for ( var att in attributes )
+			{
+				element.removeAttribute( att, attributes[ att ] );
+			}
+		}
+
+		// Assign all defined styles.
+		if ( def.styles )
+		{
+			for ( var i in def.styles )
+			{
+				if ( !def.styles.hasOwnProperty( i ) )
+					continue;
+
+				element.removeStyle( i );
+			}
+		}
+	}
+
 	function applyBlockStyle( range )
 	{
 		// Serializible bookmarks is needed here since
@@ -812,7 +849,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 	{
 		// Exclude the ones at header OR at tail,
 		// and ignore bookmark content between them.
-		var duoBrRegex = /(\S\s*)\n(?:\s|(<span[^>]+_fck_bookmark.*?\/span>))*\n(?!$)/gi,
+		var duoBrRegex = /(\S\s*)\n(?:\s|(<span[^>]+_cke_bookmark.*?\/span>))*\n(?!$)/gi,
 			blockName = preBlock.getName(),
 			splitedHtml = replace( preBlock.getOuterHtml(),
 				duoBrRegex,
@@ -834,7 +871,7 @@ CKEDITOR.STYLE_OBJECT = 3;
 		var headBookmark = '',
 			tailBookmark = '';
 
-		str = str.replace( /(^<span[^>]+_fck_bookmark.*?\/span>)|(<span[^>]+_fck_bookmark.*?\/span>$)/gi,
+		str = str.replace( /(^<span[^>]+_cke_bookmark.*?\/span>)|(<span[^>]+_cke_bookmark.*?\/span>$)/gi,
 			function( str, m1, m2 ){
 					m1 && ( headBookmark = m1 );
 					m2 && ( tailBookmark = m2 );
@@ -1080,8 +1117,16 @@ CKEDITOR.STYLE_OBJECT = 3;
 		}
 
 		// Assign all defined styles.
-		if ( styles )
-			el.setAttribute( 'style', styles );
+		if ( def.styles )
+		{
+			for ( var i in def.styles )
+			{
+				if ( !def.styles.hasOwnProperty( i ) )
+					continue;
+
+				el.setStyle( i, def.styles[ i ] );
+			}
+		}
 
 		return el;
 	}

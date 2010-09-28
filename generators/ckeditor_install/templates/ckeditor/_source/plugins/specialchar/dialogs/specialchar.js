@@ -351,7 +351,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 									{
 										firstChar.focus();
 										onFocus( null, firstChar );
-									});
+									}, 0 );
 								},
 								onShow : function()
 								{
@@ -360,7 +360,7 @@ CKEDITOR.dialog.add( 'specialchar', function( editor )
 										{
 											firstChar.focus();
 											onFocus( null, firstChar );
-										});
+										}, 0 );
 								},
 								onLoad : function( event )
 								{

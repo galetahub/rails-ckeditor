@@ -207,16 +207,34 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							});
 						}
 
+						var scroll;
 						// IE fires the "selectionchange" event when clicking
 						// inside a selection. We don't want to capture that.
-						body.on( 'mousedown', function ()
+						body.on( 'mousedown', function( evt )
 						{
+							// IE scrolls document to top on right mousedown
+							// when editor has no focus, remember this scroll
+							// position and revert it before context menu opens. (#5778)
+							if ( evt.data.$.button == 2 )
+							{
+								var sel = editor.document.$.selection;
+								if ( sel.type == 'None' )
+									scroll = editor.window.getScrollPosition();
+							}
 							disableSave();
 						});
 
 						body.on( 'mouseup',
-							function()
+							function( evt )
 							{
+								// Restore recorded scroll position when needed on right mouseup.
+								if ( evt.data.$.button == 2 && scroll )
+								{
+									editor.document.$.documentElement.scrollLeft = scroll.x;
+									editor.document.$.documentElement.scrollTop = scroll.y;
+								}
+								scroll = null;
+
 								saveEnabled = true;
 								setTimeout( function()
 									{
@@ -673,16 +691,29 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// tranform the native ranges in CKEDITOR.dom.range
 					// instances.
 
-					var ranges = [];
-					var sel = this.getNative();
+					var ranges = [],
+						range,
+						doc = this.document,
+						sel = this.getNative();
 
 					if ( !sel )
-						return [];
+						return ranges;
+
+					// On WebKit, it may happen that we'll have no selection
+					// available. We normalize it here by replicating the
+					// behavior of other browsers.
+					if ( !sel.rangeCount )
+					{
+						range = new CKEDITOR.dom.range( doc );
+						range.moveToElementEditStart( doc.getBody() );
+						ranges.push( range );
+					}
 
 					for ( var i = 0 ; i < sel.rangeCount ; i++ )
 					{
 						var nativeRange = sel.getRangeAt( i );
-						var range = new CKEDITOR.dom.range( this.document );
+
+						range = new CKEDITOR.dom.range( doc );
 
 						range.setStart( new CKEDITOR.dom.node( nativeRange.startContainer ), nativeRange.startOffset );
 						range.setEnd( new CKEDITOR.dom.node( nativeRange.endContainer ), nativeRange.endOffset );
@@ -1103,8 +1134,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					// In FF2, if we have a collapsed range, inside an empty
 					// element, we must add something to it otherwise the caret
 					// will not be visible.
+					// In Opera instead, the selection will be moved out of the
+					// element. (#4657)
 					if ( range.collapsed &&
-						( CKEDITOR.env.gecko && CKEDITOR.env.version < 10900 ) &&
+						( CKEDITOR.env.opera || ( CKEDITOR.env.gecko && CKEDITOR.env.version < 10900 ) ) &&
 						startContainer.type == CKEDITOR.NODE_ELEMENT &&
 						!startContainer.getChildCount() )
 					{

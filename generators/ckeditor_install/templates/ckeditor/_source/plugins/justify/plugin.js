@@ -25,9 +25,20 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	{
 		useComputedState = useComputedState === undefined || useComputedState;
 
-		var align = useComputedState ?
-			element.getComputedStyle( 'text-align' ) :
-			element.getStyle( 'text-align' ) || element.getAttribute( 'align' ) || '';
+		var align;
+		if ( useComputedState )
+			align = element.getComputedStyle( 'text-align' );
+		else
+		{
+			while ( !element.hasAttribute || !( element.hasAttribute( 'align' ) || element.getStyle( 'text-align' ) ) )
+			{
+				var parent = element.getParent();
+				if ( !parent )
+					break;
+				element = parent;
+			}
+			align = element.getStyle( 'text-align' ) || element.getAttribute( 'align' ) || '';
+		}
 
 		align && ( align = align.replace( /-moz-|-webkit-|start|auto/i, '' ) );
 

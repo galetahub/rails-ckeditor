@@ -299,8 +299,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			var contentBlock = listContents.shift(),
 				listItem = doc.createElement( 'li' );
 
-			// Preserve heading structure when converting to list item. (#5271)
-			if ( headerTagRegex.test( contentBlock.getName() ) )
+			// Preserve preformat block and heading structure when converting to list item. (#5335) (#5271)
+			if ( contentBlock.is( 'pre' ) || headerTagRegex.test( contentBlock.getName() ) )
 				contentBlock.appendTo( listItem );
 			else
 			{
@@ -312,13 +312,13 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				contentBlock.copyAttributes( listItem );
 				contentBlock.moveChildren( listItem );
 				contentBlock.remove();
+
+				// Append a bogus BR to force the LI to render at full height
+				if ( !CKEDITOR.env.ie )
+					listItem.appendBogus();
 			}
 
 			listItem.appendTo( listNode );
-
-			// Append a bogus BR to force the LI to render at full height
-			if ( !CKEDITOR.env.ie )
-				listItem.appendBogus();
 		}
 
 		if ( dir )
@@ -424,7 +424,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					var paragraph = doc.createElement( editor.config.enterMode == CKEDITOR.ENTER_P ? 'p' :
 							( editor.config.enterMode == CKEDITOR.ENTER_DIV ? 'div' : 'br' ) );
 					paragraph.appendTo( body );
-					ranges = [ new CKEDITOR.dom.range( doc ) ];
+					ranges = new CKEDITOR.dom.rangeList( [ new CKEDITOR.dom.range( doc ) ] );
 					// IE exception on inserting anything when anchor inside <br>.
 					if ( paragraph.is( 'br' ) )
 					{

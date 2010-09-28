@@ -14,7 +14,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	var nonExitableElementNames = { table:1,pre:1 };
 
 	// Matching an empty paragraph at the end of document.
-	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center|li)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\1>)?\s*(?=$|<\/body>)/gi;
+	var emptyParagraphRegexp = /\s*<(p|div|address|h\d|center)[^>]*>\s*(?:<br[^>]*>|&nbsp;|\u00A0|&#160;)?\s*(:?<\/\1>)?(?=\s*$|<\/body>)/gi;
 
 	var notWhitespaceEval = CKEDITOR.dom.walker.whitespaces( true );
 
@@ -73,7 +73,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					}
 				}
 
-				$sel.createRange().pasteHTML( data );
+				try
+				{
+					$sel.createRange().pasteHTML( data );
+				}
+				catch (e) {}
 
 				if ( selIsLocked )
 					this.getSelection().lock();
@@ -198,7 +202,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	function restoreDirty( editor )
 	{
 		if ( !editor.checkDirty() )
-			setTimeout( function(){ editor.resetDirty(); } );
+			setTimeout( function(){ editor.resetDirty(); }, 0 );
 	}
 
 	var isNotWhitespace = CKEDITOR.dom.walker.whitespaces( true ),
@@ -244,11 +248,20 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		{
 			restoreDirty( editor );
 
+			// Memorize scroll position to restore it later (#4472).
+			var hostDocument = editor.element.getDocument();
+			var hostDocumentElement = hostDocument.getDocumentElement();
+			var scrollTop = hostDocumentElement.$.scrollTop;
+			var scrollLeft = hostDocumentElement.$.scrollLeft;
+
 			// Simulating keyboard character input by dispatching a keydown of white-space text.
 			var keyEventSimulate = doc.$.createEvent( "KeyEvents" );
 			keyEventSimulate.initKeyEvent( 'keypress', true, true, win.$, false,
 				false, false, false, 0, 32 );
 			doc.$.dispatchEvent( keyEventSimulate );
+
+			if ( scrollTop != hostDocumentElement.$.scrollTop || scrollLeft != hostDocumentElement.$.scrollLeft )
+				hostDocument.getWindow().$.scrollTo( scrollLeft, scrollTop );
 
 			// Restore the original document status by placing the cursor before a bogus br created (#5021).
 			bodyChildsNum && body.getFirst().remove();
@@ -412,8 +425,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
   							' allowTransparency="true"' +
   							'></iframe>' );
 
-						// #5689 Running inside of Firefox chrome the load event doesn't bubble like in a normal page
-						if (document.location.protocol == 'chrome:')
+						// Running inside of Firefox chrome the load event doesn't bubble like in a normal page (#5689)
+						if ( document.location.protocol == 'chrome:' )
 							CKEDITOR.event.useCapture = true;
 
 						// With FF, it's better to load the data on iframe.load. (#3894,#4058)
@@ -430,11 +443,34 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								doc.close();
 							});
 
-						// #5689 Reset adjustment back to default
-						if (document.location.protocol == 'chrome:')
+						// Reset adjustment back to default (#5689)
+						if ( document.location.protocol == 'chrome:' )
 							CKEDITOR.event.useCapture = false;
 
+						// The container must be visible when creating the iframe in FF (#5956)
+						var element = editor.element,
+							isHidden = CKEDITOR.env.gecko && !element.isVisible(),
+							previousStyles = {};
+						if ( isHidden )
+						{
+							element.show();
+							previousStyles = {
+								position : element.getStyle( 'position' ),
+								top : element.getStyle( 'top' )
+							};
+							element.setStyles( { position : 'absolute', top : '-3000px' } );
+						}
+
 						mainElement.append( iframe );
+
+						if ( isHidden )
+						{
+							setTimeout( function()
+							{
+								element.hide();
+								element.setStyles( previousStyles );
+							}, 1000 );
+						}
 					};
 
 					// The script that launches the bootstrap logic on 'domReady', so the document

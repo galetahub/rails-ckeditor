@@ -108,6 +108,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 						if ( style.type == CKEDITOR.STYLE_INLINE && style.checkActive( elementPath ) )
 							style.remove( editor.document );
+						else if ( style.type == CKEDITOR.STYLE_OBJECT && style.checkActive( elementPath ) )
+							style.remove( editor.document );
 						else
 							style.apply( editor.document );
 

@@ -758,6 +758,7 @@ CKEDITOR.dialog.add( 'link', function( editor )
 								{
 									if ( data.target )
 										this.setValue( data.target.type );
+									targetChanged.call( this );
 								},
 								commit : function( data )
 								{

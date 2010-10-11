@@ -1,5 +1,7 @@
 module Ckeditor
   class Engine < ::Rails::Engine
+    config.autoload_paths << File.expand_path(File.join(File.dirname(__FILE__), ".."))
+  
     initializer "ckeditor_engine.add_middleware" do |app|
       app.middleware.insert_before(
         ActionDispatch::Cookies,

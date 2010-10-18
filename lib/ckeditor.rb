@@ -3,6 +3,7 @@ module Ckeditor
   autoload :FormBuilder,       'ckeditor/form_builder'
   autoload :CustomFormBuilder, 'ckeditor/formtastic'
   autoload :Middleware,        'ckeditor/middleware'
+  autoload :Utils,             'ckeditor/utils'
   
   mattr_accessor :swf_file_post_name
   @@swf_file_post_name = "data"

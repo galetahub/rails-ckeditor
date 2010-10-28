@@ -59,6 +59,13 @@ class CkeditorController < ApplicationController
     end
   end
 
+  # DELETE /ckeditor/:id 
+  def destroy
+    @asset = Ckeditor::Asset.find(params[:id])
+    @asset.destroy
+    redirect_to request.referrer
+  end
+
   private
     
     def swf_options

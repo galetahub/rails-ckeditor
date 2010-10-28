@@ -13,3 +13,4 @@
    <div class="FCKFileDate"><%= asset.format_created_at %></div>
    <div class="FCKFileSize"><%= number_to_human_size(asset.size, :precision => 2) %></div>
 </div>
+<%= link_to('&nbsp;', url_for(:controller => 'ckeditor', :action => 'destroy', :id => asset.id), :class => 'FCKFileDelete') %>

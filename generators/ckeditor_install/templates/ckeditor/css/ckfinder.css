@@ -82,6 +82,18 @@ td.FCKFileSize
 	display: none;
 }
 
+a.FCKFileDelete { 
+  float:left;
+  background-image:url('/javascripts/ckeditor/images/cancelbutton.gif');
+	background-repeat: no-repeat;
+  background-position:-14px 0;
+  width:14px;
+}
+
+a.FCKFileDelete:hover {
+  background-position:0 0;
+}
+
 .FCKThumbTools
 {
 	padding: 2px;

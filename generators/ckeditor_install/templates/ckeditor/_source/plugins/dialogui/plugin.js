@@ -380,7 +380,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 					if ( elementDefinition[ 'default' ] )
 						attributes.checked = 'checked';
 
-					if (typeof myDefinition.controlStyle != 'undefined')
+					if ( typeof myDefinition.controlStyle != 'undefined' )
 						myDefinition.style = myDefinition.controlStyle;
 
 					_.checkbox = new CKEDITOR.ui.dialog.uiElement( dialog, myDefinition, html, 'input', null, attributes );
@@ -462,7 +462,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 						cleanInnerDefinition( inputDefinition );
 						cleanInnerDefinition( labelDefinition );
 
-						if (typeof inputDefinition.controlStyle != 'undefined')
+						if ( typeof inputDefinition.controlStyle != 'undefined' )
 							inputDefinition.style = inputDefinition.controlStyle;
 
 						children.push( new CKEDITOR.ui.dialog.uiElement( dialog, inputDefinition, inputHtml, 'input', null, inputAttributes ) );
@@ -622,7 +622,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 							CKEDITOR.tools.htmlEncode( item[0] ) );
 					}
 
-					if (typeof myDefinition.controlStyle != 'undefined')
+					if ( typeof myDefinition.controlStyle != 'undefined' )
 						myDefinition.style = myDefinition.controlStyle;
 
 					_.select = new CKEDITOR.ui.dialog.uiElement( dialog, myDefinition, html, 'select', null, attributes, innerHTML.join( '' ) );
@@ -931,7 +931,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 				{
 					this._.disabled = false;
 					var element = this.getElement();
-					element && element.removeClass( 'disabled' );
+					element && element.removeClass( 'cke_disabled' );
 				},
 
 				/**
@@ -941,7 +941,7 @@ CKEDITOR.plugins.add( 'dialogui' );
 				disable : function()
 				{
 					this._.disabled = true;
-					this.getElement().addClass( 'disabled' );
+					this.getElement().addClass( 'cke_disabled' );
 				},
 
 				isVisible : function()
@@ -1384,18 +1384,19 @@ CKEDITOR.plugins.add( 'dialogui' );
 				 */
 				reset : function()
 				{
-					var frameElement = CKEDITOR.document.getById( this._.frameId ),
+					var _ = this._,
+						frameElement = CKEDITOR.document.getById( _.frameId ),
 						frameDocument = frameElement.getFrameDocument(),
-						elementDefinition = this._.definition,
-						buttons = this._.buttons,
+						elementDefinition = _.definition,
+						buttons = _.buttons,
 						callNumber = this.formLoadedNumber,
 						unloadNumber = this.formUnloadNumber,
-						langDir = this._.dialog._.editor.lang.dir,
-						langCode = this._.dialog._.editor.langCode;
+						langDir = _.dialog._.editor.lang.dir,
+						langCode = _.dialog._.editor.langCode;
 
 					// The callback function for the iframe, but we must call tools.addFunction only once
 					// so we store the function number in this.formLoadedNumber
-					if (!callNumber)
+					if ( !callNumber )
 					{
 						callNumber = this.formLoadedNumber = CKEDITOR.tools.addFunction(
 							function()

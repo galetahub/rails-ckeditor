@@ -214,7 +214,6 @@ CKEDITOR.config.entities_greek = true;
  * config.entities_processNumerical = true;
  * config.entities_processNumerical = 'force';		//Convert from "&nbsp;" into "&#160;";
  */
-CKEDITOR.config.entities_processNumerical = false;
 
 /**
  * An additional list of entities to be used. It's a string containing each

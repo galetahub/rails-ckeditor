@@ -38,8 +38,8 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				if ( editor.focusManager.hasFocus )
 				{
 					var sel = editor.getSelection(),
-							ancestor = sel.getCommonAncestor(),
-							cell;
+						ancestor = sel.getCommonAncestor(),
+						cell;
 
 					if ( ( cell = ( ancestor.getAscendant( 'td', true ) || ancestor.getAscendant( 'th', true ) ) ) )
 					{

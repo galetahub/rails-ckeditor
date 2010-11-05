@@ -5,11 +5,20 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 (function()
 {
-	var guardElements = { table:1, ul:1, ol:1, blockquote:1, div:1 };
-	var directSelectionGuardElements = {};
+	var guardElements = { table:1, tbody: 1, ul:1, ol:1, blockquote:1, div:1, tr: 1 },
+		directSelectionGuardElements = {},
+		// All guard elements which can have a direction applied on them.
+		allGuardElements = {};
 	CKEDITOR.tools.extend( directSelectionGuardElements, guardElements, { tr:1, p:1, div:1, li:1 } );
+	CKEDITOR.tools.extend( allGuardElements, directSelectionGuardElements, { td:1 } );
 
-	function onSelectionChange( evt )
+	function onSelectionChange( e )
+	{
+		setToolbarStates( e );
+		handleMixedDirContent( e );
+	}
+
+	function setToolbarStates( evt )
 	{
 		var editor = evt.editor,
 			path = evt.data.path;
@@ -18,19 +27,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		useComputedState = useComputedState === undefined || useComputedState;
 
-		if ( useComputedState )
-		{
-			var selection = editor.getSelection(),
-				ranges = selection.getRanges();
-
-			selectedElement = ranges && ranges[ 0 ].getEnclosedNode();
-
-			// If this is not our element of interest, apply to fully selected elements from guardElements.
-			if ( !selectedElement || selectedElement
-					&& !( selectedElement.type == CKEDITOR.NODE_ELEMENT && selectedElement.getName() in directSelectionGuardElements )
-				)
-				selectedElement = getFullySelected( selection, guardElements );
-		}
+		// We can use computedState provided by the browser or traverse parents manually.
+		if ( !useComputedState )
+			selectedElement = getElementForDirection( path.lastElement );
 
 		selectedElement = selectedElement || path.block || path.blockLimit;
 
@@ -43,77 +42,115 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 		editor.getCommand( 'bidirtl' ).setState( selectionDir == 'rtl' ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF );
 		editor.getCommand( 'bidiltr' ).setState( selectionDir == 'ltr' ? CKEDITOR.TRISTATE_ON : CKEDITOR.TRISTATE_OFF );
+	}
 
-		var chromeRoot = editor.container.getChild( 1 );
+	function handleMixedDirContent( evt )
+	{
+		var editor = evt.editor,
+			chromeRoot = editor.container.getChild( 1 ),
+			directionNode = getElementForDirection( evt.data.path.lastElement );
 
-		if ( selectionDir != editor.lang.dir )
+		if ( directionNode && editor.lang.dir != directionNode.getComputedStyle( 'direction' ) )
 			chromeRoot.addClass( 'cke_mixed_dir_content' );
 		else
 			chromeRoot.removeClass( 'cke_mixed_dir_content' );
 	}
 
-	function switchDir( element, dir, editor )
+	/**
+	 * Returns element with possibility of applying the direction.
+	 * @param node
+	 */
+	function getElementForDirection( node )
 	{
-		var dirBefore = element.getComputedStyle( 'direction' ),
-			currentDir = element.getStyle( 'direction' ) || element.getAttribute( 'dir' ) || '';
+		while ( node && !( node.getName() in allGuardElements || node.is( 'body' ) ) )
+		{
+			var parent = node.getParent();
+			if ( !parent )
+				break;
 
+			node = parent;
+		}
+
+		return node;
+	}
+
+	function switchDir( element, dir, editor, database )
+	{
+		// Mark this element as processed by switchDir.
+		CKEDITOR.dom.element.setMarker( database, element, 'bidi_processed', 1 );
+
+		// Check whether one of the ancestors has already been styled.
+		var parent = element;
+		while ( ( parent = parent.getParent() ) && !parent.is( 'body' ) )
+		{
+			if ( parent.getCustomData( 'bidi_processed' ) )
+			{
+				// Ancestor style must dominate.
+				element.removeStyle( 'direction' );
+				element.removeAttribute( 'dir' );
+				return null;
+			}
+		}
+
+		var useComputedState = ( 'useComputedState' in editor.config ) ? editor.config.useComputedState : 1;
+
+		var elementDir = useComputedState ? element.getComputedStyle( 'direction' )
+			: element.getStyle( 'direction' ) || element.hasAttribute( 'dir' );
+
+		// Stop if direction is same as present.
+		if ( elementDir == dir )
+			return null;
+
+		// Reuse computedState if we already have it.
+		var dirBefore = useComputedState ? elementDir : element.getComputedStyle( 'direction' );
+
+		// Clear direction on this element.
 		element.removeStyle( 'direction' );
 
-		if ( currentDir.toLowerCase() == dir )
+		// Do the second check when computed state is ON, to check
+		// if we need to apply explicit direction on this element.
+		if ( useComputedState )
+		{
 			element.removeAttribute( 'dir' );
+			if ( dir != element.getComputedStyle( 'direction' ) )
+				element.setAttribute( 'dir', dir );
+		}
 		else
+			// Set new direction for this element.
 			element.setAttribute( 'dir', dir );
 
 		// If the element direction changed, we need to switch the margins of
 		// the element and all its children, so it will get really reflected
 		// like a mirror. (#5910)
-		var dirAfter = element.getComputedStyle( 'direction' );
-		if ( dirAfter != dirBefore )
-		{
-			var range = new CKEDITOR.dom.range( element.getDocument() );
-			range.setStartBefore( element );
-			range.setEndAfter( element );
-
-			var walker = new CKEDITOR.dom.walker( range );
-
-			var node;
-			while ( ( node = walker.next() ) )
-			{
-				if ( node.type == CKEDITOR.NODE_ELEMENT )
-				{
-					// A child with dir defined is to be ignored.
-					if ( !node.equals( element ) && node.hasAttribute( 'dir' ) )
-					{
-						range.setStartAfter( node );
-						walker = new CKEDITOR.dom.walker( range );
-						continue;
-					}
-
-					// Switch the margins.
-					var marginLeft = node.getStyle( 'margin-right' ),
-						marginRight = node.getStyle( 'margin-left' );
-
-					marginLeft ? node.setStyle( 'margin-left', marginLeft ) : node.removeStyle( 'margin-left' );
-					marginRight ? node.setStyle( 'margin-right', marginRight ) : node.removeStyle( 'margin-right' );
-				}
-			}
-		}
+		if ( dir != dirBefore )
+			editor.fire( 'dirChanged', element );
 
 		editor.forceNextSelectionCheck();
+
+		return null;
 	}
 
-	function getFullySelected( selection, elements )
+	function getFullySelected( range, elements )
 	{
-		var selectedElement = selection.getCommonAncestor();
-		while( selectedElement.type == CKEDITOR.NODE_ELEMENT
-				&& !( selectedElement.getName() in elements )
-				&& selectedElement.getParent().getChildCount() == 1
-			)
-			selectedElement = selectedElement.getParent();
+		var ancestor = range.getCommonAncestor( false, true );
 
-		return selectedElement.type == CKEDITOR.NODE_ELEMENT
-			&& ( selectedElement.getName() in elements )
-			&& selectedElement;
+		range.enlarge( CKEDITOR.ENLARGE_BLOCK_CONTENTS );
+
+		if ( range.checkBoundaryOfElement( ancestor, CKEDITOR.START )
+				&& range.checkBoundaryOfElement( ancestor, CKEDITOR.END ) )
+		{
+			var parent;
+			while ( ancestor && ancestor.type == CKEDITOR.NODE_ELEMENT
+					&& ( parent = ancestor.getParent() )
+					&& parent.getChildCount() == 1
+					&& ( !( ancestor.getName() in elements ) || ( parent.getName() in elements ) )
+					)
+				ancestor = parent;
+
+			return ancestor.type == CKEDITOR.NODE_ELEMENT
+					&& ( ancestor.getName() in elements )
+					&& ancestor;
+		}
 	}
 
 	function bidiCommand( dir )
@@ -126,90 +163,65 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 
 			if ( ranges && ranges.length )
 			{
-				// Apply do directly selected elements from guardElements.
-				var selectedElement = ranges[ 0 ].getEnclosedNode();
+				var database = {};
 
-				// If this is not our element of interest, apply to fully selected elements from guardElements.
-				if ( !selectedElement || selectedElement
-						&& !( selectedElement.type == CKEDITOR.NODE_ELEMENT && selectedElement.getName() in directSelectionGuardElements )
-					)
-					selectedElement = getFullySelected( selection, guardElements );
+				// Creates bookmarks for selection, as we may split some blocks.
+				var bookmarks = selection.createBookmarks();
 
-				if ( selectedElement )
+				var rangeIterator = ranges.createIterator(),
+					range,
+					i = 0;
+
+				while ( ( range = rangeIterator.getNextRange( 1 ) ) )
 				{
-					if ( !selectedElement.isReadOnly() )
-						switchDir( selectedElement, dir, editor );
-				}
-				else
-				{
-					// Creates bookmarks for selection, as we may split some blocks.
-					var bookmarks = selection.createBookmarks();
+					// Apply do directly selected elements from guardElements.
+					var selectedElement = range.getEnclosedNode();
+
+					// If this is not our element of interest, apply to fully selected elements from guardElements.
+					if ( !selectedElement || selectedElement
+							&& !( selectedElement.type == CKEDITOR.NODE_ELEMENT && selectedElement.getName() in directSelectionGuardElements )
+						)
+						selectedElement = getFullySelected( range, guardElements );
+
+					if ( selectedElement && !selectedElement.isReadOnly() )
+						switchDir( selectedElement, dir, editor, database );
 
 					var iterator,
 						block;
 
-					for ( var i = ranges.length - 1 ; i >= 0 ; i-- )
+					// Walker searching for guardElements.
+					var walker = new CKEDITOR.dom.walker( range );
+
+					var start = bookmarks[ i ].startNode,
+						end = bookmarks[ i++ ].endNode;
+
+					walker.evaluator = function( node )
 					{
-						// Array of elements processed as guardElements.
-						var processedElements = [];
-						// Walker searching for guardElements.
-						var walker = new CKEDITOR.dom.walker( ranges[ i ] );
-						walker.evaluator = function( node ){
-							return node.type == CKEDITOR.NODE_ELEMENT
+						return !! ( node.type == CKEDITOR.NODE_ELEMENT
 								&& node.getName() in guardElements
 								&& !( node.getName() == ( enterMode == CKEDITOR.ENTER_P ) ? 'p' : 'div'
 									&& node.getParent().type == CKEDITOR.NODE_ELEMENT
-									&& node.getParent().getName() == 'blockquote'
-								);
-						};
+									&& node.getParent().getName() == 'blockquote' )
+								// Element must be fully included in the range as well. (#6485).
+								&& node.getPosition( start ) & CKEDITOR.POSITION_FOLLOWING
+								&& ( ( node.getPosition( end ) & CKEDITOR.POSITION_PRECEDING + CKEDITOR.POSITION_CONTAINS ) == CKEDITOR.POSITION_PRECEDING ) );
+					};
 
-						while ( ( block = walker.next() ) )
-						{
-							switchDir( block, dir, editor );
-							processedElements.push( block );
-						}
+					while ( ( block = walker.next() ) )
+						switchDir( block, dir, editor, database );
 
-						iterator = ranges[ i ].createIterator();
-						iterator.enlargeBr = enterMode != CKEDITOR.ENTER_BR;
+					iterator = range.createIterator();
+					iterator.enlargeBr = enterMode != CKEDITOR.ENTER_BR;
 
-						while ( ( block = iterator.getNextParagraph( enterMode == CKEDITOR.ENTER_P ? 'p' : 'div' ) ) )
-						{
-							if ( block.isReadOnly() )
-								continue;
-
-							var _break = 0;
-
-							// Check if block have been already processed by the walker above.
-							for ( var ii = 0; ii < processedElements.length; ii++ )
-							{
-								var parent = block.getParent();
-
-								while( parent && parent.getName() != 'body' )
-								{
-									if ( ( parent.$.isSameNode && parent.$.isSameNode( processedElements[ ii ].$ ) )
-											|| parent.$ == processedElements[ ii ].$ )
-									{
-										_break = 1;
-										break;
-									}
-									parent = parent.getParent();
-								}
-
-								if ( _break )
-									break;
-							}
-
-							if ( !_break )
-							{
-								switchDir( block, dir, editor );
-							}
-						}
-					}
-
-					editor.forceNextSelectionCheck();
-					// Restore selection position.
-					selection.selectBookmarks( bookmarks );
+					while ( ( block = iterator.getNextParagraph( enterMode == CKEDITOR.ENTER_P ? 'p' : 'div' ) ) )
+						!block.isReadOnly() && switchDir( block, dir, editor, database );
 				}
+
+				CKEDITOR.dom.element.clearAllMarkers( database );
+
+				editor.forceNextSelectionCheck();
+				// Restore selection position.
+				selection.selectBookmarks( bookmarks );
 
 				editor.focus();
 			}

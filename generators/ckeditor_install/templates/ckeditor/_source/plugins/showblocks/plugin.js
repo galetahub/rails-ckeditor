@@ -153,4 +153,3 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @example
  * config.startupOutlineBlocks = true;
  */
-CKEDITOR.config.startupOutlineBlocks = false;

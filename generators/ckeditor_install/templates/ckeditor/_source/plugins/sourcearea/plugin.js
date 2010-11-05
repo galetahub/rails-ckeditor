@@ -72,12 +72,12 @@ CKEDITOR.plugins.add( 'sourcearea',
 								win.on( 'resize', onResize );
 								setTimeout( onResize, 0 );
 							}
-							else
+							// As we prevent click to put focus on editor container,
+							// while 'mousedown' inside <textarea> is also captured,
+							// but we must stop the even propagation, otherwise
+							// it's not possible to place the caret inside of it (non IE and IE9).
+							if ( document.addEventListener )
 							{
-								// By some yet unknown reason, we must stop the
-								// mousedown propagation for the textarea,
-								// otherwise it's not possible to place the caret
-								// inside of it (non IE).
 								textarea.on( 'mousedown', function( evt )
 									{
 										evt.data.stopPropagation();

@@ -317,6 +317,11 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		return html.replace( protectSelfClosingRegex, '<cke:$1$2></cke:$1>' );
 	}
 
+	function protectPreFormatted( html )
+	{
+		return html.replace( /(<pre\b[^>]*>)(\r\n|\n)/g, '$1$2$2' );
+	}
+
 	function protectRealComments( html )
 	{
 		return html.replace( /<!--(?!{cke_protected})[\s\S]+?-->/g, function( match )
@@ -437,6 +442,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 			// protecting them into open-close. (#3591)
 			data = protectSelfClosingElements( data );
 
+			// Compensate one leading line break after <pre> open as browsers
+			// eat it up. (#5789)
+			data = protectPreFormatted( data );
+
 			// Call the browser to help us fixing a possibly invalid HTML
 			// structure.
 			var div = new CKEDITOR.dom.element( 'div' );
@@ -491,4 +500,3 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
  * @example
  * config.forceSimpleAmpersand = false;
  */
-CKEDITOR.config.forceSimpleAmpersand = false;

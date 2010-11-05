@@ -83,9 +83,9 @@ CKEDITOR.plugins.add( 'resize',
 					if ( event.data.space == 'bottom' )
 					{
 						var direction = '';
-						if ( resizeHorizontal && !resizeVertical)
+						if ( resizeHorizontal && !resizeVertical )
 							direction = ' cke_resizer_horizontal';
-						if ( !resizeHorizontal && resizeVertical)
+						if ( !resizeHorizontal && resizeVertical )
 							direction = ' cke_resizer_vertical';
 
 						event.data.html += '<div class="cke_resizer' + direction + '"' +

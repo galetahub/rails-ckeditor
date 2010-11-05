@@ -54,7 +54,7 @@ CKEDITOR.tools.extend( CKEDITOR.editor.prototype,
 			popupWindow.focus();
 			popupWindow.location.href = url;
 		}
-		catch (e)
+		catch ( e )
 		{
 			popupWindow = window.open( url, null, options, true );
 		}

@@ -58,10 +58,10 @@ CKEDITOR.plugins.add( 'table',
 		{
 			editor.contextMenu.addListener( function( element, selection )
 				{
-					if ( !element || element.isReadOnly())
+					if ( !element || element.isReadOnly() )
 						return null;
 
-					var isTable	= element.is( 'table' ) || element.hasAscendant( 'table' );
+					var isTable = element.hasAscendant( 'table', 1 );
 
 					if ( isTable )
 					{

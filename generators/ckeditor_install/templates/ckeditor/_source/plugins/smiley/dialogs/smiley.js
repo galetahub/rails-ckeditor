@@ -36,7 +36,9 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 					src : src,
 					_cke_saved_src : src,
 					title : title,
-					alt : title
+					alt : title,
+					width : target.$.width,
+					height : target.$.height
 				}
 			});
 
@@ -52,8 +54,8 @@ CKEDITOR.dialog.add( 'smiley', function( editor )
 		element = new CKEDITOR.dom.element( element );
 		var relative, nodeToMove;
 
-		var keystroke = ev.getKeystroke();
-		var rtl = editor.lang.dir == 'rtl';
+		var keystroke = ev.getKeystroke(),
+			rtl = editor.lang.dir == 'rtl';
 		switch ( keystroke )
 		{
 			// UP-ARROW

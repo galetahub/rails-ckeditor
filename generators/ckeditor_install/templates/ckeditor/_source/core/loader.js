@@ -59,7 +59,7 @@ if ( !CKEDITOR.loader )
 			'core/htmlparser/cdata'		: [ 'core/htmlparser' ],
 			'core/htmlparser/filter'	: [ 'core/htmlparser' ],
 			'core/htmlparser/basicwriter': [ 'core/htmlparser' ],
-			'core/imagecacher'		: [ 'core/dom/element' ],
+			'core/imagecacher'		: [ 'core/dom/element', 'core/event' ],
 			'core/lang'				: [],
 			'core/plugins'			: [ 'core/resourcemanager' ],
 			'core/resourcemanager'	: [ 'core/scriptloader', 'core/tools' ],
@@ -108,7 +108,7 @@ if ( !CKEDITOR.loader )
 			return path;
 		})();
 
-		var timestamp = 'A8LE4JO';
+		var timestamp = 'AA4E4NT';
 
 		var getUrl = function( resource )
 		{

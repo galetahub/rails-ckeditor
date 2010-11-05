@@ -29,7 +29,7 @@ if ( CKEDITOR.status == 'unloaded' )
 			// If not the basic code is not ready it, just mark it to be loaded.
 			if ( CKEDITOR.status != 'basic_ready' )
 			{
-				CKEDITOR.loadFullCore._load = true;
+				CKEDITOR.loadFullCore._load = 1;
 				return;
 			}
 
@@ -77,7 +77,7 @@ if ( CKEDITOR.status == 'unloaded' )
 		 * // Disable the auto-replace feature.
 		 * <b>CKEDITOR.replaceByClassEnabled</b> = false;
 		 */
-		CKEDITOR.replaceByClassEnabled = true;
+		CKEDITOR.replaceByClassEnabled = 1;
 
 		var createInstance = function( elementOrIdOrName, config, creationFunction, data )
 		{
@@ -137,10 +137,7 @@ if ( CKEDITOR.status == 'unloaded' )
 			return createInstance( elementOrId, config, CKEDITOR.editor.appendTo, data );
 		};
 
-		/**
-		 * @ignore
-		 * Documented at ckeditor.js.
-		 */
+		// Documented at ckeditor.js.
 		CKEDITOR.add = function( editor )
 		{
 			// For now, just put the editor in the pending list. It will be
@@ -174,9 +171,9 @@ if ( CKEDITOR.status == 'unloaded' )
 
 			for ( var i = 0 ; i < textareas.length ; i++ )
 			{
-				var config = null;
-				var textarea = textareas[i];
-				var name = textarea.name;
+				var config = null,
+					textarea = textareas[i],
+					name = textarea.name;
 
 				// The "name" and/or "id" attribute must exist.
 				if ( !textarea.name && !textarea.id )

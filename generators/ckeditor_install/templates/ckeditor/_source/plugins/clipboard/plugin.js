@@ -16,10 +16,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 		var doc = editor.document,
 			body = doc.getBody();
 
-		var	enabled = false;
+		var enabled = 0;
 		var onExec = function()
 		{
-			enabled = true;
+			enabled = 1;
 		};
 
 		// The following seems to be the only reliable way to detect that
@@ -163,16 +163,16 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	{
 		var doc = this.document;
 
-		// Avoid recursions on 'paste' event for IE.
-		if ( CKEDITOR.env.ie && doc.getById( 'cke_pastebin' ) )
+		// Avoid recursions on 'paste' event or consequent paste too fast. (#5730)
+		if ( doc.getById( 'cke_pastebin' ) )
 			return;
 
 		// If the browser supports it, get the data directly
-		if (mode == 'text' && evt.data && evt.data.$.clipboardData)
+		if ( mode == 'text' && evt.data && evt.data.$.clipboardData )
 		{
 			// evt.data.$.clipboardData.types contains all the flavours in Mac's Safari, but not on windows.
 			var plain = evt.data.$.clipboardData.getData( 'text/plain' );
-			if (plain)
+			if ( plain )
 			{
 				evt.data.preventDefault();
 				callback( plain );
@@ -254,7 +254,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	// Cutting off control type element in IE standards breaks the selection entirely. (#4881)
 	function fixCut( editor )
 	{
-		if ( !CKEDITOR.env.ie || editor.document.$.compatMode == 'BackCompat' )
+		if ( !CKEDITOR.env.ie || CKEDITOR.env.quirks )
 			return;
 
 		var sel = editor.getSelection();
@@ -348,7 +348,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 				editor.on( 'contentDom', function()
 				{
 					var body = editor.document.getBody();
-					body.on( ( (mode == 'text' && CKEDITOR.env.ie) || CKEDITOR.env.webkit ) ? 'paste' : 'beforepaste',
+					body.on( ( (mode == 'text' && CKEDITOR.env.ie ) || CKEDITOR.env.webkit ) ? 'paste' : 'beforepaste',
 						function( evt )
 						{
 							if ( depressBeforeEvent )

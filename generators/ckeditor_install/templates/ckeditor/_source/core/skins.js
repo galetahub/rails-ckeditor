@@ -16,9 +16,9 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 CKEDITOR.skins = (function()
 {
 	// Holds the list of loaded skins.
-	var loaded = {};
-	var preloaded = {};
-	var paths = {};
+	var loaded = {},
+		preloaded = {},
+		paths = {};
 
 	var loadPart = function( editor, skinName, part, callback )
 	{
@@ -55,22 +55,30 @@ CKEDITOR.skins = (function()
 		}
 
 		// Check if we need to preload images from it.
-		if ( !preloaded[ skinName ] )
+		var preload = skinDefinition.preload;
+		if ( preload && preload.length > 0 )
 		{
-			var preload = skinDefinition.preload;
-			if ( preload && preload.length > 0 )
+			if ( !preloaded[ skinName ] )
 			{
+				// Prepare image URLs
 				appendSkinPath( preload );
-				CKEDITOR.imageCacher.load( preload, function()
-					{
-						preloaded[ skinName ] = 1;
-						loadPart( editor, skinName, part, callback );
-					} );
-				return;
+
+				// Get preloader event dispatcher object.
+				preloaded[ skinName ] = CKEDITOR.imageCacher.load( preload );
 			}
 
-			// Mark it as preloaded.
-			preloaded[ skinName ] = 1;
+			if ( !preloaded[ skinName ].finished )
+			{
+				// Bind listener for this editor instance.
+				preloaded[ skinName ].on( 'loaded', function()
+					{
+						loadPart( editor, skinName, part, callback );
+					}
+				);
+
+				// Execution will be continued from event listener.
+				return;
+			}
 		}
 
 		// Get the part definition.
@@ -93,8 +101,8 @@ CKEDITOR.skins = (function()
 
 			// Check whether the "css" and "js" properties have been defined
 			// for that part.
-			var cssIsLoaded = !part.css || !part.css.length;
-			var jsIsLoaded = !part.js || !part.js.length;
+			var cssIsLoaded = !part.css || !part.css.length,
+				jsIsLoaded = !part.js || !part.js.length;
 
 			// This is the function that will trigger the callback calls on
 			// load.

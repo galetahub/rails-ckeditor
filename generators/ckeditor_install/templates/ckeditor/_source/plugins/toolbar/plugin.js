@@ -157,7 +157,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 					{
 						editor.toolbox = new toolbox();
 
-						var labelId = 'cke_' + CKEDITOR.tools.getNextNumber();
+						var labelId = CKEDITOR.tools.getNextId();
 
 						var output = [ '<div class="cke_toolbox" role="toolbar" aria-labelledby="', labelId, '"' ],
 							expanded =  editor.config.toolbarStartupExpanded !== false,
@@ -187,7 +187,7 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 							if ( !row )
 								continue;
 
-							var toolbarId = 'cke_' + CKEDITOR.tools.getNextNumber(),
+							var toolbarId = CKEDITOR.tools.getNextId(),
 								toolbarObj = { id : toolbarId, items : [] };
 
 							if ( groupStarted )
@@ -283,25 +283,25 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 								function()
 								{
 									editor.execCommand( 'toolbarCollapse' );
-								} );
+								});
 
 							editor.on( 'destroy', function () {
 									CKEDITOR.tools.removeFunction( collapserFn );
-								} );
+								});
 
-							var collapserId = 'cke_' + CKEDITOR.tools.getNextNumber();
+							var collapserId = CKEDITOR.tools.getNextId();
 
 							editor.addCommand( 'toolbarCollapse',
 								{
 									exec : function( editor )
 									{
-										var collapser = CKEDITOR.document.getById( collapserId );
-										var toolbox = collapser.getPrevious();
-										var contents = editor.getThemeSpace( 'contents' );
-										var toolboxContainer = toolbox.getParent();
-										var contentHeight = parseInt( contents.$.style.height, 10 );
-										var previousHeight = toolboxContainer.$.offsetHeight;
-										var collapsed = !toolbox.isVisible();
+										var collapser = CKEDITOR.document.getById( collapserId ),
+											toolbox = collapser.getPrevious(),
+											contents = editor.getThemeSpace( 'contents' ),
+											toolboxContainer = toolbox.getParent(),
+											contentHeight = parseInt( contents.$.style.height, 10 ),
+											previousHeight = toolboxContainer.$.offsetHeight,
+											collapsed = !toolbox.isVisible();
 
 										if ( !collapsed )
 										{

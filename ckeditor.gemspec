@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.4.2.pre"
+  s.version = "3.4.3.pre"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2010-09-28}
+  s.date = %q{2010-11-05}
   s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
@@ -41,6 +41,44 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/CHANGES.html",
      "lib/generators/ckeditor/base/templates/ckeditor/INSTALL.html",
      "lib/generators/ckeditor/base/templates/ckeditor/LICENSE.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/ajax.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/api.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/api_dialog.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/api_dialog/my_dialog.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/advanced.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/events.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/index.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/replace.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/replaceall.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/sample_posteddata.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/asp/standalone.asp",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/assets/output_for_flash.fla",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/assets/output_for_flash.swf",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/assets/output_xhtml.css",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/assets/swfobject.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/autogrow.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/divreplace.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/enterkey.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/fullpage.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/index.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/jqueryadapter.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/output_for_flash.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/output_html.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/output_xhtml.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/php/advanced.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/php/events.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/php/replace.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/php/replaceall.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/php/standalone.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/replacebyclass.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/replacebycode.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/sample.css",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/sample.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/sample_posteddata.php",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/sharedspaces.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/skins.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/ui_color.html",
+     "lib/generators/ckeditor/base/templates/ckeditor/_samples/ui_languages.html",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/adapters/jquery.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/_bootstrap.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/core/ajax.js",
@@ -312,6 +350,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/toolbar/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/dialogs/uicolor.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/lang/en.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/lang/he.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/uicolor.gif",
      "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/uicolor/yui/assets/hue_bg.png",
@@ -572,6 +611,7 @@ Gem::Specification.new do |s|
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/templates/templates/images/template3.gif",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/dialogs/uicolor.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/lang/en.js",
+     "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/lang/he.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/plugin.js",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/uicolor.gif",
      "lib/generators/ckeditor/base/templates/ckeditor/plugins/uicolor/yui/assets/hue_bg.png",

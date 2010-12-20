@@ -1,4 +1,4 @@
-module CkeditorHelper
+module Ckeditor::BaseHelper
   def ckeditor_attachment_path(kind)
     path = case kind
       when :image then Ckeditor.file_manager_image_upload_uri

@@ -1,5 +1,5 @@
 <script type="text/javascript">	  
-  var upload_path = "<%=raw ckeditor_attachment_path(:image) %>";
+  var upload_path = "<%=raw ckeditor_attachment_path(:file) %>";
   
   function setUrl(url) 
   {  
@@ -59,7 +59,7 @@
               <span id='spanButtonPlaceholder'></span>
               <div id="divFileProgressContainer" style="clear:both;"></div>
               
-							<%= render :partial=>"swfupload" %>
+							<%= render :partial => "ckeditor/swfupload" %>
 						</td>
 					</tr>
 				  </tbody>
@@ -83,7 +83,7 @@
 	<tr>
 		<td style="height: 100%;" id="qu">
 		  <div style="overflow:auto; height:550px;" id='container'>
-			 <%= render :partial => "asset", :collection => @images, :as => :asset %>
+			 <%= render :partial => "asset", :collection => @attachments, :as => :asset %>
 		  </div>
 		</td>
 	</tr>

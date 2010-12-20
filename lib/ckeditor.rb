@@ -39,16 +39,18 @@ module Ckeditor
   @@public_path = "public/uploads"
   
   mattr_accessor :file_manager_uri
-  @@file_manager_uri = "/ckeditor/files"
+  @@file_manager_uri = "/ckeditor/attachments"
   
   mattr_accessor :file_manager_upload_uri
-  @@file_manager_upload_uri = "/ckeditor/create/file"
+  @@file_manager_upload_uri = "/ckeditor/attachments"
   
   mattr_accessor :file_manager_image_upload_uri
-  @@file_manager_image_upload_uri = "/ckeditor/create/image"
+  @@file_manager_image_upload_uri = "/ckeditor/pictures"
   
   mattr_accessor :file_manager_image_uri
-  @@file_manager_image_uri = "/ckeditor/images"
+  @@file_manager_image_uri = "/ckeditor/pictures"
+  
+  IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/pjpeg', 'image/tiff', 'image/x-png']
   
   # Get the image class from the image reference object.
   def self.image_model

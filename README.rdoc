@@ -1,4 +1,4 @@
-=Rails CKEditor integration plugin with SWFUpload support
+= Rails CKEditor integration plugin with SWFUpload support
 
 CKEditor is a text editor to be used inside web pages. It's a WYSIWYG editor, which means that the text being edited on it looks as similar as possible to 
 the results users have when publishing it. It brings to the web common editing features found on desktop editing applications like Microsoft Word and OpenOffice.
@@ -6,21 +6,23 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.4.2 (http://ckeditor.com)
+CKEditor version: 3.5 (http://ckeditor.com)
 
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
 
-Rails version: 3.0.1
+Rails version: 3.0.3
 
 Demo appication (Rails 2.3.8):
 http://github.com/galetahub/rails-ckeditor-demo-app
 
-==Install
+== Install
 
-===Rails 3
+=== Rails 3
 
 In your appication "Gemfile":
-  gem 'ckeditor', '3.4.3.pre'
+
+  gem 'ckeditor', '3.5.0'
+  
 or
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
@@ -42,27 +44,14 @@ Don't forget about migration:
 
   rake db:migarte
 
-===Rails 2.3.x
-
-Install plugin:
-
-  ./script/plugin install git://github.com/galetahub/rails-ckeditor.git
-
-Generate ckeditor core files:
-
-  rake ckeditor:install
-
-This rake generated file config/ckeditor.yml:
-  rake ckeditor:config
-
-For attachment_fu option "swf_file_post_name" must be "uploaded_data".
-
-==Usage
+== Usage
 
 Basically include this in the page you wish to use the editor in:
+
   <%= javascript_include_tag :ckeditor %>
 
 Then instead of the normal textarea helper from Rails use this one:
+
   <%= ckeditor_textarea("object", "field", :width => '100%', :height => '200px') %>
 
 FormBuilder helper for more usefully:
@@ -75,7 +64,8 @@ FormBuilder helper for more usefully:
     ...
   <% end -%>
   
-===Support options
+=== Support options
+
   :cols         # Textarea cols (default: 70)
   :rows         # Textarea rows (default: 20)
   :width        # Editor width (default: 100%)
@@ -89,12 +79,14 @@ FormBuilder helper for more usefully:
   :index        # element id index 
 
 For configure ckeditor default options check:
+
   public/javascripts/ckeditor/config.js
   
 This stylesheet use editor for displaying edit area:
+
   public/javascripts/ckeditor/contents.css
   
-===AJAX
+=== AJAX
 
 To use a remote form you need to call "ckeditor_ajax_script" helper method:
 
@@ -104,6 +96,8 @@ To use a remote form you need to call "ckeditor_ajax_script" helper method:
     <%= form.cktext_area("note", "about") %>
     ...
     <%= ckeditor_ajax_script %>
+    ...
+    <%= form.submit "Save" %>
   <% end %>
 
 Helper "ckeditor_ajax_script" generate next script (jquery):
@@ -118,7 +112,7 @@ Helper "ckeditor_ajax_script" generate next script (jquery):
     });
   </script>
 
-==File uploads
+== File uploads
 
 We recommend using a paperclip plugin for file storage and processing images. Controller @../rails-ckeditor/app/controllers/ckeditor_controller.rb@ has actions 
 for displaying and uploading files. It uses classes Picture and AttachmentFile, who are descendants of the Asset class. So, your project must have these classes.
@@ -127,19 +121,20 @@ for displaying and uploading files. It uses classes Picture and AttachmentFile, 
 
 For S3 storage look at "../ckeditor/examples/s3"
 
-==Formtastic integration
+== Formtastic integration
+
 Ckeditor detects if your use Formtastic and appends "Ckeditor::CustomFormBuilder".
 
   <%= form.input :content, :as => :ckeditor %>
 
-==Middleware
+== Middleware
 
 Ckeditor appends middleware ("Ckeditor::Middleware") before session store to 
 support swf upload with AuthenticityToken.
 
   rake middleware
 
-==TODOs
+== TODOs
 
 1. Add support for choose filemanager storage
 2. More integration upload system

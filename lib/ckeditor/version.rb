@@ -1,11 +1,11 @@
 module Ckeditor
   module Version
     MAJOR = 3
-    MINOR = 4
-    RELEASE = 3
+    MINOR = 5
+    RELEASE = 0
 
     def self.dup
-      "#{MAJOR}.#{MINOR}.#{RELEASE}.pre"
+      "#{MAJOR}.#{MINOR}.#{RELEASE}"
     end
   end
 end

@@ -1,3 +1,5 @@
+require 'mime/types'
+
 class Ckeditor::Asset < ActiveRecord::Base
   set_table_name "ckeditor_assets"
   

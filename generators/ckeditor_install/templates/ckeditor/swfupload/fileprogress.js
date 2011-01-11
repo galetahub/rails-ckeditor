@@ -115,15 +115,9 @@ var Button = new Class({
     
     this.element.appendChild(table);
     
-    this.element.addEvents({
-          'mouseover': function(){
-              this.className = "TB_Button_Off_Over"
-          },
-          'mouseout': function(){
-              this.className = "TB_Button"
-          },
-          'click': this.callback.bind(this)
-    });
+    this.element.onclick = this.callback.bind(this);
+	this.element.onmouseover = function addButtonHover() { this.className = "TB_Button_Off_Over"; }
+	this.element.onmouseout = function removeButtonHover() { this.className = "TB_Button"; }
   }
 });
 

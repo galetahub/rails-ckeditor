@@ -49,7 +49,7 @@ For attachment_fu:
 
 Don't forget about migration:
 
-  rake db:migarte
+  rake db:migrate
 
 == Usage
 

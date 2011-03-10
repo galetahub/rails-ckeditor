@@ -131,6 +131,7 @@ For S3 storage look at "../ckeditor/examples/s3"
 == Formtastic integration
 
   <%= form.input :content, :as => :ckeditor %>
+  <%= form.input :content, :as => :ckeditor, :input_html => { :height => 400, :swf_params => { ... } } %>
 
 == SimpleForm integration
 

@@ -8,10 +8,10 @@ module Ckeditor
       end
       
       def self.included(base)
-        base.send(:include, ClassMethods)
+        base.send(:include, InstanceMethods)
       end
     
-      module ClassMethods
+      module InstanceMethods
         def ckeditor(attribute_name, options={}, &block)
           column     = find_attribute_column(attribute_name)
           input_type = default_input_type(attribute_name, column, options)

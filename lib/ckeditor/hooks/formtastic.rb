@@ -1,13 +1,14 @@
 module Ckeditor
   module Hooks
-    class FormtasticBuilder < ::Formtastic::SemanticFormBuilder
-
-      private
-
-      def ckeditor_input(attribute_name, options = {})
-        html_options = options.delete(:input_html) || {}
-        self.label(attribute_name, options_for_label(options)) <<
-        self.send(:ckeditor_textarea, sanitized_object_name, attribute_name, html_options)
+    module FormtasticBuilder
+      def self.included(base)
+        base.send(:include, InstanceMethods)
+      end
+    
+      module InstanceMethods
+        def ckeditor_input(method, options)
+          basic_input_helper(:cktext_area, :text, method, options)
+        end
       end
     end
   end

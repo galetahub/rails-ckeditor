@@ -1,5 +1,27 @@
 <script type="text/javascript">
 		var swfu = null;
+		
+		window.onload = function()
+    {
+      var f = new FileThumb('qu');
+      var t = new ToolBar('nv');
+      
+      var b1 = new Button('<%= I18n.t("upload.hint", :scope => [:ckeditor, :buttons]) %>', '<%= I18n.t("upload.title", :scope => [:ckeditor, :buttons]) %>', 'add.gif');
+      var b2 = new Button('<%= I18n.t("refresh.hint", :scope => [:ckeditor, :buttons]) %>', '<%= I18n.t("refresh.title", :scope => [:ckeditor, :buttons]) %>', 'refresh.gif');
+      
+      b1.callback = uploadButton;
+      b2.callback = function(){ window.location.reload(); }
+      
+      t.buttons.push(b1);
+      t.buttons.push(b2);
+      
+      t.init();
+      init_swfupload();
+      
+      $('a.FCKFileDelete').bind('ajax:complete', function(){
+        $(this).parents('div.FCKThumb').remove();
+      });
+    }
 	
 		function init_swfupload() {
 		  var params = editor.config['swf_params'];

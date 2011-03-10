@@ -43,6 +43,11 @@ tr.FCKThumb td
 	background-color: #99ccff !important;
 }
 
+.FCKAsset {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
 .FCKFileName, .FCKFileDate, .FCKFileSize
 {
 	margin-top: 3px;
@@ -204,6 +209,18 @@ td.FCKFileSize
 {
 	background-image: url(../images/ckfminus.gif);
 	background-repeat: no-repeat;
+}
+
+a.FCKFileDelete { 
+  float:right;
+  background-image:url('/javascripts/ckeditor/images/cancelbutton.gif');
+	background-repeat: no-repeat;
+  background-position:-14px 0;
+  width:14px;
+}
+
+a.FCKFileDelete:hover {
+  background-position:0 0;
 }
 
 .CKFStatusBar

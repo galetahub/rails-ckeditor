@@ -6,14 +6,17 @@ the results users have when publishing it. It brings to the web common editing f
 Because CKEditor is licensed under flexible Open Source and commercial licenses, you'll be able to integrate and use it inside any kind of application. 
 This is the ideal editor for developers, created to provide easy and powerful solutions to their users.
 
-CKEditor version: 3.5 (http://ckeditor.com)
+CKEditor version: any (http://ckeditor.com/download/releases)
 
 SWFUpload version: 2.2.0.1 Core (http://swfupload.org)
 
-Rails version: 3.0.3
+Rails version: 3.x
 
 Demo appication (Rails 2.3.8):
 http://github.com/galetahub/rails-ckeditor-demo-app
+
+Demo appication (Rails 3.x):
+http://github.com/galetahub/ckeditor-demo-app
 
 == Install
 
@@ -21,15 +24,19 @@ http://github.com/galetahub/rails-ckeditor-demo-app
 
 In your appication "Gemfile":
 
-  gem 'ckeditor', '3.5.0'
+  gem 'ckeditor', '3.5.1'
   
 or
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
 
-Next step is generate ckeditor js files and configuration file
+Next step is download ckeditor core files and generate configuration file
 Check "config/initializers/ckeditor.rb" for more configuration options:
 
   rails generate ckeditor:base
+
+You can pass version of ckeditor to download (http://ckeditor.com/download/releases):
+
+  rails generate ckeditor:base --version=3.5.2
 
 Generate ckeditor models for file upload support:
 For paperclip:
@@ -123,9 +130,11 @@ For S3 storage look at "../ckeditor/examples/s3"
 
 == Formtastic integration
 
-Ckeditor detects if your use Formtastic and appends "Ckeditor::CustomFormBuilder".
-
   <%= form.input :content, :as => :ckeditor %>
+
+== SimpleForm integration
+
+  <%= form.ckeditor :content, :label => false, :input_html => { :height => 400, :toolbar=>'Full' } %>
 
 == Middleware
 
@@ -133,6 +142,20 @@ Ckeditor appends middleware ("Ckeditor::Middleware") before session store to
 support swf upload with AuthenticityToken.
 
   rake middleware
+
+== I18n
+
+  en:
+    ckeditor:
+      page_title: "CKEditor Files Manager"
+      upload_files: "Upload New Files"
+      buttons:
+        refresh:
+          title: "Refresh"
+          hint: "Refresh page"
+        upload:
+          title: "Upload"
+          hint: "Upload New File"
 
 == TODOs
 

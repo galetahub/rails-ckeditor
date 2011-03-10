@@ -4,7 +4,7 @@ class Ckeditor::BaseController < ApplicationController
   before_filter :swf_options, :only => [:index, :create]
   before_filter :find_asset, :only => [:destroy]
   
-  respond_to :html, :xml, :json
+  respond_to :html, :json
   
   layout "ckeditor"
 

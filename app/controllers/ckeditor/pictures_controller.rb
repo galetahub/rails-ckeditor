@@ -12,7 +12,7 @@ class Ckeditor::PicturesController < Ckeditor::BaseController
   
   def destroy
     @picture.destroy
-    respond_with(@picture)
+    respond_with(@picture, :location => ckeditor_pictures_path)
   end
   
   protected

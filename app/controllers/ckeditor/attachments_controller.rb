@@ -12,7 +12,7 @@ class Ckeditor::AttachmentsController < Ckeditor::BaseController
   
   def destroy
     @attachment.destroy
-    respond_with(@attachment)
+    respond_with(@attachment, :location => ckeditor_attachments_path)
   end
   
   protected

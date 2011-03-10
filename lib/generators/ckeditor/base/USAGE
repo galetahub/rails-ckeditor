@@ -1,7 +1,9 @@
 CKEditor
 ========
 
-# Copy ckeditor's core files into 'public/javascripts' 
+# Download and extract ckeditor's core files into 'public/javascripts' 
 # and generate configuration file in 'config/initializers/ckeditor.rb'
 
 rails generate ckeditor:base
+
+rails generate ckeditor:base version=3.5.2

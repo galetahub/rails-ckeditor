@@ -1,0 +1,11 @@
+uk:
+  ckeditor:
+    page_title: "CKEditor Files Manager"
+    upload_files: "Завантаження нових файлів"
+    buttons:
+      refresh:
+        title: "Оновити"
+        hint: "Оновити сторінку"
+      upload:
+        title: "Завантажити"
+        hint: "Завантажити новий файл"

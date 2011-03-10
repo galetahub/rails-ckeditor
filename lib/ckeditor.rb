@@ -1,9 +1,13 @@
 module Ckeditor
   autoload :ViewHelper,        'ckeditor/view_helper'
   autoload :FormBuilder,       'ckeditor/form_builder'
-  autoload :CustomFormBuilder, 'ckeditor/formtastic'
   autoload :Middleware,        'ckeditor/middleware'
   autoload :Utils,             'ckeditor/utils'
+  
+  module Hooks
+    autoload :FormtasticBuilder, 'ckeditor/hooks/formtastic'
+    autoload :SimpleFormBuilder, 'ckeditor/hooks/simple_form'
+  end
   
   mattr_accessor :swf_file_post_name
   @@swf_file_post_name = "data"

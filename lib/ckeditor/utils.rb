@@ -31,7 +31,7 @@ module Ckeditor
         Net::HTTP.start(uri.host, uri.port) do |http|
           begin
             http.request_get(uri.path) do |resp|
-              resp.read_body { |segment| file.write(segment) }
+              resp.read_body { |segment| file.write(segment.force_encoding("UTF-8")) }
             end
           ensure
             file.close

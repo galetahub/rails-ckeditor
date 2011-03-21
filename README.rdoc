@@ -24,7 +24,7 @@ http://github.com/galetahub/ckeditor-demo-app
 
 In your appication "Gemfile":
 
-  gem 'ckeditor', '3.5.1'
+  gem 'ckeditor'
   
 or
   gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
@@ -151,6 +151,7 @@ support swf upload with AuthenticityToken.
       page_title: "CKEditor Files Manager"
       upload_files: "Upload New Files"
       buttons:
+        cancel: "Cancel"
         refresh:
           title: "Refresh"
           hint: "Refresh page"

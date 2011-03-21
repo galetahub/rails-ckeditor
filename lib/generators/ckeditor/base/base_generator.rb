@@ -17,14 +17,12 @@ module Ckeditor
     # copy ckeditor files
     def install_ckeditor
       puts "Start download #{filename}"
-      Ckeditor::Utils.download(download_url, filepath)
+      file = Ckeditor::Utils.download(download_url)
       
-      if File.exist?(filepath)
-        puts "Extract #{filepath}"
-        Ckeditor::Utils.extract(filepath, Rails.root.join('public', 'javascripts'))
-      
+      if File.exist?(file.path)
+        Ckeditor::Utils.extract(file.path, Rails.root.join('public', 'javascripts'))
         directory "ckeditor", "public/javascripts/ckeditor"
-        File.delete(filepath)
+        file.unlink
       else
         raise Rails::Generators::Error.new("Cannot download file #{download_url}")
       end
@@ -38,10 +36,6 @@ module Ckeditor
       
       def filename
         "ckeditor_#{options[:version]}.tar.gz"
-      end
-      
-      def filepath
-        Rails.root.join('tmp', filename)
       end
   end
 end

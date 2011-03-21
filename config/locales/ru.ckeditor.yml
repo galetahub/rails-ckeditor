@@ -3,6 +3,7 @@ ru:
     page_title: "CKEditor Files Manager"
     upload_files: "Загрузка новых файлов"
     buttons:
+      cancel: "Отмена"
       refresh:
         title: "Обновить"
         hint: "Обновить страницу"

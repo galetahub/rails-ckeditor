@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ckeditor}
-  s.version = "3.5.1"
+  s.version = "3.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Igor Galeta"]
-  s.date = %q{2011-03-10}
+  s.date = %q{2011-03-21}
   s.description = %q{CKEditor is a WYSIWYG editor to be used inside web pages}
   s.email = %q{galeta.igor@gmail.com}
   s.extra_rdoc_files = [
@@ -44,6 +44,18 @@ Gem::Specification.new do |s|
     "lib/generators/ckeditor/base/USAGE",
     "lib/generators/ckeditor/base/base_generator.rb",
     "lib/generators/ckeditor/base/templates/ckeditor.rb",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/dialogs/attachment.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/images/attachment.png",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/en.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/ru.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/lang/uk.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/attachment/plugin.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/dialogs/embed.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/images/embed.png",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/lang/en.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/lang/ru.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/lang/uk.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/_source/plugins/embed/plugin.js",
     "lib/generators/ckeditor/base/templates/ckeditor/config.js",
     "lib/generators/ckeditor/base/templates/ckeditor/css/ckfinder.css",
     "lib/generators/ckeditor/base/templates/ckeditor/css/fck_dialog.css",
@@ -62,6 +74,18 @@ Gem::Specification.new do |s|
     "lib/generators/ckeditor/base/templates/ckeditor/images/swf.gif",
     "lib/generators/ckeditor/base/templates/ckeditor/images/toolbar.start.gif",
     "lib/generators/ckeditor/base/templates/ckeditor/images/xls.gif",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/dialogs/attachment.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/images/attachment.png",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/en.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/ru.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/lang/uk.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/attachment/plugin.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/dialogs/embed.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/images/embed.png",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/lang/en.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/lang/ru.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/lang/uk.js",
+    "lib/generators/ckeditor/base/templates/ckeditor/plugins/embed/plugin.js",
     "lib/generators/ckeditor/base/templates/ckeditor/swfupload/fileprogress.js",
     "lib/generators/ckeditor/base/templates/ckeditor/swfupload/handlers.js",
     "lib/generators/ckeditor/base/templates/ckeditor/swfupload/jquery-1.5.1.min.js",

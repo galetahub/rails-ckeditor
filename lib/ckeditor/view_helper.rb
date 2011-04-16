@@ -1,7 +1,8 @@
 module Ckeditor
   module ViewHelper
-    include ActionView::Helpers
-    
+    include ActionView::Helpers::JavaScriptHelper
+    include ActionView::Helpers::TagHelper 
+
     # Ckeditor helper:
     # <%= ckeditor_textarea("object", "field", :width => '100%', :height => '200px') %>
     #

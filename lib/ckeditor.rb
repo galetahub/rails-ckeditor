@@ -73,7 +73,7 @@ module Ckeditor
   
   # Get the file class from the file reference object.
   def self.file_model
-    if self.class_variables.include?('@@file_model_ref')
+    if self.class_variable_defined?('@@file_model_ref')
       @@file_model_ref.get 
     else
       self.file_manager_file_model = "Ckeditor::AttachmentFile"

@@ -34,18 +34,19 @@ module Ckeditor
       textarea_options[:class] = (options.delete(:class) || 'editor').to_s
       textarea_options[:style] = "width:#{width};height:#{height}"
       
-      ckeditor_options = {:width => width, :height => height }
+      ckeditor_options = {:width => width, :height => height }.
+        merge(options.delete(:ckeditor_options)||{})
       ckeditor_options[:language] = (options.delete(:language) || I18n.locale).to_s
       ckeditor_options[:toolbar]  = options.delete(:toolbar) if options[:toolbar]
       ckeditor_options[:skin]     = options.delete(:skin) if options[:skin]
       
       ckeditor_options[:swf_params] = options.delete(:swf_params) if options[:swf_params]
       
-      ckeditor_options[:filebrowserBrowseUrl] = Ckeditor.file_manager_uri
-      ckeditor_options[:filebrowserUploadUrl] = Ckeditor.file_manager_upload_uri
+      ckeditor_options[:filebrowserBrowseUrl] ||= Ckeditor.file_manager_uri
+      ckeditor_options[:filebrowserUploadUrl] ||= Ckeditor.file_manager_upload_uri
       
-      ckeditor_options[:filebrowserImageBrowseUrl] = Ckeditor.file_manager_image_uri
-      ckeditor_options[:filebrowserImageUploadUrl] = Ckeditor.file_manager_image_upload_uri
+      ckeditor_options[:filebrowserImageBrowseUrl] ||= Ckeditor.file_manager_image_uri
+      ckeditor_options[:filebrowserImageUploadUrl] ||= Ckeditor.file_manager_image_upload_uri
       
       output_buffer = ActiveSupport::SafeBuffer.new
         

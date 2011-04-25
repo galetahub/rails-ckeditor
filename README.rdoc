@@ -103,6 +103,7 @@ FormBuilder helper for more usefully:
   :swf_params   # SWFUpload additional params (Hash)
   :id           # textarea DOM element id
   :index        # element id index 
+  :ckeditor_options # A hash allowing you to change filebrowserBrowseUrl, etc
 
 For configure ckeditor default options check:
   public/javascripts/ckeditor/config.js

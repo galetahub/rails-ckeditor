@@ -21,7 +21,7 @@ module Ckeditor
       var ||= @template.instance_variable_get("@#{object}")
       
       value = var.send(field.to_sym) if var
-      value ||= options.delete(:value) || ""
+      #value ||= options.delete(:value) || ""
       
       element_id = options.delete(:id) || ckeditor_element_id(object, field, options.delete(:index))
       width  = options.delete(:width) || '100%'

@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     "app/helpers/ckeditor/base_helper.rb",
     "app/views/ckeditor/_asset.html.erb",
     "app/views/ckeditor/_swfupload.html.erb",
-    "app/views/ckeditor/attachments/index.html.erb",
+    "app/views/ckeditor/attachment_files/index.html.erb",
     "app/views/ckeditor/pictures/index.html.erb",
     "app/views/layouts/ckeditor.html.erb",
     "config/locales/en.ckeditor.yml",

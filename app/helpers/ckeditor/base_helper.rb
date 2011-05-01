@@ -1,9 +1,9 @@
 module Ckeditor::BaseHelper
-  def ckeditor_attachment_path(kind)
+  def ckeditor_asset_path(kind)
     path = case kind
       when :image then Ckeditor.file_manager_image_upload_uri
       when :file  then Ckeditor.file_manager_upload_uri
-      else '/ckeditor/attachments'
+      else '/ckeditor/attachment_files'
     end
     
     session_key = Rails.application.config.send(:session_options)[:key]

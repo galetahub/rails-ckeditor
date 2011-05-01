@@ -43,10 +43,10 @@ module Ckeditor
   @@public_path = "public/uploads"
   
   mattr_accessor :file_manager_uri
-  @@file_manager_uri = "/ckeditor/attachments"
+  @@file_manager_uri = "/ckeditor/attachment_files"
   
   mattr_accessor :file_manager_upload_uri
-  @@file_manager_upload_uri = "/ckeditor/attachments"
+  @@file_manager_upload_uri = "/ckeditor/attachment_files"
   
   mattr_accessor :file_manager_image_upload_uri
   @@file_manager_image_upload_uri = "/ckeditor/pictures"

@@ -161,5 +161,4 @@ support swf upload with AuthenticityToken.
 
 == TODOs
 
-1. Add support for choose filemanager storage
-2. More integration upload system
+1. HTML5 File uploads

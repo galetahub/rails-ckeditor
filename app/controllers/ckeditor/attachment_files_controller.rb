@@ -1,4 +1,4 @@
-class Ckeditor::AttachmentsController < Ckeditor::BaseController
+class Ckeditor::AttachmentFilesController < Ckeditor::BaseController
 
   def index
     @attachments = Ckeditor.file_model.order("id DESC")

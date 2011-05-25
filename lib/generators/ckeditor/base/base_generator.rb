@@ -2,7 +2,7 @@ require 'rails/generators'
 
 module Ckeditor
   class BaseGenerator < Rails::Generators::Base
-    class_option :version, :type => :string, :default => '3.5.3',
+    class_option :version, :type => :string, :default => '3.6',
                  :desc => "Version of ckeditor which be install"
 
     def self.source_root

@@ -36,7 +36,7 @@ Check "config/initializers/ckeditor.rb" for more configuration options:
 
 You can pass version of ckeditor to download (http://ckeditor.com/download/releases):
 
-  rails generate ckeditor:base --version=3.5.2
+  rails generate ckeditor:base --version=3.5.4
 
 Generate ckeditor models for file upload support:
 For paperclip:

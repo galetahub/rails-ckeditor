@@ -15,16 +15,16 @@ module Ckeditor
     #   <%= ckeditor_textarea("object", "field", :index => "2") %>
     # <% end %>
     #
-    def ckeditor_textarea(object, field, options = {})
+    def ckeditor_textarea(object_name, field, options = {})
       options = options.dup.symbolize_keys
       
-      var = options.delete(:object) if options.key?(:object)
-      var ||= @template.instance_variable_get("@#{object}")
+      object = options.delete(:object) if options.key?(:object)
+      object ||= @template.instance_variable_get("@#{object_name}")
       
-      value = var.send(field.to_sym) if var
-      value ||= options.delete(:value) || ""
-      
-      element_id = options.delete(:id) || ckeditor_element_id(object, field, options.delete(:index))
+      value = options.delete(:value) if options.key?(:value)
+      value ||= object.send(field)
+        
+      element_id = options.delete(:id) || ckeditor_element_id(object_name, field, options.delete(:index))
       width  = options.delete(:width) || '100%'
       height = options.delete(:height) || '100%'
       
@@ -50,7 +50,7 @@ module Ckeditor
       
       output_buffer = ActiveSupport::SafeBuffer.new
         
-      output_buffer << ActionView::Base::InstanceTag.new(object, field, self, var).to_text_area_tag(textarea_options.merge(options))
+      output_buffer << ActionView::Base::InstanceTag.new(object_name, field, self, object).to_text_area_tag(textarea_options.merge(options))
       
       output_buffer << javascript_tag("if (CKEDITOR.instances['#{element_id}']) { 
         CKEDITOR.remove(CKEDITOR.instances['#{element_id}']);}
@@ -71,8 +71,8 @@ module Ckeditor
     
     protected
       
-      def ckeditor_element_id(object, field, index = nil)
-        index.blank? ? "#{object}_#{field}_editor" : "#{object}_#{index}_#{field}_editor"
+      def ckeditor_element_id(object_name, field, index = nil)
+        [object_name, index, field, 'editor'].compact.join('_')
       end
       
       def ckeditor_applay_options(options={})

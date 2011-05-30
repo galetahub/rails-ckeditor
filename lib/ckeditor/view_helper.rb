@@ -16,6 +16,10 @@ module Ckeditor
     # <% end %>
     #
     def ckeditor_textarea(object_name, field, options = {})
+
+      options_for_ckeditor = options.delete(:ckeditor_options) || {}
+      options_for_ckeditor = options_for_ckeditor.dup.symbolize_keys
+
       options = options.dup.symbolize_keys
       
       object = options.delete(:object) if options.key?(:object)
@@ -40,6 +44,11 @@ module Ckeditor
       ckeditor_options[:skin]     = options.delete(:skin) if options[:skin]
       
       ckeditor_options[:swf_params] = options.delete(:swf_params) if options[:swf_params]
+
+      # override ckeditor_options with options_for_ckeditor, should be backwards compatible
+      options_for_ckeditor.each do |k,v|
+        ckeditor_options[k] = options_for_ckeditor[k]
+      end
       
       ckeditor_options[:filebrowserBrowseUrl] = Ckeditor.file_manager_uri
       ckeditor_options[:filebrowserUploadUrl] = Ckeditor.file_manager_upload_uri

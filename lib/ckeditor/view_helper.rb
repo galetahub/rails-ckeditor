@@ -21,8 +21,7 @@ module Ckeditor
       object = options.delete(:object) if options.key?(:object)
       object ||= @template.instance_variable_get("@#{object_name}")
       
-      value = options.delete(:value) if options.key?(:value)
-      value ||= object.send(field)
+      options[:value] = object.send(field) unless options.key?(:value)
         
       element_id = options.delete(:id) || ckeditor_element_id(object_name, field, options.delete(:index))
       width  = options.delete(:width) || '100%'

@@ -84,6 +84,8 @@ FormBuilder helper for more usefully:
   :swf_params   # SWFUpload additional params (Hash)
   :id           # textarea DOM element id
   :index        # element id index 
+  :ckeditor_options => {} # all configurable options for ckeditor, check the ckeditor API.
+                          # these will override width, height, toolbar, skin, and language if you define them here.
 
 For configure ckeditor default options check:
 

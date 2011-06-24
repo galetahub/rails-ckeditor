@@ -45,16 +45,16 @@ module Ckeditor
       
       ckeditor_options[:swf_params] = options.delete(:swf_params) if options[:swf_params]
 
-      # override ckeditor_options with options_for_ckeditor, should be backwards compatible
-      options_for_ckeditor.each do |k,v|
-        ckeditor_options[k] = options_for_ckeditor[k]
-      end
-      
       ckeditor_options[:filebrowserBrowseUrl] = Ckeditor.file_manager_uri
       ckeditor_options[:filebrowserUploadUrl] = Ckeditor.file_manager_upload_uri
       
       ckeditor_options[:filebrowserImageBrowseUrl] = Ckeditor.file_manager_image_uri
       ckeditor_options[:filebrowserImageUploadUrl] = Ckeditor.file_manager_image_upload_uri
+
+      # override ckeditor_options with options_for_ckeditor, should be backwards compatible
+      options_for_ckeditor.each do |k,v|
+        ckeditor_options[k] = options_for_ckeditor[k]
+      end
       
       output_buffer = ActiveSupport::SafeBuffer.new
         

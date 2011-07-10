@@ -1,0 +1,12 @@
+pt-BR:
+  ckeditor:
+    page_title: "Gerenciador de arquivos do CKEditor"
+    upload_files: "Enviar Novos Arquivos"
+    buttons:
+      cancel: "Cancelar"
+      refresh:
+        title: "Atualizar"
+        hint: "Atualizar página"
+      upload:
+        title: "Enviar"
+        hint: "Enviar Novo Arquivo"

@@ -11,7 +11,7 @@ class Ckeditor::AttachmentFilesController < Ckeditor::BaseController
 
   def create
     if Ckeditor.file_manager_partition_users and respond_to?(:current_user)
-      if Ckeditor.file_model.where(:user_id => current_user).count <= Ckeditor.file_upload_limit
+      if Ckeditor.file_model.where(:user_id => current_user).count <= Ckeditor.swf_file_upload_limit
         @attachment = Ckeditor.file_model.new
       end
     else

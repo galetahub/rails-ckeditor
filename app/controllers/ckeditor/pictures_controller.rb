@@ -11,7 +11,7 @@ class Ckeditor::PicturesController < Ckeditor::BaseController
 
   def create
     if Ckeditor.file_manager_partition_users and respond_to?(:current_user)
-      if Ckeditor.image_model.where(:user_id => current_user).count <= Ckeditor.file_upload_limit
+      if Ckeditor.image_model.where(:user_id => current_user).count <= Ckeditor.swf_image_file_upload_limit
         @picture = Ckeditor.image_model.new
       end
     else

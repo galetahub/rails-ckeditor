@@ -10,7 +10,13 @@ class Ckeditor::PicturesController < Ckeditor::BaseController
   end
 
   def create
-    @picture = Ckeditor.image_model.new
+    if Ckeditor.file_manager_partition_users and respond_to?(:current_user)
+      if Ckeditor.image_model.where(:user_id => current_user).count <= Ckeditor.file_upload_limit
+        @picture = Ckeditor.image_model.new
+      end
+    else
+      @picture = Ckeditor.image_model.new
+    end
 	  respond_with_asset(@picture)
   end
 

@@ -10,7 +10,13 @@ class Ckeditor::AttachmentFilesController < Ckeditor::BaseController
   end
 
   def create
-    @attachment = Ckeditor.file_model.new
+    if Ckeditor.file_manager_partition_users and respond_to?(:current_user)
+      if Ckeditor.file_model.where(:user_id => current_user).count <= Ckeditor.file_upload_limit
+        @attachment = Ckeditor.file_model.new
+      end
+    else
+      @attachment = Ckeditor.file_model.new
+    end
 	  respond_with_asset(@attachment)
   end
 

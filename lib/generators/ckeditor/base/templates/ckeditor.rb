@@ -25,7 +25,7 @@ if Object.const_defined?("Ckeditor")
     # no longer be able to queue additional files. The value of 0 (zero) is interpreted as unlimited.
     # Only successful uploads (uploads the trigger the uploadSuccess event) are counted toward the upload limit.
     # The setStats function can be used to modify the number of successful uploads.
-    # Note: This value is not tracked across pages and is reset when a page is refreshed.
+    # Note: This value is only tracked when partitioning is enabled otherwise its reset when a page is refreshed.
     # File quotas should be managed by the web server.
     #config.swf_file_upload_limit = 5
 

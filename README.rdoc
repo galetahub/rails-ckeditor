@@ -1,5 +1,5 @@
 == Rails CKEditor integration plugin with SWFUpload support
 
-This repository moved to github.com/galetahub/ckeditor. 
+This repository moved to https://github.com/galetahub/ckeditor. 
 
 Sorry for the inconvenience.
